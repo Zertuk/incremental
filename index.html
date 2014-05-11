@@ -3,16 +3,26 @@
 <html>
 <head>
 
-<link href = "style.css" rel = "style.css">
+<link href = "style.css" rel = "stylesheet">
 
 <script src = "main.js"></script>
 
 </head>
 
 <body>
-	<div id = "ectoplasm"></div>
+	<div class = "wrapper">
+		<div id = "main">
+			<div id = "ectoplasm">You have 0 stuff</div>
 
-	<button onclick = "ectoplasmClick(1)">Click</button>
+			<button onclick = "ectoplasmClick(1)">Click</button>
+			<button id = "storeButton">Store</button>
+		</div>
+
+		<div id = "store">
+			HELLO
+			<button onclick = "leaveStore()">Leave Store</button>
+		</div>
+	</div>
 
 </body>
 
