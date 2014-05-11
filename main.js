@@ -4,6 +4,7 @@ var ghostStoreVal = false;
 var storeShow = false;
 var inventoryShow = false;
 var fieldShow = false;
+var mapShow = false;
 var seedsPlanted = 500;
 var fists, woodSword, ironSword;
 
@@ -52,15 +53,17 @@ function plantSeed() {
 }
 
 function plantAll() {
-	if () {}
-
-	else {
-		error.innerHTML = 'you have no seeds';
-		window.setInterval(function() {
-			error.innerHTML = '';
-		}, 3000)
+	if (inventoryObject.seed > 0) {
+		seedsPlanted = seedsPlanted + inventoryObject.seed;
+		inventoryObject.seed = 0;
+		$('#seeds_planted').html("Seeds Planted: " + seedsPlanted);
 	}
-
+	else {
+ 		error.innerHTML = 'you have no seeds';
+ 		window.setInterval(function() {
+ 			error.innerHTML = '';
+ 		}, 3000)
+ 	}
 }
 
 function inventoryList() {
@@ -135,6 +138,20 @@ function enterField() {
 	}
 }
 
+//here we go again lol
+function enterMap() {
+	if (mapShow == true) {
+		map.style.display = "none";
+		main.style.display = "inline";
+		mapShow = false;
+	}
+	else {
+		map.style.display = "inline";
+		main.style.display = "none";
+		mapShow = true;
+	}
+}
+
 //buys item if you have enough money
 function itemBuy() {
 	var itemBought = false;
@@ -187,7 +204,6 @@ function storeItems(item) {
 			}
 			break;
 		case "seed":
-
 			this.itemPrice = 500;
 			var itemBought = itemBuy();
 			if (itemBought == true) {
@@ -195,6 +211,13 @@ function storeItems(item) {
 				fieldButton.style.display = "inline";
 			}
 			break;
+		case "map":
+			this.itemPrice = 50;
+			var itemBought = itemBuy();
+			if (itemBought == true) {
+				inventoryObject.map = true;
+				mapButton.style.display = "inline";
+			}
 		}
 }
 
@@ -206,6 +229,7 @@ var main = document.getElementById('main');
 var error = document.getElementById('error');
 var inventory = document.getElementById('inventory');
 var fieldButton = document.getElementById('fieldButton');
+var mapButton = document.getElementById('mapButton');
 
 }
 
