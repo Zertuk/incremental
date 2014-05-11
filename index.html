@@ -25,7 +25,7 @@
 			<button onclick = "ectoplasmClick(1)">Click</button>
 			<button onclick = "enterInventory()">Inventory</button>
 			<button id = "storeButton" onclick = "enterStore()">Store</button>
-			<button id = "fieldButton">Field</button>
+			<button id = "fieldButton" onclick = "enterField()">Field</button>
 		</div>
 
 		<div id = "store">
@@ -49,6 +49,13 @@
 			<button onclick = "enterInventory()">Leave Inventory</button>
 		</div>
 
+		<div id = "field">
+			<p>THE FIELD</p>
+			<button onclick = "plantSeed()">Plant</button>
+			<p id = "seeds_planted">Seeds Planted: 0</p>
+
+			<button onclick = "enterField()">Leave Field</button>
+		</div>
 
 
 	</div>

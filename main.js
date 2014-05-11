@@ -3,6 +3,8 @@ var ectoplasm = 0;
 var ghostStoreVal = false;
 var storeShow = false;
 var inventoryShow = false;
+var fieldShow = false;
+var seedsPlanted = 500;
 
 var inventoryObject = {
 	healthPotion: 0,
@@ -14,10 +16,16 @@ var inventoryObject = {
 
 function plantSeed() {
 	if (inventoryObject.seed > 0) {
-	
-	inventoryObject.seed--;
-
-	}	
+		seedsPlanted++;
+		inventoryObject.seed--;
+		$('#seeds_planted').html("Seeds Planted: " + seedsPlanted);
+	}
+	else {
+		error.innerHTML = 'you have no seeds';
+		window.setInterval(function() {
+			error.innerHTML = '';
+		}, 3000)
+	}
 }
 
 function inventoryList() {
@@ -74,6 +82,20 @@ function enterInventory() {
 		inventory.style.display = "inline";
 		main.style.display = "none";
 		inventoryShow = true;
+	}
+}
+//wow im still doing it this way instead of fixing it  rip
+function enterField() {
+	if (fieldShow == true) {
+		field.style.display = "none";
+		main.style.display = "inline"
+		fieldShow = false;
+		
+	} 
+	else {
+		field.style.display = "inline";
+		main.style.display = "none";
+		fieldShow = true;
 	}
 }
 
@@ -148,7 +170,7 @@ var fieldButton = document.getElementById('fieldButton');
 //main game loop
 window.setInterval(function() {
 
-	ectoplasmGenerator(100);
+	ectoplasmGenerator(seedsPlanted);
 
 	if (ghostStoreVal == false){
 	ghostStore();
