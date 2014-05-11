@@ -5,14 +5,37 @@ var storeShow = false;
 var inventoryShow = false;
 var fieldShow = false;
 var seedsPlanted = 500;
+var fists, woodSword, ironSword;
 
+//object containing weapon types
+var swordObject = {
+	fists : {
+		name: 'Fists',
+		damage: 1
+	},
+
+	woodSword : {
+		name: 'Wooden Sword',
+		damage: 2
+	},
+
+	ironSword : {
+		name: 'Iron Sword',
+		damage: 4
+	}
+}
+
+//inventory
 var inventoryObject = {
+	weapon: swordObject.fists,
 	healthPotion: 0,
 	manaPotion: 0,
 	seed: 0,
-	woodSword: false,
-	ironSword: false
+	map: false
+	
 }
+
+
 
 function plantSeed() {
 	if (inventoryObject.seed > 0) {
@@ -28,10 +51,23 @@ function plantSeed() {
 	}
 }
 
+function plantAll() {
+	if () {}
+
+	else {
+		error.innerHTML = 'you have no seeds';
+		window.setInterval(function() {
+			error.innerHTML = '';
+		}, 3000)
+	}
+
+}
+
 function inventoryList() {
 	$('#inventoryItems').html("Health Potions: " + inventoryObject.healthPotion + "<br>"
 							+ "Mana Potions: " + inventoryObject.manaPotion + "<br>"
-							+ "Seeds: " + inventoryObject.seed);
+							+ "Seeds: " + inventoryObject.seed + "<br>"
+							+ "Weapon: " + inventoryObject.weapon.name);
 }
 
 //generates ectoplasm on click
@@ -110,7 +146,6 @@ function itemBuy() {
 		}, 3000)
 
 	}
-
 	else {
 		ectoplasm = ectoplasm - itemPrice
 		console.log(itemPrice)
@@ -127,9 +162,16 @@ function storeItems(item) {
 			this.itemPrice = 100;
 			var itemBought = itemBuy();
 			if (itemBought == true) {
-				inventoryObject.woodSword = true;
+				inventoryObject.weapon = swordObject.woodSword;
 			}
 			break;
+		case "ironSword":
+			this.itemPrice = 1000;
+			var itemBought = itemBuy();
+			if(itemBought == true) {
+				inventoryObject.weapon = swordObject.ironSword;
+			}
+
 		case "healthPotion":
 			this.itemPrice = 50;
 			var itemBought = itemBuy();
@@ -153,7 +195,7 @@ function storeItems(item) {
 				fieldButton.style.display = "inline";
 			}
 			break;
-	}
+		}
 }
 
 //loads dom elements
