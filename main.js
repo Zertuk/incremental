@@ -12,9 +12,18 @@ var inventoryObject = {
 	ironSword: false
 }
 
+function plantSeed() {
+	if (inventoryObject.seed > 0) {
+	
+	inventoryObject.seed--;
+
+	}	
+}
+
 function inventoryList() {
 	$('#inventoryItems').html("Health Potions: " + inventoryObject.healthPotion + "<br>"
-							+ "Mana Potions :" + inventoryObject.manaPotion);
+							+ "Mana Potions: " + inventoryObject.manaPotion + "<br>"
+							+ "Seeds: " + inventoryObject.seed);
 }
 
 //generates ectoplasm on click
@@ -113,6 +122,15 @@ function storeItems(item) {
 				inventoryObject.manaPotion++;
 			}
 			break;
+		case "seed":
+
+			this.itemPrice = 500;
+			var itemBought = itemBuy();
+			if (itemBought == true) {
+				inventoryObject.seed++;
+				fieldButton.style.display = "inline";
+			}
+			break;
 	}
 }
 
@@ -123,6 +141,7 @@ var store = document.getElementById('store');
 var main = document.getElementById('main');
 var error = document.getElementById('error');
 var inventory = document.getElementById('inventory');
+var fieldButton = document.getElementById('fieldButton');
 
 }
 
@@ -134,6 +153,7 @@ window.setInterval(function() {
 	if (ghostStoreVal == false){
 	ghostStore();
 	}
+
 
 }, 500);
 
