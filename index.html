@@ -11,16 +11,30 @@
 
 <body>
 	<div class = "wrapper">
-		<div id = "main">
-			<div id = "ectoplasm">You have 0 stuff</div>
+		<div id = "ectoplasm">You have 0 stuff</div>
+		<div id = "error"></div>
 
+		<div id = "main">			
 			<button onclick = "ectoplasmClick(1)">Click</button>
-			<button id = "storeButton">Store</button>
+			<button id = "storeButton" onclick = "enterStore()">Store</button>
 		</div>
 
 		<div id = "store">
-			HELLO
-			<button onclick = "leaveStore()">Leave Store</button>
+			<p>HELLO</p>
+			<p>Sword <button onclick = "storeItems('sword')">Buy</button></p>
+			<p>item <button onclick = "storeItems('potion')">Buy</button></p>
+			<p>item <button>Buy</button></p>
+			<p>item <button>Buy</button></p>
+			<p>item <button>Buy</button></p>
+			<p>item <button>Buy</button></p>
+
+			<br>
+			<button onclick = "enterStore()">Leave Store</button>
+		</div>
+
+		<div id = "inventory">
+			<p>INVENTORY</p>
+			
 		</div>
 	</div>
 

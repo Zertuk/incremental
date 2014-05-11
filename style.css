@@ -5,3 +5,11 @@
 #store {
 	display: none;
 }
+
+#storewrapper {
+	display: inline;
+}
+
+#error {
+	color: red;
+}
