@@ -6,6 +6,7 @@ var inventoryShow = false;
 var fieldShow = false;
 var mapShow = false;
 var inverse = false;
+var batteryDisplay = false;
 var seedsPlanted = 500;
 var fists, woodSword, ironSword;
 
@@ -18,7 +19,6 @@ var error = document.getElementById('error');
 var inventory = document.getElementById('inventory');
 var fieldButton = document.getElementById('fieldButton');
 var mapButton = document.getElementById('mapButton');
-var body = document.getElementsByTagName('body')[0];
 
 }
 
@@ -46,7 +46,8 @@ var inventoryObject = {
 	healthPotion: 0,
 	manaPotion: 0,
 	seed: 0,
-	map: false
+	map: false,
+	battery: 0
 	
 }
 
@@ -70,10 +71,10 @@ function plantSeed() {
 	if (inventoryObject.seed > 0) {
 		seedsPlanted++;
 		inventoryObject.seed--;
-		$('#seeds_planted').html("Seeds Planted: " + seedsPlanted);
+		$('#seeds_planted').html("Gears Placed: " + seedsPlanted);
 	}
 	else {
-		error.innerHTML = 'you have no seeds';
+		error.innerHTML = 'you have no gears';
 		window.setInterval(function() {
 			error.innerHTML = '';
 		}, 3000)
@@ -84,33 +85,41 @@ function plantAll() {
 	if (inventoryObject.seed > 0) {
 		seedsPlanted = seedsPlanted + inventoryObject.seed;
 		inventoryObject.seed = 0;
-		$('#seeds_planted').html("Seeds Planted: " + seedsPlanted);
+		$('#seeds_planted').html("Geards Placed: " + seedsPlanted);
 	}
 	else {
- 		error.innerHTML = 'you have no seeds';
+ 		error.innerHTML = 'you have no gears';
  		window.setInterval(function() {
  			error.innerHTML = '';
  		}, 3000)
  	}
 }
 
+function batteryEnable() {
+	if (seedsPlanted > 9) {
+		$('#batteryButton').css('display', 'inline');
+		batteryDisplay = true;
+	}
+}
+
 function inventoryList() {
 	$('#inventoryItems').html("Health Potions: " + inventoryObject.healthPotion + "<br>"
 							+ "Mana Potions: " + inventoryObject.manaPotion + "<br>"
 							+ "Seeds: " + inventoryObject.seed + "<br>"
-							+ "Weapon: " + inventoryObject.weapon.name);
+							+ "Weapon: " + inventoryObject.weapon.name + "<br>"
+							+ "Batteries: " + inventoryObject.battery );
 }
 
 //generates ectoplasm on click
 function ectoplasmClick(number) {
 	ectoplasm = ectoplasm + number*10;
-	document.getElementById('ectoplasm').innerHTML = "You have " + ectoplasm + " stuff";
+	document.getElementById('ectoplasm').innerHTML = "You have " + ectoplasm + " ectoplasm";
 }
 
 //generates ectoplasm overtime
 function ectoplasmGenerator(num) {
 	ectoplasm = ectoplasm + num;
-	document.getElementById('ectoplasm').innerHTML = "You have " + ectoplasm + " stuff";
+	document.getElementById('ectoplasm').innerHTML = "You have " + ectoplasm + " ectoplasm";
 }
 
 //gives option for store once you have 100+ ectoplasm
@@ -180,10 +189,13 @@ function enterMap() {
 	}
 }
 
+function storeStatus(item) {
+	$('#store_status').html('you bought a ' + item);
+}
+
 //buys item if you have enough money
 function itemBuy() {
 	var itemBought = false;
-
 	if (ectoplasm < itemPrice) {
 		error.innerHTML = 'not enough money';
 		window.setInterval(function() {
@@ -197,7 +209,6 @@ function itemBuy() {
 		itemBought = true;
 	}
 	return itemBought;
-
 }
 
 //need to figure out how to add item bought to inv
@@ -208,6 +219,9 @@ function storeItems(item) {
 			var itemBought = itemBuy();
 			if (itemBought == true) {
 				inventoryObject.weapon = swordObject.woodSword;
+				$('#wood_sword').css('display', 'none');
+				storeStatus('Wooden Sword');
+
 			}
 			break;
 		case "ironSword":
@@ -215,13 +229,16 @@ function storeItems(item) {
 			var itemBought = itemBuy();
 			if(itemBought == true) {
 				inventoryObject.weapon = swordObject.ironSword;
+				$('#iron_sword').css('display', 'none');
+				storeStatus('Iron Sword');
 			}
-
+			break;
 		case "healthPotion":
 			this.itemPrice = 50;
 			var itemBought = itemBuy();
 			if (itemBought == true) {
 				inventoryObject.healthPotion++;
+				storeStatus('Healh Potion');
 			}
 			break;
 		case "manaPotion":
@@ -229,6 +246,7 @@ function storeItems(item) {
 			var itemBought = itemBuy();
 			if (itemBought == true) {
 				inventoryObject.manaPotion++;
+				storeStatus('Mana Potion');
 			}
 			break;
 		case "seed":
@@ -237,6 +255,7 @@ function storeItems(item) {
 			if (itemBought == true) {
 				inventoryObject.seed++;
 				fieldButton.style.display = "inline";
+				storeStatus('Gear, you remember there being a factory outside town..');
 			}
 			break;
 		case "map":
@@ -245,6 +264,16 @@ function storeItems(item) {
 			if (itemBought == true) {
 				inventoryObject.map = true;
 				mapButton.style.display = "inline";
+				$('#mapListing').css('display', 'none');
+				storeStatus('Map! Use it outside the store!');
+			}
+			break;
+		case "battery":
+			this.itemPrice = 2000;
+			var itemBought = itemBuy();
+			if (itemBought == true) {
+				inventoryObject.battery++;
+				storeStatus('Battery! What could you use this for?');
 			}
 		}
 }
@@ -255,9 +284,12 @@ window.setInterval(function() {
 	ectoplasmGenerator(seedsPlanted);
 
 	if (ghostStoreVal == false){
-	ghostStore();
+		ghostStore();
 	}
 
+	if (batteryDisplay == false){
+		batteryEnable()
+	}
 
 }, 500);
 
