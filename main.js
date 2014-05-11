@@ -5,8 +5,22 @@ var storeShow = false;
 var inventoryShow = false;
 var fieldShow = false;
 var mapShow = false;
+var inverse = false;
 var seedsPlanted = 500;
 var fists, woodSword, ironSword;
+
+//loads dom elements
+window.onload = function() {
+
+var store = document.getElementById('store');
+var main = document.getElementById('main');
+var error = document.getElementById('error');
+var inventory = document.getElementById('inventory');
+var fieldButton = document.getElementById('fieldButton');
+var mapButton = document.getElementById('mapButton');
+var body = document.getElementsByTagName('body')[0];
+
+}
 
 //object containing weapon types
 var swordObject = {
@@ -36,8 +50,22 @@ var inventoryObject = {
 	
 }
 
+//default is dark, inverse colors on button click
+function inverseColors() {
+	if (inverse == false) {
+		$('body').css('color', 'black');
+		$('body').css('background-color', 'white');
+		inverse = true;
+	}
+	else {
+		$('body').css('color', 'white');
+		$('body').css('background-color', 'black');
+		inverse = false;
+	}
+}
 
 
+//functions to plant individual or all seeds
 function plantSeed() {
 	if (inventoryObject.seed > 0) {
 		seedsPlanted++;
@@ -219,18 +247,6 @@ function storeItems(item) {
 				mapButton.style.display = "inline";
 			}
 		}
-}
-
-//loads dom elements
-window.onload = function() {
-
-var store = document.getElementById('store');
-var main = document.getElementById('main');
-var error = document.getElementById('error');
-var inventory = document.getElementById('inventory');
-var fieldButton = document.getElementById('fieldButton');
-var mapButton = document.getElementById('mapButton');
-
 }
 
 //main game loop

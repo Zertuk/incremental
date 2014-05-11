@@ -64,4 +64,6 @@ button:active {
 
 body {
 	font-family: 'Open Sans Condensed', sans-serif;
+	color: white;
+	background-color: black;
 }
