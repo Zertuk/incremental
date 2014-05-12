@@ -1,18 +1,24 @@
+//i really am going to need to split this into multiple files soon
 //global variable init
-var ectoplasm = 0;
+var ectoplasm = 50000;
 var ghostStoreVal = false;
 var storeShow = false;
 var inventoryShow = false;
 var fieldShow = false;
 var mapShow = false;
+var poolShow = false;
 var inverse = false;
 var batteryDisplay = false;
-var seedsPlanted = 500;
+var batteryOn = false;
+var batteriesUsed = 0;
+var blood = 0;
+var seedsPlanted = 10;
 var fists, woodSword, ironSword;
 
 //loads dom elements
 window.onload = function() {
 
+var reflectingPool = document.getElementById('reflectingPool');
 var store = document.getElementById('store');
 var main = document.getElementById('main');
 var error = document.getElementById('error');
@@ -47,8 +53,8 @@ var inventoryObject = {
 	manaPotion: 0,
 	seed: 0,
 	map: false,
-	battery: 0
-	
+	battery: 0,
+	rune: false	
 }
 
 //default is dark, inverse colors on button click
@@ -66,7 +72,7 @@ function inverseColors() {
 }
 
 
-//functions to plant individual or all seeds
+//functions associated with the factory, placegears/usebatteries
 function plantSeed() {
 	if (inventoryObject.seed > 0) {
 		seedsPlanted++;
@@ -75,9 +81,6 @@ function plantSeed() {
 	}
 	else {
 		error.innerHTML = 'you have no gears';
-		window.setInterval(function() {
-			error.innerHTML = '';
-		}, 3000)
 	}
 }
 
@@ -89,9 +92,6 @@ function plantAll() {
 	}
 	else {
  		error.innerHTML = 'you have no gears';
- 		window.setInterval(function() {
- 			error.innerHTML = '';
- 		}, 3000)
  	}
 }
 
@@ -99,9 +99,34 @@ function batteryEnable() {
 	if (seedsPlanted > 9) {
 		$('#batteryButton').css('display', 'inline');
 		batteryDisplay = true;
+		batteryOn = true;
 	}
 }
 
+function useBattery() {
+	if (inventoryObject.battery > 0) {
+		batteriesUsed++;
+		inventoryObject.battery--;
+	}
+	else {
+ 		error.innerHTML = 'you have no batteries';
+ 	}
+}
+
+function turnOffBattery() {
+	if (batteryOn == false) {
+		batteryOn = true;
+		$('#blood_gen').html('blood/s: ' + batteriesUsed*2);
+		$('#turn_off').html('Turn Off Machine');
+	}
+	else {
+		batteryOn = false;
+		$('#blood_gen').html('The machine is off');
+		$('#turn_off').html('Turn On Machine');
+	}
+}
+
+//updated inventory list for use when navigating to inventory screen
 function inventoryList() {
 	$('#inventoryItems').html("Health Potions: " + inventoryObject.healthPotion + "<br>"
 							+ "Mana Potions: " + inventoryObject.manaPotion + "<br>"
@@ -111,15 +136,25 @@ function inventoryList() {
 }
 
 //generates ectoplasm on click
-function ectoplasmClick(number) {
-	ectoplasm = ectoplasm + number*10;
+function ectoplasmClick(num) {
+	ectoplasm = ectoplasm + num*10;
 	document.getElementById('ectoplasm').innerHTML = "You have " + ectoplasm + " ectoplasm";
 }
 
-//generates ectoplasm overtime
+//generates ectoplasm overtime, passing in gears placed
 function ectoplasmGenerator(num) {
 	ectoplasm = ectoplasm + num;
 	document.getElementById('ectoplasm').innerHTML = "You have " + ectoplasm + " ectoplasm";
+}
+
+//generatres blood overtime, passing in batteries in use
+function bloodGenerator(num) {
+	if (num * 2 <= ectoplasm) {
+	blood = blood + num*2;
+	ectoplasm = ectoplasm - num*2;
+	$('#blood').html("You have " + blood + " blood");
+	$('#blood_gen').html('blood/s: ' + num*2);
+	}
 }
 
 //gives option for store once you have 100+ ectoplasm
@@ -144,6 +179,7 @@ function enterStore(inp) {
 		main.style.display = "none";
 		storeShow = true;
 	}
+	error.innerHTML = '';
 }
 //yeah def need to make these into a single func
 function enterInventory() {
@@ -173,6 +209,7 @@ function enterField() {
 		main.style.display = "none";
 		fieldShow = true;
 	}
+	error.innerHTML = '';
 }
 
 //here we go again lol
@@ -189,19 +226,35 @@ function enterMap() {
 	}
 }
 
+//i am a monster
+function enterPool() {
+	if (poolShow == true) {
+		reflectingPool.style.display = "none";
+		map.style.display = "inline";
+		poolShow = false;
+	}
+	else {
+		reflectingPool.style.display = "inline";
+		map.style.display = "none";
+		poolShow = true;
+	}
+}
+
+function usePool() {
+	$('#poolChoice').css('display', 'none');
+	$('#poolYes').css('display', 'inline');
+
+}
+
 function storeStatus(item) {
 	$('#store_status').html('you bought a ' + item);
 }
 
-//buys item if you have enough money
+//buys item if you have enough money else error
 function itemBuy() {
 	var itemBought = false;
 	if (ectoplasm < itemPrice) {
 		error.innerHTML = 'not enough money';
-		window.setInterval(function() {
-			error.innerHTML = '';
-		}, 3000)
-
 	}
 	else {
 		ectoplasm = ectoplasm - itemPrice
@@ -211,7 +264,9 @@ function itemBuy() {
 	return itemBought;
 }
 
-//need to figure out how to add item bought to inv
+/*store functionality, takes input based on button clicked for each item
+passes into itemBuy() which checks if player has enough money, if true
+then add the item to inventory/remove money, if false, then display error*/
 function storeItems(item) {
 	switch (item) {
 		case "woodSword":
@@ -221,7 +276,6 @@ function storeItems(item) {
 				inventoryObject.weapon = swordObject.woodSword;
 				$('#wood_sword').css('display', 'none');
 				storeStatus('Wooden Sword');
-
 			}
 			break;
 		case "ironSword":
@@ -273,15 +327,17 @@ function storeItems(item) {
 			var itemBought = itemBuy();
 			if (itemBought == true) {
 				inventoryObject.battery++;
-				storeStatus('Battery! What could you use this for?');
+				storeStatus('Battery! What could you use this for?');				
 			}
+			break;
 		}
 }
 
-//main game loop
+//main game loop, updates 0.5s
 window.setInterval(function() {
 
 	ectoplasmGenerator(seedsPlanted);
+	
 
 	if (ghostStoreVal == false){
 		ghostStore();
@@ -289,6 +345,9 @@ window.setInterval(function() {
 
 	if (batteryDisplay == false){
 		batteryEnable()
+	}
+	if (batteryOn == true) {
+		bloodGenerator(batteriesUsed);
 	}
 
 }, 500);
