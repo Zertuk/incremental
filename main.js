@@ -54,7 +54,8 @@ var inventoryObject = {
 	seed: 0,
 	map: false,
 	battery: 0,
-	rune: false	
+	rune: false,
+	sin: false
 }
 
 //default is dark, inverse colors on button click
@@ -333,6 +334,37 @@ function storeItems(item) {
 		}
 }
 
+
+function chooseSin(choice) {
+	var message = "You can only pick one and thats what you are going with?";
+	if (confirm(message)) {
+		switch (choice) {
+			case "lust":
+				inventoryObject.sin = 'lust';
+				console.log(inventoryObject.sin);
+				break;
+			case "gluttony":
+				inventoryObject.sin = 'gluttony';
+				break;
+			case "greed":
+				inventoryObject.sin = 'greed';
+				break;
+			case "sloth":
+				inventoryObject.sin = 'sloth';
+				break;
+			case "wrath":
+				inventoryObject.sin = 'wrath';
+				break;
+			case "envy":
+				inventoryObject.sin = 'envy';
+				break;
+			case "pride":
+				inventoryObject.sin = 'pride';
+				break;
+		}
+	}
+
+}
 //main game loop, updates 0.5s
 window.setInterval(function() {
 
