@@ -17,15 +17,13 @@ var fists, woodSword, ironSword;
 
 //loads dom elements
 window.onload = function() {
-
-var reflectingPool = document.getElementById('reflectingPool');
-var store = document.getElementById('store');
-var main = document.getElementById('main');
-var error = document.getElementById('error');
-var inventory = document.getElementById('inventory');
-var fieldButton = document.getElementById('fieldButton');
-var mapButton = document.getElementById('mapButton');
-
+	var reflectingPool = document.getElementById('reflectingPool');
+	var store = document.getElementById('store');
+	var main = document.getElementById('main');
+	var error = document.getElementById('error');
+	var inventory = document.getElementById('inventory');
+	var fieldButton = document.getElementById('fieldButton');
+	var mapButton = document.getElementById('mapButton');
 }
 
 //object containing weapon types
@@ -58,6 +56,10 @@ var inventoryObject = {
 	sin: false
 }
 
+var player = {
+	damage: swordObject.fists.damage
+}
+
 //default is dark, inverse colors on button click
 function inverseColors() {
 	if (inverse == false) {
@@ -71,7 +73,6 @@ function inverseColors() {
 		inverse = false;
 	}
 }
-
 
 //functions associated with the factory, placegears/usebatteries
 function plantSeed() {
@@ -259,7 +260,6 @@ function itemBuy() {
 	}
 	else {
 		ectoplasm = ectoplasm - itemPrice
-		console.log(itemPrice)
 		itemBought = true;
 	}
 	return itemBought;
@@ -275,6 +275,7 @@ function storeItems(item) {
 			var itemBought = itemBuy();
 			if (itemBought == true) {
 				inventoryObject.weapon = swordObject.woodSword;
+				player.damage = swordObject.woodSword.damage;
 				$('#wood_sword').css('display', 'none');
 				storeStatus('Wooden Sword');
 			}
@@ -284,6 +285,7 @@ function storeItems(item) {
 			var itemBought = itemBuy();
 			if(itemBought == true) {
 				inventoryObject.weapon = swordObject.ironSword;
+				player.damage = swordObject.ironSword.damage;
 				$('#iron_sword').css('display', 'none');
 				storeStatus('Iron Sword');
 			}
@@ -331,7 +333,15 @@ function storeItems(item) {
 				storeStatus('Battery! What could you use this for?');				
 			}
 			break;
-		}
+		case "rune":
+			this.itemPrice = 1;
+			var itemBought = itemBuy();
+			if (itemBought == true) {
+				inventoryObject.rune = true;
+				storeStatus('Magic Rune! It is glowing strangely.')
+				$(this).remove();
+			}
+	}
 }
 
 
@@ -341,7 +351,6 @@ function chooseSin(choice) {
 		switch (choice) {
 			case "lust":
 				inventoryObject.sin = 'lust';
-				console.log(inventoryObject.sin);
 				break;
 			case "gluttony":
 				inventoryObject.sin = 'gluttony';
@@ -363,8 +372,8 @@ function chooseSin(choice) {
 				break;
 		}
 	}
-
 }
+
 //main game loop, updates 0.5s
 window.setInterval(function() {
 
@@ -381,6 +390,7 @@ window.setInterval(function() {
 	if (batteryOn == true) {
 		bloodGenerator(batteriesUsed);
 	}
+	console.log(player.damage);
 
 }, 500);
 
