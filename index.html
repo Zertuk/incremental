@@ -18,6 +18,7 @@
 	<div class = "wrapper">
 		<div id = "ectoplasmDiv">
 			<p id = "ectoplasm">You have 0 ectoplasm</p>
+			<p id = "blood"></p>
 		</div>
 		<div id = "error"></div>
 
@@ -28,8 +29,7 @@
 			<button id = "mapButton" onclick = "enterMap()">Map</button>
 			<button id = "fieldButton" onclick = "enterField()">Factory</button>
 			<button onclick = "inverseColors()">Inverse</button>
-
-		</div>
+		</div><!--main-->
 
 		<div id = "store">
 			<p>GREETINGS</p>
@@ -40,21 +40,21 @@
 			<p>Gear: <button onclick = "storeItems('seed')">500</button></p>
 			<p id = "mapListing">Map: <button onclick = "storeItems('map')">50</button></p>
 			<p>Battery: <button onclick = "storeItems('battery')">2000</button></p>
+			<p>Magic Rune: <button onclick = "storeItems('rune')">1</button></p>
 			<br>
-			<div>
+			<div id = "statusWrapper">
 				<p id = "store_status"></p>
-			</div>
+			</div><!--statusWrapper-->
 			<button onclick = "enterStore()">Leave Store</button>
-		</div>
+		</div><!--store-->
 
 		<div id = "inventory">
 			<p>INVENTORY PLACEHOLDER</p>
 			<br>
 			<p id = "inventoryItems"></p>
 
-
 			<button onclick = "enterInventory()">Leave Inventory</button>
-		</div>
+		</div><!--inventory-->
 
 		<div id = "field">
 			<p>THE FACTORY</p>
@@ -62,9 +62,10 @@
 			<button onclick = "plantAll()">Place All</button>
 			<button id = "batterButton" onclick = "useBattery()">Use Battery</button>
 			<p id = "seeds_planted">Seeds Planted: 0</p>
-
+			<p id = "blood_gen"></p>
+			<button id = "turn_off" onclick = "turnOffBattery()">Shut Off Machine</button>
 			<button onclick = "enterField()">Leave Factory</button>
-		</div>
+		</div><!--field-->
 
 		<div id = "map">
 			<p>THIS IS A MAP</p>
@@ -72,15 +73,26 @@
 
 			<br>
 			<button onclick = "enterMap()">Leave Map</button>
-		</div>
+		</div><!--map-->
 
-		<div id = "reflecting_pool">
-			<p>There is a pool of water which reflects everything.  Do you look into it?</p>
-			<br>
-			<button onclick = "usePool()">Yes</button>
-			<button onclick = "enterPool()">No</button>
-		</div>
-	</div>
+		<div id = "reflectingPool">
+			<div id = "poolChoice">
+				<p>There is a pool of water which reflects everything.  Do you look into it?</p>
+				<br>
+
+				<button onclick = "usePool()">Yes</button>
+				<button onclick = "enterPool()">No</button>
+			</div><!--poolChoice-->
+			<div id = "poolYes">
+				<P>You look into the pool, it offers you one reflection on yourself</p>
+
+				<br>
+				<button>choice1</button>
+				<button>choice2</button>
+				<button>choice3</button>
+			</div><!--poolYes-->
+		</div><!--reflectingPool-->
+	</div><!--wrapper-->
 
 
 </body>
