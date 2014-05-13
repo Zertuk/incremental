@@ -1,14 +1,41 @@
-#storeButton, #tower, #rune_true, #demon, #poolYes, #fieldButton, #mapButton, #batteryButton, #inventory, #reflectingPool, #field, #store, #map {
+#storeButton, #mountain, #rune_true, #tower, #demon, #poolYes, #fieldButton, #mapButton, #batteryButton, #inventory, #reflectingPool, #field, #store, #map {
 	display: none;
 }
+
+#shop_keeper {
+	float: right;
+	max-width: 500px;
+	margin-right: 10%;	
+}
+
+#hp {
+	background-color: green;
+	text-align: center;
+	border: 1px solid darkgreen;
+}
+#test {
+	float: right;
+	display: inline;
+	margin-top: 5%;
+}
+#test2 {
+	margin-top: 10%;
+	float: left;
+	}
 
 .wrapper {
 	max-width: 90%;
 	margin: 0 auto;
 }
 
-#storewrapper {
-	display: inline;
+ #store_status{
+ 	font-size: 16px;
+ 	height: 30px;
+ }
+
+#storeWrapper {
+	max-width: 200px;
+	float: left;
 }
 
 #error {

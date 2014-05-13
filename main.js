@@ -248,15 +248,15 @@ function usePool() {
 
 }
 
-function storeStatus(item) {
-	$('#store_status').html('you bought a ' + item);
+function storeStatus(text) {
+	$('#store_status').html(text);
 }
 
 //buys item if you have enough money else error
 function itemBuy() {
 	var itemBought = false;
 	if (ectoplasm < itemPrice) {
-		error.innerHTML = 'not enough money';
+		storeStatus('Hey! you need more money than that punk');
 	}
 	else {
 		ectoplasm = ectoplasm - itemPrice;
@@ -277,7 +277,7 @@ function storeItems(item) {
 				inventoryObject.weapon = swordObject.woodSword;
 				player.damage = swordObject.woodSword.damage;
 				$('#wood_sword').css('display', 'none');
-				storeStatus('Wooden Sword');
+				storeStatus('This thing wont do much but its better than fists');
 			}
 			break;
 		case "ironSword":
@@ -287,7 +287,7 @@ function storeItems(item) {
 				inventoryObject.weapon = swordObject.ironSword;
 				player.damage = swordObject.ironSword.damage;
 				$('#iron_sword').css('display', 'none');
-				storeStatus('Iron Sword');
+				storeStatus('Now this will show them');
 			}
 			break;
 		case "healthPotion":
@@ -295,7 +295,7 @@ function storeItems(item) {
 			var itemBought = itemBuy();
 			if (itemBought == true) {
 				inventoryObject.healthPotion++;
-				storeStatus('Healh Potion');
+				storeStatus('Heres a Healh Potion, hope you wont need it..');
 			}
 			break;
 		case "manaPotion":
@@ -303,7 +303,7 @@ function storeItems(item) {
 			var itemBought = itemBuy();
 			if (itemBought == true) {
 				inventoryObject.manaPotion++;
-				storeStatus('Mana Potion');
+				storeStatus('Heres your Mana Potion');
 			}
 			break;
 		case "seed":
@@ -312,7 +312,7 @@ function storeItems(item) {
 			if (itemBought == true) {
 				inventoryObject.seed++;
 				fieldButton.style.display = "inline";
-				storeStatus('Gear, you remember there being a factory outside town..');
+				storeStatus('Gear huh? Might want to checkout the factory.');
 			}
 			break;
 		case "map":
@@ -322,7 +322,7 @@ function storeItems(item) {
 				inventoryObject.map = true;
 				mapButton.style.display = "inline";
 				$('#mapListing').css('display', 'none');
-				storeStatus('Map! Use it outside the store!');
+				storeStatus('Hey! Dont open that map in my store!');
 			}
 			break;
 		case "battery":
@@ -354,13 +354,23 @@ function magicDoor() {
 		$('#rune_true').css('display', 'none');
 	}
 }
-
+var mountainShow = false;
 function gotoMountain() {
-
+	if (mountainShow == true) {
+		$('#mountain').hide();
+		$('#map').show();
+		mountainShow = false;
+	}
+	else {
+		$('#mountain').show();
+		$('#map').hide();
+		mountainShow = true;
+		magicDoor();
+	}
 }
 
 function enterMountain() {
-	
+
 }
 
 function chooseSin(choice) {
@@ -396,8 +406,6 @@ function chooseSin(choice) {
 window.setInterval(function() {
 
 	ectoplasmGenerator(seedsPlanted);
-	magicDoor();
-	
 
 	if (ghostStoreVal == false){
 		ghostStore();

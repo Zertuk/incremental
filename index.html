@@ -19,6 +19,7 @@
 		<div id = "ectoplasmDiv">
 			<p id = "ectoplasm">You have 0 ectoplasm</p>
 			<p id = "blood"></p>
+			<p id = "hp">100 Health</div>
 		</div>
 		<div id = "error"></div>
 
@@ -29,23 +30,94 @@
 			<button id = "mapButton" onclick = "enterMap()">Map</button>
 			<button id = "fieldButton" onclick = "enterField()">Factory</button>
 			<button onclick = "inverseColors()">Inverse</button>
+
+			<span id = "test2" onclick = 'enterStore()'><pre>
+          (
+  
+            )
+          ( _   _._
+           |_|-'_~_`-._
+        _.-'-_~_-~_-~-_`-._
+    _.-'_~-_~-_-~-_~_~-_~-_`-._
+   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     |  []  []   []   []  [] |____________________________________________
+     |           __    ___   |   
+   ._|  []  []  | .|  [___]  |_._._._._._._._. 
+   |=|________()|__|()_______|=|=|=|=|=|=|=|=|
+ ^^^^^^^^^^^^^^^ === ^^^^^^^^^^^^^^^^^^^^^^^^^^ 
+     _______      ===   
+    <_Store_>       === 
+       ^|^             ===
+        |                 ===
+
+
+
+</pre></span>
+<span onclick = "enterField()"><pre id = "test">
+	                          __  . .* ,
+                        ~#@#%(" .,$ @
+                        ."^ ';"
+                       ..
+                      ;. :                                   . .
+                      ;==:                     ,,   ,.@#(&*.;'
+                      ;. :                   .;#$% & ^^&
+                      ;==:                   &  ......
+                      ;. :                   ,,;      :
+                      ;==:  ._______.       ;  ;      :
+                      ;. :  ;    ###:__.    ;  ;      :
+_____________________.'  `._;       :  :__.' .'        `.__________________</pre></span>
 		</div><!--main-->
 
 		<div id = "store">
-			<p>GREETINGS</p>
-			<p id = "iron_sword">Iron Sword: <button onclick = "storeItems('ironSword')">1000</button></p>
-			<p id = "wood_sword">Wood Sword: <button onclick = "storeItems('woodSword')">100</button></p>
-			<p>Health Potion: <button onclick = "storeItems('healthPotion')">50</button></p>
-			<p>Mana Potion: <button onclick = "storeItems('manaPotion')">50</button></p>
-			<p>Gear: <button onclick = "storeItems('seed')">500</button></p>
-			<p id = "mapListing">Map: <button onclick = "storeItems('map')">50</button></p>
-			<p>Battery: <button onclick = "storeItems('battery')">2000</button></p>
-			<p>Magic Rune: <button onclick = "storeItems('rune')">1</button></p>
+			<div id = "storeWrapper">
+				<p>GREETINGS</p>
+				<p id = "iron_sword">Iron Sword: <button onclick = "storeItems('ironSword')">1000</button></p>
+				<p id = "wood_sword">Wood Sword: <button onclick = "storeItems('woodSword')">100</button></p>
+				<p>Health Potion: <button onclick = "storeItems('healthPotion')">50</button></p>
+				<p>Mana Potion: <button onclick = "storeItems('manaPotion')">50</button></p>
+				<p>Gear: <button onclick = "storeItems('seed')">500</button></p>
+				<p id = "mapListing">Map: <button onclick = "storeItems('map')">50</button></p>
+				<p>Battery: <button onclick = "storeItems('battery')">2000</button></p>
+				<p>Magic Rune: <button onclick = "storeItems('rune')">1</button></p>
+				<br>
+				<button onclick = "enterStore()">Leave Store</button>
+			</div><!--storeWrapper-->
+			
+			<pre id = "shop_keeper">
+      ////^\\\\
+      | ^   ^ |
+     @ (o) (o) @
+      |   v   |
+      |  ___  |
+       \_____/
+     ____|  |____
+    /    \__/    \
+   /              \
+  /\_/|        |\_/\
+ / /  |        |  \ \
+(  |  |        |   > )
+ \ \  |        |  / /
+  \ \ |________| / /
+   \ \|_I_D_I__|/ /
+    \ \ / I  \ / /
+     \ /  I   \ /
+     |         |
+     |    |    |
+     |    |    |
+     |    |    |
+     |    |    |
+     | ## | ## |
+     |    |    |
+     |    |    |
+     |____|____|
+     (____(____)
+      _| | _| |
+  cccC__Cccc___)
+
+			</pre>
 			<br>
-			<div id = "statusWrapper">
-				<p id = "store_status"></p>
-			</div><!--statusWrapper-->
-			<button onclick = "enterStore()">Leave Store</button>
+			<p id = "store_status">You looking to buy?</p>
+			
 		</div><!--store-->
 
 		<div id = "inventory">
@@ -70,7 +142,9 @@
 		<div id = "map">
 			<p>THIS IS A MAP</p>
 			<button onclick = "enterPool()">Reflecting Pool</button>
-
+			<br>
+			<button onclick = "gotoMountain()" id = "enterCave">The Mountain</button>	
+			<br>
 			<br>
 			<button onclick = "enterMap()">Leave Map</button>
 		</div><!--map-->
@@ -80,11 +154,65 @@
 				<p>There is a pool of water which reflects everything.  Do you look into it?</p>
 				<br>
 
+				<pre>             
+                %%%;       *                      *
+   |  %%%;     %%%~%%%;               .                     .     *
+ # |__/__%%%____/_/~%;%                           .
+     ___%%;______%%;%          .            *            *
+" " /~ %-//  \ \__%#%%_-%%;`
+   |  ~%-/_%` \ \_/%%#%%`                                            .
+#  | %%%#%     \__/%%#%%;%`,
+  "| ;%%%;`                              *                  .
+   |                            *                  (
+| #|            *        .                                          .
+  ||         .                        . .        .
+   |                .                ` ' `               *
+#  |                             .'''. ' .'''.                   *
+  "|  *           .                .. ' ' ..      .
+'  |                         *    '  '.'.'  '              .
+   |                              .'''.'.'''.
+ " |       .----------.          ' .''.'.''. '
+   |       |__________|            . . : . .
+   |_{}_{}/|__________|\{}_{}_{} _'___':'___'_ {}_{}_{}_{}_{}_{}_{}_{}
+' #| || ||/____________\|| || ||(_____________)|| || || || || || || ||
+lc'\""""""||          ||""""""""""""(     )"""""""""""""""""""""""""""
+"""""     |            |            _)   (_             .^-^.  ~""~
+                         ~""~      (_______)~~"""~~     '._.'
+    ~~""~~                     ~""~                     .' '.
+                                                        '.,.'
+                                                           `'`'</pre>
+
 				<button onclick = "usePool()">Yes</button>
 				<button onclick = "enterPool()">No</button>
 			</div><!--poolChoice-->
 			<div id = "poolYes">
 				<P>You look into the pool, it offers you one reflection on yourself</p>
+				<br><pre>
+
+
+
+                      .      .       .       .
+  .   .       .          .      . .      .         .          .    .
+         .       .         .    .   .         .         .            .
+    .   .    .       .         . . .        .        .     .    .
+ .          .   .       .       . .      .        .  .              .
+      .  .    .  .       .     . .    .       . .      .   .        .
+ .   .       .    . .      .    . .   .      .     .          .     .
+    .            .    .     .   . .  .     .   .               .
+     .               .  .    .  . . .    .  .                 .
+                        . .  .  . . .  . .
+                            . . . . . .
+                              . . . .
+                               I . I
+                 _______________III_______________
+                /    .       .       .       .    \
+               ( ~~~ .  ~~~  .  ~~~  .  ~~~  . ~~~ )
+                 \SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS/
+                    \ ======================= /
+                        \SSSSSSSSSSSSSSSSS/
+                     ________\       /________
+                    (=+=+=+=+=+=+=+=+=+=+=+=+=)
+                     ~~~~~~~~~~~~~~~~~~~~~~~~~</pre>
 
 				<br>
 				<button>choice1</button>
@@ -111,11 +239,10 @@
 			<button >Leave</button>
 		</div><!--demon-->
 
-		<div id == "mountain">
+		<div id = "mountain">
 			<div id = "rune_false">
 				<p>There is a strange pattern on etched into the mountain, it seems to do nothing.</p>
 				<button onclick = "gotoMountain()" id = "leaveMountain">Leave</button>
-
 			</div><!--rune_false-->
 			<div id = "rune_true">
 				<p>The Magic Rune glows as you approach and the pattern on the mountain wall also lights up. A passage opens into the mountain.  Do you enter?</p>
