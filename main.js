@@ -58,13 +58,13 @@ var inventoryObject = {
 
 var player = {
 	damage: swordObject.fists.damage,
-	health: 50,
+	health: 50.00,
 	maxHealth: 100
 }
 
 
 function updateHealthBar() {
-	$('#hp').html(player.health + '/' + player.maxHealth + ' Health');
+	$('#hp').html(player.health.toFixed(2) + '/' + player.maxHealth + ' Health');
 }
 //default is dark, inverse colors on button click
 function inverseColors() {
@@ -109,6 +109,10 @@ function batteryEnable() {
 		batteryDisplay = true;
 		batteryOn = true;
 	}
+}
+
+function healthRegen() {
+	player.health = player.health + 0.25;
 }
 
 function useBattery() {
@@ -385,16 +389,16 @@ function smokeAnimate() {
 	if (smoke == true) {
 		$('#house1').show();
 		$('#house2').hide();
-		$('#test').show();
-		$('#test2').hide();
+		$('#factory').show();
+		$('#factory2').hide();
 
 		smoke = false;
 	}
 	else {
 		$('#house2').show();
 		$('#house1').hide();
-		$('#test').hide();
-		$('#test2').show();
+		$('#factory').hide();
+		$('#factory2').show();
 
 		smoke = true;
 	}
@@ -430,8 +434,7 @@ function chooseSin(choice) {
 }
 var count = 0;
 var blink = false;
-function blinkAnimate() {
-	
+function blinkAnimate() {	
 	if (blink == false) {
 		$('#shop_keeper_blink').show();
 		$('#shop_keeper').hide();
@@ -449,9 +452,14 @@ function blinkAnimate() {
 window.setInterval(function() {
 
 	ectoplasmGenerator(seedsPlanted);
-	updateHealthBar();
+	if (player.health < player.maxHealth) {
+		healthRegen();
+		updateHealthBar();
+	}
+	
 	smokeAnimate();
-	if (count > 20) {
+
+	if (count > 14) {
 		blinkAnimate();
 	}
 	

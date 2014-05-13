@@ -1,4 +1,4 @@
-#storeButton, #shop_keeper_blink, #house2, #demon, #mountain,  #rune_true, #tower, #poolYes, #fieldButton, #mapButton, #batteryButton, #inventory, #reflectingPool, #field, #store, #map {
+#storeButton, #shop_keeper_blink, #factory2, #house2, #demon, #mountain,  #rune_true, #tower, #poolYes, #fieldButton, #mapButton, #batteryButton, #inventory, #reflectingPool, #field, #store, #map {
 	display: none;
 }
 
@@ -25,9 +25,8 @@
 #ectoplasmDiv {
 	height: 100px;
 }
-#test, #test2 {
+#factory, #factory2 {
 	float: right;
-	display: inline;
 	margin-top: 5%;
 	margin-right: 15%;
 }
