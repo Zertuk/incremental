@@ -22,7 +22,7 @@
 			<p id = "ectoplasm">You have 0 ectoplasm</p>
 			<p id = "blood">?</p>
 
-			<p id = "hp">100 Health</div>
+			<p id = "hp">50/100 Health</div>
 
 		</div>
 		<div id = "error"></div>
@@ -36,11 +36,33 @@
 			<button id = "mapButton" onclick = "enterMap()">Map</button>
 			<button onclick = "inverseColors()">Inverse</button>
 
-			<span id = "test2" onclick = 'enterStore()'><pre>
+			<span id = "house1" onclick = 'enterStore()'><pre>
           (
   
             )
           ( _   _._
+           |_|-'_~_`-._
+        _.-'-_~_-~_-~-_`-._
+    _.-'_~-_~-_-~-_~_~-_~-_`-._
+   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     |  []  []   []   []  [] |
+     |           __    ___   |   
+   ._|  []  []  | .|  [___]  |_._._._._._._._. 
+   |=|________()|__|()_______|=|=|=|=|=|=|=|=|
+ ^^^^^^^^^^^^^^^ === ^^^^^^^^^^^^^^^^^^^^^^^^^^ 
+     _______      ===   
+    <_Store_>       === 
+       ^|^             ===
+        |                 ===
+
+
+
+</pre></span>
+			<span id = "house2" onclick = 'enterStore()'><pre>
+            )
+  
+          (
+           _)   _._
            |_|-'_~_`-._
         _.-'-_~_-~_-~-_`-._
     _.-'_~-_~-_-~-_~_~-_~-_`-._
@@ -275,7 +297,11 @@ lc'\""""""||          ||""""""""""""(     )"""""""""""""""""""""""""""
 			</div><!--rune_false-->
 			<div id = "rune_true">
 				<p>The Magic Rune glows as you approach and the pattern on the mountain wall also lights up. A passage opens into the mountain.  Do you enter?</p>
-				<pre id = "magic_door">
+
+				<button onclick = "enterMountain()" id = "enterCave">Enter</button>			
+				<button onclick = "gotoMountain()" id = "leaveMountain">Leave</button>
+			</div><!--rune_true-->
+							<pre id = "magic_door">
 
                       (_,.-      _,-'_,-----------._`-._    _)_)
                          |     ,'_,-'  ___________  `-._`.
@@ -311,9 +337,6 @@ lc'\""""""||          ||""""""""""""(     )"""""""""""""""""""""""""""
                       ;____:   `._        `'           _,'   ;____:
                      {______}     \___________________/     {______}
                  SSt |______|_______________________________|______|</pre>
-				<button onclick = "gotoMountain()" id = "enterCave">Enter</button>			
-				<button onclick = "enterMountain()" id = "leaveMountain">Leave</button>
-			</div><!--rune_true-->
 		</div>
 	</div><!--wrapper-->
 

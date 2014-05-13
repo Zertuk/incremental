@@ -58,12 +58,13 @@ var inventoryObject = {
 
 var player = {
 	damage: swordObject.fists.damage,
-	health: 100
+	health: 50,
+	maxHealth: 100
 }
 
 
 function updateHealthBar() {
-	$('#hp').html(player.health + ' Health');
+	$('#hp').html(player.health + '/' + player.maxHealth + ' Health');
 }
 //default is dark, inverse colors on button click
 function inverseColors() {
@@ -349,11 +350,11 @@ function storeItems(item) {
 	}
 }
 
-
 function magicDoor() {
 	if (inventoryObject.rune == true) {
 		$('#rune_true').css('display', 'inline');
 		$('#rune_false').css('display', 'none');
+		$('#magic_door').css('color', '#4FE8D6');
 	}
 	else {
 		$('#rune_false').css('display', 'inline-block');
@@ -377,6 +378,20 @@ function gotoMountain() {
 
 function enterMountain() {
 
+}
+
+var house = true;
+function houseAnimate() {
+	if (house == true) {
+		$('#house1').show();
+		$('#house2').hide();
+		house = false;
+	}
+	else {
+		$('#house2').show();
+		$('#house1').hide();
+		house = true;
+	}
 }
 
 function chooseSin(choice) {
@@ -413,7 +428,8 @@ window.setInterval(function() {
 
 	ectoplasmGenerator(seedsPlanted);
 	updateHealthBar();
-
+	houseAnimate();
+	
 	if (ghostStoreVal == false){
 		ghostStore();
 	}
@@ -424,7 +440,5 @@ window.setInterval(function() {
 	if (batteryOn == true) {
 		bloodGenerator(batteriesUsed);
 	}
-	console.log(player.damage);
-
 }, 500);
 

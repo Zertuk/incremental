@@ -1,4 +1,4 @@
-#storeButton, #demon, #mountain,  #rune_true, #tower, #poolYes, #fieldButton, #mapButton, #batteryButton, #inventory, #reflectingPool, #field, #store, #map {
+#storeButton, #house2, #demon, #mountain,  #rune_true, #tower, #poolYes, #fieldButton, #mapButton, #batteryButton, #inventory, #reflectingPool, #field, #store, #map {
 	display: none;
 }
 
@@ -17,9 +17,7 @@
 #demon1 {
 	margin-left: 100px;
 }
-#magic_door {
-	color: teal;
-}
+
 #inventoryButton {
 	float: right;
 }
@@ -31,8 +29,9 @@
 	float: right;
 	display: inline;
 	margin-top: 5%;
+	margin-right: 15%;
 }
-#test2 {
+#house2, #house1 {
 	margin-top: 10%;
 	float: left;
 	}
@@ -85,8 +84,5 @@ body {
 	font-family: 'Open Sans Condensed', sans-serif;
 	color: white;
 	background-color: black;
-}
-#magic_door {
-	color: #4FE8D6;
 }
 
