@@ -380,17 +380,23 @@ function enterMountain() {
 
 }
 
-var house = true;
-function houseAnimate() {
-	if (house == true) {
+var smoke = true;
+function smokeAnimate() {
+	if (smoke == true) {
 		$('#house1').show();
 		$('#house2').hide();
-		house = false;
+		$('#test').show();
+		$('#test2').hide();
+
+		smoke = false;
 	}
 	else {
 		$('#house2').show();
 		$('#house1').hide();
-		house = true;
+		$('#test').hide();
+		$('#test2').show();
+
+		smoke = true;
 	}
 }
 
@@ -422,13 +428,32 @@ function chooseSin(choice) {
 		}
 	}
 }
+var count = 0;
+var blink = false;
+function blinkAnimate() {
+	
+	if (blink == false) {
+		$('#shop_keeper_blink').show();
+		$('#shop_keeper').hide();
+		blink = true;
+	}
+	else {
+		$('#shop_keeper_blink').hide();
+		$('#shop_keeper').show();
+		count = 0;
+		blink = false;
+	}
 
+}
 //main game loop, updates 0.5s
 window.setInterval(function() {
 
 	ectoplasmGenerator(seedsPlanted);
 	updateHealthBar();
-	houseAnimate();
+	smokeAnimate();
+	if (count > 20) {
+		blinkAnimate();
+	}
 	
 	if (ghostStoreVal == false){
 		ghostStore();
@@ -440,5 +465,7 @@ window.setInterval(function() {
 	if (batteryOn == true) {
 		bloodGenerator(batteriesUsed);
 	}
+	count++;
+	console.log(count);
 }, 500);
 
