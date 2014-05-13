@@ -112,10 +112,16 @@
 		</div><!--demon-->
 
 		<div id == "mountain">
-			<p id = "rune_false">There is a strange pattern on etched into the mountain, it seems to do nothing.</p>
-			<p id = "rune_true">The Magic Rune glows as you approach and the pattern on the mountain wall also lights up. A passage opens into the mountain.  Do you enter?</p>
-			<button>Enter</button>
-			<button>Leave</button>
+			<div id = "rune_false">
+				<p>There is a strange pattern on etched into the mountain, it seems to do nothing.</p>
+				<button onclick = "gotoMountain()" id = "leaveMountain">Leave</button>
+
+			</div><!--rune_false-->
+			<div id = "rune_true">
+				<p>The Magic Rune glows as you approach and the pattern on the mountain wall also lights up. A passage opens into the mountain.  Do you enter?</p>
+				<button onclick = "gotoMountain()" id = "enterCave">Enter</button>			
+				<button onclick = "enterMountain()" id = "leaveMountain">Leave</button>
+			</div><!--rune_true-->
 		</div>
 	</div><!--wrapper-->
 

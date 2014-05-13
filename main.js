@@ -259,7 +259,7 @@ function itemBuy() {
 		error.innerHTML = 'not enough money';
 	}
 	else {
-		ectoplasm = ectoplasm - itemPrice
+		ectoplasm = ectoplasm - itemPrice;
 		itemBought = true;
 	}
 	return itemBought;
@@ -338,12 +338,30 @@ function storeItems(item) {
 			var itemBought = itemBuy();
 			if (itemBought == true) {
 				inventoryObject.rune = true;
-				storeStatus('Magic Rune! It is glowing strangely.')
-				$(this).remove();
+				storeStatus('Magic Rune! It is glowing strangely.');				
 			}
 	}
 }
 
+
+function magicDoor() {
+	if (inventoryObject.rune == true) {
+		$('#rune_true').css('display', 'inline');
+		$('#rune_false').css('display', 'none');
+	}
+	else {
+		$('#rune_false').css('display', 'inline-block');
+		$('#rune_true').css('display', 'none');
+	}
+}
+
+function gotoMountain() {
+
+}
+
+function enterMountain() {
+	
+}
 
 function chooseSin(choice) {
 	var message = "You can only pick one and thats what you are going with?";
@@ -378,6 +396,7 @@ function chooseSin(choice) {
 window.setInterval(function() {
 
 	ectoplasmGenerator(seedsPlanted);
+	magicDoor();
 	
 
 	if (ghostStoreVal == false){
