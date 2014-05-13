@@ -57,9 +57,14 @@ var inventoryObject = {
 }
 
 var player = {
-	damage: swordObject.fists.damage
+	damage: swordObject.fists.damage,
+	health: 100
 }
 
+
+function updateHealthBar() {
+	$('#hp').html(player.health + ' Health');
+}
 //default is dark, inverse colors on button click
 function inverseColors() {
 	if (inverse == false) {
@@ -406,6 +411,7 @@ function chooseSin(choice) {
 window.setInterval(function() {
 
 	ectoplasmGenerator(seedsPlanted);
+	updateHealthBar();
 
 	if (ghostStoreVal == false){
 		ghostStore();

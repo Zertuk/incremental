@@ -11,7 +11,18 @@
 #hp {
 	background-color: green;
 	text-align: center;
-	border: 1px solid darkgreen;
+	border: 1px solid #21A652;
+}
+
+#magic_door {
+	color: teal;
+}
+#inventoryButton {
+	float: right;
+}
+
+#ectoplasmDiv {
+	height: 100px;
 }
 #test {
 	float: right;
@@ -72,3 +83,7 @@ body {
 	color: white;
 	background-color: black;
 }
+#magic_door {
+	color: #4FE8D6;
+}
+

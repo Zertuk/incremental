@@ -17,18 +17,23 @@
 <body>
 	<div class = "wrapper">
 		<div id = "ectoplasmDiv">
+			<button id = "inventoryButton" onclick = "enterInventory()">Inventory</button>
+			
 			<p id = "ectoplasm">You have 0 ectoplasm</p>
-			<p id = "blood"></p>
+			<p id = "blood">?</p>
+
 			<p id = "hp">100 Health</div>
+
 		</div>
 		<div id = "error"></div>
 
 		<div id = "main">			
 			<button onclick = "ectoplasmClick(1)">Click</button>
-			<button onclick = "enterInventory()">Inventory</button>
+			
 			<button id = "storeButton" onclick = "enterStore()">Store</button>
-			<button id = "mapButton" onclick = "enterMap()">Map</button>
+			
 			<button id = "fieldButton" onclick = "enterField()">Factory</button>
+			<button id = "mapButton" onclick = "enterMap()">Map</button>
 			<button onclick = "inverseColors()">Inverse</button>
 
 			<span id = "test2" onclick = 'enterStore()'><pre>
@@ -246,6 +251,42 @@ lc'\""""""||          ||""""""""""""(     )"""""""""""""""""""""""""""
 			</div><!--rune_false-->
 			<div id = "rune_true">
 				<p>The Magic Rune glows as you approach and the pattern on the mountain wall also lights up. A passage opens into the mountain.  Do you enter?</p>
+				<pre id = "magic_door">
+
+                      (_,.-      _,-'_,-----------._`-._    _)_)
+                         |     ,'_,-'  ___________  `-._`.
+                        `'   ,','  _,-'___________`-._  `.`.
+                           ,','  ,'_,-'     .     `-._`.  `.`.
+                          /,'  ,','        >|<        `.`.  `.\
+                         //  ,','      ><  ,^.  ><      `.`.  \\
+                        //  /,'      ><   / | \   ><      `.\  \\
+                       //  //      ><    \/\^/\/    ><      \\  \\
+                      ;;  ;;              `---'              ::  ::
+                      ||  ||              (____              ||  ||
+                     _||__||_            ,'----.            _||__||_
+                    (o.____.o)____        `---'        ____(o.____.o)
+                      |    | /,--.)                   (,--.\ |    |
+                      |    |((  -`___               ___`   ))|    |
+                      |    | \\,'',  `.           .'  .``.// |    |
+                      |    |  // (___,'.         .'.___) \\  |    |
+                     /|    | ;;))  ____) .     . (____  ((\\ |    |\
+                     \|.__ | ||/ .'.--.\/       `/,--.`. \;: | __,|;
+                      |`-,`;.| :/ /,'  `)-'   `-('  `.\ \: |.;',-'|
+                      |   `..  ' / \__.'         `.__/ \ `  ,.'   |
+                      |    |,\  /,                     ,\  /,|    |
+                      |    ||: : )          .          ( : :||    |
+                     /|    |:; |/  .      ./|\,      ,  \| :;|    |\
+                     \|.__ |/  :  ,/-    <--:-->    ,\.  ;  \| __,|;
+                      |`-.``:   `'/-.     '\|/`     ,-\`;   ;'',-'|
+                      |   `..   ,' `'       '       `  `.   ,.'   |
+                      |    ||  :                         :  ||    |
+                      |    ||  |                         |  ||    |
+                      |    ||  |                         |  ||    |
+                      |    |'  |            _            |  `|    |
+                      |    |   |          '|))           |   |    |
+                      ;____:   `._        `'           _,'   ;____:
+                     {______}     \___________________/     {______}
+                 SSt |______|_______________________________|______|</pre>
 				<button onclick = "gotoMountain()" id = "enterCave">Enter</button>			
 				<button onclick = "enterMountain()" id = "leaveMountain">Leave</button>
 			</div><!--rune_true-->
