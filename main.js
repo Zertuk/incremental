@@ -152,6 +152,7 @@ function ectoplasmClick(num) {
 function ectoplasmGenerator(num) {
 	ectoplasm = ectoplasm + num;
 	document.getElementById('ectoplasm').innerHTML = "You have " + ectoplasm + " ectoplasm";
+	$('#ecto_gen').html('ectoplasm/s: ' + num);
 }
 
 //generatres blood overtime, passing in batteries in use

@@ -1,4 +1,4 @@
-#storeButton, #mountain, #rune_true, #tower, #demon, #poolYes, #fieldButton, #mapButton, #batteryButton, #inventory, #reflectingPool, #field, #store, #map {
+#storeButton, #demon, #mountain,  #rune_true, #tower, #poolYes, #fieldButton, #mapButton, #batteryButton, #inventory, #reflectingPool, #field, #store, #map {
 	display: none;
 }
 
@@ -14,6 +14,9 @@
 	border: 1px solid #21A652;
 }
 
+#demon1 {
+	margin-left: 100px;
+}
 #magic_door {
 	color: teal;
 }

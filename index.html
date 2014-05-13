@@ -45,7 +45,7 @@
         _.-'-_~_-~_-~-_`-._
     _.-'_~-_~-_-~-_~_~-_~-_`-._
    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-     |  []  []   []   []  [] |____________________________________________
+     |  []  []   []   []  [] |
      |           __    ___   |   
    ._|  []  []  | .|  [___]  |_._._._._._._._. 
    |=|________()|__|()_______|=|=|=|=|=|=|=|=|
@@ -59,18 +59,18 @@
 
 </pre></span>
 <span onclick = "enterField()"><pre id = "test">
-	                          __  . .* ,
-                        ~#@#%(" .,$ @
-                        ."^ ';"
-                       ..
-                      ;. :                                   . .
-                      ;==:                     ,,   ,.@#(&*.;'
-                      ;. :                   .;#$% & ^^&
-                      ;==:                   &  ......
-                      ;. :                   ,,;      :
-                      ;==:  ._______.       ;  ;      :
-                      ;. :  ;    ###:__.    ;  ;      :
-_____________________.'  `._;       :  :__.' .'        `.__________________</pre></span>
+	   __  . .* ,
+     ~#@#%(" .,$ @
+   ."^ ';"
+  ..
+ ;. :                                   . .
+ ;==:                     ,,   ,.@#(&*.;'
+ ;. :                   .;#$% & ^^&
+ ;==:                   &  ......
+ ;. :                   ,,;      :
+ ;==:  ._______.       ;  ;      :
+ ;. :  ;    ###:__.    ;  ;      :
+.'  `._;       :  :__.' .'        `.</pre></span>
 		</div><!--main-->
 
 		<div id = "store">
@@ -138,7 +138,8 @@ _____________________.'  `._;       :  :__.' .'        `.__________________</pre
 			<button onclick = "plantSeed()">Place Gear</button>
 			<button onclick = "plantAll()">Place All</button>
 			<button id = "batterButton" onclick = "useBattery()">Use Battery</button>
-			<p id = "seeds_planted">Seeds Planted: 0</p>
+			<p id = "seeds_planted">Gears Placed: 0</p>
+			<p id = "ecto_gen"></p>
 			<p id = "blood_gen"></p>
 			<button id = "turn_off" onclick = "turnOffBattery()">Shut Off Machine</button>
 			<button onclick = "enterField()">Leave Factory</button>
@@ -232,6 +233,28 @@ lc'\""""""||          ||""""""""""""(     )"""""""""""""""""""""""""""
 
 		<div id = "demon">
 			<p>"Hello, I am the demon wizard, I can grant you amazing power, for a price of course.  Choose your sin, but remember, you can only choose one."</p>
+			<pre id = "demon1">    
+    ,-----.
+   ( <> <> )
+    )_ W _(
+     |||||    A A A
+      |||     | | |
+   __/)'(\__  `-+-'
+  /\\     //\   |
+ | |\\___//\ \  |
+ | |/\\_//\ \ \ |
+ | ||\\_//|  \ \|
+ | ||/\_/\|   \ |
+ | |/ /|\ \    \_)
+ (_/  \_/  \    K
+   |  | |  |    R
+   |  | |  |    O
+   |()| |()|    G
+   |  | |  |    G
+   |  | |  |    9
+   |__| |__|    8
+   \__/ \__/    V</pre>
+   			<div id = "choiceWrap">
 			<button onclick = "chooseSin('lust')">Lust</button>
 			<button onclick = "chooseSin('gluttony')">Gluttony</button>
 			<button onclick = "chooseSin('greed')">Greed</button>
@@ -239,6 +262,7 @@ lc'\""""""||          ||""""""""""""(     )"""""""""""""""""""""""""""
 			<button onclick = "chooseSin('wrath')">Wrath</button>
 			<button onclick = "chooseSin('envy')">Envy</button>
 			<button onclick = "chooseSin('pride')">Pride</button>
+		</div>
 			<br>
 			<br>
 			<button >Leave</button>
