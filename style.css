@@ -1,4 +1,4 @@
-#storeButton, #shop_keeper_blink, #factory2, #house2, #demon, #mountain,  #rune_true, #tower, #poolYes, #fieldButton, #mapButton, #batteryButton, #inventory, #reflectingPool, #field, #store, #map {
+#storeButton, #main, #shop_keeper_blink, #factory2, #house2, #demon, #mountain,  #rune_true, #tower, #poolYes, #fieldButton, #mapButton, #batteryButton, #inventory, #reflectingPool, #field, #store, #map {
 	display: none;
 }
 
@@ -33,7 +33,10 @@
 #house2, #house1 {
 	margin-top: 10%;
 	float: left;
-	}
+}
+#church {
+	margin 
+}
 
 .wrapper {
 	max-width: 90%;
