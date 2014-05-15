@@ -25,5 +25,7 @@ function chooseSin(choice) {
 				inventoryObject.sin = 'pride';
 				break;
 		}
+		enterDemon();
+		console.log(inventoryObject.sin);
 	}
 }

@@ -16,6 +16,27 @@ function enterMapLocation(mapLocation) {
 		}
 	}
 }
+var demon = false;
+var demonFirst = false;
+function enterDemon() {
+	if (demon == false) {
+		$('#churchInside').hide();
+		$('#demon').show();
+		demon = true;
+
+	}
+	else {
+		$('#main').show();
+		$('#demon').hide();
+		$('#churchInside').hide();
+		mainShow = true;
+		if (demonFirst == true) {
+			$('#error').html('You have already visited the demon wizard, he doesnt have time for repeat visits!');
+		}
+		demonFirst = true;
+	}
+	
+}
 
 
 function usePool() {

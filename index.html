@@ -30,7 +30,7 @@
 
 		</div>
 		<div id = "error"></div>
-
+    <br>
 		<div id = "main">			
 			<button onclick = "ectoplasmClick(1)">Click</button>
 			
@@ -352,10 +352,13 @@ lc'\""""""||          ||""""""""""""(     )"""""""""""""""""""""""""""
  |                         | | .                . |                          |
  |_________________________|/|.                 . | ________________________ |
  |                        || .                  . ||   -Steve Stewart-      ||</pre>
+      <button onclick = "enterDemon()">Approach</button>
+      <button onclick = "enterMainLocation('#churchInside')">Leave</button>
+    </div>
 
-		<div id = "demon">
-			<p>"Hello, I am the demon wizard, I can grant you amazing power, for a price of course.  Choose your sin, but remember, you can only choose one."</p>
-			<pre id = "demon1">    
+		    <div id = "demon">
+          <p>"Hello, I am the demon wizard, I can grant you amazing power, for a price of course.  Choose your sin, but remember, you can only choose one.</p>
+			    <pre id = "demon1">    
     ,-----.
    ( <> <> )
     )_ W _(
@@ -375,20 +378,22 @@ lc'\""""""||          ||""""""""""""(     )"""""""""""""""""""""""""""
    |  | |  |    G
    |  | |  |    9
    |__| |__|    8
-   \__/ \__/    V</pre>
-   			<div id = "choiceWrap">
-			<button onclick = "chooseSin('lust')">Lust</button>
-			<button onclick = "chooseSin('gluttony')">Gluttony</button>
-			<button onclick = "chooseSin('greed')">Greed</button>
-			<button onclick = "chooseSin('sloth')">Sloth</button>
-			<button onclick = "chooseSin('wrath')">Wrath</button>
-			<button onclick = "chooseSin('envy')">Envy</button>
-			<button onclick = "chooseSin('pride')">Pride</button>
-		</div>
-			<br>
-			<br>
-			<button >Leave</button>
-		</div><!--demon-->
+   \__/ \__/    V
+          </pre>
+   			    <div id = "choiceWrap">
+			         <button onclick = "chooseSin('lust')">Lust</button>
+			         <button onclick = "chooseSin('gluttony')">Gluttony</button>
+			         <button onclick = "chooseSin('greed')">Greed</button>
+			         <button onclick = "chooseSin('sloth')">Sloth</button>
+			         <button onclick = "chooseSin('wrath')">Wrath</button>
+			         <button onclick = "chooseSin('envy')">Envy</button>
+			         <button onclick = "chooseSin('pride')">Pride</button>
+		        </div>
+			      <br>
+			      <p>"If you leave you cant come back, Im a very busy demon!"</p>
+            <br>
+			      <button onclick = "enterDemon()">Leave</button>
+		    </div><!--demon-->
 
 		<div id = "mountain">
 			<div id = "rune_false">

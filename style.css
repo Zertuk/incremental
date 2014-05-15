@@ -66,8 +66,9 @@
 
 #error {
 	color: red;
-	font-size: 26px;
+	font-size: 20px;
 	height: 30px;
+	text-align: center;
 }
 
 #store p {
