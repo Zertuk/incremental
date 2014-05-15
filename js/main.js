@@ -1,8 +1,9 @@
-//i really am going to need to split this into multiple files soon
 //global variable init
 var ectoplasm = 50000;
 var ghostStoreVal = false;
 var inverse = false;
+var batteryDisplay = false;
+var batteryOn = false;
 var smoke = true;
 var blink = false;
 var count = 0;
@@ -10,15 +11,6 @@ var batteriesUsed = 0;
 var blood = 0;
 var seedsPlanted = 1;
 var fists, woodSword, ironSword;
-
-function updateHealthBar() {
-	$('#hp').html(player.health.toFixed(2) + '/' + player.maxHealth + ' Health');
-}
-
-function healthRegen() {
-	player.health = player.health + 0.25;
-}
-
 
 //loads dom elements
 window.onload = function() {
@@ -119,7 +111,7 @@ window.setInterval(function() {
 	}
 	if (count % 2 == 0) {
 	smokeAnimate();
-	}
+}
 
 	if (count > 14) {
 		blinkAnimate();
@@ -136,5 +128,6 @@ window.setInterval(function() {
 		bloodGenerator(batteriesUsed);
 	}
 	count++;
+	console.log(count);
 }, 500);
 

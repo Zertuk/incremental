@@ -5,7 +5,12 @@
 
 <link href = "style.css" rel = "stylesheet">
 
+<script src = "locations.js"></script>
+<script src = "options.js"></script>
+<script src = "demon.js"></script>
+<script src = "factory.js"></script>
 <script src = "main.js"></script>
+<script src = "store.js"></script>
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 
@@ -237,9 +242,9 @@ _/           |==|   \_
 
 		<div id = "map">
 			<p>THIS IS A MAP</p>
-			<button onclick = "enterPool()">Reflecting Pool</button>
+			<button onclick = "enterMapLocation('#reflectingPool')">Reflecting Pool</button>
 			<br>
-			<button onclick = "gotoMountain()" id = "enterCave">The Mountain</button>	
+			<button onclick =  "enterMapLocation('#mountain')" id = "enterCave">The Mountain</button>	
 			<br>
 			<br>
 			<button onclick = "enterMainLocation('#map')">Leave Map</button>
@@ -279,7 +284,7 @@ lc'\""""""||          ||""""""""""""(     )"""""""""""""""""""""""""""
                                                            `'`'</pre>
 
 				<button onclick = "usePool()">Yes</button>
-				<button onclick = "enterPool()">No</button>
+				<button onclick = "enterMapLocation('#reflectingPool')">No</button>
 			</div><!--poolChoice-->
 			<div id = "poolYes">
 				<P>You look into the pool, it offers you one reflection on yourself</p>
@@ -388,13 +393,13 @@ lc'\""""""||          ||""""""""""""(     )"""""""""""""""""""""""""""
 		<div id = "mountain">
 			<div id = "rune_false">
 				<p>There is a strange pattern on etched into the mountain, it seems to do nothing.</p>
-				<button onclick = "gotoMountain()" id = "leaveMountain">Leave</button>
+				<button onclick = "enterMapLocation('#mountain')" id = "leaveMountain">Leave</button>
 			</div><!--rune_false-->
 			<div id = "rune_true">
 				<p>The Magic Rune glows as you approach and the pattern on the mountain wall also lights up. A passage opens into the mountain.  Do you enter?</p>
 
 				<button onclick = "enterMountain()" id = "enterCave">Enter</button>			
-				<button onclick = "gotoMountain()" id = "leaveMountain">Leave</button>
+				<button onclick = "enterMapLocation('#mountain')" id = "leaveMountain">Leave</button>
 			</div><!--rune_true-->
 							<pre id = "magic_door">
 
