@@ -1,5 +1,4 @@
 var batteryDisplay = false;
-var batteryOn = true;
 
 
 //functions associated with the factory, placegears/usebatteries

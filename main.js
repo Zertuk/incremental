@@ -9,6 +9,7 @@ var count = 0;
 var batteriesUsed = 0;
 var blood = 0;
 var seedsPlanted = 1;
+var batteryOn = true;
 var fists, woodSword, ironSword;
 
 function updateHealthBar() {
@@ -129,9 +130,6 @@ window.setInterval(function() {
 		ghostStore();
 	}
 
-	if (batteryDisplay == false){
-		batteryEnable()
-	}
 	if (batteryOn == true) {
 		bloodGenerator(batteriesUsed);
 	}
