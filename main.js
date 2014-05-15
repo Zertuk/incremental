@@ -2,13 +2,8 @@
 //global variable init
 var ectoplasm = 50000;
 var ghostStoreVal = false;
-var storeShow = false;
-var inventoryShow = false;
-var fieldShow = false;
 var mainShow = true;
 var mapShow = false;
-var poolShow = false;
-var churchShow = false;
 var inverse = false;
 var batteryDisplay = false;
 var batteryOn = false;
@@ -183,7 +178,7 @@ function ghostStore()  {
 //any location from the main screen is displayed using this function
 //hides main if mainShow is true and brings up whichever location is choosen
 //otherwise hides the location and brings up main if location is shown
-//updates inventory and store status text if approproiate
+//updates inventory and store status text and mapShow if approproiate
 function enterMainLocation(location) {
 	if (mainShow == true) {
 		$(location).show();
@@ -195,6 +190,9 @@ function enterMainLocation(location) {
 		else if (location == '#inventory') {
 			inventoryList();
 		}
+		else if (location == '#map') {
+			mapShow = true;
+		}
 	}
 	else {
 		$(location).hide();
@@ -204,25 +202,26 @@ function enterMainLocation(location) {
 	error.innerHTML = '';
 }
 
-//i am a monster
-function enterPool() {
-	if (poolShow == true) {
-		reflectingPool.style.display = "none";
-		map.style.display = "inline";
-		poolShow = false;
+//used to enter any map location
+function enterMapLocation(mapLocation) {
+	if (mapShow == false) {
+		$(mapLocation).hide();
+		$('#map').show();
+		mapShow = true;
 	}
 	else {
-		reflectingPool.style.display = "inline";
-		map.style.display = "none";
-		poolShow = true;
+		$(mapLocation).show();
+		$('#map').hide();
+		mapShow = false;
+		if (mapLocation == '#mountain') {
+			magicDoor();
+		}
 	}
 }
-
 
 function usePool() {
 	$('#poolChoice').css('display', 'none');
 	$('#poolYes').css('display', 'inline');
-
 }
 
 function storeStatus(text) {
@@ -329,20 +328,6 @@ function magicDoor() {
 	else {
 		$('#rune_false').css('display', 'inline-block');
 		$('#rune_true').css('display', 'none');
-	}
-}
-var mountainShow = false;
-function gotoMountain() {
-	if (mountainShow == true) {
-		$('#mountain').hide();
-		$('#map').show();
-		mountainShow = false;
-	}
-	else {
-		$('#mountain').show();
-		$('#map').hide();
-		mountainShow = true;
-		magicDoor();
 	}
 }
 
