@@ -5,8 +5,10 @@ var ghostStoreVal = false;
 var storeShow = false;
 var inventoryShow = false;
 var fieldShow = false;
+var mainShow = true;
 var mapShow = false;
 var poolShow = false;
+var churchShow = false;
 var inverse = false;
 var batteryDisplay = false;
 var batteryOn = false;
@@ -61,8 +63,6 @@ var player = {
 	health: 50.00,
 	maxHealth: 100
 }
-
-
 function updateHealthBar() {
 	$('#hp').html(player.health.toFixed(2) + '/' + player.maxHealth + ' Health');
 }
@@ -180,63 +180,28 @@ function ghostStore()  {
 	return ghostStoreVal;
 }
 
-//leave/enter store on button click
-function enterStore(inp) {
-	if (storeShow == true) {
-		store.style.display = "none";
-		main.style.display = "inline";
-		storeShow = false;
+//any location from the main screen is displayed using this function
+//hides main if mainShow is true and brings up whichever location is choosen
+//otherwise hides the location and brings up main if location is shown
+//updates inventory and store status text if approproiate
+function enterMainLocation(location) {
+	if (mainShow == true) {
+		$(location).show();
+		$('#main').hide();
+		mainShow = false;
+		if (location == '#store') {
+			$('#store_status').html('You looking to buy?');
+		}
+		else if (location == '#inventory') {
+			inventoryList();
+		}
 	}
 	else {
-		store.style.display = "inline";
-		main.style.display = "none";
-		storeShow = true;
+		$(location).hide();
+		$('#main').show();
+		mainShow = true;
 	}
 	error.innerHTML = '';
-}
-//yeah def need to make these into a single func
-function enterInventory() {
-	if (inventoryShow == true) {
-		inventory.style.display = "none";
-		main.style.display = "inline"
-		inventoryShow = false;
-		
-	} 
-	else {
-		inventoryList();
-		inventory.style.display = "inline";
-		main.style.display = "none";
-		inventoryShow = true;
-	}
-}
-//wow im still doing it this way instead of fixing it  rip
-function enterField() {
-	if (fieldShow == true) {
-		field.style.display = "none";
-		main.style.display = "inline"
-		fieldShow = false;
-		
-	} 
-	else {
-		field.style.display = "inline";
-		main.style.display = "none";
-		fieldShow = true;
-	}
-	error.innerHTML = '';
-}
-
-//here we go again lol
-function enterMap() {
-	if (mapShow == true) {
-		map.style.display = "none";
-		main.style.display = "inline";
-		mapShow = false;
-	}
-	else {
-		map.style.display = "inline";
-		main.style.display = "none";
-		mapShow = true;
-	}
 }
 
 //i am a monster
@@ -252,6 +217,7 @@ function enterPool() {
 		poolShow = true;
 	}
 }
+
 
 function usePool() {
 	$('#poolChoice').css('display', 'none');
@@ -416,6 +382,7 @@ function chooseSin(choice) {
 				break;
 			case "greed":
 				inventoryObject.sin = 'greed';
+				ectoplasm = ectoplasm * 2;
 				break;
 			case "sloth":
 				inventoryObject.sin = 'sloth';
@@ -456,8 +423,9 @@ window.setInterval(function() {
 		healthRegen();
 		updateHealthBar();
 	}
-	
+	if (count % 2 == 0) {
 	smokeAnimate();
+}
 
 	if (count > 14) {
 		blinkAnimate();
