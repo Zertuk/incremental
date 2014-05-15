@@ -17,12 +17,11 @@
 <body>
 	<div class = "wrapper">
 		<div id = "ectoplasmDiv">
-			<button id = "inventoryButton" onclick = "enterInventory()">Inventory</button>
+			<button id = "inventoryButton" onclick = "enterMainLocation('#inventory')">Inventory</button>
 			
 			<p id = "ectoplasm">You have 0 ectoplasm</p>
 			<p id = "blood">?</p>
-
-			<p id = "hp">50.00/100 Health</div>
+			<p id = "hp">50.00/100 Health</p>
 
 		</div>
 		<div id = "error"></div>
@@ -30,13 +29,13 @@
 		<div id = "main">			
 			<button onclick = "ectoplasmClick(1)">Click</button>
 			
-			<button id = "storeButton" onclick = "enterStore()">Store</button>
+			<button id = "storeButton" onclick = "enterMainLocation('#store')">Store</button>
 			
-			<button id = "fieldButton" onclick = "enterField()">Factory</button>
-			<button id = "mapButton" onclick = "enterMap()">Map</button>
+			<button id = "fieldButton" onclick = "enterMainLocation('#field')">Factory</button>
+			<button id = "mapButton" onclick = "enterMainLocation('#map')">Map</button>
 			<button onclick = "inverseColors()">Inverse</button>
 
-			<span id = "house1" onclick = 'enterStore()'><pre>
+			<span onclick = "enterMainLocation('#store')"><pre id = "house1">
           (
   
             )
@@ -47,7 +46,7 @@
    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      |  []  []   []   []  [] |
      |           __    ___   |   
-   ._|  []  []  | .|  [___]  |_._._._._. 
+   ._|  []  []  | .|  [___]  |_._._._._.
    |=|________()|__|()_______|=|=|=|=|=|
  ^^^^^^^^^^^^^^^ === ^^^^^^^^^^^^^^^^^^^
      _______      ===   
@@ -58,11 +57,11 @@
 
 
 </pre></span>
-			<span id = "house2" onclick = 'enterStore()'><pre>
+			<span onclick = "enterMainLocation('#store')"><pre id = "house2">
             )
   
           (
-           _)   _._
+            _)  _._
            |_|-'_~_`-._
         _.-'-_~_-~_-~-_`-._
     _.-'_~-_~-_-~-_~_~-_~-_`-._
@@ -80,7 +79,7 @@
 
 
 </pre></span>
-<span onclick = "enterChurch()"><pre id = "church">
+<span onclick = "enterMainLocation('#churchInside')"><pre id = "church">
 
   [ The Church ]
 
@@ -98,7 +97,7 @@
 _/           |==|   \_
 
 </pre></span>
-<span onclick= "enterField()"><pre id = "factory">
+<span onclick= "enterMainLocation('#field')"><pre id = "factory">
 	   __  . .* ,
      ~#@#%(" .,$ @
    .;#$% &
@@ -113,7 +112,7 @@ _/           |==|   \_
 .'  `._;       :  :__.' .'        `.
 
              [ Factory ]</pre></span>
-<span onclick = "enterField()"><pre id = "factory2">
+<span onclick = "enterMainLocation('#field')"><pre id = "factory2">
 	   ''&^   ^_
      ~$.@%}^)  ''*
    ."^ ';"
@@ -144,7 +143,7 @@ _/           |==|   \_
 				<p>Battery: <button onclick = "storeItems('battery')">2000</button></p>
 				<p>Magic Rune: <button onclick = "storeItems('rune')">1</button></p>
 				<br>
-				<button onclick = "enterStore()">Leave Store</button>
+				<button onclick = "enterMainLocation('#store')">Leave Store</button>
 			</div><!--storeWrapper-->
 			
 			<pre id = "shop_keeper">
@@ -221,7 +220,7 @@ _/           |==|   \_
 			<br>
 			<p id = "inventoryItems"></p>
 
-			<button onclick = "enterInventory()">Leave Inventory</button>
+			<button onclick = "enterMainLocation('#inventory')">Leave Inventory</button>
 		</div><!--inventory-->
 
 		<div id = "field">
@@ -233,7 +232,7 @@ _/           |==|   \_
 			<p id = "ecto_gen"></p>
 			<p id = "blood_gen"></p>
 			<button id = "turn_off" onclick = "turnOffBattery()">Shut Off Machine</button>
-			<button onclick = "enterField()">Leave Factory</button>
+			<button onclick = "enterMainLocation('#field')">Leave Factory</button>
 		</div><!--field-->
 
 		<div id = "map">
@@ -243,7 +242,7 @@ _/           |==|   \_
 			<button onclick = "gotoMountain()" id = "enterCave">The Mountain</button>	
 			<br>
 			<br>
-			<button onclick = "enterMap()">Leave Map</button>
+			<button onclick = "enterMainLocation('#map')">Leave Map</button>
 		</div><!--map-->
 
 		<div id = "reflectingPool">
