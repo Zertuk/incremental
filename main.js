@@ -83,7 +83,6 @@ function smokeAnimate() {
 		$('#house2').hide();
 		$('#factory').show();
 		$('#factory2').hide();
-
 		smoke = false;
 	}
 	else {
@@ -91,8 +90,20 @@ function smokeAnimate() {
 		$('#house1').hide();
 		$('#factory').hide();
 		$('#factory2').show();
-
 		smoke = true;
+	}
+}
+var trainAni = false;
+function trainAnimate() {
+	if (trainAni == true) {
+		$('#train1').show();
+		$('#train2').hide();
+		trainAni = false;
+	}
+	else {
+		$('#train2').show();
+		$('#train1').hide();
+		trainAni = true;
 	}
 }
 
@@ -112,6 +123,7 @@ function blinkAnimate() {
 }
 //main game loop, updates 0.5s
 window.setInterval(function() {
+	trainAnimate();
 
 	ectoplasmGenerator(seedsPlanted);
 	if (player.health < player.maxHealth) {
