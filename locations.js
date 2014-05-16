@@ -16,15 +16,16 @@ function enterMapLocation(mapLocation) {
 			magicDoor();
 		}
 		if (mapLocation == '#trainShow') {
-			trainShow = true;
+			if (inventoryObject.ticket == true) {
+				$('#trainStation').show();
+				trainShow = true;
+			}
+			else {
+				$('#error').html('You need a ticket to ues that');
+				$('#map').show();
+				$(mapLocation).hide();
+			}
 		}
-	}
-}
-
-function showTrainStation() {
-	if (inventoryObject.ticket == true) {
-		$('#trainStation').show();
-
 	}
 }
 
@@ -46,8 +47,7 @@ function enterDemon() {
 			$('#error').html('You have already visited the demon wizard, he doesnt have time for repeat visits!');
 		}
 		demonFirst = true;
-	}
-	
+	}	
 }
 
 

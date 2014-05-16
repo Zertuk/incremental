@@ -148,7 +148,6 @@ window.setInterval(function() {
 	if (batteryOn == true) {
 		bloodGenerator(batteriesUsed);
 	}
-	showTrainStation();
 	count++;
 }, 500);
 

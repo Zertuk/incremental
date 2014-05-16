@@ -29,7 +29,7 @@ var inventoryObject = {
 	battery: 0,
 	rune: false,
 	sin: false,
-	ticket: true
+	ticket: false
 }
 
 var player = {

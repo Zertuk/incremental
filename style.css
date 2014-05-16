@@ -14,6 +14,19 @@
 	border: 1px solid #21A652;
 }
 
+#station {
+	float: right;
+	margin-top: -200px;
+	width: 400px;
+}
+#fountain {
+	margin-left: 350px;
+	margin-top: 150px;
+}
+#mount {
+	width: 300px;
+
+}
 #demon1 {
 	margin-left: 100px;
 }

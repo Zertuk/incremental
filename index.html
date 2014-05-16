@@ -252,27 +252,19 @@ _/           |==|   \_
 			<br>
 			<button onclick = "enterMainLocation('#map')">Leave Map</button>
 
-      <pre>
-           ('          
-           `),       
-        __cD"`.__    
-       !_________!   
-         \_____/       
-   ~~~~~/_______\~~~~~fsc
+      <pre id = "fountain">
+           ('                                     ______
+           `),                            jgs    /     /\
+       __cD"`.__                                /     /  \
+      !_________!                              /_____/----\_    (  
+        \_____/                                "     "          ).  
+  ~~~~~/_______\~~~~~fsc                      _ ___          o (:') o   
+                                             (@))_))        o ~/~~\~ o   
+  [ Reflecting Pool]                                          o  o  o
+                                                 [ Camp Site ]
 
-    [ Reflecting Pool]</pre>
-    <pre>
-        ______
-jgs    /     /\
-      /     /  \
-     /_____/----\_    (  
-    "     "          ).  
-   _ ___          o (:') o   
-  (@))_))        o ~/~~\~ o   
-                  o  o  o
-      [ Camp Site ]
     </pre>
-    <pre>
+    <pre id = "mount" onclick = "enterMapLocation('#mountain')">                                                     
             ,/k\,
            /  ih,\
 itz     ,-' ,  `:7b
@@ -281,8 +273,7 @@ itz     ,-' ,  `:7b
 
       [ The Mountain ]
     </pre>
-
-    <pre>   
+    <pre id = "station" onclick = "enterMapLocation('#trainShow')">   
                                    (
                            ________[]_ 
                           /^=^-^-^=^-^\ 
@@ -293,6 +284,7 @@ itz     ,-' ,  `:7b
  ^jgs^^^^^^^^^^^^^^^^^^$$|__|__|_______|$$
 
               [ Train Station ]
+            </pre>
 		</div><!--map-->
 
 		<div id = "reflectingPool">
