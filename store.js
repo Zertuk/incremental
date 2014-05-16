@@ -28,13 +28,38 @@ var inventoryObject = {
 	map: false,
 	battery: 0,
 	rune: false,
-	sin: false
+	sin: false,
+	ticket: true
 }
 
 var player = {
 	damage: swordObject.fists.damage,
-	health: 50.00,
+	health: .00,
 	maxHealth: 100
+}
+
+function fixHP() {
+	if (player.health > player.maxHealth) {
+		player.health = player.maxHealth;
+		updateHealthBar();
+	}
+}
+
+function useHealthPotion() {
+	if (inventoryObject.healthPotion == 0) {
+		$('#error').html('No Health Potions ;_;')
+	}
+	else {
+		if (player.health >= player.maxHealth) {
+			$('#error').html('You already have full health dont be silly');
+		}
+		else {		
+			player.health = player.health + 35;
+			inventoryObject.healthPotion--;
+			updateHealthBar();
+			inventoryList();
+		}
+	}
 }
 
 

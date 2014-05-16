@@ -121,15 +121,18 @@ function blinkAnimate() {
 	}
 
 }
+
 //main game loop, updates 0.5s
 window.setInterval(function() {
+	if (trainShow == true) {
 	trainAnimate();
-
+	}
 	ectoplasmGenerator(seedsPlanted);
 	if (player.health < player.maxHealth) {
 		healthRegen();
 		updateHealthBar();
 	}
+	fixHP();
 	if (count % 2 == 0) {
 	smokeAnimate();
 	}
@@ -145,6 +148,7 @@ window.setInterval(function() {
 	if (batteryOn == true) {
 		bloodGenerator(batteriesUsed);
 	}
+	showTrainStation();
 	count++;
 }, 500);
 
