@@ -1,5 +1,6 @@
 var mapShow = false;
 var mainShow = true;
+var trainShow = false;
 
 function enterMapLocation(mapLocation) {
 	if (mapShow == false) {
@@ -14,8 +15,19 @@ function enterMapLocation(mapLocation) {
 		if (mapLocation == '#mountain') {
 			magicDoor();
 		}
+		if (mapLocation == '#trainShow') {
+			trainShow = true;
+		}
 	}
 }
+
+function showTrainStation() {
+	if (inventoryObject.ticket == true) {
+		$('#trainStation').show();
+
+	}
+}
+
 var demon = false;
 var demonFirst = false;
 function enterDemon() {
