@@ -1,4 +1,4 @@
-#storeButton, #churchInside, #train2,#main, #shop_keeper_blink, #factory2, #house2, #demon, #mountain,  #rune_true, #tower, #poolYes, #fieldButton, #mapButton, #batteryButton, #inventory, #reflectingPool, #field, #store, #map {
+#storeButton, #churchInside, #train2, #trainStation, #trainShow, #shop_keeper_blink, #factory2, #house2, #demon, #mountain,  #rune_true, #tower, #poolYes, #fieldButton, #mapButton, #batteryButton, #inventory, #reflectingPool, #field, #store, #map {
 	display: none;
 }
 
@@ -13,7 +13,6 @@
 	text-align: center;
 	border: 1px solid #21A652;
 }
-
 
 #demon1 {
 	margin-left: 100px;
