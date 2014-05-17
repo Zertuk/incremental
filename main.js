@@ -148,6 +148,11 @@ window.setInterval(function() {
 	if (batteryOn == true) {
 		bloodGenerator(batteriesUsed);
 	}
+	if (levelActive) {
+		moveInLevel();
+		$('#level').html(level);
+		console.log('ye');
+	}
 	count++;
 }, 500);
 
