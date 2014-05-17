@@ -29,6 +29,13 @@ function Monster() {
 								'Dmg: ' + this.damage +
 								'HP: ' + this.health);
 	}
+	this.specialDrop = function(item, dropChance) {
+		var randomNum = Math.round(Math.random()*100);
+		console.log(randomNum);
+		if (randomNum < dropChance) {
+			$('#special_loot').html('You have found: ' + item);
+		}
+	}
 }
 var goblin = new Monster();
 goblin.message = 'A scary goblin';
@@ -49,6 +56,7 @@ function battleTime() {
 		i++;
 		this.goblin.monsterInfo();
 		this.goblin.loot();
+		this.goblin.specialDrop('axe', 50);
 		this.goblin.health = 5;
 		console.log(goblin);
 	}
