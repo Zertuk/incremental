@@ -47,7 +47,7 @@ function fixHP() {
 
 function useHealthPotion() {
 	if (inventoryObject.healthPotion == 0) {
-		$('#error').html('No Health Potions ;_;')
+		$('#error').html('No Health Potions ;-;')
 	}
 	else {
 		if (player.health >= player.maxHealth) {
@@ -90,9 +90,10 @@ function storeStatus(text) {
 	$('#store_status').html(text);
 }
 
-/*store functionality, takes input based on button clicked for each item
-passes into itemBuy() which checks if player has enough money, if true
-then add the item to inventory/remove money, if false, then display error*/
+/***Store Functionality:
+	Takes input based on button clicked for each item, passes into itemBuy(),
+which checks if player has enough money, if true, then add the item to inventory/remove
+money, if false, then display error. Removes bought sword and shows better sword  ****/
 function storeItems(item) {
 	switch (item) {
 		case "woodSword":
@@ -102,6 +103,7 @@ function storeItems(item) {
 				inventoryObject.weapon = swordObject.woodSword;
 				player.damage = swordObject.woodSword.damage;
 				$('#wood_sword').css('display', 'none');
+				$('#iron_sword').show();
 				storeStatus('This thing wont do much but its better than fists');
 			}
 			break;
@@ -163,6 +165,7 @@ function storeItems(item) {
 			var itemBought = itemBuy();
 			if (itemBought == true) {
 				inventoryObject.rune = true;
+				$('#rune').hide();
 				storeStatus('Magic Rune! It is glowing strangely.');				
 			}
 	}
