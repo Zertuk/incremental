@@ -13,17 +13,17 @@ for (var i = 0; i < levelObject.level2; i++) {
 		level[i] = 'G';
 	}
 }
-
+var gainedLoot = 0;
 function Monster() {
 	this.health = 5,
 	this.damage = 1,
 	this.message = 'A mean monster',
-	// this.loot = function() {
-	// 	loot = Math.round(Math.random()*25);
-	// 	ectoplasm = ectoplasm + loot;
-	// 	gainedLoot = loot + gainedLoot;
-	// 	$('#loot').html('You have gained ' + gainedLoot + ' ectoplasm');
-	// }
+	this.loot = function() {
+		var lootDropped = Math.round(Math.random()*25);
+		ectoplasm = ectoplasm + lootDropped;
+		gainedLoot = lootDropped + gainedLoot;
+		$('#loot').html('You have gained ' + gainedLoot + ' ectoplasm');
+	}
 	this.monsterInfo = function() {
 		$('#monster_stats').html(this.message +
 								'Dmg: ' + this.damage +
@@ -48,7 +48,7 @@ function battleTime() {
 		level[i - 1] ='_';
 		i++;
 		this.goblin.monsterInfo();
-		// this.goblin.loot();
+		this.goblin.loot();
 		this.goblin.health = 5;
 		console.log(goblin);
 	}
