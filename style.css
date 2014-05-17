@@ -13,6 +13,15 @@
 	text-align: center;
 	border: 1px solid #21A652;
 }
+#quest p{
+	display: inline;
+}
+#player_stats {
+	width: 300px;
+}
+#monster_stats {
+	width: 300px;
+}
 
 #station {
 	float: right;

@@ -10,33 +10,51 @@ for (var i = 0; i < levelObject.level2; i++) {
 	 	level[i] = '_';
 	}
 	else {
-		level[i] = 'E';
+		level[i] = 'G';
 	}
 }
 
-var monster = Object.create({
-	"damage": 1,
-	"health": 5
-})
+function Monster() {
+	this.health = 5,
+	this.damage = 1,
+	this.message = 'A mean monster',
+	// this.loot = function() {
+	// 	loot = Math.round(Math.random()*25);
+	// 	ectoplasm = ectoplasm + loot;
+	// 	gainedLoot = loot + gainedLoot;
+	// 	$('#loot').html('You have gained ' + gainedLoot + ' ectoplasm');
+	// }
+	this.monsterInfo = function() {
+		$('#monster_stats').html(this.message +
+								'Dmg: ' + this.damage +
+								'HP: ' + this.health);
+	}
+}
+var goblin = new Monster();
+goblin.message = 'A scary goblin';
 
 function battleTime() {
-	var enemy = new monster;
-	player.health = player.health - this.monster.damage;
-	this.monster.health = this.monster.health - player.damage;
+	this.goblin.monsterInfo();
+	player.health = player.health - this.goblin.damage;
+	this.goblin.health = this.goblin.health - player.damage;
 	console.log('player: ' + player.health);
-	console.log('monster: ' + enemy.health);
-	if (player.health == 0) {
+	console.log('monster: ' + this.goblin.health);
+	if (player.health <= 0) {
 		levelActive = false;
+		$('#error').html('You have been slain');
 	}
-	else if (this.monster.health == 0) {
-		level[i] = 'Y'
+	else if (this.goblin.health <= 0) {
+		level[i] = 'Y';
 		level[i - 1] ='_';
-		this.monster = Object.create(monster);
+		i++;
+		this.goblin.monsterInfo();
+		// this.goblin.loot();
+		this.goblin.health = 5;
+		console.log(goblin);
 	}
 	else {
 		i--;
 	}
-	
 
 }
 
@@ -51,9 +69,8 @@ function moveInLevel() {
 		level[i - 1] = '_';
 		i++;
 		}
-	if (level[i] == 'E') {
-		battleTime();
-		
+	if (level[i] == 'G') {
+		battleTime();		
 	}
 	if (i == levelObject.level2) {
 		levelActive = false;
