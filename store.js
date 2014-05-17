@@ -34,7 +34,7 @@ var inventoryObject = {
 
 var player = {
 	damage: swordObject.fists.damage,
-	health: .00,
+	health: 75.00,
 	maxHealth: 100
 }
 

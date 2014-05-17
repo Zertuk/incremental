@@ -14,7 +14,31 @@ for (var i = 0; i < levelObject.level2; i++) {
 	}
 }
 
+var monster = Object.create({
+	"damage": 1,
+	"health": 5
+})
 
+function battleTime() {
+	var enemy = new monster;
+	player.health = player.health - this.monster.damage;
+	this.monster.health = this.monster.health - player.damage;
+	console.log('player: ' + player.health);
+	console.log('monster: ' + enemy.health);
+	if (player.health == 0) {
+		levelActive = false;
+	}
+	else if (this.monster.health == 0) {
+		level[i] = 'Y'
+		level[i - 1] ='_';
+		this.monster = Object.create(monster);
+	}
+	else {
+		i--;
+	}
+	
+
+}
 
 var i = 0;
 var levelActive = true;
@@ -28,11 +52,11 @@ function moveInLevel() {
 		i++;
 		}
 	if (level[i] == 'E') {
-		levelActive = false;		
+		battleTime();
 		
 	}
 	if (i == levelObject.level2) {
 		levelActive = false;
 	}
-	console.log(level);
+	console.log(i);
 }
