@@ -1,5 +1,9 @@
-#storeButton, #confess, #camp_use, #steal_items, #man, #man_text, #quest, #camp_ground, #churchInside, #train2, #iron_sword, #trainStation, #trainShow, #shop_keeper_blink, #factory2, #house2, #demon, #mountain,  #rune_true, #tower, #poolYes, #fieldButton, #mapButton, #batteryButton, #inventory, #reflectingPool, #field, #store, #map {
+#storeButton, #main, #confess, #camp_use, #steal_items, #man, #man_text, #quest, #camp_ground, #churchInside, #train2, #iron_sword, #trainStation, #trainShow, #shop_keeper_blink, #factory2, #house2, #demon, #mountain,  #rune_true, #tower, #poolYes, #fieldButton, #mapButton, #batteryButton, #inventory, #reflectingPool, #field, #store, #map {
 	display: none;
+}
+
+#mountain, #rune_true {
+	display: inline
 }
 
 #shop_keeper, #shop_keeper_blink {
@@ -8,6 +12,13 @@
 	margin-right: 10%;	
 }
 
+pre {
+	font-size: 14px;
+}
+
+pre p {
+	font-size: 14px;
+}
 #hp {
 	background-color: green;
 	text-align: center;
