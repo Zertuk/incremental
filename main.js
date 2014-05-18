@@ -151,7 +151,7 @@ window.setInterval(function() {
 	}
 	if (levelActive) {
 		if (questSelected == 'depths') {
-			moveInLevel(demon, demonLord);
+			moveInLevel(demon, demonWizard);
 		}
 		else if (questSelected == 'mines') {
 			moveInLevel(goblinMiner, demon);

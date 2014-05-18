@@ -29,8 +29,8 @@ function makeLevel(levelInp, monster, specialMonster, specialCount) {
 
 //default monster object
 function Monster() {
-	this.health = 5,
 	this.maxHealth = 5,
+	this.health = this.maxHealth,
 	this.damage = 1,
 	this.value = 'M',
 	this.message = 'A mean monster',
@@ -106,11 +106,12 @@ rock.value = 'O';
 rock.damage = 0;
 rock.move = false;
 
-var demonLord = new Monster();
-demonLord.message = 'A Demon Lord';
-demonLord.value = '#\'DL!'
-demonLord.damage = 10;
-demonLord.health = 10;
+var demonWizard = new Monster();
+demonWizard.message = 'The Demon Wizard!';
+demonWizard.value = 'DW`!'
+demonWizard.damage = 10;
+demonWizard.maxHealth = 10;
+demonWizard.health = 10;
 
 //function call to make the level, temporary for testing
 
@@ -225,10 +226,12 @@ function loadLevel(questSelected) {
 		$('#mountain').hide();
 
 	if (questSelected == 'depths') {
-		
+		makeLevel(60, demon.value, demonWizard.value, 1);
+		$('#depths_quest').show();
+		questText.html('The bottom of the mine');
 	}
 	else if (questSelected == 'mines') {
-		makeLevel(50, goblinMiner.value, demon.value, 5);
+		makeLevel(50, goblinMiner.value, demon.value, 5); 
 		$('#mine_quest').show();
 		questText.html('There are goblin miners everywhere!');
 	}
