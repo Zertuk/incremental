@@ -151,11 +151,14 @@ window.setInterval(function() {
 	}
 	if (levelActive) {
 		if (questSelected == 'depths') {
-			moveInLevel(demon);
+			moveInLevel(demon, demonLord);
 		}
 		else if (questSelected == 'mines') {
 			moveInLevel(goblinMiner, demon);
 
+		}
+		else if (questSelected == 'cavern') {
+			moveInLevel(rock);
 		}
 		$('.level').html(level);
 	}

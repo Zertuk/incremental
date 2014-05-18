@@ -16,7 +16,7 @@ function makeLevel(levelInp, monster, specialMonster, specialCount) {
 	for (var i = 0; i < levelInp; i++) {
 		var random = Math.floor(Math.random()*levelInp);
 		level[i] = '_';
-		if (random < levelInp / 5){
+		if (random < levelInp / 7){
 			level[i] = monster;
 		}
 	}
@@ -35,7 +35,8 @@ function Monster() {
 	this.value = 'M',
 	this.message = 'A mean monster',
 	this.specialLoot = 'nothing',
-	this.dropChance = 100,
+	this.dropChance = 0,
+	this.move = true,
 	this.loot = function() {
 		var lootDropped = Math.round(Math.random()*25);
 		gainedLoot = lootDropped + gainedLoot;
@@ -45,12 +46,14 @@ function Monster() {
 		$('#monster_stats').html(this.message + ':  ' +
 								'Dmg: ' + this.damage +
 								' HP: ' + this.health + '|' + this.maxHealth);
-	}
+	};
+
 	this.specialDrop = function(item, dropChance) {
 		var randomNum = Math.round(Math.random()*100);
 		if (randomNum < dropChance) {
-			 var lootMessage ;
-			 lootMessage = 'You have found: ' + item + ' ' + lootMessage;
+			 var lootMessage;
+			 lootmessage = 'You have found: ' + item + ' ';
+			 lootmessage = lootmessage + ' ' + item;
 		}
 	}
 	this.monsterMove = function(levelInp) {
@@ -95,6 +98,19 @@ demon.value = 'D';
 demon.damage = 5;
 demon.specialLoot = 'hat';
 demon.dropChance = 75;
+
+
+var rock = new Monster();
+rock.message = 'Just a rock';
+rock.value = 'O';
+rock.damage = 0;
+rock.move = false;
+
+var demonLord = new Monster();
+demonLord.message = 'A Demon Lord';
+demonLord.value = '#\'DL!'
+demonLord.damage = 10;
+demonLord.health = 10;
 
 //function call to make the level, temporary for testing
 
@@ -163,8 +179,15 @@ function moveInLevel(monster, specialMonster) {
 		level[i] = 'Y';
 		level[i - 1] = '_';
 		i++;
-		monsterMove(monster.value);	
-		monsterMove(specialMonster.value);
+		if (monster.move) {
+			monsterMove(monster.value);
+		}
+		if (specialMonster) {
+			monsterMove(specialMonster.value);
+			if (level[i] == specialMonster.value) {
+				battleTime(specialMonster);
+			}
+		}
 	}
 
 	if (i == level.length) {
@@ -176,21 +199,17 @@ function moveInLevel(monster, specialMonster) {
 	else if (level[i] == monster.value) {
 		battleTime(monster);
 	}
-	else if (level[i] == specialMonster.value) {
-		battleTime(specialMonster);
-	}
 }
 
 
-function levelActive() {
-	
-	i = 0;
-	levelActive = true;
-	$('#quest').show();
-	$('#health_potion_button').html('Use HP(' + inventoryObject.healthPotion + ')');
-	mineBackground()
+// function levelActive() {	
+// 	i = 0;
+// 	levelActive = true;
+// 	$('#quest').show();
+// 	$('#health_potion_button').html('Use HP(' + inventoryObject.healthPotion + ')');
+// 	mineBackground()
 
-}
+// }
 
 function getQuestSelect(quest) {
 	questSelected = $(quest).val();
@@ -200,14 +219,22 @@ function getQuestSelect(quest) {
 
 function loadLevel(questSelected) {
 	console.log(questSelected);
+	levelActive = true;
+	var questText = $('#quest_text');
+		$('#quest').show();
+		$('#mountain').hide();
+
 	if (questSelected == 'depths') {
-		makeLevel(25, demon.value);
+		
 	}
 	else if (questSelected == 'mines') {
 		makeLevel(50, goblinMiner.value, demon.value, 5);
-
+		$('#mine_quest').show();
+		questText.html('There are goblin miners everywhere!');
 	}
-	levelActive = true;
-		$('#quest').show();
-		$('#mountain').hide();
-}
+	else if (questSelected == 'cavern') {
+		makeLevel(50, rock.value);
+		$('#cavern_quest').show();
+		questText.html('Wow it is a mess in here, rocks laying in the path');
+	}
+ }
