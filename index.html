@@ -409,7 +409,12 @@ lc'\""""""||          ||""""""""""""(     )"""""""""""""""""""""""""""
  |                         | | .                . |                          |
  |_________________________|/|.                 . | ________________________ |
  |                        || .                  . ||   -Steve Stewart-      ||</pre>
-      <button onclick = "enterDemon()">Approach</button>
+
+      <select id = "church_quest">
+        <option value = 'approach'>The Approach</option>
+        <option value = 'figure'>The Figure</option>
+      </select>
+      <button onclick = "enterDemon()">Enter</button>
       <button onclick = "enterMainLocation('#churchInside')">Leave</button>
     </div>
 
@@ -460,7 +465,14 @@ lc'\""""""||          ||""""""""""""(     )"""""""""""""""""""""""""""
 			<div id = "rune_true">
 				<p>The Magic Rune glows as you approach and the pattern on the mountain wall also lights up. A passage opens into the mountain.  Do you enter?</p>
 
-				<button onclick = "enterMountain()" id = "enterCave">Enter</button>			
+				<select id = "mountain_quest">
+          <option value = 'cavern'>Cavern Entrance</option>
+          <option value = 'mines'>Mines</option>
+          <option value = 'depths'>The Depths</option>
+        </select>
+        <button onclick = "getQuestSelect('#mountain_quest')">Enter</button>
+        <br>
+        <br>
 				<button onclick = "enterMapLocation('#mountain')" id = "leaveMountain">Leave</button>
 			</div><!--rune_true-->
 							<pre id = "magic_door">

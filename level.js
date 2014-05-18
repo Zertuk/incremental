@@ -1,4 +1,5 @@
 var gainedLoot = 0;
+var questSelected = null;
 
 var level = new Array;
 var levelObject = {
@@ -6,6 +7,8 @@ var levelObject = {
 	level2: 30,
 	level3: 10
 }
+
+
 
 //makes the level, takes in the level length to determine length and the monster
 //to determine what monster to fill with, randomly spawns monsters
@@ -25,6 +28,8 @@ function Monster() {
 	this.damage = 1,
 	this.value = 'M',
 	this.message = 'A mean monster',
+	this.specialLoot = 'nothing',
+	this.dropChance = 100,
 	this.loot = function() {
 		var lootDropped = Math.round(Math.random()*25);
 		gainedLoot = lootDropped + gainedLoot;
@@ -68,11 +73,16 @@ function monsterMove(value) {
 var goblin = new Monster();
 goblin.message = "'A scary goblin'";
 goblin.value = 'G';
+goblin.specialLoot = 'cat';
+goblin.dropChance = 50;
+
 
 var demon = new Monster();
 demon.message = 'A demon';
 demon.value = 'D';
 demon.damage = 5;
+demon.specialLoot = 'hat';
+demon.dropChance = 75;
 
 //function call to make the level, temporary for testing
 
@@ -106,7 +116,7 @@ demon.damage = 5;
 // 	i--;
 // }
 
-function battleTime(monster, item, chance) {
+function battleTime(monster) {
 	$('#player_stats').html('Player Dmg: ' +player.damage);
 	monster.monsterInfo();
 	player.health = player.health - monster.damage;
@@ -121,7 +131,7 @@ function battleTime(monster, item, chance) {
 		i++;
 		monster.monsterInfo();
 		monster.loot();
-		monster.specialDrop(item, chance);
+		monster.specialDrop(monster.specialLoot, monster.dropChance);
 		monster.health = 5;
 	}
 	i--;
@@ -129,18 +139,14 @@ function battleTime(monster, item, chance) {
 var i = 0;
 
 
-function levelOne() {
-	$('#health_potion_button').html('Use HP(' + inventoryObject.healthPotion + ')');
-	i = 0;
-	levelActive = true;
-	makeLevel(100, demon.value);
-}
+
 
 
 //function for the player to move, moves player and monster forward if '_'
 //otherwise battles the enemy
 //stops when player reaches end and gives them their loot 
 function moveInLevel(monster) {
+	console.log(monster);
 	var player = 'Y';
 	if (level[i] == '_'); {
 		level[i] = 'Y';
@@ -156,6 +162,35 @@ function moveInLevel(monster) {
 		$('#error').html('level over')
 	}
 	else if (level[i] != '_') {
-		battleTime(monster, 'Dagger', 10);
+		battleTime(monster);
 	}
+}
+
+
+function levelActive() {
+	$('#health_potion_button').html('Use HP(' + inventoryObject.healthPotion + ')');
+	i = 0;
+	levelActive = true;
+	$('#quest').show();
+
+}
+
+function getQuestSelect(quest) {
+	questSelected = $(quest).val();
+	$(quest).hide();
+	loadLevel(questSelected);
+}
+
+function loadLevel(questSelected) {
+	console.log(questSelected);
+	if (questSelected == 'depths') {
+		makeLevel(25, demon.value);
+	}
+	else if (questSelected == 'mines') {
+		makeLevel(50, goblin.value);
+
+	}
+	levelActive = true;
+		$('#quest').show();
+		$('#mountain').hide();
 }

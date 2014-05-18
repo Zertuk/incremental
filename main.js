@@ -150,7 +150,12 @@ window.setInterval(function() {
 		bloodGenerator(batteriesUsed);
 	}
 	if (levelActive) {
-		moveInLevel(demon);
+		if (questSelected == 'depths') {
+			moveInLevel(demon);
+		}
+		else if (questSelected == 'mines') {
+			moveInLevel(goblin);
+		}
 		$('#level').html(level);
 	}
 	count++;
