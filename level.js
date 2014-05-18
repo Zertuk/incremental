@@ -12,7 +12,7 @@ var levelObject = {
 
 //makes the level, takes in the level length to determine length and the monster
 //to determine what monster to fill with, randomly spawns monsters
-function makeLevel(levelInp, monster) {
+function makeLevel(levelInp, monster, specialMonster, specialCount) {
 	for (var i = 0; i < levelInp; i++) {
 		var random = Math.floor(Math.random()*levelInp);
 		level[i] = '_';
@@ -20,6 +20,11 @@ function makeLevel(levelInp, monster) {
 			level[i] = monster;
 		}
 	}
+	for (var j = 0; j < specialCount; j++) {
+			var randomSpecial = Math.floor(Math.random()*levelInp);
+			level[randomSpecial] = specialMonster;
+			console.log(j);
+		}
 };
 
 //default monster object
@@ -44,7 +49,8 @@ function Monster() {
 	this.specialDrop = function(item, dropChance) {
 		var randomNum = Math.round(Math.random()*100);
 		if (randomNum < dropChance) {
-			$('#special_loot').html('You have found: ' + item);
+			 var lootMessage ;
+			 lootMessage = 'You have found: ' + item + ' ' + lootMessage;
 		}
 	}
 	this.monsterMove = function(levelInp) {
@@ -69,13 +75,18 @@ function monsterMove(value) {
 	}
 }
 
+var mine = 5;
+
+function mineBackground() {
+};
+
 
 //here will be some monsters using the Monster default for inheritance
-var goblin = new Monster();
-goblin.message = "'A scary goblin'";
-goblin.value = 'G';
-goblin.specialLoot = 'cat';
-goblin.dropChance = 50;
+var goblinMiner = new Monster();
+goblinMiner.message = "'A goblin miner, he has a pick!'";
+goblinMiner.value = '\'\\G';
+goblinMiner.specialLoot = 'pick';
+goblinMiner.dropChance = 5;
 
 
 var demon = new Monster();
@@ -146,14 +157,14 @@ var i = 0;
 //function for the player to move, moves player and monster forward if '_'
 //otherwise battles the enemy
 //stops when player reaches end and gives them their loot 
-function moveInLevel(monster) {
-	console.log(monster);
+function moveInLevel(monster, specialMonster) {
 	var player = 'Y';
 	if (level[i] == '_'); {
 		level[i] = 'Y';
 		level[i - 1] = '_';
 		i++;
 		monsterMove(monster.value);	
+		monsterMove(specialMonster.value);
 	}
 
 	if (i == level.length) {
@@ -162,17 +173,22 @@ function moveInLevel(monster) {
 		gainedLoot = 0;
 		$('#error').html('level over')
 	}
-	else if (level[i] != '_') {
+	else if (level[i] == monster.value) {
 		battleTime(monster);
+	}
+	else if (level[i] == specialMonster.value) {
+		battleTime(specialMonster);
 	}
 }
 
 
 function levelActive() {
-	$('#health_potion_button').html('Use HP(' + inventoryObject.healthPotion + ')');
+	
 	i = 0;
 	levelActive = true;
 	$('#quest').show();
+	$('#health_potion_button').html('Use HP(' + inventoryObject.healthPotion + ')');
+	mineBackground()
 
 }
 
@@ -188,7 +204,7 @@ function loadLevel(questSelected) {
 		makeLevel(25, demon.value);
 	}
 	else if (questSelected == 'mines') {
-		makeLevel(50, goblin.value);
+		makeLevel(50, goblinMiner.value, demon.value, 5);
 
 	}
 	levelActive = true;
