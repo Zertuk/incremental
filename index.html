@@ -5,15 +5,18 @@
 
 <link href = "style.css" rel = "stylesheet">
 
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
 <script src = "locations.js"></script>
 <script src = "options.js"></script>
 <script src = "demon.js"></script>
 <script src = "factory.js"></script>
-<script src = "level.js"></script>
 <script src = "main.js"></script>
 <script src = "store.js"></script>
+<script src = "level.js"></script>
 
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+
 
 <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
 
@@ -35,12 +38,19 @@
     <div id = "quest">
       <p id = "level"></p>
       <br>
-      
-      <p id = "player_stats"></p><p id = "monster_stats">g</p>
-      <br>
-      <p id = "loot"></p>
-      <p id = "special_loot"></p>
-    </div>
+      <div id = "stat_wrap">      
+        <p id = "monster_stats">--</p>
+        <br>
+        <p id = "player_stats">--</p>
+        <br>
+        <p id = "loot">--</p>
+        <br>
+        <p id = "special_loot">--</p>
+        <br>
+        <br>
+        <button id = "health_potion_button" onclick = 'useHealthPotion()'>Use HP(0)</button>
+      </div><!--stat_wrap-->
+    </div><!--quest-->
 		<div id = "main">			
 			<button onclick = "ectoplasmClick(1)">Click</button>
 			

@@ -13,7 +13,7 @@ function makeLevel(levelInp, monster) {
 	for (var i = 0; i < levelInp; i++) {
 		var random = Math.floor(Math.random()*levelInp);
 		level[i] = '_';
-		if (random < levelInp / 2){
+		if (random < levelInp / 5){
 			level[i] = monster;
 		}
 	}
@@ -31,26 +31,22 @@ function Monster() {
 		$('#loot').html('You have gained ' + gainedLoot + ' ectoplasm');
 	}
 	this.monsterInfo = function() {
-		$('#monster_stats').html(this.message +
+		$('#monster_stats').html(this.message + ':  ' +
 								'Dmg: ' + this.damage +
-								'HP: ' + this.health);
+								' HP: ' + this.health);
 	}
 	this.specialDrop = function(item, dropChance) {
 		var randomNum = Math.round(Math.random()*100);
-		console.log(randomNum);
 		if (randomNum < dropChance) {
 			$('#special_loot').html('You have found: ' + item);
 		}
 	}
-	this.monsterMove = function(level) {
+	this.monsterMove = function(levelInp) {
 		console.log(this.value);
-		for (var g = 0; g < 20; g++) {
-			console.log(g)
-			console.log(level[g])
+		for (var g = 0; g < levelInp; g++) {
 			if (level[g] == this.value && level[g-1] == '_') {
 				level[g-1] = 'G';
 				level[g] = '_'
-				console.log('hello')
 			}
 		}
 	} 
@@ -59,11 +55,10 @@ function Monster() {
 //monster move function, only moves if next val in array is '_'
 //takes Monster.value as parameter
 function monsterMove(value) {
-	for (var g = 0; g < levelObject.level2; g++) {
+	for (var g = 0; g < level.length; g++) {
 		if (level[g] == value && level[g-1] == '_') {
 			level[g - 1] = value;
 			level[g] = '_';
-			console.log(g);
 		}
 	}
 }
@@ -71,15 +66,16 @@ function monsterMove(value) {
 
 //here will be some monsters using the Monster default for inheritance
 var goblin = new Monster();
-goblin.message = 'A scary goblin';
+goblin.message = "'A scary goblin'";
 goblin.value = 'G';
 
 var demon = new Monster();
 demon.message = 'A demon';
 demon.value = 'D';
+demon.damage = 5;
 
 //function call to make the level, temporary for testing
-makeLevel(10, goblin.value);
+
 
 //giant mess of a function that needs to be remade, currently only works with goblins, need to fix
 //otherwise it updates the hp of both player/monster, exits if one of them dies, kills whole thing if
@@ -111,6 +107,7 @@ makeLevel(10, goblin.value);
 // }
 
 function battleTime(monster, item, chance) {
+	$('#player_stats').html('Player Dmg: ' +player.damage);
 	monster.monsterInfo();
 	player.health = player.health - monster.damage;
 	monster.health = monster.health - player.damage;
@@ -126,27 +123,31 @@ function battleTime(monster, item, chance) {
 		monster.loot();
 		monster.specialDrop(item, chance);
 		monster.health = 5;
-
 	}
 	i--;
 }
 
+
+function levelOne() {
+	$('#health_potion_button').html('Use HP(' + inventoryObject.healthPotion + ')');
+	i = 0;
+	levelActive = true;
+	makeLevel(100, demon.value);
+}
+
+levelOne()
 var i = 0;
-var levelActive = true;
 
 //function for the player to move, moves player and monster forward if '_'
 //otherwise battles the enemy
 //stops when player reaches end and gives them their loot 
-function moveInLevel() {
+function moveInLevel(monster) {
 	var player = 'Y';
-	console.log(level)
-	console.log(i)
-	console.log(goblin)
 	if (level[i] == '_'); {
 		level[i] = 'Y';
 		level[i - 1] = '_';
 		i++;
-		monsterMove(goblin.value)	
+		monsterMove(monster.value);	
 	}
 
 	if (i == level.length) {
@@ -156,6 +157,6 @@ function moveInLevel() {
 		$('#error').html('level over')
 	}
 	else if (level[i] != '_') {
-		battleTime(goblin, 'Dagger', 50);
+		battleTime(monster, 'Dagger', 10);
 	}
 }

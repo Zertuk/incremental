@@ -10,6 +10,7 @@ var batteriesUsed = 0;
 var blood = 0;
 var seedsPlanted = 1;
 var batteryOn = true;
+var levelActive = false;
 var fists, woodSword, ironSword;
 
 function updateHealthBar() {
@@ -149,9 +150,8 @@ window.setInterval(function() {
 		bloodGenerator(batteriesUsed);
 	}
 	if (levelActive) {
-		moveInLevel();
+		moveInLevel(demon);
 		$('#level').html(level);
-		console.log('ye');
 	}
 	count++;
 }, 500);

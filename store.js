@@ -2,7 +2,7 @@
 var swordObject = {
 	fists : {
 		name: 'Fists',
-		damage: 1,
+		damage: 2,
 		enchant: false
 	},
 
@@ -22,7 +22,7 @@ var swordObject = {
 //inventory
 var inventoryObject = {
 	weapon: swordObject.fists,
-	healthPotion: 0,
+	healthPotion: 10,
 	manaPotion: 0,
 	seed: 0,
 	map: false,
@@ -58,6 +58,7 @@ function useHealthPotion() {
 			inventoryObject.healthPotion--;
 			updateHealthBar();
 			inventoryList();
+			$('#health_potion_button').html('Use HP(' + inventoryObject.healthPotion + ')');
 		}
 	}
 }
