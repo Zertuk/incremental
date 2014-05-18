@@ -4,19 +4,22 @@ var levelObject = {
 	level2: 30,
 	level3: 10
 }
-for (var i = 0; i < levelObject.level2; i++) {
-	var random = Math.floor(Math.random()*levelObject.level2);
-	if (random < 23) {
-	 	level[i] = '_';
+function makeLevel(input) {
+	for (var i = 0; i < levelObject.level2; i++) {
+		var random = Math.floor(Math.random()*levelObject.level2);
+		if (random < 23) {
+		 	level[i] = '_';
+		}
+		else {
+			level[i] = input;
+		}
 	}
-	else {
-		level[i] = 'G';
-	}
-}
+};
 var gainedLoot = 0;
 function Monster() {
 	this.health = 5,
 	this.damage = 1,
+	this.value = 'M',
 	this.message = 'A mean monster',
 	this.loot = function() {
 		var lootDropped = Math.round(Math.random()*25);
@@ -35,10 +38,47 @@ function Monster() {
 			$('#special_loot').html('You have found: ' + item);
 		}
 	}
+	this.monsterMove = function(level) {
+		console.log(this.value);
+		for (var g = 0; g < 20; g++) {
+			console.log(g)
+			console.log(level[g])
+			if (level[g] == this.value && level[g-1] == '_') {
+				level[g-1] = 'G';
+				level[g] = '_'
+				console.log('hello')
+			}
+		}
+	} 
 }
+
+function monsterMove(value) {
+	monsterMoveVal = true;
+	for (var g = 0; g < levelObject.level2; g++) {
+		if (level[g] == value && level[g-1] == '_') {
+			level[g - 1] = value;
+			level[g] = '_';
+			console.log(g);
+		}
+	}
+	monsterMoveVal = false;
+}
+
+
+
 var goblin = new Monster();
 goblin.message = 'A scary goblin';
+goblin.value = 'G';
+console.log(goblin)
 var battle = false;
+
+var demon = new Monster();
+demon.message = 'A demon';
+demon.value = 'D';
+
+console.log(level)
+makeLevel(goblin.value);
+
 
 function battleTime() {
 	battle = true;
@@ -73,12 +113,12 @@ var monsterMoveVal = false;
 
 function moveInLevel() {
 	var player = 'Y';
-	
+	console.log(goblin)
 	if (level[i] == '_'); {
 		level[i] = 'Y';
 		level[i - 1] = '_';
 		i++;
-		monsterMove();	
+		monsterMove(Monster.value)	
 	}
 	if (level[i] == 'G') {
 		battleTime();
@@ -95,16 +135,4 @@ function moveInLevel() {
 	console.log(battle);
 
 	
-}
-
-function monsterMove() {
-	monsterMoveVal = true;
-	for (var g = 0; g < levelObject.level2; g++) {
-		if (level[g] == 'G' && level[g-1] != 'Y' && level[g-1] != 'G') {
-			level[g - 1] = 'G';
-			level[g] = '_';
-			console.log(g);
-		}
-	}
-	monsterMoveVal = false;
 }
