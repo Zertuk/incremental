@@ -154,9 +154,10 @@ window.setInterval(function() {
 			moveInLevel(demon);
 		}
 		else if (questSelected == 'mines') {
-			moveInLevel(goblin);
+			moveInLevel(goblinMiner, demon);
+
 		}
-		$('#level').html(level);
+		$('.level').html(level);
 	}
 	count++;
 }, 500);
