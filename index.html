@@ -270,6 +270,8 @@ _/           |==|   \_
 			<br>
       <button onclick = "enterMapLocation('#trainShow')" id = "trainStation">Train Station</button>
 			<br>
+      <button onclick = "enterMapLocation('#camp_ground')">Campground</button>
+      <br>
 			<button onclick = "enterMainLocation('#map')">Leave Map</button>
 
       <pre id = "fountain">
@@ -315,7 +317,7 @@ itz     ,-' ,  `:7b
         <button id = "steal_items" onclick = 'stealItems()'>Take Items</button>
       </div><!--camp_scenario-->
       <div id = "camp_use">
-        <button>Leave</button>
+        <button onclick = "enterMapLocation('#camp_ground')">Leave</button>
         <button id = 'rest' onclick = 'campRest()'>Rest</button>
         <button id = "confess" onclick = 'campConfess()'>Confess</button>
       </div><!--camp_use-->
@@ -375,6 +377,7 @@ Artur Gawronski
              (_/  .'
          jgs  (_.'
 </pre>
+</div>
 
 		<div id = "reflectingPool">
 			<div id = "poolChoice">

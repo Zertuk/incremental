@@ -46,7 +46,6 @@ function searchCamp() {
 function campConfess() {
 	$('#man_text').html('You took my stuff? Guess <br> You are paying extra!');
 	confess = true;
-	campgroundAfterScenario()
 }
 
 //raises price based on outcome of scenario, then updates button
@@ -105,8 +104,9 @@ function stealItems() {
 	$('#camp_scenario').hide();
 	$('#camp_use').show();
 	restPrice = 1;
-	//enterMapLocation('#campground');
+	enterMapLocation('#campground');
 	thief = true;
+	campgroundAfterScenario();
 }
 
 //waiting... 
