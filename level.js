@@ -84,33 +84,52 @@ makeLevel(10, goblin.value);
 //giant mess of a function that needs to be remade, currently only works with goblins, need to fix
 //otherwise it updates the hp of both player/monster, exits if one of them dies, kills whole thing if
 //player dies, gives loot if monster dies
-function battleTime() {
-	battle = true;
-	this.goblin.monsterInfo();
-	player.health = player.health - this.goblin.damage;
-	this.goblin.health = this.goblin.health - player.damage;
-	console.log('player: ' + player.health);
-	console.log('monster: ' + this.goblin.health);
+// function battleTime() {
+// 	battle = true;
+// 	this.goblin.monsterInfo();
+// 	player.health = player.health - this.goblin.damage;
+// 	this.goblin.health = this.goblin.health - player.damage;
+// 	console.log('player: ' + player.health);
+// 	console.log('monster: ' + this.goblin.health);
+// 	if (player.health <= 0) {
+// 		levelActive = false;
+// 		$('#error').html('You have been slain');
+// 		battle = false;
+// 	}
+// 	else if (this.goblin.health <= 0) {
+// 		battle = false;
+// 		level[i] = 'Y';
+// 		level[i - 1] ='_';
+// 		i++;
+// 		this.goblin.monsterInfo();
+// 		this.goblin.loot();
+// 		this.goblin.specialDrop('axe', 50);
+// 		this.goblin.health = 5;
+// 		console.log(goblin);
+// 	}
+// 	i--;
+// }
+
+function battleTime(monster, item, chance) {
+	monster.monsterInfo();
+	player.health = player.health - monster.damage;
+	monster.health = monster.health - player.damage;
 	if (player.health <= 0) {
 		levelActive = false;
 		$('#error').html('You have been slain');
-		battle = false;
 	}
-	else if (this.goblin.health <= 0) {
-		battle = false;
+	else if (monster.health <= 0) {
 		level[i] = 'Y';
-		level[i - 1] ='_';
+		level[i - 1] = '_';
 		i++;
-		this.goblin.monsterInfo();
-		this.goblin.loot();
-		this.goblin.specialDrop('axe', 50);
-		this.goblin.health = 5;
-		console.log(goblin);
+		monster.monsterInfo();
+		monster.loot();
+		monster.specialDrop(item, chance);
+		monster.health = 5;
+
 	}
 	i--;
-
 }
-
 
 var i = 0;
 var levelActive = true;
@@ -120,6 +139,8 @@ var levelActive = true;
 //stops when player reaches end and gives them their loot 
 function moveInLevel() {
 	var player = 'Y';
+	console.log(level)
+	console.log(i)
 	console.log(goblin)
 	if (level[i] == '_'); {
 		level[i] = 'Y';
@@ -127,13 +148,14 @@ function moveInLevel() {
 		i++;
 		monsterMove(goblin.value)	
 	}
-	if (level[i] == 'G') {
-		battleTime();
-	}
+
 	if (i == level.length) {
 		levelActive = false;
 		ectoplasm = ectoplasm + gainedLoot;
 		gainedLoot = 0;
 		$('#error').html('level over')
+	}
+	else if (level[i] != '_') {
+		battleTime(goblin, 'Dagger', 50);
 	}
 }
