@@ -154,5 +154,5 @@ window.setInterval(function() {
 		console.log('ye');
 	}
 	count++;
-}, 1000);
+}, 500);
 
