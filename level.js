@@ -1,21 +1,24 @@
+var gainedLoot = 0;
+
 var level = new Array;
 var levelObject = {
 	level1: 20,
 	level2: 30,
 	level3: 10
 }
-function makeLevel(input) {
-	for (var i = 0; i < levelObject.level2; i++) {
-		var random = Math.floor(Math.random()*levelObject.level2);
-		if (random < 23) {
-		 	level[i] = '_';
-		}
-		else {
-			level[i] = input;
+
+//makes the level, takes in the level length to determine length and the monster
+//to determine what monster to fill with, randomly spawns monsters
+function makeLevel(levelInp, monster) {
+	for (var i = 0; i < levelInp; i++) {
+		var random = Math.floor(Math.random()*levelInp);
+		level[i] = '_';
+		if (random < levelInp / 2){
+			level[i] = monster;
 		}
 	}
 };
-var gainedLoot = 0;
+
 function Monster() {
 	this.health = 5,
 	this.damage = 1,
@@ -53,7 +56,6 @@ function Monster() {
 }
 
 function monsterMove(value) {
-	monsterMoveVal = true;
 	for (var g = 0; g < levelObject.level2; g++) {
 		if (level[g] == value && level[g-1] == '_') {
 			level[g - 1] = value;
@@ -61,7 +63,6 @@ function monsterMove(value) {
 			console.log(g);
 		}
 	}
-	monsterMoveVal = false;
 }
 
 
@@ -77,7 +78,7 @@ demon.message = 'A demon';
 demon.value = 'D';
 
 console.log(level)
-makeLevel(goblin.value);
+makeLevel(10, goblin.value);
 
 
 function battleTime() {
