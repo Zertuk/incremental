@@ -70,6 +70,7 @@ function campRest() {
 		player.health = player.maxHealth;
 		$('camp_text').html('You are fully rested');
 		raiseRestPrice();
+		updateHealthBar();
 	}
 	else {
 		$('#error').html('You need more money to rest');
