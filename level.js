@@ -25,6 +25,7 @@ function makeLevel(levelInp, monster) {
 //default monster object
 function Monster() {
 	this.health = 5,
+	this.maxHealth = 5,
 	this.damage = 1,
 	this.value = 'M',
 	this.message = 'A mean monster',
@@ -38,7 +39,7 @@ function Monster() {
 	this.monsterInfo = function() {
 		$('#monster_stats').html(this.message + ':  ' +
 								'Dmg: ' + this.damage +
-								' HP: ' + this.health);
+								' HP: ' + this.health + '|' + this.maxHealth);
 	}
 	this.specialDrop = function(item, dropChance) {
 		var randomNum = Math.round(Math.random()*100);
@@ -132,7 +133,7 @@ function battleTime(monster) {
 		monster.monsterInfo();
 		monster.loot();
 		monster.specialDrop(monster.specialLoot, monster.dropChance);
-		monster.health = 5;
+		monster.health = monster.maxHealth;
 	}
 	i--;
 }
