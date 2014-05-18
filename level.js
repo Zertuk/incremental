@@ -126,6 +126,7 @@ function battleTime(monster, item, chance) {
 	}
 	i--;
 }
+var i = 0;
 
 
 function levelOne() {
@@ -135,8 +136,6 @@ function levelOne() {
 	makeLevel(100, demon.value);
 }
 
-levelOne()
-var i = 0;
 
 //function for the player to move, moves player and monster forward if '_'
 //otherwise battles the enemy
