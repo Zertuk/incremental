@@ -1,4 +1,4 @@
-#storeButton, #quest, #churchInside, #train2, #iron_sword, #trainStation, #trainShow, #shop_keeper_blink, #factory2, #house2, #demon, #mountain,  #rune_true, #tower, #poolYes, #fieldButton, #mapButton, #batteryButton, #inventory, #reflectingPool, #field, #store, #map {
+#storeButton, #quest, #main, #churchInside, #train2, #iron_sword, #trainStation, #trainShow, #shop_keeper_blink, #factory2, #house2, #demon, #mountain,  #rune_true, #tower, #poolYes, #fieldButton, #mapButton, #batteryButton, #inventory, #reflectingPool, #field, #store, #map {
 	display: none;
 }
 
@@ -12,6 +12,21 @@
 	background-color: green;
 	text-align: center;
 	border: 1px solid #21A652;
+}
+#camp_ground {
+	max-width: 900px;
+}
+#man {
+	float:right;
+	margin-top: -300px;
+}
+#man_text {
+	float: right;
+	margin-top: -350px;
+	margin-right: 120px;
+}
+#tent{
+	position: absolute;
 }
 #quest p{
 	display: inline;
