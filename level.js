@@ -19,6 +19,7 @@ function makeLevel(levelInp, monster) {
 	}
 };
 
+//default monster object
 function Monster() {
 	this.health = 5,
 	this.damage = 1,
@@ -55,6 +56,8 @@ function Monster() {
 	} 
 }
 
+//monster move function, only moves if next val in array is '_'
+//takes Monster.value as parameter
 function monsterMove(value) {
 	for (var g = 0; g < levelObject.level2; g++) {
 		if (level[g] == value && level[g-1] == '_') {
@@ -66,21 +69,21 @@ function monsterMove(value) {
 }
 
 
-
+//here will be some monsters using the Monster default for inheritance
 var goblin = new Monster();
 goblin.message = 'A scary goblin';
 goblin.value = 'G';
-console.log(goblin)
-var battle = false;
 
 var demon = new Monster();
 demon.message = 'A demon';
 demon.value = 'D';
 
-console.log(level)
+//function call to make the level, temporary for testing
 makeLevel(10, goblin.value);
 
-
+//giant mess of a function that needs to be remade, currently only works with goblins, need to fix
+//otherwise it updates the hp of both player/monster, exits if one of them dies, kills whole thing if
+//player dies, gives loot if monster dies
 function battleTime() {
 	battle = true;
 	this.goblin.monsterInfo();
@@ -108,10 +111,13 @@ function battleTime() {
 
 }
 
+
 var i = 0;
 var levelActive = true;
-var monsterMoveVal = false;
 
+//function for the player to move, moves player and monster forward if '_'
+//otherwise battles the enemy
+//stops when player reaches end and gives them their loot 
 function moveInLevel() {
 	var player = 'Y';
 	console.log(goblin)
@@ -119,21 +125,15 @@ function moveInLevel() {
 		level[i] = 'Y';
 		level[i - 1] = '_';
 		i++;
-		monsterMove(Monster.value)	
+		monsterMove(goblin.value)	
 	}
 	if (level[i] == 'G') {
 		battleTime();
 	}
-	if (i == levelObject.level2) {
+	if (i == level.length) {
 		levelActive = false;
 		ectoplasm = ectoplasm + gainedLoot;
-		console.log(gainedLoot);
 		gainedLoot = 0;
-		console.log(gainedLoot);
+		$('#error').html('level over')
 	}
-	console.log(level[i + 1]);
-	console.log(i);
-	console.log(battle);
-
-	
 }
