@@ -195,7 +195,7 @@ function moveInLevel(monster, specialMonster) {
 		levelActive = false;
 		ectoplasm = ectoplasm + gainedLoot;
 		gainedLoot = 0;
-		$('#error').html('level over')
+		$('#error').html('Level complete, you may leave and keep anything you found')
 	}
 	else if (level[i] == monster.value) {
 		battleTime(monster);
