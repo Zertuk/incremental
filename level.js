@@ -199,6 +199,12 @@ function moveInLevel(monster, specialMonster) {
 
 // }
 
+function leaveQuest() {
+	$('#quest').hide();
+	levelActive = false;
+	$('#main').show();
+}
+
 function getQuestSelect(quest) {
 	questSelected = $(quest).val();
 	$(quest).hide();
