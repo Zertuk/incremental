@@ -149,6 +149,7 @@ window.setInterval(function() {
 	if (batteryOn == true) {
 		bloodGenerator(batteriesUsed);
 	}
+	//maybe switch to switch
 	if (levelActive) {
 		if (questSelected == 'depths') {
 			moveInLevel(demon, demonWizard);
@@ -159,6 +160,9 @@ window.setInterval(function() {
 		}
 		else if (questSelected == 'cavern') {
 			moveInLevel(rock);
+		}
+		else if (questSelected == 'approach') {
+			moveInLevel(demon, demonWizard);
 		}
 		$('.level').html(level);
 	}

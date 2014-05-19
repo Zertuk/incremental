@@ -2,13 +2,6 @@ var gainedLoot = 0;
 var questSelected = null;
 
 var level = new Array;
-var levelObject = {
-	level1: 20,
-	level2: 30,
-	level3: 10
-}
-
-
 
 //makes the level, takes in the level length to determine length and the monster
 //to determine what monster to fill with, randomly spawns monsters
@@ -77,12 +70,6 @@ function monsterMove(value) {
 		}
 	}
 }
-
-var mine = 5;
-
-function mineBackground() {
-};
-
 
 //here will be some monsters using the Monster default for inheritance
 var goblinMiner = new Monster();
@@ -215,15 +202,21 @@ function moveInLevel(monster, specialMonster) {
 function getQuestSelect(quest) {
 	questSelected = $(quest).val();
 	$(quest).hide();
-	loadLevel(questSelected);
+	if (quest == '#church_quest') {
+		loadLevelChurch(questSelected);
+	}
+	else if (quest == '#mountain_quest') {
+		loadLevel(questSelected);
+	}
 }
+
+var questText = $('#quest_text');
 
 function loadLevel(questSelected) {
 	console.log(questSelected);
 	levelActive = true;
-	var questText = $('#quest_text');
-		$('#quest').show();
-		$('#mountain').hide();
+	$('#quest').show();
+	$('#mountain').hide();
 
 	if (questSelected == 'depths') {
 		makeLevel(60, demon.value, demonWizard.value, 1);
@@ -240,4 +233,15 @@ function loadLevel(questSelected) {
 		$('#cavern_quest').show();
 		questText.html('Wow it is a mess in here, rocks laying in the path');
 	}
+ }
+
+ function loadLevelChurch(questSelected) {
+ 	levelActive = true;
+ 	$('#quest').show();
+ 	$('#churchInside').hide();
+ 	if (questSelected == 'approach') {
+ 		makeLevel(60, demon.value, demonWizard.value, 3);
+ 		questText.html('There are demons everywhere');
+ 		$('#approach_quest').show();
+ 	}
  }
