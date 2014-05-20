@@ -2,7 +2,7 @@
 var swordObject = {
 	fists : {
 		name: 'Fists',
-		damage: 2,
+		damage: 1,
 		enchant: false
 	},
 
@@ -36,6 +36,22 @@ var player = {
 	damage: swordObject.fists.damage,
 	health: 75.00,
 	maxHealth: 100
+}
+var flesh = 0;
+function createFlesh() {
+	if ((ectoplasm > 0 ) && (blood > 0)) {
+		if (ectoplasm > blood) {
+			flesh = blood;
+		}
+		else {
+			flesh = ectoplasm;
+		}
+			ectoplasm = ectoplasm - flesh;
+			blood = blood - flesh;
+			console.log(flesh);
+			player.maxHealth = player.maxHealth + Math.round(flesh / 5);
+			flesh = 0;
+	}
 }
 
 function fixHP() {
