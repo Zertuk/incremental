@@ -13,6 +13,7 @@
 <script src = "factory.js"></script>
 <script src = "main.js"></script>
 <script src = "store.js"></script>
+<script src = "reflecting.js"></script>
 <script src = "level.js"></script>
 
 
@@ -26,7 +27,7 @@
 <body>
   <div class = "wrapper">
 		<div id = "ectoplasmDiv">
-      <button onclick = "createFlesh()">flesh</button>
+
 			<button id = "inventoryButton" onclick = "enterMainLocation('#inventory')">Inventory</button>
 			
 			<p id = "ectoplasm">You have 0 ectoplasm</p>
@@ -315,6 +316,7 @@ _/           |==|   \_
 			<button onclick = "plantSeed()">Place Gear</button>
 			<button onclick = "plantAll()">Place All</button>
 			<button id = "batterButton" onclick = "useBattery()">Use Battery</button>
+      <button onclick = "createFlesh()">flesh</button>
 			<p id = "seeds_planted">Gears Placed: 0</p>
 			<p id = "ecto_gen"></p>
 			<p id = "blood_gen"></p>
@@ -324,7 +326,7 @@ _/           |==|   \_
 
 		<div id = "map">
 			<p>THIS IS A MAP</p>
-			<button onclick = "enterMapLocation('#reflectingPool')">Reflecting Pool</button>
+			<button value = "reflectingPool">Reflecting Pool</button>
 			<br>
 			<button onclick =  "enterMapLocation('#mountain')" id = "enterCave">The Mountain</button>	
 			<br>
@@ -342,7 +344,7 @@ _/           |==|   \_
         \_____/                                "     "          ).  
   ~~~~~/_______\~~~~~fsc                      _ ___          o (:') o   
                                              (@))_))        o ~/~~\~ o   
-  [ Reflecting Pool]                                          o  o  o
+  [ Reflecting Pool ]                                          o  o  o
                                                  [ Camp Site ]
 
     </pre>
@@ -505,9 +507,9 @@ lc'\""""""||          ||""""""""""""(     )"""""""""""""""""""""""""""
                      ~~~~~~~~~~~~~~~~~~~~~~~~~</pre>
 
 				<br>
-				<button>Power</button>
-				<button>Health</button>
-				<button>Freedom</button>
+				<button id= "power_choice">Power</button>
+				<button id = "health_choice">Health</button>
+				<button id = "freedom_choice">Freedom</button>
 			</div><!--poolYes-->
 		</div><!--reflectingPool-->
 
@@ -592,7 +594,7 @@ lc'\""""""||          ||""""""""""""(     )"""""""""""""""""""""""""""
 		<div id = "mountain">
 			<div id = "rune_false">
 				<p>There is a strange pattern on etched into the mountain, it seems to do nothing.</p>
-				<button onclick = "enterMapLocation('#mountain')" id = "leaveMountain">Leave</button>
+				<button value = 'mountain' id = "leaveMountain">Leave</button>
 			</div><!--rune_false-->
 			<div id = "rune_true">
 				<p>The Magic Rune glows as you approach and the pattern on the mountain wall also lights up. A passage opens into the mountain.  Do you enter?</p>

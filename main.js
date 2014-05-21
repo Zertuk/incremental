@@ -7,7 +7,7 @@ var smoke = true;
 var blink = false;
 var count = 0;
 var batteriesUsed = 0;
-var blood = 0;
+var blood = 500;
 var seedsPlanted = 1;
 var batteryOn = true;
 var levelActive = false;
@@ -22,7 +22,7 @@ function healthRegen() {
 }
 
 
-//loads dom elements
+//loads dom elements & event listeners
 window.onload = function() {
 	var reflectingPool = document.getElementById('reflectingPool');
 	var store = document.getElementById('store');
@@ -31,7 +31,17 @@ window.onload = function() {
 	var inventory = document.getElementById('inventory');
 	var fieldButton = document.getElementById('fieldButton');
 	var mapButton = document.getElementById('mapButton');
+
+
+	$('button').click(function() {
+
+		var buttonValue = $(this).val();
+		buttonValue = "#" + buttonValue;
+		enterMapLocation(buttonValue);
+	})
 }
+
+
 
 //generates ectoplasm on click
 function ectoplasmClick(num) {
@@ -123,6 +133,7 @@ function blinkAnimate() {
 
 }
 
+
 //main game loop, updates 0.5s
 window.setInterval(function() {
 	if (trainShow == true) {
@@ -134,18 +145,14 @@ window.setInterval(function() {
 		updateHealthBar();
 	}
 	fixHP();
-	if (count % 2 == 0) {
-	smokeAnimate();
-	}
+	// if (count % 2 == 0) {
+	// smokeAnimate();
+	// }
 
-	if (count > 14) {
-		blinkAnimate();
-	}
+	// if (count > 14) {
+	// 	blinkAnimate();
+	// }
 	
-	if (ghostStoreVal == false){
-		ghostStore();
-	}
-
 	if (batteryOn == true) {
 		bloodGenerator(batteriesUsed);
 	}
@@ -167,5 +174,5 @@ window.setInterval(function() {
 		$('.level').html(level);
 	}
 	count++;
-}, 500);
+}, 750);
 
