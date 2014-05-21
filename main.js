@@ -32,14 +32,29 @@ window.onload = function() {
 	var fieldButton = document.getElementById('fieldButton');
 	var mapButton = document.getElementById('mapButton');
 
-
+ 
 	$('button').click(function() {
-
 		var buttonValue = $(this).val();
-		buttonValue = "#" + buttonValue;
-		enterMapLocation(buttonValue);
-	})
+		var split = buttonValue.split(',');
+		$('#' + split[1]).toggle();
+		$('#' + split[0]).toggle();
+		if (split[0] == 'mountain') {
+			magicDoor();
+		}
+		else if (split[0] == 'trainShow') {
+			trainTicket();
+		}
+		else if (split[0] == 'store') {
+			$('#store_status').html('You looking to buy?');
+		}
+		else if (split[0] == '#inventory') {
+			inventoryList();
+		}
+		error.innerHTML = '';
+	});
+
 }
+
 
 
 

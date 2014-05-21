@@ -326,9 +326,9 @@ _/           |==|   \_
 
 		<div id = "map">
 			<p>THIS IS A MAP</p>
-			<button value = "reflectingPool">Reflecting Pool</button>
+			<button value = "reflectingPool,map">Reflecting Pool</button>
 			<br>
-			<button onclick =  "enterMapLocation('#mountain')" id = "enterCave">The Mountain</button>	
+			<button value = "mountain,map" id = "enterCave">The Mountain</button>	
 			<br>
       <button onclick = "enterMapLocation('#trainShow')" id = "trainStation">Train Station</button>
 			<br>
@@ -594,7 +594,7 @@ lc'\""""""||          ||""""""""""""(     )"""""""""""""""""""""""""""
 		<div id = "mountain">
 			<div id = "rune_false">
 				<p>There is a strange pattern on etched into the mountain, it seems to do nothing.</p>
-				<button value = 'mountain' id = "leaveMountain">Leave</button>
+				<button value = 'mountain,map' id = "leaveMountain">Leave</button>
 			</div><!--rune_false-->
 			<div id = "rune_true">
 				<p>The Magic Rune glows as you approach and the pattern on the mountain wall also lights up. A passage opens into the mountain.  Do you enter?</p>
