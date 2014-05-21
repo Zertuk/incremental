@@ -121,7 +121,7 @@ _____|                 |     /____\    |                 |
 			<button id = "mapButton" value = "map,main">Map</button>
 			<button onclick = "inverseColors()">Inverse</button>
 
-			<span onclick = "enterMainLocation('#store')"><pre id = "house1">
+			<pre value = "store,main" id = "house1">
           (
   
             )
@@ -142,8 +142,8 @@ _____|                 |     /____\    |                 |
 
 
 
-</pre></span>
-			<span onclick = "enterMainLocation('#store')"><pre id = "house2">
+</pre>
+			<pre value = "store,main" id = "house2">
             )
   
           (
@@ -164,8 +164,8 @@ _____|                 |     /____\    |                 |
 
 
 
-</pre></span>
-<span onclick = "enterMainLocation('#churchInside')"><pre id = "church">
+</pre>
+<pre value = "churchInside,main" id = "church">
 
   [ The Church ]
 
@@ -182,8 +182,8 @@ _____|                 |     /____\    |                 |
   /          |==|  \
 _/           |==|   \_
 
-</pre></span>
-<span onclick= "enterMainLocation('#field')"><pre id = "factory">
+</pre>
+<pre value = "field,main" id = "factory">
 	   __  . .* ,
      ~#@#%(" .,$ @
    .;#$% %
@@ -197,8 +197,8 @@ _/           |==|   \_
  ;. :  ;    ###:__.    ;  ;      :
 .'  `._;       :  :__.' .'        `.
 
-             [ Factory ]</pre></span>
-<span onclick = "enterMainLocation('#field')"><pre id = "factory2">
+             [ Factory ]</pre>
+<pre value = "field,main" id = "factory2">
 	   ''%^   ^_
      ~$.@%}^)  ''*
    ."^ ';"
@@ -212,7 +212,7 @@ _/           |==|   \_
  ;. :  ;    ###:__.    ;  ;      :
 .'  `._;       :  :__.' .'        `.
 
-             [ Factory ]</pre></span>
+             [ Factory ]</pre>
 		</div><!--main-->
 
 
@@ -348,7 +348,7 @@ _/           |==|   \_
                                                  [ Camp Site ]
 
     </pre>
-    <pre id = "mount" onclick = "enterMapLocation('#mountain')">                                                     
+    <span value = "mountain,map"><pre id = "mount" value = "mountain,map">                                                     
             ,/k\,
            /  ih,\
 itz     ,-' ,  `:7b
@@ -356,8 +356,8 @@ itz     ,-' ,  `:7b
   --"  ,    ,-' ^6x, `."^=._
 
       [ The Mountain ]
-    </pre>
-    <pre id = "station" onclick = "enterMapLocation('#trainShow')">   
+    </pre></span>
+    <pre id = "station" value = "trainShow,map">   
                                    (
                            ________[]_ 
                           /^=^-^-^=^-^\ 
