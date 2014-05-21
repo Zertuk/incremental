@@ -36,8 +36,8 @@ window.onload = function() {
 	$('button').click(function() {
 		var buttonValue = $(this).val();
 		var split = buttonValue.split(',');
-		$('#' + split[1]).toggle();
-		$('#' + split[0]).toggle();
+		$('#' + split[1]).hide();
+		$('#' + split[0]).fadeIn('slow');
 		if (split[0] == 'mountain') {
 			magicDoor();
 		}
