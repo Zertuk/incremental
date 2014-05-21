@@ -33,9 +33,10 @@ window.onload = function() {
 	var mapButton = document.getElementById('mapButton');
 
  
-	$('button').click(function() {
-		var buttonValue = $(this).val();
+	$('button, pre').click(function() {
+		var buttonValue = $(this).attr('value');
 		var split = buttonValue.split(',');
+		console.log(buttonValue);
 		$('#' + split[1]).hide();
 		$('#' + split[0]).fadeIn('slow');
 		if (split[0] == 'mountain') {
