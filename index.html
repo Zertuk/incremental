@@ -220,12 +220,13 @@ _/           |==|   \_
  
 		<div id = "store">
 			<div id = "storeWrapper">
-				<br>				<p id = "iron_sword">Iron Sword: <button onclick = "storeItems('ironSword')">1000</button></p>
-				<p id = "wood_sword">Wood Sword: <button onclick = "storeItems('woodSword')">100</button></p>
-				<p>Health Potion: <button onclick = "storeItems('healthPotion')">50</button></p>
-				<p>Mana Potion: <button onclick = "storeItems('manaPotion')">50</button></p>
-				<p>Gear: <button onclick = "storeItems('seed')">500</button></p>
-				<p id = "mapListing">Map: <button onclick = "storeItems('map')">50</button></p>
+				<br>
+        <p id = "iron_sword">Iron Sword: <button class = 'store_button' value = 'ironSword'>1000</button></p>
+				<p id = "wood_sword">Wood Sword: <button class = 'store_button' value = 'woodSword'>100</button></p>
+				<p>Health Potion: <button class = 'store_button' value = 'healthPotion'>50</button></p>
+				<p>Mana Potion: <button class = 'store_button' value = 'manaPotion'>50</button></p>
+				<p>Gear: <button class = 'store_button' value = 'seed'>500</button></p>
+				<p id = "mapListing">Map: <button class = 'store_button' value = 'map,true'>50</button></p>
 				<p>Battery: <button onclick = "storeItems('battery')">2000</button></p>
 				<p id = "rune">Magic Rune: <button onclick = "storeItems('rune')">1</button></p>
 				<br>
@@ -308,7 +309,7 @@ _/           |==|   \_
       <button onclick = 'useHealthPotion()'>Use HP(+35)</button>
       <br>
 
-			<button value = "main,inventory">Leave Inventory</button>
+			<button class = 'location_button' value = "main,inventory">Leave Inventory</button>
 		</div><!--inventory-->
 
 		<div id = "field">
@@ -321,20 +322,20 @@ _/           |==|   \_
 			<p id = "ecto_gen"></p>
 			<p id = "blood_gen"></p>
 			<button id = "turn_off" onclick = "turnOffBattery()">Shut Off Machine</button>
-			<button value = "main,field">Leave Factory</button>
+			<button class = 'location_button' value = "main,field">Leave Factory</button>
 		</div><!--field-->
 
 		<div id = "map">
 			<p>THIS IS A MAP</p>
-			<button value = "reflectingPool,map">Reflecting Pool</button>
+			<button class = 'location_button' value = "reflectingPool,map">Reflecting Pool</button>
 			<br>
-			<button value = "mountain,map" id = "enterCave">The Mountain</button>	
+			<button class = 'location_button' value = "mountain,map" id = "enterCave">The Mountain</button>	
 			<br>
-      <button value = "trainShow,map" id = "trainStation">Train Station</button>
+      <button class = 'location_button' value = "trainShow,map" id = "trainStation">Train Station</button>
 			<br>
-      <button value = "camp_ground,map">Campground</button>
+      <button class = 'location_button' value = "camp_ground,map">Campground</button>
       <br>
-			<button value = "main,map">Leave Map</button>
+			<button class = 'location_button' value = "main,map">Leave Map</button>
 
       <pre id = "fountain">
            ('                                     ______
@@ -379,7 +380,7 @@ itz     ,-' ,  `:7b
         <button id = "steal_items" onclick = 'stealItems()'>Take Items</button>
       </div><!--camp_scenario-->
       <div id = "camp_use">
-        <button value = "map,camp_ground">Leave</button>
+        <button  class = 'location_button' value = "map,camp_ground">Leave</button>
         <button id = 'rest' onclick = 'campRest()'>Rest</button>
         <button id = "confess" onclick = 'campConfess()'>Confess</button>
       </div><!--camp_use-->
@@ -475,7 +476,7 @@ lc'\""""""||          ||""""""""""""(     )"""""""""""""""""""""""""""
                                                            `'`'</pre>
 
 				<button onclick = "usePool()">Yes</button>
-				<button value = "map,reflectingPool">No</button>
+				<button class = 'location_button' value = "map,reflectingPool">No</button>
 			</div><!--poolChoice-->
 			<div id = "poolYes">
 				<P>You look into the pool, it offers you one reflection on yourself</p>
@@ -549,7 +550,7 @@ lc'\""""""||          ||""""""""""""(     )"""""""""""""""""""""""""""
         <option value = 'figure'>The Figure</option>
       </select>
       <button onclick = "getQuestSelect('#church_quest')">Enter</button>
-      <button value = "main,churchInside">Leave</button>
+      <button class = 'location_button' value = "main,churchInside">Leave</button>
     </div>
 
 		    <div id = "demon">
@@ -594,7 +595,7 @@ lc'\""""""||          ||""""""""""""(     )"""""""""""""""""""""""""""
 		<div id = "mountain">
 			<div id = "rune_false">
 				<p>There is a strange pattern on etched into the mountain, it seems to do nothing.</p>
-				<button value = 'map,mountain'>Leave</button>
+				<button class = 'location_button' value = 'map,mountain'>Leave</button>
 			</div><!--rune_false-->
 			<div id = "rune_true">
 				<p>The Magic Rune glows as you approach and the pattern on the mountain wall also lights up. A passage opens into the mountain.  Do you enter?</p>
@@ -607,7 +608,7 @@ lc'\""""""||          ||""""""""""""(     )"""""""""""""""""""""""""""
         <button onclick = "getQuestSelect('#mountain_quest')">Enter</button>
         <br>
         <br>
-				<button value = "map,mountain" id = "leaveMountain">Leave</button>
+				<button class = 'location_button' value = "map,mountain" id = "leaveMountain">Leave</button>
 			</div><!--rune_true-->
 							<pre id = "magic_door">
 

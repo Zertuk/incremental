@@ -32,11 +32,10 @@ window.onload = function() {
 	var fieldButton = document.getElementById('fieldButton');
 	var mapButton = document.getElementById('mapButton');
 
- 
-	$('button, pre').click(function() {
+ 	//event listener to switch location
+	$('.location_button, pre').click(function() {
 		var buttonValue = $(this).attr('value');
 		var split = buttonValue.split(',');
-		console.log(buttonValue);
 		$('#' + split[1]).hide();
 		$('#' + split[0]).fadeIn('slow');
 		if (split[0] == 'mountain') {
@@ -53,6 +52,17 @@ window.onload = function() {
 		}
 		error.innerHTML = '';
 	});
+
+	//event listener to buy store items
+	$('.store_button').click(function() {
+		var buttonValue = $(this).attr('value');
+		var split = buttonValue.split(',');
+		storeItems(buttonValue);
+		//removes the item from store if it has a secondary value
+		if (split[1]) {
+			$(this).parent().remove();
+		}
+	})
 
 }
 
