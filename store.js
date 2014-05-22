@@ -37,22 +37,6 @@ var player = {
 	health: 75.00,
 	maxHealth: 100
 }
-var flesh = 0;
-function createFlesh() {
-	if ((ectoplasm > 0 ) && (blood > 0)) {
-		if (ectoplasm > blood) {
-			flesh = blood;
-		}
-		else {
-			flesh = ectoplasm;
-		}
-			ectoplasm = ectoplasm - flesh;
-			blood = blood - flesh;
-			console.log(flesh);
-			player.maxHealth = player.maxHealth + Math.round(flesh / 5);
-			flesh = 0;
-	}
-}
 
 function fixHP() {
 	if (player.health > player.maxHealth) {
@@ -79,7 +63,6 @@ function useHealthPotion() {
 	}
 }
 
-
 //updated inventory list for use when navigating to inventory screen
 function inventoryList() {
 	$('#inventoryItems').html("Health Potions: " + inventoryObject.healthPotion + "<br>"
@@ -88,7 +71,6 @@ function inventoryList() {
 							+ "Weapon: " + inventoryObject.weapon.name + "<br>"
 							+ "Batteries: " + inventoryObject.battery );
 }
-
 
 //buys item if you have enough money else error
 function itemBuy() {
@@ -119,7 +101,6 @@ function storeItems(item) {
 			if (itemBought == true) {
 				inventoryObject.weapon = swordObject.woodSword;
 				player.damage = swordObject.woodSword.damage;
-				$('#wood_sword').css('display', 'none');
 				$('#iron_sword').show();
 				storeStatus('This thing wont do much but its better than fists');
 			}
@@ -130,7 +111,6 @@ function storeItems(item) {
 			if(itemBought == true) {
 				inventoryObject.weapon = swordObject.ironSword;
 				player.damage = swordObject.ironSword.damage;
-				$('#iron_sword').css('display', 'none');
 				storeStatus('Now this will show them');
 			}
 			break;
@@ -147,7 +127,7 @@ function storeItems(item) {
 			var itemBought = itemBuy();
 			if (itemBought == true) {
 				inventoryObject.manaPotion++;
-				storeStatus('Heres your Mana Potion');
+				storeStatus('You know you dont evne have mana right?');
 			}
 			break;
 		case "seed":
@@ -165,7 +145,7 @@ function storeItems(item) {
 			if (itemBought == true) {
 				inventoryObject.map = true;
 				mapButton.style.display = "inline";
-				$('#mapListing').css('display', 'none');
+				console.log('hell0');
 				storeStatus('Hey! Dont open that map in my store!');
 			}
 			break;
@@ -182,7 +162,6 @@ function storeItems(item) {
 			var itemBought = itemBuy();
 			if (itemBought == true) {
 				inventoryObject.rune = true;
-				$('#rune').hide();
 				storeStatus('Magic Rune! It is glowing strangely.');				
 			}
 	}
