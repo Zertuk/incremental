@@ -109,7 +109,7 @@ _____|                 |     /____\    |                 |
         <br>
         <button id = "health_potion_button" class = "potion_button" value = "healthPotion">Use HP(0)</button>
         <br>
-        <button onclick = "leaveQuest()">Leave</button>
+        <button id = "leave_quest">Leave</button>
       </div><!--stat_wrap-->
     </div><!--quest-->
 		<div id = "main">			
@@ -119,7 +119,7 @@ _____|                 |     /____\    |                 |
 			
 			<button id = "fieldButton" value = "field,main">Factory</button>
 			<button id = "mapButton" value = "map,main">Map</button>
-			<button onclick = "inverseColors()">Inverse</button>
+			<button id = "invert_button">Inverse</button>
 
 			<pre value = "store,main" id = "house1">
           (
@@ -314,10 +314,10 @@ _/           |==|   \_
 
 		<div id = "field">
 			<p>THE FACTORY</p>
-			<button onclick = "plantSeed()">Place Gear</button>
-			<button onclick = "plantAll()">Place All</button>
-			<button id = "batterButton" onclick = "useBattery()">Use Battery</button>
-      <button onclick = "createFlesh()">flesh</button>
+			<button value = "place_one" class = "factory_button">Place Gear</button>
+			<button value = "place_all" class = "factory_button">Place All</button>
+			<button value = "place_battery" class = "factory_button" id = "batteryButton">Use Battery</button>
+      <button value = "make_flesh" class = "factory_button">flesh</button>
 			<p id = "seeds_planted">Gears Placed: 0</p>
 			<p id = "ecto_gen"></p>
 			<p id = "blood_gen"></p>

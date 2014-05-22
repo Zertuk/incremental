@@ -1,5 +1,39 @@
 var batteryDisplay = false;
 
+//master factory function for the event listener, pretty trashy atm
+function factoryFunction(value) {
+	if (value == 'place_one') {
+		plantSeed();
+	}
+	else if (value == 'place_all') {
+		plantAll();
+	}
+	else if (value == 'use_battery') {
+		useBattery();
+	}
+	else if (value == 'make_flesh') {
+		createFlesh();
+	}
+	if (batteryDisplay == false) {
+		batteryEnable();
+	}
+}
+
+function createFlesh() {
+	if ((ectoplasm > 0 ) && (blood > 0)) {
+		if (ectoplasm > blood) {
+			flesh = blood;
+		}
+		else {
+			flesh = ectoplasm;
+		}
+			ectoplasm = ectoplasm - flesh;
+			blood = blood - flesh;
+			console.log(flesh);
+			player.maxHealth = player.maxHealth + Math.round(flesh / 5);
+			flesh = 0;
+	}
+}
 
 //functions associated with the factory, placegears/usebatteries
 function plantSeed() {

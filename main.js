@@ -11,6 +11,7 @@ var blood = 500;
 var seedsPlanted = 1;
 var batteryOn = true;
 var levelActive = false;
+var flesh = 0;
 var fists, woodSword, ironSword;
 
 function updateHealthBar() {
@@ -57,7 +58,7 @@ window.onload = function() {
 	$('.store_button').click(function() {
 		var buttonValue = $(this).attr('value');
 		var split = buttonValue.split(',');
-		storeItems(buttonValue);
+		storeItems(split[0]);
 		//removes the item from store if it has a secondary value
 		if (split[1]) {
 			$(this).parent().remove();
@@ -68,6 +69,20 @@ window.onload = function() {
 		var buttonValue = $(this).attr('value');
 		console.log(buttonValue);
 		useHealthPotion();
+	});
+
+	$('#leave_quest').click(function() {
+		leaveQuest();
+	});
+
+	$('#invert_button').click(function() {
+		inverseColors();
+	});
+
+	$('.factory_button').click(function() {
+		var buttonValue = $(this).attr('value');
+		console.log(buttonValue);
+		factoryFunction(buttonValue);
 	})
 
 }
