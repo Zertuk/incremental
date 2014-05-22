@@ -62,6 +62,12 @@ window.onload = function() {
 		if (split[1]) {
 			$(this).parent().remove();
 		}
+	});
+
+	$('.potion_button').click(function() {
+		var buttonValue = $(this).attr('value');
+		console.log(buttonValue);
+		useHealthPotion();
 	})
 
 }

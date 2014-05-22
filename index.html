@@ -107,7 +107,7 @@ _____|                 |     /____\    |                 |
         <p id = "special_loot">--</p>
         <br>
         <br>
-        <button id = "health_potion_button" onclick = 'useHealthPotion()'>Use HP(0)</button>
+        <button id = "health_potion_button" class = "potion_button" value = "healthPotion">Use HP(0)</button>
         <br>
         <button onclick = "leaveQuest()">Leave</button>
       </div><!--stat_wrap-->
@@ -230,7 +230,7 @@ _/           |==|   \_
 				<p>Battery: <button class = 'store_button' value = 'battery'>2000</button></p>
 				<p id = "runez">Magic Rune: <button class = 'store_button' value = 'rune'>1</button></p>
 				<br>
-				<button value = "main,store">Leave Store</button>
+				<button class = 'location_button' value = "main,store">Leave Store</button>
 			</div><!--storeWrapper-->
 			
 			<pre id = "shop_keeper">
@@ -306,7 +306,7 @@ _/           |==|   \_
 			<p>INVENTORY PLACEHOLDER</p>
 			<br>
 			<p id = "inventoryItems"></p>
-      <button onclick = 'useHealthPotion()'>Use HP(+35)</button>
+      <button class = 'potion_button' value = 'healthPotion'>Use HP(+35)</button>
       <br>
 
 			<button class = 'location_button' value = "main,inventory">Leave Inventory</button>
