@@ -118,7 +118,7 @@ _____|                 |     /____\    |                 |
 			<button id = "storeButton" value = "store,main">Store</button>
 			
 			<button id = "fieldButton" value = "field,main">Factory</button>
-			<button id = "mapButton" value = "map,main">Map</button>
+			<button class = "location_button" id = "mapButton" value = "map,main">Map</button>
 			<button id = "invert_button">Inverse</button>
 
 			<pre value = "store,main" id = "house1">
@@ -515,7 +515,39 @@ lc'\""""""||          ||""""""""""""(     )"""""""""""""""""""""""""""
 		</div><!--reflectingPool-->
 
 		<div id = "tower">
-			tower here
+			<p>You are at the base of the tower, noise is coming from inside</p>
+      <pre>
+
+                          .- ._          *
+                 .       (   ) `) ._,--.
+          _.-.          (      .' | af }      ._    +
+        .'     )         `(_'-'   |--'"        ))        |
+       (   _.   )                 |           '"       - * -
+      .-.-'  )  _)  .        ["I"I"I"I"}   .             .
+     (  `   .)`'              I_I_I_I_I
+      `-. (   )          [UUUUI_I_I_I_I
+         `-..'            |[__I_I_[#]_I .        .
+                   +      |__[I_I_I=I_I
+         .       .        |]_ I_[#]-I_I              ;
+                          |_[ I_I=I_I_[,   
+                          |__ I_I_I%I_I  
+                          |[ _$_I_I%%_I  
+                          | [ %%I_g%%_I           __a:f
+          ---..-----.--,,'|]_ %_Ia%%I_I ----;.------""
+                      ((  |_[ $%I%%_!^!       +
+                       )) |[_ |%.%I_|"|    n Am   n
+             .-     _ '/  |_ / _Y_)_|`| -    _        n
+         ._.'        `- _.--'`'  ' "|\=\ ''    `-.
+                      .'             |\=\`-._     `
+                   .-'                  `:.  `---....__
+                                           `
+      </pre>
+      <select id = "tower_quest">
+        <option value = 'base'>Tower Entrance</option>
+        <option value = 'upper'>Upper Floor</option>
+        <option value = 'top'>Top</option>
+        <option value = 'monk'>Monk</option>
+      </select>
 		</div><!--tower-->
 
 		<div id = "churchInside">
@@ -687,6 +719,30 @@ lc'\""""""||          ||""""""""""""(     )"""""""""""""""""""""""""""
   /__;^-(=-)=-=-=-(=-)=-=-=-(=-)=^~^^^ ^^^^(=)^^^^(=)^^^^(=)^^^ jgs
 ~^~~~~^~~~^~~~^~~~^~~~^~~~^~~~^~~~^~~~^~~~^~~~^~~~^~~~^~~~^~~~^~~~^~
 </pre>
+  <div id = "map2">
+    <pre>
+
+                          ._
+                          |~
+                        uuuuu
+                        |_#-|
+                        | _#|
+                        |_ -|
+   ________ .$$. ______ | - | _____________
+           .#$$$. __    |-  | ....__
+     _.--' $$$$$$    ` -[__N]        `--a:f-
+           $$$$$$    -.
+      -.    `:/'    _.))        .--.
+             ||   .'.-'     _..-.. _.-.
+      ._.-.  '"  /  (     .'      `.
+    -'     `.   .    `. -'
+             `. .      `--..
+                 `.
+
+    </pre>
+  </div>
+
+
 	</div><!--wrapper-->
 
 
