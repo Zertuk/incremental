@@ -5,19 +5,19 @@ var level = new Array;
 
 //makes the level, takes in the level length to determine length and the monster
 //to determine what monster to fill with, randomly spawns monsters
-function makeLevel(levelInp, monster, specialMonster, specialCount) {
+function makeLevel(levelInp, monster, monsterCount, specialMonster, specialCount) {
 	for (var i = 0; i < levelInp; i++) {
-		var random = Math.floor(Math.random()*levelInp);
 		level[i] = '_';
-		if (random < levelInp / 7){
-			level[i] = monster;
-		}
+	}
+	for (var j = 0; j < monsterCount; j++) {
+		var random = Math.floor(Math.random()*levelInp);
+		level[random] = monster;
 	}
 	for (var j = 0; j < specialCount; j++) {
 			var randomSpecial = Math.floor(Math.random()*levelInp);
 			level[randomSpecial] = specialMonster;
 			console.log(j);
-		}
+	}
 };
 
 //default monster object
@@ -100,6 +100,29 @@ demonWizard.damage = 10;
 demonWizard.maxHealth = 10;
 demonWizard.health = 10;
 
+var bat = new Monster();
+bat.message = 'A spooky bat';
+bat.value = '~B~';
+bat.damage = 5;
+bat.maxHealth = 5;
+bat.health = 5;
+
+var skeleton = new Monster();
+skeleton.message = 'Too spooky';
+skeleton.value = 'S';
+skeleton.damage = 5;
+skeleton.maxHealth = 10;
+skeleton.health = 10;
+
+var vampire = new Monster();
+vampire.message = 'Thats no bat!';
+vampire.value = 'V';
+vampire.damage = 10;
+vampire.maxHealth = 10;
+vampire.health = 10;
+vampire.specialLoot = 'Vampiric Gem';
+vampire.specialDrop = 5;
+
 //function call to make the level, temporary for testing
 
 
@@ -132,26 +155,7 @@ demonWizard.health = 10;
 // 	i--;
 // }
 
-function battleTime(monster) {
-	$('#player_stats').html('Player Dmg: ' +player.damage);
-	monster.monsterInfo();
-	player.health = player.health - monster.damage;
-	monster.health = monster.health - player.damage;
-	if (player.health <= 0) {
-		levelActive = false;
-		$('#error').html('You have been slain');
-	}
-	else if (monster.health <= 0) {
-		level[i] = 'Y';
-		level[i - 1] = '_';
-		i++;
-		monster.monsterInfo();
-		monster.loot();
-		monster.specialDrop(monster.specialLoot, monster.dropChance);
-		monster.health = monster.maxHealth;
-	}
-	i--;
-}
+
 var i = 0;
 
 
@@ -189,6 +193,28 @@ function moveInLevel(monster, specialMonster) {
 	}
 }
 
+function battleTime(monster) {
+	$('#player_stats').html('Player Dmg: ' +player.damage);
+	monster.monsterInfo();
+	player.health = player.health - monster.damage;
+	monster.health = monster.health - player.damage;
+	if (player.health <= 0) {
+		levelActive = false;
+		$('#error').html('You have been slain');
+	}
+	else if (monster.health <= 0) {
+		level[i] = 'Y';
+		level[i - 1] = '_';
+		i++;
+		monster.monsterInfo();
+		monster.loot();
+		monster.specialDrop(monster.specialLoot, monster.dropChance);
+		monster.health = monster.maxHealth;
+	}
+	monster.monsterInfo();
+	i--;
+}
+
 
 // function levelActive() {	
 // 	i = 0;
@@ -214,28 +240,46 @@ function getQuestSelect(quest) {
 	else if (quest == '#mountain_quest') {
 		loadLevel(questSelected);
 	}
+	else if (quest == '#tower_quest') {
+		loadTowerLevel(questSelected);
+	}
 }
 
 var questText = $('#quest_text');
 
-function loadLevel(questSelected) {
+function loadTowerLevel(questSelected) {
+	levelActive = true;
+	$('#quest').show();
+	$('#tower').hide();
 	console.log(questSelected);
+	if (questSelected == 'base') {
+		console.log('hello');
+		makeLevel(65, bat.value, 5, vampire.value, 1);
+		$('#base_quest').show();
+		questText.html('The base of the tower');
+	}
+	else {
+		console.log('ok')
+	}
+}
+
+function loadLevel(questSelected) {
 	levelActive = true;
 	$('#quest').show();
 	$('#mountain').hide();
 
 	if (questSelected == 'depths') {
-		makeLevel(60, demon.value, demonWizard.value, 1);
+		makeLevel(60, demon.value, 5, demonWizard.value, 1);
 		$('#depths_quest').show();
 		questText.html('The bottom of the mine');
 	}
 	else if (questSelected == 'mines') {
-		makeLevel(50, goblinMiner.value, demon.value, 5); 
+		makeLevel(50, goblinMiner.value, 5, demon.value, 5); 
 		$('#mine_quest').show();
 		questText.html('There are goblin miners everywhere!');
 	}
 	else if (questSelected == 'cavern') {
-		makeLevel(50, rock.value);
+		makeLevel(50, rock.value, 5);
 		$('#cavern_quest').show();
 		questText.html('Wow it is a mess in here, rocks laying in the path');
 	}
@@ -246,7 +290,7 @@ function loadLevel(questSelected) {
  	$('#quest').show();
  	$('#churchInside').hide();
  	if (questSelected == 'approach') {
- 		makeLevel(60, demon.value, demonWizard.value, 3);
+ 		makeLevel(60, demon.value, 5, demonWizard.value, 3);
  		questText.html('There are demons everywhere');
  		$('#approach_quest').show();
  	}
