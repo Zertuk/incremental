@@ -123,6 +123,17 @@ vampire.health = 10;
 vampire.specialLoot = 'Vampiric Gem';
 vampire.specialDrop = 5;
 
+var reaper = new Monster();
+reaper.message = 'A Reaper';
+reaper.value = '\'|R';
+reaper.damage = 20;
+reaper.maxHealth = 20;
+reaper.health = 20;
+reaper.specialLoot = 'ticket';
+reaper.specialDrop = 100;
+
+
+
 //function call to make the level, temporary for testing
 
 
@@ -258,8 +269,16 @@ function loadTowerLevel(questSelected) {
 		$('#base_quest').show();
 		questText.html('The base of the tower');
 	}
-	else {
-		console.log('ok')
+	else if (questSelected == 'upper') {
+		makeLevel(50, skeleton.value, 5, vampire.value, 1);
+		$('#upper_quest').show();
+		questText.html('The upper level of the tower, the top is near!');
+
+	}
+	else if (questSelected == 'top') {
+		makeLevel(50, skeleton.value, 5, reaper.value, 1);
+		$('#top_quest').show();
+		questText.html('The sun is rising in the distance');
 	}
 }
 
