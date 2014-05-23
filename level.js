@@ -256,33 +256,34 @@ function getQuestSelect(quest) {
 	}
 }
 
-var questText = $('#quest_text');
 
 function loadTowerLevel(questSelected) {
+	var questText = $('#quest_text');
 	levelActive = true;
 	$('#quest').show();
 	$('#tower').hide();
 	console.log(questSelected);
 	if (questSelected == 'base') {
 		console.log('hello');
-		makeLevel(65, bat.value, 5, vampire.value, 1);
+		makeLevel(55, bat.value, 5, vampire.value, 1);
 		$('#base_quest').show();
 		questText.html('The base of the tower');
 	}
 	else if (questSelected == 'upper') {
-		makeLevel(50, skeleton.value, 5, vampire.value, 1);
+		makeLevel(53, skeleton.value, 5, vampire.value, 1);
 		$('#upper_quest').show();
 		questText.html('The upper level of the tower, the top is near!');
 
 	}
 	else if (questSelected == 'top') {
-		makeLevel(50, skeleton.value, 5, reaper.value, 1);
+		makeLevel(55, skeleton.value, 5, reaper.value, 1);
 		$('#top_quest').show();
 		questText.html('The sun is rising in the distance');
 	}
 }
 
 function loadLevel(questSelected) {
+	var questText = $('#quest_text');
 	levelActive = true;
 	$('#quest').show();
 	$('#mountain').hide();
@@ -305,6 +306,7 @@ function loadLevel(questSelected) {
  }
 
  function loadLevelChurch(questSelected) {
+ 	var questText = $('#quest_text');
  	levelActive = true;
  	$('#quest').show();
  	$('#churchInside').hide();
