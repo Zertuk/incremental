@@ -218,6 +218,12 @@ window.setInterval(function() {
 		else if (questSelected == 'base') {
 			moveInLevel(bat, vampire);
 		}
+		else if (questSelected == 'upper') {
+			moveInLevel(skeleton, vampire);
+		}
+		else if (questSelected == 'top') {
+			moveInLevel(skeleton, reaper);
+		}
 		$('.level').html(level);
 	}
 	count++;
