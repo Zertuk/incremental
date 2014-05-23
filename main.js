@@ -84,11 +84,7 @@ window.onload = function() {
 		console.log(buttonValue);
 		factoryFunction(buttonValue);
 	})
-
 }
-
-
-
 
 //generates ectoplasm on click
 function ectoplasmClick(num) {
@@ -151,6 +147,7 @@ function smokeAnimate() {
 		smoke = true;
 	}
 }
+
 var trainAni = false;
 function trainAnimate() {
 	if (trainAni == true) {
@@ -203,7 +200,7 @@ window.setInterval(function() {
 	if (batteryOn == true) {
 		bloodGenerator(batteriesUsed);
 	}
-	//maybe switch to switch
+	//need to do something about this trash
 	if (levelActive) {
 		if (questSelected == 'depths') {
 			moveInLevel(demon, demonWizard);
@@ -217,6 +214,9 @@ window.setInterval(function() {
 		}
 		else if (questSelected == 'approach') {
 			moveInLevel(demon, demonWizard);
+		}
+		else if (questSelected == 'base') {
+			moveInLevel(bat, vampire);
 		}
 		$('.level').html(level);
 	}
