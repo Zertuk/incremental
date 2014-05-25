@@ -29,6 +29,9 @@ window.onload = function() {
 	// Mountain.createLocButton('location_button', 'map', 'mountain', 'Leave');
 	// $('#asciiTest').html(Mountain.text);
 
+	mainLoop();
+	questLoop();
+
 	var reflectingPool = document.getElementById('reflectingPool');
 	var store = document.getElementById('store');
 	var main = document.getElementById('main');
@@ -181,42 +184,27 @@ function blinkAnimate() {
 	}
 }
 var total = 0;
-//main game loop, updates 0.5s
-window.setInterval(function() {
-	total++;
-
-	// if (trainShow == true) {
-	// 	trainAnimate();
-	// }
-	if (total % 100 == 0) {
+var total1= 0;
+function mainLoop() {
 	ectoplasmGenerator(seedsPlanted);
-
-		if (player.health < player.maxHealth) {
-			healthRegen();
-			updateHealthBar();
-		}
+	if (player.health < player.maxHealth) {
+		healthRegen();
+		updateHealthBar();
 	}
 	fixHP();
-	
-
-	if (total % 75 == 0) {
-		smokeAnimate();
-	}
-
-	if (count > 300 && count%30 == 0) {
-		blinkAnimate();	
-	}
-
 	if (batteryOn == true) {
 		bloodGenerator(batteriesUsed);
 	}
 
-	if (levelActive && timeFrozen == false && total % 50 == 0) {
-		 masterMove();
+	setTimeout(mainLoop, 1000);
+}
+
+function questLoop() {
+	if (timeFrozen == false) {
+		masterMove();
 		$('.level').html(level);
 	}
-
-	if (timeFrozen && total % 50 == 0) {
+	if (timeFrozen) {
 		frozeTimer--;
 		$('#error').html('Time Frozen: ' + frozeTimer);
 		if (frozeTimer == 0) {
@@ -233,6 +221,20 @@ window.setInterval(function() {
 			$('#error').html('');
 		}
 	}
-	count++;
+	setTimeout(questLoop, 500);
+}
+//not current being called
+function animateLoop() {
+	smokeAnimate();
+	blinkAnimate();
 
-}, 10);
+	setTimeout(animateLoop, 750);
+}
+
+
+
+	// if (trainShow == true) {
+	// 	trainAnimate();
+	// }
+	
+
