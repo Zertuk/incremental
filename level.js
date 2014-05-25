@@ -197,24 +197,19 @@ function moveInLevel(monster, specialMonster) {
 		levelActive = false;
 		ectoplasm = ectoplasm + gainedLoot;
 		gainedLoot = 0;
-		$('#error').html('Level complete, you may leave and keep anything you found')
+		$('#error').html('Level complete, you may leave and keep anything you found');
 	}
 	else if (level[i] == monster.value) {
 		battleTime(monster);
 	}
 }
 
-
-
-
-
-
-
 function battleTime(monster) {
 	$('#player_stats').html('Player Dmg: ' +player.damage);
 	monster.monsterInfo();
 	player.health = player.health - monster.damage;
 	monster.health = monster.health - player.damage;
+	i--;
 	if (player.health <= 0) {
 		levelActive = false;
 		$('#error').html('You have been slain');
@@ -228,8 +223,7 @@ function battleTime(monster) {
 		monster.specialDrop(monster.specialLoot, monster.dropChance);
 		monster.health = monster.maxHealth;
 	}
-	monster.monsterInfo();
-	i--;
+	monster.monsterInfo();	
 }
 
 
@@ -245,7 +239,9 @@ function battleTime(monster) {
 function leaveQuest() {
 	$('#quest').hide();
 	levelActive = false;
+	resetSpellUsed = false;
 	$('#main').show();
+	i = 0;
 }
 
 function getQuestSelect(quest) {
