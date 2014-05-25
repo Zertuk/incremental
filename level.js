@@ -86,7 +86,6 @@ demon.damage = 5;
 demon.specialLoot = 'hat';
 demon.dropChance = 75;
 
-
 var rock = new Monster();
 rock.message = 'Just a rock';
 rock.value = 'O';
@@ -132,6 +131,12 @@ reaper.health = 20;
 reaper.specialLoot = 'ticket';
 reaper.specialDrop = 100;
 
+var monk = new Monster();
+monk.message = 'An unarmed monk';
+monk.value = 'M';
+monk.damage = 1;
+monk.maxHealth = 10;
+monk.health = 10;
 
 
 //function call to make the level, temporary for testing
