@@ -201,7 +201,7 @@ window.setInterval(function() {
 		bloodGenerator(batteriesUsed);
 	}
 	//need to do something about this trash
-	if (levelActive) {
+	if (levelActive && timeFrozen == false) {
 		if (questSelected == 'depths') {
 			moveInLevel(demon, demonWizard);
 		}
@@ -226,6 +226,15 @@ window.setInterval(function() {
 		}
 		$('.level').html(level);
 	}
+	if (timeFrozen) {
+		frozeTimer--;
+		$('#error').html('Time Frozen: ' + frozeTimer);
+		if (frozeTimer == 0) {
+			timeFrozen = false;
+		}
+
+	}
+
 	if (potionUsed) {
 		potionCD--;
 		$('#potionCDText').html("Potion Cooldown: " + potionCD);
