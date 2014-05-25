@@ -25,6 +25,10 @@ function healthRegen() {
 
 //loads dom elements & event listeners
 window.onload = function() {
+	// Mountain.createLocButton('location_button', 'mountain', 'map', 'Enter');
+	// Mountain.createLocButton('location_button', 'map', 'mountain', 'Leave');
+	// $('#asciiTest').html(Mountain.text);
+
 	var reflectingPool = document.getElementById('reflectingPool');
 	var store = document.getElementById('store');
 	var main = document.getElementById('main');
@@ -33,10 +37,11 @@ window.onload = function() {
 	var fieldButton = document.getElementById('fieldButton');
 	var mapButton = document.getElementById('mapButton');
 
- 	//event listener to switch location
+ 	// event listener to switch location
 	$('.location_button, pre').click(function() {
 		var buttonValue = $(this).attr('value');
 		var split = buttonValue.split(',');
+		console.log('test');
 		$('#' + split[1]).hide();
 		$('#' + split[0]).fadeIn('slow');
 		if (split[0] == 'mountain') {
@@ -174,59 +179,44 @@ function blinkAnimate() {
 		count = 0;
 		blink = false;
 	}
-
 }
-
-
+var total = 0;
 //main game loop, updates 0.5s
 window.setInterval(function() {
-	if (trainShow == true) {
-	trainAnimate();
-	}
+	total++;
+
+	// if (trainShow == true) {
+	// 	trainAnimate();
+	// }
+	if (total % 100 == 0) {
 	ectoplasmGenerator(seedsPlanted);
-	if (player.health < player.maxHealth) {
-		healthRegen();
-		updateHealthBar();
+
+		if (player.health < player.maxHealth) {
+			healthRegen();
+			updateHealthBar();
+		}
 	}
 	fixHP();
-	// if (count % 2 == 0) {
-	// smokeAnimate();
-	// }
-
-	// if (count > 14) {
-	// 	blinkAnimate();
-	// }
 	
+
+	if (total % 75 == 0) {
+		smokeAnimate();
+	}
+
+	if (count > 300 && count%30 == 0) {
+		blinkAnimate();	
+	}
+
 	if (batteryOn == true) {
 		bloodGenerator(batteriesUsed);
 	}
-	//need to do something about this trash
-	if (levelActive && timeFrozen == false) {
-		if (questSelected == 'depths') {
-			moveInLevel(demon, demonWizard);
-		}
-		else if (questSelected == 'mines') {
-			moveInLevel(goblinMiner, demon);
 
-		}
-		else if (questSelected == 'cavern') {
-			moveInLevel(rock);
-		}
-		else if (questSelected == 'approach') {
-			moveInLevel(demon, demonWizard);
-		}
-		else if (questSelected == 'base') {
-			moveInLevel(bat, vampire);
-		}
-		else if (questSelected == 'upper') {
-			moveInLevel(skeleton, vampire);
-		}
-		else if (questSelected == 'top') {
-			moveInLevel(skeleton, reaper);
-		}
+	if (levelActive && timeFrozen == false && total % 50 == 0) {
+		 masterMove();
 		$('.level').html(level);
 	}
-	if (timeFrozen) {
+
+	if (timeFrozen && total % 50 == 0) {
 		frozeTimer--;
 		$('#error').html('Time Frozen: ' + frozeTimer);
 		if (frozeTimer == 0) {
@@ -235,7 +225,7 @@ window.setInterval(function() {
 
 	}
 
-	if (potionUsed) {
+	if (potionUsed && total% 50 == 0) {
 		potionCD--;
 		$('#potionCDText').html("Potion Cooldown: " + potionCD);
 		if (potionCD == 0) {
@@ -244,5 +234,5 @@ window.setInterval(function() {
 		}
 	}
 	count++;
-}, 750);
 
+}, 10);
