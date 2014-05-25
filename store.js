@@ -62,16 +62,35 @@ function useHealthPotion() {
 		}
 	}
 }
+var potionUsed = false;
+var potionCD = 0;
 
 function useTeleportPotion() {
 	if (inventoryObject.teleportPotion == 0) {
 		$('#error').html('No Teleport Potions ;-;');
 	}
+	else if (potionUsed) {
+		$('#error').html('Potions are on Cooldown!');
+	}
 	else {
+		potionUsed = true;	
+		potionCD = 20;
+		console.log(potionUsed);
+		console.log('hello');
 		level[i - 1] = '_';
 		i = 0;
-		level[0] == 'Y';		
-	}		
+		level[0] = 'Y';		
+	}
+}
+
+function freezePotion() {
+	if (inventoryObject.freezePotion == 0) {
+		$('#error').html('No Freeze Potions ;-;');
+	}
+
+	else {
+
+	}
 }
 
 
