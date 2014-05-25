@@ -2,7 +2,7 @@
 var swordObject = {
 	fists : {
 		name: 'Fists',
-		damage: 1,
+		damage: 10,
 		enchant: false
 	},
 
@@ -47,7 +47,7 @@ function fixHP() {
 
 function useHealthPotion() {
 	if (inventoryObject.healthPotion == 0) {
-		$('#error').html('No Health Potions ;-;')
+		$('#error').html('No Health Potions ;-;');
 	}
 	else {
 		if (player.health >= player.maxHealth) {
@@ -62,6 +62,19 @@ function useHealthPotion() {
 		}
 	}
 }
+
+function useTeleportPotion() {
+	if (inventoryObject.teleportPotion == 0) {
+		$('#error').html('No Teleport Potions ;-;');
+	}
+	else {
+		level[i - 1] = '_';
+		i = 0;
+		level[0] == 'Y';		
+	}		
+}
+
+
 
 //updated inventory list for use when navigating to inventory screen
 function inventoryList() {
