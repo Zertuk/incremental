@@ -167,7 +167,6 @@ reaper.specialDrop = 100;
 // }
 
 
-var i = 0;
 
 
 
@@ -176,6 +175,7 @@ var i = 0;
 //function for the player to move, moves player and monster forward if '_'
 //otherwise battles the enemy
 //stops when player reaches end and gives them their loot 
+var i = 0;
 function moveInLevel(monster, specialMonster) {
 	var player = 'Y';
 	if (level[i] == '_'); {
@@ -203,6 +203,12 @@ function moveInLevel(monster, specialMonster) {
 		battleTime(monster);
 	}
 }
+
+
+
+
+
+
 
 function battleTime(monster) {
 	$('#player_stats').html('Player Dmg: ' +player.damage);
