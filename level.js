@@ -1,6 +1,6 @@
 var gainedLoot = 0;
 var questSelected = null;
-
+var addMonstersValue = 0;
 var level = new Array;
 
 //makes the level, takes in the level length to determine length and the monster
@@ -20,6 +20,11 @@ function makeLevel(levelInp, monster, monsterCount, specialMonster, specialCount
 	}
 };
 
+
+	
+
+
+
 //default monster object
 function Monster() {
 	this.maxHealth = 5,
@@ -30,6 +35,7 @@ function Monster() {
 	this.specialLoot = 'nothing',
 	this.dropChance = 0,
 	this.move = true,
+	this.replace = '_',
 	this.loot = function() {
 		var lootDropped = Math.round(Math.random()*25);
 		gainedLoot = lootDropped + gainedLoot;
@@ -73,10 +79,11 @@ function monsterMove(value) {
 
 //here will be some monsters using the Monster default for inheritance
 var goblinMiner = new Monster();
-goblinMiner.message = "'A goblin miner, he has a pick!'";
+goblinMiner.message = "'He has a pick!'";
 goblinMiner.value = '\'\\G';
 goblinMiner.specialLoot = 'pick';
 goblinMiner.dropChance = 5;
+goblinMiner.name = 'Goblin Miner';
 
 
 var demon = new Monster();
@@ -85,12 +92,14 @@ demon.value = 'D';
 demon.damage = 5;
 demon.specialLoot = 'hat';
 demon.dropChance = 75;
+demon.name = 'Demon';
 
 var rock = new Monster();
 rock.message = 'Just a rock';
 rock.value = 'O';
 rock.damage = 0;
 rock.move = false;
+rock.name = 'Rock';
 
 var demonWizard = new Monster();
 demonWizard.message = 'The Demon Wizard!';
@@ -98,6 +107,8 @@ demonWizard.value = 'DW`!'
 demonWizard.damage = 10;
 demonWizard.maxHealth = 10;
 demonWizard.health = 10;
+demonWizard.name = 'Demon Wizard'
+demonWizard.replace = '____'
 
 var bat = new Monster();
 bat.message = 'A spooky bat';
@@ -105,6 +116,7 @@ bat.value = '~B~';
 bat.damage = 5;
 bat.maxHealth = 5;
 bat.health = 5;
+bat.name = 'Bat';
 
 var skeleton = new Monster();
 skeleton.message = 'Too spooky';
@@ -112,6 +124,7 @@ skeleton.value = 'S';
 skeleton.damage = 5;
 skeleton.maxHealth = 10;
 skeleton.health = 10;
+skeleton.name = 'Skeleton';
 
 var vampire = new Monster();
 vampire.message = 'Thats no bat!';
@@ -121,6 +134,7 @@ vampire.maxHealth = 10;
 vampire.health = 10;
 vampire.specialLoot = 'Vampiric Gem';
 vampire.specialDrop = 5;
+vampire.name = 'Vampire';
 
 var reaper = new Monster();
 reaper.message = 'A Reaper';
@@ -130,6 +144,7 @@ reaper.maxHealth = 20;
 reaper.health = 20;
 reaper.specialLoot = 'ticket';
 reaper.specialDrop = 100;
+reaper.name = 'Reaper';
 
 var monk = new Monster();
 monk.message = 'An unarmed monk';
@@ -137,6 +152,7 @@ monk.value = 'M';
 monk.damage = 1;
 monk.maxHealth = 10;
 monk.health = 10;
+monk.name = 'Monk';
 
 
 //function call to make the level, temporary for testing
@@ -197,6 +213,21 @@ function moveInLevel(monster, specialMonster) {
 			}
 		}
 	}
+	//why dont i have a master random num function yet jesus
+	var random = Math.round(Math.random()*100);
+	console.log(random + ' random num');
+
+	if (random > 90) {
+		addMoreMonsters(monster);
+		$('#quest_text').html('A ' + monster.name + ' has appeared!');
+	}
+	else if (random == 1) {
+		addMoreMonsters(specialMonster);
+		$('#quest_text').html('A ' + specialMonster.name + ' has appeared! How unlucky..');
+
+	}
+	console.log(addMonstersValue);
+	console.log(addMonstersValue % 5);
 
 	if (i == level.length) {
 		levelActive = false;
@@ -208,9 +239,9 @@ function moveInLevel(monster, specialMonster) {
 		battleTime(monster);
 	}
 }
-
+var monsterDeathSpace = '';
 function battleTime(monster) {
-	$('#player_stats').html('Player Dmg: ' +player.damage);
+	$('#player_stats').html('Player Dmg: ' + player.damage);
 	monster.monsterInfo();
 	player.health = player.health - monster.damage;
 	monster.health = monster.health - player.damage;
@@ -220,8 +251,11 @@ function battleTime(monster) {
 		$('#error').html('You have been slain');
 	}
 	else if (monster.health <= 0) {
+
+		level[i - 1] = monster.replace;
 		level[i] = 'Y';
-		level[i - 1] = '_';
+		
+		monsterDeathSpace = '';
 		i++;
 		monster.monsterInfo();
 		monster.loot();
@@ -253,6 +287,12 @@ function leaveQuest() {
 	$(questToHide).hide();
 }
 
+function addMoreMonsters(monster) {
+	level[level.length] = monster.value;
+	console.log(level.length + ' level length');
+	console.log(monster + ' monster');
+}
+
 function getQuestSelect(quest) {
 	questSelected = $(quest).val();
 	if (quest == '#church_quest') {
@@ -268,27 +308,27 @@ function getQuestSelect(quest) {
 
 function masterMove() {
 	if (questSelected == 'depths') {
-			moveInLevel(demon, demonWizard);
-		}
-		else if (questSelected == 'mines') {
-			moveInLevel(goblinMiner, demon);
-
-		}
-		else if (questSelected == 'cavern') {
-			moveInLevel(rock);
-		}
-		else if (questSelected == 'approach') {
-			moveInLevel(demon, demonWizard);
-		}
-		else if (questSelected == 'base') {
-			moveInLevel(bat, vampire);
-		}
-		else if (questSelected == 'upper') {
-			moveInLevel(skeleton, vampire);
-		}
-		else if (questSelected == 'top') {
-			moveInLevel(skeleton, reaper);
-		}
+		moveInLevel(demon, demonWizard);
+	}
+	else if (questSelected == 'mines') {
+		moveInLevel(goblinMiner, demon);
+	}
+	else if (questSelected == 'cavern') {
+		moveInLevel(rock);
+	}
+	else if (questSelected == 'approach') {
+		moveInLevel(demon, demonWizard);
+	}
+	else if (questSelected == 'base') {
+		moveInLevel(bat, vampire);
+	}
+	else if (questSelected == 'upper') {
+		moveInLevel(skeleton, vampire);
+	}
+	else if (questSelected == 'top') {
+		moveInLevel(skeleton, reaper);
+	}
+	addMonstersValue++;
 }
 
 
