@@ -247,11 +247,14 @@ function leaveQuest() {
 	resetSpellUsed = false;
 	$('#main').show();
 	i = 0;
+	questToHide = '#' + questSelected + '_quest';
+	console.log(questToHide);
+	console.log(questSelected);
+	$(questToHide).hide();
 }
 
 function getQuestSelect(quest) {
 	questSelected = $(quest).val();
-	$(quest).hide();
 	if (quest == '#church_quest') {
 		loadLevelChurch(questSelected);
 	}
@@ -261,6 +264,31 @@ function getQuestSelect(quest) {
 	else if (quest == '#tower_quest') {
 		loadTowerLevel(questSelected);
 	}
+}
+
+function masterMove() {
+	if (questSelected == 'depths') {
+			moveInLevel(demon, demonWizard);
+		}
+		else if (questSelected == 'mines') {
+			moveInLevel(goblinMiner, demon);
+
+		}
+		else if (questSelected == 'cavern') {
+			moveInLevel(rock);
+		}
+		else if (questSelected == 'approach') {
+			moveInLevel(demon, demonWizard);
+		}
+		else if (questSelected == 'base') {
+			moveInLevel(bat, vampire);
+		}
+		else if (questSelected == 'upper') {
+			moveInLevel(skeleton, vampire);
+		}
+		else if (questSelected == 'top') {
+			moveInLevel(skeleton, reaper);
+		}
 }
 
 
@@ -286,6 +314,10 @@ function loadTowerLevel(questSelected) {
 		makeLevel(55, skeleton.value, 5, reaper.value, 1);
 		$('#top_quest').show();
 		questText.html('The sun is rising in the distance');
+	}
+	else if (questSelected == 'monk') {
+		$('#monk_prequest').show();
+
 	}
 }
 
