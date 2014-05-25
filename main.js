@@ -221,6 +221,10 @@ function questLoop() {
 			$('#error').html('');
 		}
 	}
+
+	if (levelActive == false) {
+		return;
+	}
 	setTimeout(questLoop, 500);
 }
 //not current being called

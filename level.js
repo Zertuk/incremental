@@ -304,6 +304,7 @@ function getQuestSelect(quest) {
 	else if (quest == '#tower_quest') {
 		loadTowerLevel(questSelected);
 	}
+	questLoop();
 }
 
 function masterMove() {
