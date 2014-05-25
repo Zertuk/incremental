@@ -1,3 +1,6 @@
+var potionUsed = false;
+var potionCD = 0;
+var timeFrozen = false;
 //object containing weapon types
 var swordObject = {
 	fists : {
@@ -49,6 +52,9 @@ function useHealthPotion() {
 	if (inventoryObject.healthPotion == 0) {
 		$('#error').html('No Health Potions ;-;');
 	}
+	else if (potionUsed) {
+		$('#error').html('Potions are on Cooldown!');
+	}
 	else {
 		if (player.health >= player.maxHealth) {
 			$('#error').html('You already have full health dont be silly');
@@ -62,8 +68,6 @@ function useHealthPotion() {
 		}
 	}
 }
-var potionUsed = false;
-var potionCD = 0;
 
 function useTeleportPotion() {
 	if (inventoryObject.teleportPotion == 0) {
@@ -83,13 +87,32 @@ function useTeleportPotion() {
 	}
 }
 
-function freezePotion() {
-	if (inventoryObject.freezePotion == 0) {
+function useFreezePotion() {
+	if (inventoryObject.rune == 0) {
 		$('#error').html('No Freeze Potions ;-;');
 	}
-
+	else if (potionUsed) {
+		$('#error').html('Potions are on Cooldown!');
+	}
 	else {
+		timeFrozen = true;
+		frozeTimer = 5;
+	}
+}
+var resetSpellUsed = false;
 
+function resetSpells() {
+	if (inventoryObject.rune == 0) {
+		$('#error').html('No Freeze Potions ;-;');
+	}
+	else if (resetSpellUsed) {
+		$('#error').html('You can only cast reset once per level!');
+	}
+	else {
+		potionCD = 0;
+		potionUsed = false;
+		resetSpellUsed = true;
+		$('#potionCDText').html('Potion CD: ' + potionCD);
 	}
 }
 
