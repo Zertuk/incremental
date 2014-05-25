@@ -1,4 +1,4 @@
-#storeButton, #depths_quest, #approach_quest, #cavern_quest, #mine_quest, #mountain, #confess, #camp_use, #steal_items, #man, #man_text, #quest, #camp_ground, #churchInside, #train2, #iron_sword, #trainStation, #trainShow, #shop_keeper_blink, #factory2, #house2, #demon, #mountain,  #rune_true, #tower, #poolYes, #fieldButton, #mapButton, #batteryButton, #inventory, #reflectingPool, #field, #store, #map {
+#storeButton, #map2, #future, #cabin, #cavern, #monk, #base_quest, #upper_quest, #top_quest, #main, #depths_quest, #approach_quest, #cavern_quest, #mine_quest, #mountain, #confess, #camp_use, #steal_items, #man, #man_text, #quest, #camp_ground, #churchInside, #train2, #iron_sword, #trainStation, #trainShow, #shop_keeper_blink, #factory2, #house2, #demon, #mountain,  #rune_true, #tower, #poolYes, #fieldButton, #mapButton, #batteryButton, #inventory, #reflectingPool, #field, #store, #map {
 	display: none;
 }
 
@@ -8,12 +8,21 @@
 	margin-right: 10%;	
 }
 
+
+#churchInside ,#asciiTest {
+	display: inline;
+}
+
 pre {
 	font-size: 14px;
 }
 
 pre p {
 	font-size: 14px;
+}
+
+#quest, #quest pre, #quest p {
+	font-size: 18px;
 }
 
 #hp {
