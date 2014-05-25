@@ -226,6 +226,14 @@ window.setInterval(function() {
 		}
 		$('.level').html(level);
 	}
+	if (potionUsed) {
+		potionCD--;
+		$('#potionCDText').html("Potion Cooldown: " + potionCD);
+		if (potionCD == 0) {
+			potionUsed = false;
+			$('#error').html('');
+		}
+	}
 	count++;
 }, 750);
 
