@@ -38,7 +38,16 @@ function Monster() {
 				level[g] = '_'
 			}
 		}
-	} 
+	}
+	this.monsterHeal = function(val) {
+		if (this.health < 10) {
+			this.health = this.health + val;
+			console.log('success');
+			$('quest_text').html(this.name + ' has healed for ' + val + '!');
+			setTimeout(this.monsterHeal, 10000);
+		}
+		console.log('fail');
+	}
 }
 
 //monster move function, only moves if next val in array is '_'
@@ -85,12 +94,12 @@ rock.name = 'Rock';
 
 var demonWizard = new Monster();
 demonWizard.message = 'The Demon Wizard!';
-demonWizard.value = 'DW`!'
+demonWizard.value = 'DW`!';
 demonWizard.damage = 10;
 demonWizard.maxHealth = 10;
 demonWizard.health = 10;
-demonWizard.name = 'Demon Wizard'
-demonWizard.replace = '____'
+demonWizard.name = 'Demon Wizard';
+demonWizard.replace = '____';
 
 var bat = new Monster();
 bat.message = 'A spooky bat';
@@ -135,4 +144,39 @@ monk.damage = 1;
 monk.maxHealth = 10;
 monk.health = 10;
 monk.name = 'Monk';
+
+var bear = new Monster();
+bear.message = 'Just a bear?';
+bear.value = 'B';
+bear.damage = 10;
+bear.maxHealth = 20;
+bear.health = 20;
+bear.name = 'Bear';
+
+var dropBear = new Monster();
+dropBear.message = 'It fell from above!'
+dropBear.value = 'dB';
+dropBear.damage = 15;
+dropBear.maxHealth = 15;
+dropBear.health = 15;
+dropBear.name = 'Drop Bear';
+
+var druid = new Monster();
+druid.message = 'Guess those werent just bears';
+druid.value = 'dR';
+druid.damage = 20;
+druid.maxHealth = 30;
+druid.health = 30;
+druid.name = 'Druid';
+
+var elderDuid = new Monster();
+elderDruid.message = 'Guess those werent just.. old bears';
+elderDruid.value = 'EdR';
+elderDruid.damage = 35;
+elderDruid.maxHealth = 50;
+elderDruid.health = 50;
+
+
+
+
 
