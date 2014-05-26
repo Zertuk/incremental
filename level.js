@@ -144,23 +144,27 @@ function masterMove() {
 	else if (questSelected == 'top') {
 		moveInLevel(skeleton, reaper);
 	}
+	else if (questSelected == 'cave') {
+		moveInLevel(bear, dropBear);
+	}
 	addMonstersValue++;
 }
 
 
-function loadBearlevel(questSelected) {
+function loadBearLevel(questSelected) {
 	var questText = $('#questText');
 	levelActive = true;
 	$('#quest').show();
-	$('#tower').hide();
+	$('#cavern').hide();
 	console.log(questSelected);
 	if (questSelected == 'cave') {
-
-
+		$('#cave_quest').show();
+		makeLevel(50, bear.value, 5, dropBear.value, 2);
+		questText.html('Inside a bears den');
 	}
 	else if (questSelected == 'den') {
 
-		
+
 	}
 }
 
