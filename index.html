@@ -11,20 +11,18 @@
 <script src = "options.js"></script>
 <script src = "demon.js"></script>
 <script src = "factory.js"></script>
-<script src = "main.js"></script>
 <script src = "store.js"></script>
 <script src = "reflecting.js"></script>
+<script src = "monsters.js"></script>
 <script src = "level.js"></script>
-
-
-
+<script src = "main.js"></script>
 
 <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
-
 
 </head>
 
 <body>
+
   <div class = "wrapper">
 		<div id = "ectoplasmDiv">
 
@@ -34,9 +32,10 @@
 			<p id = "blood">?</p>
 			<p id = "hp">50.00/100 Health</p>
 
-		</div>
+		</div><!--ectoplasmDiv-->
 		<div id = "error"></div>
     <br>
+
     <div id = "quest">
       <p id = "quest_text">--</p>
       <pre id = "cavern_quest">
@@ -47,6 +46,8 @@
                       \/  ""   \/  \_______________
           
 <p class = "level"></p>
+<br>
+<p class = "level2"></p>
 
       </pre>
 
@@ -89,7 +90,7 @@
            |_  _|             |  |           |_  _|  
         ^    ||     ^         |  |        ^    ||     ^  
       __|____||_____|__       |  |      __|____||_____|__  
-_____|                 |     /____\    |                 |
+     |                 |     /____\    |                 |
 
 <p class = "level">
 </pre>
@@ -131,8 +132,22 @@ _______________________________________________________________
                                                          ^
 <p class = "level">
 </pre>
-                                                  
-  
+
+<pre id = "cave_quest">           
+                                   _______________________
+    _______________________________\          ____
+___/                                         /====\
+____                ----                _____|_dR_|___.^._
+    \_______       /_dB_\      ___dB___/
+            \__dB_____________/
+_________                                -----
+  -----  \_________                     /_____\
+ /_B_B_\           \                  ________________
+__,o________________\________________/_______,o_______\___
+
+<p class = "level">
+</pre>
+
       <br>
       
       <br>
@@ -209,6 +224,7 @@ _______________________________________________________________
 
 
 </pre>
+
 <pre value = "churchInside,main" id = "church">
 
   [ The Church ]
@@ -309,7 +325,7 @@ _/           |==|   \_
   cccC__Cccc___)
 
 			</pre>
-						<pre id = "shop_keeper_blink">
+			<pre id = "shop_keeper_blink">
       ////^\\\\
       | ^   ^ |
      @ -=- -=- @
@@ -813,10 +829,37 @@ lc'\""""""||          ||""""""""""""(     )"""""""""""""""""""""""""""
                                                    |      \     \     \      \  
                                                     \ms          |            \ 
         </pre>
-        <select id = "cavern_quest">
+        <select id = "bearcave_quest">
           <option value = "cave">The Cave</option>
           <option value = "den">The Den</option>
         </select>
+        <button onclick = "getQuestSelect('#bearcave_quest')">Enter</button>
+
+        <div id = "wizard1">
+          <pre>
+                                    /\
+                                   /  \
+                                  |    |
+                                --:'''':--
+                                  :'_' :
+                                  _:"":\___
+                   ' '      ____.' :::     '._
+                  . *=====<<=)           \    :
+                   .  '      '-'-'\_      /'._.'
+                                    \====:_ ""
+                                   .'     \\
+                                  :       :
+                                 /   :    \
+                                :   .      '.
+                ,. _        snd :  : :      :
+             '-'    ).          :__:-:__.;--'
+           (        '  )        '-'   '-'
+        ( -   .00.   - _
+       (    .'  _ )     )
+       '-  ()_.\,\,   -
+          </pre>
+        </div><!--wizard1-->
+
       </div><!--cavern-->
 
   </div><!--map-->
@@ -985,6 +1028,52 @@ ____0_____0__\|/__@@@@__@@@__________|_\|/__|___\|/__\|/___________|_|_
 
       </div><!--library--> 
     </div><!--future-->
+<!--     <div id = "encyclopedia">
+      <div id = "monster_info">
+        <pre class = "mob_info"> 
+           __(0)__
+          /_______\
+          / -   - \
+         (\ 9   9 /)
+          (  (_)  )
+          /`-vvv-'\
+         /         \
+        / /|,,,,,|\ \    \\
+       /_//  /^\  \\_\    \\
+       WW(  (   )  )WW=====||
+        __\,,\ /,,/__      //
+   jgs (______Y______)    //
+        </pre>
+        <pre class = "mob_info">
+
+
+        |\     ____
+        | \.-./ .-'
+         \ _  _(
+         | .)(./
+         |   \(
+         |     \   |
+         |  \vvv   |
+         |  |__    |
+    jgs /      `-. |
+        </pre>
+        <pre class = "mob_info">
+            ,--. 
+           ([ oo] 
+            `- ^\
+          _  I`-'
+        ,o(`-V' 
+        |( `-H-'
+        |(`--A-'
+        |(`-/_\'\
+        O `'I ``\\ 
+        (\  I    |\,
+         \\-T-"`, |H   Ojo 
+        </pre>
+
+        <p class = "stats">
+        </p>
+    </div><!--encyclopedia-->
 	</div><!--wrapper-->
 
 
