@@ -102,6 +102,7 @@ function leaveQuest() {
 	console.log(questToHide);
 	console.log(questSelected);
 	$(questToHide).hide();
+	bearCave = false;
 }
 
 function getQuestSelect(quest) {
@@ -158,7 +159,7 @@ function dropBearFall() {
  	}	
 }
 
-
+var bearCave = false;
 
 function loadBearLevel(questSelected) {
 	var questText = $('#quest_text');
@@ -167,6 +168,7 @@ function loadBearLevel(questSelected) {
 	$('#cavern').hide();
 	console.log(questSelected);
 	if (questSelected == 'cave') {
+		bearCave = true;
 		$('#cave_quest').show();
 		makeLevel(50, bear.value, 2, dropBear.value, 0);
 		$(questText).html('Inside a bears den');
