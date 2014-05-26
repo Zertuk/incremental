@@ -30,7 +30,6 @@ window.onload = function() {
 	// $('#asciiTest').html(Mountain.text);
 
 	mainLoop();
-	questLoop();
 
 	var reflectingPool = document.getElementById('reflectingPool');
 	var store = document.getElementById('store');
@@ -195,11 +194,14 @@ function mainLoop() {
 	if (batteryOn == true) {
 		bloodGenerator(batteriesUsed);
 	}
-
+	console.log(potionCD + ' cd');
 	setTimeout(mainLoop, 1000);
 }
 
 function questLoop() {
+	if (bearCave) {
+		dropBearFall();
+	}
 	if (timeFrozen == false) {
 		masterMove();
 		$('.level').html(level);
@@ -213,7 +215,7 @@ function questLoop() {
 
 	}
 
-	if (potionUsed && total% 50 == 0) {
+	if (potionUsed) {
 		potionCD--;
 		$('#potionCDText').html("Potion Cooldown: " + potionCD);
 		if (potionCD == 0) {
@@ -223,6 +225,8 @@ function questLoop() {
 	}
 
 	if (levelActive == false) {
+		potionCD = 0;
+		potionUsed = false;
 		return;
 	}
 	setTimeout(questLoop, 500);
