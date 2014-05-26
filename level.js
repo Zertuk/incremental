@@ -155,38 +155,6 @@ monk.health = 10;
 monk.name = 'Monk';
 
 
-//function call to make the level, temporary for testing
-
-
-//giant mess of a function that needs to be remade, currently only works with goblins, need to fix
-//otherwise it updates the hp of both player/monster, exits if one of them dies, kills whole thing if
-//player dies, gives loot if monster dies
-// function battleTime() {
-// 	battle = true;
-// 	this.goblin.monsterInfo();
-// 	player.health = player.health - this.goblin.damage;
-// 	this.goblin.health = this.goblin.health - player.damage;
-// 	console.log('player: ' + player.health);
-// 	console.log('monster: ' + this.goblin.health);
-// 	if (player.health <= 0) {
-// 		levelActive = false;
-// 		$('#error').html('You have been slain');
-// 		battle = false;
-// 	}
-// 	else if (this.goblin.health <= 0) {
-// 		battle = false;
-// 		level[i] = 'Y';
-// 		level[i - 1] ='_';
-// 		i++;
-// 		this.goblin.monsterInfo();
-// 		this.goblin.loot();
-// 		this.goblin.specialDrop('axe', 50);
-// 		this.goblin.health = 5;
-// 		console.log(goblin);
-// 	}
-// 	i--;
-// }
-
 
 
 
