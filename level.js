@@ -149,18 +149,27 @@ function masterMove() {
 	}
 	addMonstersValue++;
 }
+function dropBearFall() {
+	var random = Math.round(Math.random()*100);
+	var questText = $('#quest_text');
+	if (random > 90) {
+		level[i+4] = dropBear.value;
+		$(questText).html('A Drop Bear falls from above!');
+ 	}	
+}
+
 
 
 function loadBearLevel(questSelected) {
-	var questText = $('#questText');
+	var questText = $('#quest_text');
 	levelActive = true;
 	$('#quest').show();
 	$('#cavern').hide();
 	console.log(questSelected);
 	if (questSelected == 'cave') {
 		$('#cave_quest').show();
-		makeLevel(50, bear.value, 5, dropBear.value, 2);
-		questText.html('Inside a bears den');
+		makeLevel(50, bear.value, 2, dropBear.value, 0);
+		$(questText).html('Inside a bears den');
 	}
 	else if (questSelected == 'den') {
 
