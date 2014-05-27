@@ -148,6 +148,9 @@ function masterMove() {
 	else if (questSelected == 'cave') {
 		moveInLevel(bear, dropBear);
 	}
+	else if (questSelected == 'den') {
+		moveInLevel(druid, elderDruid);
+	}
 	addMonstersValue++;
 }
 function dropBearFall() {
@@ -171,14 +174,15 @@ function loadBearLevel(questSelected) {
 		bearCave = true;
 		$('#cave_quest').show();
 		makeLevel(50, bear.value, 2, dropBear.value, 0);
-		$(questText).html('Inside a bears den');
+		$(questText).html('Inside a bears cave');
 	}
 	else if (questSelected == 'den') {
-
+		$(questText).html('The heart of the bears den!');
+		makeLevel(36, druid.value, 2, elderDruid.value, 1);
+		$('#den_quest').show();
 
 	}
 }
-
 
 
 
