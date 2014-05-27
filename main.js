@@ -198,13 +198,17 @@ function mainLoop() {
 	setTimeout(mainLoop, 1000);
 }
 
-function questLoop() {
+
+var testloop;
+var questLoop = function(monster2) {
+	console.log(questSelected);
+	console.log(monster2.monster.damage + ' test monster1')
 	if (bearCave) {
 		dropBearFall();
 	}
 	if (timeFrozen == false) {
-		masterMove();
-		$('.level').html(level);
+		moveInLevel(monster2);
+		
 	}
 	if (timeFrozen) {
 		frozeTimer--;
@@ -229,7 +233,9 @@ function questLoop() {
 		potionUsed = false;
 		return;
 	}
-	setTimeout(questLoop, 500);
+	setTimeout(function() {
+		questLoop(monster2);
+	}, 500);
 }
 //not current being called
 function animateLoop() {
