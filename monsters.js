@@ -169,7 +169,7 @@ druid.maxHealth = 30;
 druid.health = 30;
 druid.name = 'Druid';
 
-var elderDuid = new Monster();
+var elderDruid = new Monster();
 elderDruid.message = 'Guess those werent just.. old bears';
 elderDruid.value = 'EdR';
 elderDruid.damage = 35;
