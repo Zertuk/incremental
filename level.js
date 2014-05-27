@@ -19,24 +19,43 @@ function makeLevel(levelInp, monster, monsterCount, specialMonster, specialCount
 	}
 };
 
+function levelInfo() {
+	this.name = 'none'
+}
+
+var approach = new levelInfo();
+approach.name = 'approach';
+approach.monster = rock;
+approach.specialMonster = demon;
+
+var cavern = new levelInfo();
+this.name = 'cavern';
+this.monster = rock;
+
+var levelObject = {
+	approach: approach,
+	cavern: cavern
+}
+
+
 
 //function for the player to move, moves player and monster forward if '_'
 //otherwise battles the enemy
 //stops when player reaches end and gives them their loot 
 var i = 0;
-function moveInLevel(monster, specialMonster) {
+function moveInLevel(monstertest) {
 	var player = 'Y';
 	if (level[i] == '_'); {
 		level[i] = 'Y';
 		level[i - 1] = '_';
 		i++;
-		if (monster.move) {
-			monsterMove(monster.value);
+		if (monstertest.monster.move) {
+			monsterMove(monstertest.monster.value);
 		}
-		if (specialMonster) {
-			monsterMove(specialMonster.value);
-			if (level[i] == specialMonster.value) {
-				battleTime(specialMonster);
+		if (monstertest.specialMonster) {
+			monsterMove(monstertest.specialMonster.value);
+			if (level[i] == monstertest.specialMonster.value) {
+				battleTime(monstertest.specialMonster);
 			}
 		}
 	}
@@ -45,12 +64,12 @@ function moveInLevel(monster, specialMonster) {
 	console.log(random + ' random num');
 
 	if (random > 90) {
-		addMoreMonsters(monster);
-		$('#quest_text').html('A ' + monster.name + ' has appeared!');
+		addMoreMonsters(monstertest.monster);
+		$('#quest_text').html('A ' + monstertest.monster.name + ' has appeared!');
 	}
 	else if (random == 1) {
-		addMoreMonsters(specialMonster);
-		$('#quest_text').html('A ' + specialMonster.name + ' has appeared! How unlucky..');
+		addMoreMonsters(monstertest.specialMonster);
+		$('#quest_text').html('A ' + monstertest.specialMonster.name + ' has appeared! How unlucky..');
 
 	}
 	console.log(addMonstersValue);
@@ -62,9 +81,10 @@ function moveInLevel(monster, specialMonster) {
 		gainedLoot = 0;
 		$('#error').html('Level complete, you may leave and keep anything you found');
 	}
-	else if (level[i] == monster.value) {
-		battleTime(monster);
+	else if (level[i] == monstertest.monster.value) {
+		battleTime(monstertest.monster);
 	}
+	$('.level').html(level);
 }
 
 function battleTime(monster) {
@@ -97,6 +117,7 @@ function leaveQuest() {
 	levelActive = false;
 	resetSpellUsed = false;
 	$('#main').show();
+	level = [0];
 	i = 0;
 	questToHide = '#' + questSelected + '_quest';
 	console.log(questToHide);
@@ -104,11 +125,15 @@ function leaveQuest() {
 	$(questToHide).hide();
 	bearCave = false;
 }
+var monster2;
 
 function getQuestSelect(quest) {
 	questSelected = $(quest).val();
+	console.log(questSelected);
+	monster2 = levelObject[questSelected];
+	console.log(monster2);
 	if (quest == '#church_quest') {
-		loadLevelChurch(questSelected);
+		loadLevelChurch(questSelected, monster2);
 	}
 	else if (quest == '#mountain_quest') {
 		loadLevel(questSelected);
@@ -119,7 +144,7 @@ function getQuestSelect(quest) {
 	else if (quest == '#bearcave_quest') {
 		loadBearLevel(questSelected);
 	}
-	questLoop();
+	questLoop(monster2);
 }
 
 
@@ -237,13 +262,13 @@ function loadLevel(questSelected) {
 	}
  }
 
- function loadLevelChurch(questSelected) {
+ function loadLevelChurch(questSelected, monster2) {
  	var questText = $('#quest_text');
  	levelActive = true;
  	$('#quest').show();
  	$('#churchInside').hide();
  	if (questSelected == 'approach') {
- 		makeLevel(60, demon.value, 5, demonWizard.value, 3);
+ 		makeLevel(60, monster2.monster.value, 5, monster2.specialMonster.value, 3);
  		questText.html('There are demons everywhere');
  		$('#approach_quest').show();
  	}
