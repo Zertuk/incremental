@@ -116,6 +116,7 @@ function getQuestSelect(quest) {
 	console.log(questSelected);
 	monster2 = levelObject[questSelected];
 	console.log(monster2);
+	loadLevelTest(monster2)
 	if (quest == '#church_quest') {
 		loadLevelChurch(questSelected, monster2);
 	}
@@ -150,20 +151,27 @@ function loadBearLevel(questSelected, monster2) {
 	$('#quest').show();
 	$('#cavern').hide();
 	console.log(questSelected);
-	if (questSelected == 'cave') {
-		bearCave = true;
-		$('#cave_quest').show();
-		makeLevel(50, monster2.monster.value, 2, monster2.specialMonster.value, 0);
-		$(questText).html('Inside a bears cave');
-	}
-	else if (questSelected == 'den') {
+	
+	if (questSelected == 'den') {
 		$(questText).html('The heart of the bears den!');
 		makeLevel(36, monster2.monster.value, 2, monster2.specialMonster.value, 1);
 		$('#den_quest').show();
 	}
 }
 
+//future function to load all levels
+function loadLevelTest(levelInfo) {
+ 	levelActive = true;
+ 	var questAscii = '#' + levelInfo.name + '_quest';
+ 	$(questAscii).show();
+ 	$('#quest_text').html(levelInfo.text);
+ 	if (levelInfo.name) == 'cave') {
+		bearCave = true;
+	}
 
+ 	makeLevel(levelInfo.levelLength, levelInfo.monster.value, levelInfo.monsterNum, levelInfo.specialMonster.value, level.specialMonsterNum);
+
+}
 
 function loadTowerLevel(questSelected, monster2) {
 	var questText = $('#quest_text');
@@ -198,8 +206,11 @@ function loadLevel(questSelected, monster2) {
 	var questText = $('#quest_text');
 	levelActive = true;
 	$('#quest').show();
+
+	//need to make all the select holding divs universally named
 	$('#mountain').hide();
 
+	//need to write something to show the correct quest	
 	if (questSelected == 'depths') {
 		makeLevel(60, monster2.monster.value, 5, monster2.specialMonster.value, 1);
 		$('#depths_quest').show();
@@ -216,6 +227,8 @@ function loadLevel(questSelected, monster2) {
 		questText.html('Wow it is a mess in here, rocks laying in the path');
 	}
  }
+
+
 
  function loadLevelChurch(questSelected, monster2) {
  	var questText = $('#quest_text');
