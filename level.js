@@ -25,8 +25,8 @@ function levelInfo() {
 
 var approach = new levelInfo();
 approach.name = 'approach';
-approach.monster = rock;
-approach.specialMonster = demon;
+approach.monster = demon;
+approach.specialMonster = demonWizard;
 
 var cavern = new levelInfo();
 cavern.name = 'cavern';
@@ -54,7 +54,7 @@ upper.specialMonster = vampire;
 
 var top = new levelInfo();
 top.name = 'top';
-top.monster = sleleton;
+top.monster = skeleton;
 top.specialMonster = reaper;
 
 var cave = new levelInfo();
@@ -117,7 +117,7 @@ function moveInLevel(monstertest) {
 	console.log(addMonstersValue);
 	console.log(addMonstersValue % 5);
 
-	if (i == level.length) {
+	if (i == level.length && levelActive) {
 		levelActive = false;
 		ectoplasm = ectoplasm + gainedLoot;
 		gainedLoot = 0;
@@ -155,6 +155,9 @@ function battleTime(monster) {
 }
 
 function leaveQuest() {
+	if (levelActive) {
+		$('#error').html('You abandon your quest, leaving anything found behind')
+	}
 	$('#quest').hide();
 	levelActive = false;
 	resetSpellUsed = false;
@@ -178,13 +181,13 @@ function getQuestSelect(quest) {
 		loadLevelChurch(questSelected, monster2);
 	}
 	else if (quest == '#mountain_quest') {
-		loadLevel(questSelected);
+		loadLevel(questSelected, monster2);
 	}
 	else if (quest == '#tower_quest') {
-		loadTowerLevel(questSelected);
+		loadTowerLevel(questSelected, monster2);
 	}
 	else if (quest == '#bearcave_quest') {
-		loadBearLevel(questSelected);
+		loadBearLevel(questSelected, monster2);
 	}
 	questLoop(monster2);
 }
@@ -202,7 +205,7 @@ function dropBearFall() {
 
 var bearCave = false;
 
-function loadBearLevel(questSelected) {
+function loadBearLevel(questSelected, monster2) {
 	var questText = $('#quest_text');
 	levelActive = true;
 	$('#quest').show();
@@ -211,19 +214,19 @@ function loadBearLevel(questSelected) {
 	if (questSelected == 'cave') {
 		bearCave = true;
 		$('#cave_quest').show();
-		makeLevel(50, bear.value, 2, dropBear.value, 0);
+		makeLevel(50, monster2.monster.value, 2, monster2.specialMonster.value, 0);
 		$(questText).html('Inside a bears cave');
 	}
 	else if (questSelected == 'den') {
 		$(questText).html('The heart of the bears den!');
-		makeLevel(36, druid.value, 2, elderDruid.value, 1);
+		makeLevel(36, monster2.monster.value, 2, monster2.specialMonster.value, 1);
 		$('#den_quest').show();
 	}
 }
 
 
 
-function loadTowerLevel(questSelected) {
+function loadTowerLevel(questSelected, monster2) {
 	var questText = $('#quest_text');
 	levelActive = true;
 	$('#quest').show();
@@ -231,18 +234,18 @@ function loadTowerLevel(questSelected) {
 	console.log(questSelected);
 	if (questSelected == 'base') {
 		console.log('hello');
-		makeLevel(55, bat.value, 5, vampire.value, 1);
+		makeLevel(55, monster2.monster.value, 5, monster2.specialMonster.value, 1);
 		$('#base_quest').show();
 		questText.html('The base of the tower');
 	}
 	else if (questSelected == 'upper') {
-		makeLevel(53, skeleton.value, 5, vampire.value, 1);
+		makeLevel(53, monster2.monster.value, 5, monster2.specialMonster.value, 1);
 		$('#upper_quest').show();
 		questText.html('The upper level of the tower, the top is near!');
 
 	}
 	else if (questSelected == 'top') {
-		makeLevel(55, skeleton.value, 5, reaper.value, 1);
+		makeLevel(55, monster2.monster.value, 5, monster2.specialMonster.value, 1);
 		$('#top_quest').show();
 		questText.html('The sun is rising in the distance');
 	}
@@ -252,24 +255,24 @@ function loadTowerLevel(questSelected) {
 	}
 }
 
-function loadLevel(questSelected) {
+function loadLevel(questSelected, monster2) {
 	var questText = $('#quest_text');
 	levelActive = true;
 	$('#quest').show();
 	$('#mountain').hide();
 
 	if (questSelected == 'depths') {
-		makeLevel(60, demon.value, 5, demonWizard.value, 1);
+		makeLevel(60, monster2.monster.value, 5, monster2.specialMonster.value, 1);
 		$('#depths_quest').show();
 		questText.html('The bottom of the mine');
 	}
 	else if (questSelected == 'mines') {
-		makeLevel(50, goblinMiner.value, 5, demon.value, 5); 
+		makeLevel(50, monster2.monster.value, 5, monster2.specialMonster.value, 5); 
 		$('#mine_quest').show();
 		questText.html('There are goblin miners everywhere!');
 	}
 	else if (questSelected == 'cavern') {
-		makeLevel(50, rock.value, 5);
+		makeLevel(50, monster2.monster.value, 5);
 		$('#cavern_quest').show();
 		questText.html('Wow it is a mess in here, rocks laying in the path');
 	}
