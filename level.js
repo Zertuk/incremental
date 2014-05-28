@@ -67,11 +67,16 @@ den.name = 'den';
 den.monster = druid;
 den.specialMonster = elderDruid;
 
-
-
 var levelObject = {
 	approach: approach,
-	cavern: cavern
+	cavern: cavern,
+	den: den,
+	cave: cave,
+	top: top,
+	upper: upper,
+	base: base,
+	depths: depths,
+	mine: mine
 }
 
 
