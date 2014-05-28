@@ -13,18 +13,21 @@ approach.specialMonster = demonWizard;
 approach.levelLength = 60;
 approach.specialMonsterNum = 3;
 approach.text = 'There are demons everywhere!';
+approach.area = '#churchInside'
 
 var cavern = new levelInfo();
 cavern.name = 'cavern';
 cavern.monster = rock;
+cavern.specialMonster = rock;
 cavern.text = 'Wow it is a mess in here, rocks laying in the path';
+cavern.area = '#mountain';
 
 var mine = new levelInfo();
 mine.name = 'mine';
 mine.monster = goblinMiner;
 mine.specialMonster = demon;
-mines.specialMonster = 5;
-mines.specialMonster = 'Goblin miners are flooding the halls'
+mine.specialMonster = 5;
+mine.specialMonster = 'Goblin miners are flooding the halls'
 
 var depths = new levelInfo();
 depths.name = 'depths';
