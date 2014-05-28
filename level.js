@@ -34,7 +34,7 @@ function moveInLevel(monstertest) {
 		if (monstertest.monster.move) {
 			monsterMove(monstertest.monster.value);
 		}
-		if (monstertest.specialMonster) {
+		if (monstertest.specialMonster.move) {
 			monsterMove(monstertest.specialMonster.value);
 			if (level[i] == monstertest.specialMonster.value) {
 				battleTime(monstertest.specialMonster);
@@ -118,7 +118,8 @@ function getQuestSelect(quest) {
 	console.log(monster2);
 	loadLevelTest(monster2)
 	if (quest == '#church_quest') {
-		loadLevelChurch(questSelected, monster2);
+		//loadLevelChurch(questSelected, monster2);
+		console.log(' ok')
 	}
 	else if (quest == '#mountain_quest') {
 		loadLevel(questSelected, monster2);
@@ -162,12 +163,18 @@ function loadBearLevel(questSelected, monster2) {
 //future function to load all levels
 function loadLevelTest(levelInfo) {
  	levelActive = true;
- 	var questAscii = '#' + levelInfo.name + '_quest';
+ 	var questName = levelInfo.name
+ 	var questAscii = '#' + questName + '_quest';
  	$(questAscii).show();
+ 	$('#quest').show();
+ 	console.log(questAscii +' ok teset');
+ 	$(levelInfo.area).hide();
  	$('#quest_text').html(levelInfo.text);
- 	if (levelInfo.name) == 'cave') {
+ 	if (levelInfo.name == 'cave') {
 		bearCave = true;
 	}
+	console.log(levelInfo.area + ' the area');
+
 
  	makeLevel(levelInfo.levelLength, levelInfo.monster.value, levelInfo.monsterNum, levelInfo.specialMonster.value, level.specialMonsterNum);
 
