@@ -1,6 +1,8 @@
 var gainedLoot = 0;
 var questSelected = null;
 var level = new Array;
+var monster2;
+var i = 0;
 
 //makes the level, takes in the level length to determine length and the monster
 //to determine what monster to fill with, randomly spawns monsters
@@ -19,72 +21,10 @@ function makeLevel(levelInp, monster, monsterCount, specialMonster, specialCount
 	}
 };
 
-function levelInfo() {
-	this.name = 'none'
-}
-
-var approach = new levelInfo();
-approach.name = 'approach';
-approach.monster = demon;
-approach.specialMonster = demonWizard;
-
-var cavern = new levelInfo();
-cavern.name = 'cavern';
-cavern.monster = rock;
-
-var mine = new levelInfo();
-mine.name = 'mine';
-mine.monster = goblinMiner;
-mine.specialMonster = demon;
-
-var depths = new levelInfo();
-depths.name = 'depths';
-depths.monster = demon;
-depths.specialMonster = demonWizard;
-
-var base = new levelInfo();
-base.name = 'base';
-base.monster = bat;
-base.specialMonster = vampire;
-
-var upper = new levelInfo();
-upper.name = 'base';
-upper.monster = skeleton;
-upper.specialMonster = vampire;
-
-var top = new levelInfo();
-top.name = 'top';
-top.monster = skeleton;
-top.specialMonster = reaper;
-
-var cave = new levelInfo();
-cave.name = 'cave';
-cave.monster = bear;
-cave.specialMonster = dropBear;
-
-var den = new levelInfo();
-den.name = 'den';
-den.monster = druid;
-den.specialMonster = elderDruid;
-
-var levelObject = {
-	approach: approach,
-	cavern: cavern,
-	den: den,
-	cave: cave,
-	top: top,
-	upper: upper,
-	base: base,
-	depths: depths,
-	mine: mine
-}
-
-
 
 //function for the player to move, moves player and monster forward if '_'
 //otherwise battles the enemy
 //stops when player reaches end and gives them their loot 
-var i = 0;
 function moveInLevel(monstertest) {
 	var player = 'Y';
 	if (level[i] == '_'); {
@@ -170,7 +110,6 @@ function leaveQuest() {
 	$(questToHide).hide();
 	bearCave = false;
 }
-var monster2;
 
 function getQuestSelect(quest) {
 	questSelected = $(quest).val();
