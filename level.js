@@ -3,9 +3,12 @@ var questSelected = null;
 var level = new Array;
 var monster2;
 var i = 0;
+var bearCave = false;
+
 
 //makes the level, takes in the level length to determine length and the monster
-//to determine what monster to fill with, randomly spawns monsters
+//to determine what monster to fill with, randomly spawns monsters throughout the level array
+//also takes in the number of monsters to spawn
 function makeLevel(levelInp, monster, monsterCount, specialMonster, specialCount) {
 	for (var i = 0; i < levelInp; i++) {
 		level[i] = '_';
@@ -31,20 +34,18 @@ function moveInLevel(monstertest) {
 		level[i] = 'Y';
 		level[i - 1] = '_';
 		i++;
+		//moves monster if appropriate
 		if (monstertest.monster.move) {
 			monsterMove(monstertest.monster.value);
 		}
 		if (monstertest.specialMonster.move) {
 			monsterMove(monstertest.specialMonster.value);
-			if (level[i] == monstertest.specialMonster.value) {
-				battleTime(monstertest.specialMonster);
-			}
 		}
 	}
-	//why dont i have a master random num function yet jesus
+	//why dont i have a master random num function yet
 	var random = Math.round(Math.random()*100);
 	console.log(random + ' random num');
-
+	//these two add more monsters if the random num fits the requirments
 	if (random > 90) {
 		addMoreMonsters(monstertest.monster);
 		$('#quest_text').html('A ' + monstertest.monster.name + ' has appeared!');
@@ -54,21 +55,25 @@ function moveInLevel(monstertest) {
 		$('#quest_text').html('A ' + monstertest.specialMonster.name + ' has appeared! How unlucky..');
 
 	}
-	console.log(addMonstersValue);
-	console.log(addMonstersValue % 5);
-
+	//level success, adds loot
 	if (i == level.length && levelActive) {
 		levelActive = false;
 		ectoplasm = ectoplasm + gainedLoot;
-		gainedLoot = 0;
 		$('#error').html('Level complete, you may leave and keep anything you found');
 	}
+	//calls battle function if next space is monster
 	else if (level[i] == monstertest.monster.value) {
 		battleTime(monstertest.monster);
+	}
+	else if (level[i] == monstertest.specialMonster.value) {
+		battleTime(monstertest.specialMonster);
 	}
 	$('.level').html(level);
 }
 
+//takes in the monster the player is next to as parameter
+//then uses the info from this object to battle, taking/giving
+//damage until someone dies, dispenses loot if appropriate.
 function battleTime(monster) {
 	$('#player_stats').html('Player Dmg: ' + player.damage);
 	monster.monsterInfo();
@@ -94,6 +99,8 @@ function battleTime(monster) {
 	monster.monsterInfo();	
 }
 
+
+//leave quest, resets all quest related variables & shows/hide correct areas
 function leaveQuest() {
 	if (levelActive) {
 		$('#error').html('You abandon your quest, leaving anything found behind')
@@ -104,6 +111,7 @@ function leaveQuest() {
 	$('#main').show();
 	level = [0];
 	i = 0;
+	gainedLoot = 0;
 	questToHide = '#' + questSelected + '_quest';
 	console.log(questToHide);
 	console.log(questSelected);
@@ -111,30 +119,22 @@ function leaveQuest() {
 	bearCave = false;
 }
 
+//gets quest select from the value of the option selected
+//then passes that into the levelObject which uses that value
+//as a key which is associated with the levelInfo object
+//which contains all of the relevant info to make a level
+//also calls the main questLoop using that object
 function getQuestSelect(quest) {
 	questSelected = $(quest).val();
-	console.log(questSelected);
-	monster2 = levelObject[questSelected];
-	console.log(monster2);
-	loadLevelTest(monster2)
-	if (quest == '#church_quest') {
-		//loadLevelChurch(questSelected, monster2);
-		console.log(' ok')
-	}
-	else if (quest == '#mountain_quest') {
-		loadLevel(questSelected, monster2);
-	}
-	else if (quest == '#tower_quest') {
-		loadTowerLevel(questSelected, monster2);
-	}
-	else if (quest == '#bearcave_quest') {
-		loadBearLevel(questSelected, monster2);
-	}
-	questLoop(monster2);
+	currentLevelInfo = levelObject[questSelected];
+	loadLevelTest(currentLevelInfo)
+	questLoop(currentLevelInfo);
 }
 
-
-
+//random chance to spawn a dropBear monster a few steps in front of
+//the players position, only runs while bearCave is true.
+//if it is true then it is run through the questLoop
+//made false in leave quest after level
 function dropBearFall() {
 	var random = Math.round(Math.random()*100);
 	var questText = $('#quest_text');
@@ -144,107 +144,20 @@ function dropBearFall() {
  	}	
 }
 
-var bearCave = false;
-
-function loadBearLevel(questSelected, monster2) {
-	var questText = $('#quest_text');
-	levelActive = true;
-	$('#quest').show();
-	$('#cavern').hide();
-	console.log(questSelected);
-	
-	if (questSelected == 'den') {
-		$(questText).html('The heart of the bears den!');
-		makeLevel(36, monster2.monster.value, 2, monster2.specialMonster.value, 1);
-		$('#den_quest').show();
-	}
-}
-
-//future function to load all levels
+//function to load all levels, takes in levelInfo object as parameter with
+//everything needed to form the level & show/hide the correct areas
 function loadLevelTest(levelInfo) {
  	levelActive = true;
  	var questName = levelInfo.name
  	var questAscii = '#' + questName + '_quest';
  	$(questAscii).show();
  	$('#quest').show();
- 	console.log(questAscii +' ok teset');
  	$(levelInfo.area).hide();
  	$('#quest_text').html(levelInfo.text);
  	if (levelInfo.name == 'cave') {
 		bearCave = true;
 	}
-	console.log(levelInfo.area + ' the area');
 
-
- 	makeLevel(levelInfo.levelLength, levelInfo.monster.value, levelInfo.monsterNum, levelInfo.specialMonster.value, level.specialMonsterNum);
+ 	makeLevel(levelInfo.levelLength, levelInfo.monster.value, levelInfo.monsterNum, levelInfo.specialMonster.value, levelInfo.specialMonsterNum);
 
 }
-
-function loadTowerLevel(questSelected, monster2) {
-	var questText = $('#quest_text');
-	levelActive = true;
-	$('#quest').show();
-	$('#tower').hide();
-	console.log(questSelected);
-	if (questSelected == 'base') {
-		console.log('hello');
-		makeLevel(55, monster2.monster.value, 5, monster2.specialMonster.value, 1);
-		$('#base_quest').show();
-		questText.html('The base of the tower');
-	}
-	else if (questSelected == 'upper') {
-		makeLevel(53, monster2.monster.value, 5, monster2.specialMonster.value, 1);
-		$('#upper_quest').show();
-		questText.html('The upper level of the tower, the top is near!');
-
-	}
-	else if (questSelected == 'top') {
-		makeLevel(55, monster2.monster.value, 5, monster2.specialMonster.value, 1);
-		$('#top_quest').show();
-		questText.html('The sun is rising in the distance');
-	}
-	else if (questSelected == 'monk') {
-		$('#monk_prequest').show();
-
-	}
-}
-
-function loadLevel(questSelected, monster2) {
-	var questText = $('#quest_text');
-	levelActive = true;
-	$('#quest').show();
-
-	//need to make all the select holding divs universally named
-	$('#mountain').hide();
-
-	//need to write something to show the correct quest	
-	if (questSelected == 'depths') {
-		makeLevel(60, monster2.monster.value, 5, monster2.specialMonster.value, 1);
-		$('#depths_quest').show();
-		questText.html('The bottom of the mine');
-	}
-	else if (questSelected == 'mines') {
-		makeLevel(50, monster2.monster.value, 5, monster2.specialMonster.value, 5); 
-		$('#mine_quest').show();
-		questText.html('There are goblin miners everywhere!');
-	}
-	else if (questSelected == 'cavern') {
-		makeLevel(50, monster2.monster.value, 5);
-		$('#cavern_quest').show();
-		questText.html('Wow it is a mess in here, rocks laying in the path');
-	}
- }
-
-
-
- function loadLevelChurch(questSelected, monster2) {
- 	var questText = $('#quest_text');
- 	levelActive = true;
- 	$('#quest').show();
- 	$('#churchInside').hide();
- 	if (questSelected == 'approach') {
- 		makeLevel(60, monster2.monster.value, 5, monster2.specialMonster.value, 3);
- 		questText.html('There are demons everywhere');
- 		$('#approach_quest').show();
- 	}
- }
