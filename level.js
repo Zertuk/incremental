@@ -1,7 +1,7 @@
 var gainedLoot = 0;
 var questSelected = null;
 var level = new Array;
-var monster2;
+var currentLevelInfo;
 var i = 0;
 var bearCave = false;
 
@@ -108,7 +108,7 @@ function leaveQuest() {
 	$('#quest').hide();
 	levelActive = false;
 	resetSpellUsed = false;
-	$('#main').show();
+	$(currentLevelInfo.area).show();
 	level = [0];
 	i = 0;
 	gainedLoot = 0;
