@@ -25,10 +25,6 @@ function healthRegen() {
 
 //loads dom elements & event listeners
 window.onload = function() {
-	// Mountain.createLocButton('location_button', 'mountain', 'map', 'Enter');
-	// Mountain.createLocButton('location_button', 'map', 'mountain', 'Leave');
-	// $('#asciiTest').html(Mountain.text);
-
 	mainLoop();
 
 	var reflectingPool = document.getElementById('reflectingPool');
@@ -184,6 +180,8 @@ function blinkAnimate() {
 }
 var total = 0;
 var total1= 0;
+
+//main game loop, adds resources and hp
 function mainLoop() {
 	ectoplasmGenerator(seedsPlanted);
 	if (player.health < player.maxHealth) {
@@ -194,20 +192,19 @@ function mainLoop() {
 	if (batteryOn == true) {
 		bloodGenerator(batteriesUsed);
 	}
-	console.log(potionCD + ' cd');
 	setTimeout(mainLoop, 1000);
 }
 
 
 var testloop;
-var questLoop = function(monster2) {
-	console.log(questSelected);
-	console.log(monster2.monster.damage + ' test monster1')
+
+//quest loop, called if level is active
+var questLoop = function(monster) {
 	if (bearCave) {
 		dropBearFall();
 	}
 	if (timeFrozen == false) {
-		moveInLevel(monster2);
+		moveInLevel(monster);
 		
 	}
 	if (timeFrozen) {
@@ -234,7 +231,7 @@ var questLoop = function(monster2) {
 		return;
 	}
 	setTimeout(function() {
-		questLoop(monster2);
+		questLoop(monster);
 	}, 500);
 }
 //not current being called
