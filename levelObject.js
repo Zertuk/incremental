@@ -21,6 +21,15 @@ cavern.monster = rock;
 cavern.specialMonster = rock;
 cavern.text = 'Wow it is a mess in here, rocks laying in the path';
 cavern.area = '#mountain';
+cavern.ascii = '\n\
+\\__                                      \n\
+   \\___________   \n\
+       \\/ \\/   \\__ \n\
+        "  "      \\________________ \n\
+                      \\/  ""   \\/  \\_______________\n\
+          \n\
+\<p class \= "level"\>\</p\>\n\
+\n\ ';
 
 var mine = new levelInfo();
 mine.name = 'mine';
