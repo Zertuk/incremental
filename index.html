@@ -14,6 +14,8 @@
 <script src = "store.js"></script>
 <script src = "reflecting.js"></script>
 <script src = "monsters.js"></script>
+<script src = "levelObject.js"></script>
+<script src = "locationObject.js"></script>
 <script src = "level.js"></script>
 <script src = "main.js"></script>
 
@@ -22,7 +24,6 @@
 </head>
 
 <body>
-
   <div class = "wrapper">
 		<div id = "ectoplasmDiv">
 
@@ -38,138 +39,8 @@
 
     <div id = "quest">
       <p id = "quest_text">--</p>
-      <pre id = "cavern_quest">
-\__                                      
-   \___________   
-       \/ \/   \__                
-        "  "      \________________          
-                      \/  ""   \/  \_______________
-          
-<p class = "level"></p>
-<br>
-<p class = "level2"></p>
 
-      </pre>
-
-
-
-      <pre id = "mine_quest"> 
-  ___________________________________________________      
-                                                 
-       $            $$          $$     $       
-   ___$$$_'\-o_____|$$$|__o-/'_$$$$___$$$____________
-                                                                             
-<p class = "level"></p>
-  ====================================================
-  |\/|        |\/|        |\/|        |\/|        |\/|
-  |/\|        |/\|        |/\|        |/\|        |/\|
-  |\/|        |\/|        |\/|        |\/|        |\/|
-      </pre>
-
-      <pre id = "depths_quest">
-|                                                                  '=|
-|                                                                  '=|
-|                                                                  '=|
-|                                                                  '=|
-|                                                                  '=|
-|                                                                  '=|
-|                                                                  '=|
-|                                                                  '=|
-|                                                                  '=|
-|                                                                  '=|
-|                                                                  '=|
-|                                                                  '=|
-|                                                                  '=|
-|<p class = 'level'></p>  /=/|
-</pre>
-
-<pre id = "approach_quest">
-  ___________________________________________________________
-                             \    /
-            _||_              |  |            _||_
-           |_  _|             |  |           |_  _|  
-        ^    ||     ^         |  |        ^    ||     ^  
-      __|____||_____|__       |  |      __|____||_____|__  
-     |                 |     /____\    |                 |
-
-<p class = "level">
-</pre>
-
-<pre id = "base_quest">
-
-_______________________________________________________________
-
-   __       __       __       __       __       __       __
-  |__|     |__|     |__|     |__|     |__|     |__|     |__|   
-
-                                                             _,--|
-<p class = "level"></p>,--|
-</pre>
-
-<pre id = "upper_quest">
- ____      ____      ____      ____      ____      ______      _____
-|    |____|    |____|    |____|    |____|    |____|    '=|____|     |
-                                                       '=|          |
-                                                       '=|          |
-                                                       '=|          |
-                                                       '=|          |
-                                                       '=|          |
-<p class = "level"></p>'=|          |
-</pre>
-
-<pre id = "top_quest">
-
-
-
-
-
-                         |    
-                     \       /            
-                       .-'-.            
-                  --  /     \  --          
-==========================================================
-                                                         o
-                                                         ^
-<p class = "level">
-</pre>
-
-<pre id = "cave_quest">           
-                                   _______________________
-    _______________________________\          ____
-___/                                         /====\
-____                ----                _____|_dR_|___.^._
-    \_______       /_dB_\      ___dB___/
-            \__dB_____________/
-_________                                -----
-  -----  \_________                     /_____\
- /_B_B_\           \                  ________________
-__,o________________\________________/_______,o_______\___
-
-<p class = "level">
-
-</pre>
-
-<pre id = "den_quest">
-                                 /            \
-                               _/              \
-                              /                 |
-__                           /                   \
-  \____/----\_______________/                     \
-                                                   \___
-                                                       \
-                                          *             |
-                                              *          \
-                                           ____[]         \
-                                          /\     \         |
-                                         /__\_____\       /
-                                         ||||[] []|      /
-<p class = "level"></p> 
-
-</pre>
-
-
-      <br>
-      
+      <pre id = 'ascii_test'>test</pre>      
       <br>
       <div id = "stat_wrap">      
         <p id = "monster_stats">--</p>
@@ -191,6 +62,7 @@ __                           /                   \
         <button id = "leave_quest">Leave</button>
       </div><!--stat_wrap-->
     </div><!--quest-->
+    <pre id = 'testing'>--</pre>
 		<div id = "main">			
 			<button onclick = "ectoplasmClick(1)">Click</button>
 			
