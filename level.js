@@ -112,10 +112,8 @@ function leaveQuest() {
 	level = [0];
 	i = 0;
 	gainedLoot = 0;
-	questToHide = '#' + questSelected + '_quest';
 	console.log(questToHide);
 	console.log(questSelected);
-	$(questToHide).hide();
 	bearCave = false;
 }
 
@@ -127,7 +125,7 @@ function leaveQuest() {
 function getQuestSelect(quest) {
 	questSelected = $(quest).val();
 	currentLevelInfo = levelObject[questSelected];
-	loadLevelTest(currentLevelInfo)
+	loadLevel(currentLevelInfo)
 	questLoop(currentLevelInfo);
 }
 
@@ -146,11 +144,11 @@ function dropBearFall() {
 
 //function to load all levels, takes in levelInfo object as parameter with
 //everything needed to form the level & show/hide the correct areas
-function loadLevelTest(levelInfo) {
+function loadLevel(levelInfo) {
  	levelActive = true;
  	var questName = levelInfo.name
  	var questAscii = '#' + questName + '_quest';
- 	$('#ascii_test').html(levelInfo.ascii);
+ 	$('#quest_ascii').html(levelInfo.ascii);
  	$('#quest').show();
  	$(levelInfo.area).hide();
  	$('#quest_text').html(levelInfo.text);

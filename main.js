@@ -27,6 +27,8 @@ function healthRegen() {
 window.onload = function() {
 	mainLoop();
 
+	$('#ascii_text').html(cavern.ascii);
+
 	var reflectingPool = document.getElementById('reflectingPool');
 	var store = document.getElementById('store');
 	var main = document.getElementById('main');
