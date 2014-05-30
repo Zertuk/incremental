@@ -150,7 +150,7 @@ function loadLevelTest(levelInfo) {
  	levelActive = true;
  	var questName = levelInfo.name
  	var questAscii = '#' + questName + '_quest';
- 	$(questAscii).show();
+ 	$('#ascii_test').html(levelInfo.ascii);
  	$('#quest').show();
  	$(levelInfo.area).hide();
  	$('#quest_text').html(levelInfo.text);
