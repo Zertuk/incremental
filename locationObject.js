@@ -46,12 +46,9 @@ $('.location_button, pre').click(function() {
 function animateAscii() {
 	$('#location_ascii').toggle();
 	$('#location_ascii2').toggle();
-	console.log('hellllo');
 
 	setTimeout(animateAscii, 500);
-}	
-		
-
+}
 
 var Store = new locationObject();
 Store.ascii = "\n\
@@ -117,3 +114,31 @@ Store.ascii2 = "\n\
   cccC__Cccc___)\n\ ";
 
 Store.text = 'You looking to buy?';
+
+var Church = new locationObject();
+Church.text = 'You walk into the church and it is very dark inside, there is a figure behind the podium yet no sign of anyone else';
+Church.ascii = '
+          		  ____                                               ____
+       . |       /====\         ||                       ||         /====\
+      .  |       |====|        =**=          _          =**=        |====|
+     .   |       |====|         ||         _( )_         ||         |====|
+    .    |                      ||        /_____\        ||
+   .     |                 _______________\|   |/__________________
+  .      |_______ ________/                | + |                  /____ _____
+ .      .       _U_      /                 |___|                 //   _U_
+       .         |      /_______________________________________//     |
+      .         /|\     |______________________________________|/     /|\
+     .   (=========================)     .      . (==========================)
+    .    |                         |/|  .       . |                          |
+   .     |                         | | .        . |                          |
+  .      |_________________________|/|.         . ||------------------------||
+     (=========================)  || .          . (==========================|
+     |                         |/|  .           . |                          |
+     |                         | | .            . |                          |
+     |_________________________|/|.             . ||------------------------||
+ (=========================)  || .              . (==========================)
+ |                         |/|  .               . |                          |
+ |                         | | .                . |                          |
+ |_________________________|/|.                 . | ________________________ |
+ |                        || .                  . ||   -Steve Stewart-      ||';
+ 
