@@ -92,10 +92,13 @@ window.onload = function() {
 		factoryFunction(buttonValue);
 	})
 }
-
+var previousLocation = levelInfo;
  	function locationSwitch(location) {
+ 		$(previousLocation.special).hide();
+ 		previousLocation = location;
  		$('#location_ascii').hide();
  		$('#location_text').hide();
+ 		$(location.special).show();
  		$('#location_ascii').html(location.ascii).fadeIn('slow');
  		$('#location_text').html(location.text).fadeIn('slow');
  	}
