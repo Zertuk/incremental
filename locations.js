@@ -16,8 +16,10 @@ var restPrice;
 
 function searchCamp() {
 	$('#steal_items').show();
-	$('#camp_text').html('There is lots of swag here, but no people still');
+	Camp.text = 'There is lots of swag here, but no people still';
+	$('#location_text').html(Camp.text);
 }
+
 
 //if you confess he charges 3x per return visit
 //not a very forgiving man apparently
@@ -57,10 +59,9 @@ function campRest() {
 
 //just displays the relevant text/buttons depending on how scenario played out
 function campgroundAfterScenario() {
-	$('#camp_text').html('The fire is roaring')
+	Camp.text = 'The fire is roaring';
 	if (confess) {
-		$('#man_text').html('Hey jerk want to rest? <br> Special Price..');
-		
+		$('#man_text').html('Hey jerk want to rest? <br> Special Price..');		
 	}
 	else if (thief) {
 		$('#man_text').show().html('Sorry but someone stole my supplies, Im going <br> to have to charge for you to rest here');
@@ -82,7 +83,6 @@ function stealItems() {
 	$('#camp_scenario').hide();
 	$('#camp_use').show();
 	restPrice = 1;
-	enterMapLocation('#campground');
 	thief = true;
 	campgroundAfterScenario();
 }
@@ -91,23 +91,23 @@ function stealItems() {
 //onclick hides buttons for 5 seconds, waiting is hard
 //you have to wait forever for him to arrive!
 function campgroundWait() {
-	$('#camp_text').html('You are waiting...(be patient)');
+	$('#location_text').html('You are waiting...(be patient)');
 	$('#camp_scenario').hide();
 	window.setTimeout(function() {
 		if (campCount == 0) {
-		$('#camp_text').html('You waited for thirty minutes and no one showed up');
+		$('#location_text').html('You waited for thirty minutes and no one showed up');
 		$('#camp_scenario').show();
 	}
 	else if (campCount == 1) {
-		$('#camp_text').html('Still no one around, you look around and see a lot of supplies');
+		$('#location_text').html('Still no one around, you look around and see a lot of supplies');
 		$('#camp_scenario').show();
 	}
 	else if (campCount == 2) {
-		$('#camp_text').html('The fire is starting to die down');
+		$('#location_text').html('The fire is starting to die down');
 		$('#camp_scenario').show();
 	}
 	else {
-		$('#camp_text').html('You may now use the campers tent to rest, free of charge')
+		$('#location_text').html('You may now use the campers tent to rest, free of charge')
 		$('#man').show();
 		$('#man_text').show();
 		$('#camp_use').show();
