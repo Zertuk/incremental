@@ -37,13 +37,15 @@ window.onload = function() {
 	var fieldButton = document.getElementById('fieldButton');
 	var mapButton = document.getElementById('mapButton');
 
+	var locationTo;
+	var locationFrom;
+
  	// event listener to switch location
+
 	$('.location_button, pre').click(function() {
 		var buttonValue = $(this).attr('value');
 		var split = buttonValue.split(',');
-		console.log('test');
-		$('#' + split[1]).hide();
-		$('#' + split[0]).fadeIn('slow');
+		locationSwitch(split[0]);
 		if (split[0] == 'mountain') {
 			magicDoor();
 		}
@@ -90,6 +92,14 @@ window.onload = function() {
 		factoryFunction(buttonValue);
 	})
 }
+
+ 	function locationSwitch(location) {
+ 		$('#location_ascii').hide();
+ 		$('#location_text').hide();
+ 		$('#location_ascii').html(location.ascii).fadeIn('slow');
+ 		$('#location_text').html(location.text).fadeIn('slow');
+ 	}
+
 
 //generates ectoplasm on click
 function ectoplasmClick(num) {
