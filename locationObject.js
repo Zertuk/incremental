@@ -1,20 +1,15 @@
 var button;
 var oldButtons ='';
 
-
-var locationObject = {
-	Church: Church,
-	Store: Store
-}
-
 function locationInfo() {
 	this.questText = 'A default text display here',
-	this.ascii = '|===|===|',
+	this.ascii = '',
 	this.text = '',
 	this.buttons = '-',
-	this.name = 'default location',
+	this.name = '',
 	this.specButtons = '',
-	this.animate = 500,
+	this.animateInterval = 500,
+	this.animate = false,
 	this.createLocButton = function(buttonClass, to, from, type) {
 		this.buttons = '<button class = "' + buttonClass + '"' + ' value = "' + to + ',' + from + '">' + type + '</button>';
 		this.displayButton();
@@ -49,15 +44,26 @@ $('.location_button, pre').click(function() {
 		error.innerHTML = '';
 	});
 }
-
-function animateAscii() {
+var animateRecurse;
+function animateAscii(location) {
+	if (location != undefined){
+	animateRecurse = location;
+	$('#location_ascii2').html(location.ascii2);
+	}
+	if (animateRecurse.animate = true) {
 	$('#location_ascii').toggle();
 	$('#location_ascii2').toggle();
-
-	setTimeout(animateAscii, 500);
+	
+	setTimeout(animateAscii, animateRecurse.animateInterval);
+	}
+	else {
+		return;
+	}
 }
 
 var Store = new locationInfo();
+Store.animate = true;
+Store.animateInterval = 10000;
 Store.ascii = "\n\
       ////^\\\\\\\\\n\
       | ^   ^ |\n\
@@ -353,3 +359,13 @@ Mountain.ascii = '\n\
                      {______}     \\___________________/     {______}\n\
                  SSt |______|_______________________________|______|\n\ ';
 
+
+var Main = new locationInfo();
+Main.special = '#main_special';
+
+
+var locationObject = {
+	Church: Church,
+	Store: Store,
+	Main: Main
+}
