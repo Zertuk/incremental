@@ -248,7 +248,7 @@ PoolInside.ascii = '\n\
 
 
 var Tower = new locationInfo();
-Tower.text ='';
+Tower.text ='You are at the base of the tower, noise is coming from inside';
 Tower.ascii = '\n\
                           .- ._          *\n\
                  .       (   ) `) ._,--.\n\
@@ -297,7 +297,7 @@ Monk.ascii = '                          \n\
 
 
 var DemonWizardElder = new locationInfo();
-DemonWizardElder.text = '';
+DemonWizardElder.text = 'Hello, I am the Demon Wizard Elder, I can grant you amazing power, for a price of course.  Choose your sin, but remember, you can only choose one.';
 DemonWizardElder.ascii = '\n\
     ,-----.\n\
    ( <> <> )\n\
@@ -363,9 +363,24 @@ Mountain.ascii = '\n\
 var Main = new locationInfo();
 Main.special = '#main_special';
 
+var Factory = new locationInfo();
+Factory.special = '#factory_special';
+
+var Inventory = new locationInfo();
+Inventory.special = '#inventory_special';
+
+
 
 var locationObject = {
 	Church: Church,
 	Store: Store,
-	Main: Main
+	Main: Main,
+	DemonWizardElder: DemonWizardElder,
+	Pool: Pool,
+	PoolInside: PoolInside,
+	Monk: Monk,
+	Tower: Tower,
+	Camp: Camp,
+	Factory: Factory,
+	Inventory: Inventory
 }
