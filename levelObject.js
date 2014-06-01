@@ -17,7 +17,6 @@ approach.specialMonster = demonWizard;
 approach.levelLength = 60;
 approach.specialMonsterNum = 3;
 approach.text = 'There are demons everywhere!';
-approach.area = '#churchInside';
 approach.ascii = '  ___________________________________________________________\n\
                              \\    /\n\
             _\|\|_              \|  \|            _\|\|_\n\
@@ -33,7 +32,6 @@ cavern.name = 'cavern';
 cavern.monster = rock;
 cavern.specialMonster = rock;
 cavern.text = 'Wow it is a mess in here, rocks laying in the path';
-cavern.area = '#mountain';
 cavern.ascii = '\n\
 \\__                                      \n\
    \\___________   \n\
@@ -50,7 +48,6 @@ mine.monster = goblinMiner;
 mine.specialMonster = demon;
 mine.specialMonster = 5;
 mine.specialMonster = 'Goblin miners are flooding the halls';
-mine.area = '#mountain';
 mine.ascii = '____________________________________________________\n\
 \n\
       \$            \$\$          \$\$     \$       \n\
@@ -70,7 +67,6 @@ depths.specialMonster = demonWizard;
 depths.specialMonsterNum = 1;
 depths.text = 'The bottom of the mine';
 depths.levelLength = 60;
-depths.area = '#mountain';
 depths.ascii = '\n\
 \|                                                                  \'\=\|\n\
 \|                                                                  \'\=\|\n\
@@ -94,7 +90,6 @@ base.specialMonster = vampire;
 base.levelLength = 55;
 base.specialMonsterNum = 1;
 base.text = 'The base of the tower';
-base.area = '#tower';
 base.ascii = '_______________________________________________________________\n\
 \n\
    __       __       __       __       __       __       __\n\
@@ -110,7 +105,6 @@ upper.specialMonster = vampire;
 upper.levelLength = 53;
 upper.specialMonsterNum = 1;
 upper.text = 'The upper level of the tower, the top is near!';
-upper.area = '#tower';
 upper.ascii = '\n\
  ____      ____      ____      ____      ____      ______      _____\n\
 \|    \|____\|    \|____\|    \|____\|    \|____\|    \|____\|    \'\=\|____\|     \|\n\
@@ -129,7 +123,6 @@ top.specialMonster = reaper;
 top.specialMonsterNum = 1;
 top.levelLength = 55;
 top.text = 'The sun is rising in the distance';
-top.area = '#tower';
 top.ascii = '\n\
 \n\
 \n\
@@ -149,7 +142,6 @@ cave.monster = bear;
 cave.specialMonster = dropBear;
 cave.monsterNum = 2;
 cave.text = 'Inside a bears cave! ...Is this a good idea?';
-cave.area = '#cavern';
 cave.ascii = '                    _______________________\n\
     _______________________________\\          ____\n\
 ___/                                         /\=\=\=\=\\\n\
@@ -171,7 +163,6 @@ den.levelLength = 36;
 den.text = 'The heart of the bears den! Whats that house doing here?';
 den.specialMonsterNum = 1;
 den.monsterNum = 2;
-den.area = '#cavern';
 den.ascii = '\n\
                                  /            \\\n\
                                _/              \\\n\
