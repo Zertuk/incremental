@@ -75,7 +75,7 @@
         <option value = 'figure'>The Figure</option>
       </select>
       <button onclick = "getQuestSelect('#church_quest')">Enter</button>
-      <button class = 'location_button' value = "main,churchInside">Leave</button>
+      <button class = 'location_button' value = "Store">Leave</button>
     </div><!--church_special-->
 
     <div id = 'store_special'>
@@ -90,7 +90,7 @@
         <p>Battery: <button class = 'store_button' value = 'battery'>2000</button></p>
         <p id = "runez">Magic Rune: <button class = 'store_button' value = 'rune'>1</button></p>
         <br>
-        <button class = 'location_button' value = "main,store">Leave Store</button>
+        <button class = 'location_button' value = "Main">Leave Store</button>
       </div><!--storeWrapper-->
     </div><!--store_special-->
 
@@ -166,15 +166,8 @@
       <button id = "freedom_choice">Freedom</button>
     </div>
 
-		<div id = "main">			
-			<button onclick = "ectoplasmClick(1)">Click</button>
-			
-			<button id = "storeButton" value = "store,main">Store</button>			
-			<button id = "fieldButton" value = "field,main">Factory</button>
-			<button class = "location_button" id = "mapButton" value = "map,main">Map</button>
-			<button id = "invert_button">Inverse</button>
-
-			<pre value = "store,main" id = "house1">
+    <div id = "main_special">
+      <pre value = "Store" id = "house1">
           (
   
             )
@@ -196,7 +189,7 @@
 
 
       </pre>
-			<pre value = "store,main" id = "house2">
+      <pre value = "store,main" id = "house2">
             )
   
           (
@@ -219,7 +212,7 @@
 
       </pre>
 
-      <pre value = "churchInside,main" id = "church">
+      <pre value = "Church" id = "church">
 
   [ The Church ]
 
@@ -238,7 +231,7 @@ _/           |==|   \_
 
       </pre>
       <pre value = "field,main" id = "factory">
-	   __  . .* ,
+     __  . .* ,
      ~#@#%(" .,$ @
    .;#$% %
   ..
@@ -254,7 +247,7 @@ _/           |==|   \_
              [ Factory ]
       </pre>
       <pre value = "field,main" id = "factory2">
-	   ''%^   ^_
+     ''%^   ^_
      ~$.@%}^)  ''*
    ."^ ';"
   ..
@@ -268,7 +261,17 @@ _/           |==|   \_
 .'  `._;       :  :__.' .'        `.
 
              [ Factory ]
-    </pre>
+      </pre>
+    </div><!--main_special-->
+
+		<div id = "main">			
+			<button onclick = "ectoplasmClick(1)">Click</button>
+			
+			<button id = "storeButton" value = "store,main">Store</button>			
+			<button id = "fieldButton" value = "field,main">Factory</button>
+			<button class = "location_button" id = "mapButton" value = "map,main">Map</button>
+			<button id = "invert_button">Inverse</button>
+			
 		</div><!--main-->
 
 
