@@ -108,7 +108,7 @@ function leaveQuest() {
 	$('#quest').hide();
 	levelActive = false;
 	resetSpellUsed = false;
-	$(currentLevelInfo.area).show();
+	$('#location_div').show();
 	level = [0];
 	i = 0;
 	gainedLoot = 0;
@@ -150,7 +150,7 @@ function loadLevel(levelInfo) {
  	var questAscii = '#' + questName + '_quest';
  	$('#quest_ascii').html(levelInfo.ascii);
  	$('#quest').show();
- 	$(levelInfo.area).hide();
+ 	$('#location_div').hide();
  	$('#quest_text').html(levelInfo.text);
  	if (levelInfo.name == 'cave') {
 		bearCave = true;
