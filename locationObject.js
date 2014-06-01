@@ -121,6 +121,7 @@ Store.ascii2 = "\n\
   cccC__Cccc___)\n\ ";
 
 Store.text = 'You looking to buy?';
+Store.special = '#store_special';
 
 var Church = new locationInfo();
 Church.text = 'You walk into the church and it is very dark inside, there is a figure behind the podium yet no sign of anyone else';
@@ -152,7 +153,8 @@ Church.ascii = '\n\
 
 
 var Camp = new locationInfo();
-Camp.text = '';
+Camp.text = 'The fire is burning calmy but no one is around';
+Camp.special = '#camp_special'
 Camp.ascii = '             |\n\
                           /^\\\n\
                          / : \\             (  (   )\n\
@@ -182,7 +184,7 @@ _.`   / _,  /_/        /   |     \\     \\_    \\_  \\   \'.         //\\)\\\\_\
 Artur Gawronski\n\ ';
 
 var Pool = new locationInfo();
-Pool.text = ''
+Pool.text = 'There is a pool of water which reflects everything.  Do you look into it?'
 Pool.ascii = '                %%%\;       *                      *\n\
    |  %%%\;     %%%~%%%\;               .                     .     *\n\
  # |__/__%%%____/_/~%\;%                           .\n\
@@ -212,7 +214,7 @@ lc\'\\\"\"\"\"\"\"||          ||\"\"\"\"\"\"\"\"\"\"\"\"(     )\"\"\"\"\"\"\"\"\
 
 
 var PoolInside = new locationInfo();
-PoolInside.text = '';
+PoolInside.text = 'You look into the pool, it offers you one reflection on yourself';
 PoolInside.ascii = '\n\
 \n\
                       .      .       .       .\n\
