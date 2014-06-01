@@ -5,7 +5,7 @@ var timeFrozen = false;
 var swordObject = {
 	fists : {
 		name: 'Fists',
-		damage: 10,
+		damage: 1,
 		enchant: false
 	},
 
@@ -141,7 +141,7 @@ function itemBuy() {
 }
 
 function storeStatus(text) {
-	$('#store_status').html(text);
+	$('#location_text').html(text);
 }
 
 /***Store Functionality:
@@ -182,7 +182,7 @@ function storeItems(item) {
 			var itemBought = itemBuy();
 			if (itemBought == true) {
 				inventoryObject.manaPotion++;
-				storeStatus('You know you dont evne have mana right?');
+				storeStatus('You know you dont even have mana right?');
 			}
 			break;
 		case "seed":
