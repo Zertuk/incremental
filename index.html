@@ -62,15 +62,114 @@
         <button id = "leave_quest">Leave</button>
       </div><!--stat_wrap-->
     </div><!--quest-->
-    <p id = 'location_text'>ttt</p>
-    <pre id = 'location_ascii'>--</pre>
-    <pre id = 'location_ascii2'>----</pre>
-    
+
+    <div id = 'location_div'>
+      <p id = 'location_text'>ttt</p>
+      <pre id = 'location_ascii'>--</pre>
+      <pre id = 'location_ascii2'>----</pre>
+    </div><!--location_div-->
+
+    <div id = 'church_special'>
+      <select id = "church_quest">
+        <option value = 'approach'>The Approach</option>
+        <option value = 'figure'>The Figure</option>
+      </select>
+      <button onclick = "getQuestSelect('#church_quest')">Enter</button>
+      <button class = 'location_button' value = "main,churchInside">Leave</button>
+    </div><!--church_special-->
+
+    <div id = 'store_special'>
+      <div id = "storeWrapper">
+        <br>
+        <p id = "iron_sword">Iron Sword: <button class = 'store_button' value = 'ironSword,true'>1000</button></p>
+        <p id = "wood_sword">Wood Sword: <button class = 'store_button' value = 'woodSword,true'>100</button></p>
+        <p>Health Potion: <button class = 'store_button' value = 'healthPotion'>50</button></p>
+        <p>Mana Potion: <button class = 'store_button' value = 'manaPotion'>50</button></p>
+        <p>Gear: <button class = 'store_button' value = 'seed'>500</button></p>
+        <p id = "mapListing">Map: <button class = 'store_button' value = 'map,true'>50</button></p>
+        <p>Battery: <button class = 'store_button' value = 'battery'>2000</button></p>
+        <p id = "runez">Magic Rune: <button class = 'store_button' value = 'rune'>1</button></p>
+        <br>
+        <button class = 'location_button' value = "main,store">Leave Store</button>
+      </div><!--storeWrapper-->
+    </div><!--store_special-->
+
+    <div id = 'pool_special'>
+      <button onclick = "usePool()">Yes</button>
+      <button class = 'location_button' value = "map,reflectingPool">No</button>
+    </div>
+
+    <div id = 'factory_special'>
+      <button value = "place_one" class = "factory_button">Place Gear</button>
+      <button value = "place_all" class = "factory_button">Place All</button>
+      <button value = "place_battery" class = "factory_button" id = "batteryButton">Use Battery</button>
+      <button value = "make_flesh" class = "factory_button">flesh</button>
+      <p id = "seeds_planted">Gears Placed: 0</p>
+      <p id = "ecto_gen"></p>
+      <p id = "blood_gen"></p>
+      <button id = "turn_off" onclick = "turnOffBattery()">Shut Off Machine</button>
+      <button class = 'location_button' value = "main,field">Leave Factory</button>
+    </div><!--factory_special-->
+
+    <div id = "camp_special">
+      <div id = "camp_scenario">
+        <button onclick = 'campgroundWait()'>Wait</button>
+        <button id = "search_camp" onclick = 'searchCamp()'>Search Camp</button>
+        <button id = "steal_items" onclick = 'stealItems()'>Take Items</button>
+      </div><!--camp_scenario-->
+      <div id = "camp_use">
+        <button  class = 'location_button' value = "map">Leave</button>
+        <button id = 'rest' onclick = 'campRest()'>Rest</button>
+        <button id = "confess" onclick = 'campConfess()'>Confess</button>
+      </div><!--camp_use-->
+      <div id = "man">
+        <p id = "man_text">Hello traveler, you are free to join me
+        <br> for dinner and rest at my tent if you like</p>
+        <pre>
+               .--.
+             _/__  )
+              0)0`>|_
+        /V\   \-_.-_ `;
+       /'_/\_ /_.   './
+      ;._ `/ ``      |
+      |^ '-;._   _.' |
+      |^ ^  ||```    |
+    .'| ^  ^||       |
+   `'`|^ ^ ^|\__,.--;'
+      | ^ ^ | |     |
+      ;^ ^ ^; |     /
+       \^ ^/\)|    |
+        | ^|  |    |
+       /'-'\  \_   |
+      / ..  |  |'- |
+      |/  `\|  |   |
+               |   |
+              _|,__|
+             (_/  .'
+         jgs  (_.'
+        </pre>
+      </div><!--man-->
+    </div><!--camp_special-->
+
+    <div id = "inventory_special">
+      <p>INVENTORY PLACEHOLDER</p>
+      <br>
+      <p id = "inventoryItems"></p>
+      <button class = 'potion_button' value = 'healthPotion'>Use HP(+35)</button>
+      <br>
+      <button class = 'location_button' value = "main,inventory">Leave Inventory</button>
+    </div><!--inventory-->
+
+    <div id = "pool_inside_special">
+      <button id= "power_choice">Power</button>
+      <button id = "health_choice">Health</button>
+      <button id = "freedom_choice">Freedom</button>
+    </div>
+
 		<div id = "main">			
 			<button onclick = "ectoplasmClick(1)">Click</button>
 			
-			<button id = "storeButton" value = "store,main">Store</button>
-			
+			<button id = "storeButton" value = "store,main">Store</button>			
 			<button id = "fieldButton" value = "field,main">Factory</button>
 			<button class = "location_button" id = "mapButton" value = "map,main">Map</button>
 			<button id = "invert_button">Inverse</button>
@@ -96,7 +195,7 @@
 
 
 
-</pre>
+      </pre>
 			<pre value = "store,main" id = "house2">
             )
   
@@ -118,9 +217,9 @@
 
 
 
-</pre>
+      </pre>
 
-<pre value = "churchInside,main" id = "church">
+      <pre value = "churchInside,main" id = "church">
 
   [ The Church ]
 
@@ -137,8 +236,8 @@
   /          |==|  \
 _/           |==|   \_
 
-</pre>
-<pre value = "field,main" id = "factory">
+      </pre>
+      <pre value = "field,main" id = "factory">
 	   __  . .* ,
      ~#@#%(" .,$ @
    .;#$% %
@@ -152,8 +251,9 @@ _/           |==|   \_
  ;. :  ;    ###:__.    ;  ;      :
 .'  `._;       :  :__.' .'        `.
 
-             [ Factory ]</pre>
-<pre value = "field,main" id = "factory2">
+             [ Factory ]
+      </pre>
+      <pre value = "field,main" id = "factory2">
 	   ''%^   ^_
      ~$.@%}^)  ''*
    ."^ ';"
@@ -167,9 +267,9 @@ _/           |==|   \_
  ;. :  ;    ###:__.    ;  ;      :
 .'  `._;       :  :__.' .'        `.
 
-             [ Factory ]</pre>
+             [ Factory ]
+    </pre>
 		</div><!--main-->
-
 
 
  
@@ -256,16 +356,6 @@ _/           |==|   \_
 			<p id = "store_status">You looking to buy?</p>
 			
 		</div><!--store-->
-
-		<div id = "inventory">
-			<p>INVENTORY PLACEHOLDER</p>
-			<br>
-			<p id = "inventoryItems"></p>
-      <button class = 'potion_button' value = 'healthPotion'>Use HP(+35)</button>
-      <br>
-
-			<button class = 'location_button' value = "main,inventory">Leave Inventory</button>
-		</div><!--inventory-->
 
 		<div id = "field">
 			<p>THE FACTORY</p>
@@ -555,7 +645,7 @@ lc'\""""""||          ||""""""""""""(     )"""""""""""""""""""""""""""
  |                         | | .                . |                          |
  |_________________________|/|.                 . | ________________________ |
  |                        || .                  . ||   -Steve Stewart-      ||</pre>
-
+    <div id = 'church_special'>
       <select id = "church_quest">
         <option value = 'approach'>The Approach</option>
         <option value = 'figure'>The Figure</option>
@@ -563,6 +653,7 @@ lc'\""""""||          ||""""""""""""(     )"""""""""""""""""""""""""""
       <button onclick = "getQuestSelect('#church_quest')">Enter</button>
       <button class = 'location_button' value = "main,churchInside">Leave</button>
     </div>
+  </div>
 
 		    <div id = "demon">
           <p>"Hello, I am the Demon Wizard Elder, I can grant you amazing power, for a price of course.  Choose your sin, but remember, you can only choose one.</p>
