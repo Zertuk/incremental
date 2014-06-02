@@ -120,6 +120,14 @@
       <button class = 'location_button' value = "Main">Leave Factory</button>
     </div><!--factory_special-->
 
+    <div id = "cave_special">
+              <select id = "bearcave_quest">
+          <option value = "cave">The Cave</option>
+          <option value = "den">The Den</option>
+        </select>
+        <button onclick = "getQuestSelect('#bearcave_quest')">Enter</button>
+    </div><!--cave_special-->
+
     <div id = "camp_special">
       <div id = "camp_scenario">
         <button onclick = 'campgroundWait()'>Wait</button>
@@ -129,7 +137,7 @@
       <div id = "camp_use">
         <button  class = 'location_button' value = "Map">Leave</button>
         <button id = 'rest' onclick = 'campRest()'>Rest</button>
-        <button id = "confess" onclick = 'campConfess()'>Confess</button>
+        <button id = "confess_button" onclick = 'campConfess()'>Confess</button>
       </div><!--camp_use-->
       <div id = "man">
         <p id = "man_text">Hello traveler, you are free to join me
@@ -328,17 +336,88 @@ itz     ,-' ,  `:7b
 
       [ The Mountain ]
       </pre>
-      </div><!--map_wrapper-->
       <br>
+      <pre value = "Tower" id = "tower2" class = 'location_ascii'>
 
+                          ._
+                          |~
+                        uuuuu
+                        |_#-|
+                        | _#|
+                        |_ -|
+   ________ .$$. ______ | - | _____________
+           .#$$$. __    |-  | ....__
+     _.--' $$$$$$    ` -[__N]        `--a:f-
+           $$$$$$    -.
+      -.    `:/'    _.))        .--.
+             ||   .'.-'     _..-.. _.-.
+      ._.-.  '"  /  (     .'      `.
+                 [ The Tower ]
+      </pre>
+      <pre value = "Cave" id = "cave" class = 'location_ascii'>
+
+
+
+       _______,^,___/
+     _/         `  /  `
+    /   `__       |
+ __/  ../__\..  `/ `
+/_______'  '____|     `
+    [ The Cave ]
+
+
+
+      </pre>
+      <pre value = "Wizard" id = "wizard_home" class = 'location_ascii'>
+
+          _
+        _|=|__________
+       /              \
+      /                \
+     /__________________\
+      ||  || /--\ ||  ||
+      ||[]|| | .| ||[]||
+    ()||__||_|__|_||__||()
+   ( )|-|-|-|====|-|-|-|( )
+jgs^^^^^^^^^^====^^^^^^^^^^^
+        [ The Wizard ]
+      </pre>
+      <pre value = "Castle" id = "castle" class = "location_ascii">
+
+                                  P
+     F~                          /\
+    /\                          /__\
+   /__\                         |. |
+   |n |                       :_|__|_:
+ :_|  |_:               p       |. |
+   | n|    p      p    /\       |. |
+   |  |   /\_____/\   /__\      |. |
+   |n |_=_|. . . .|_=_=_=_=_=_=_|. |
+   |n |. .|  ___  |. . . . . . .|. |
+   |n |   | |   | |             |. |
+ __|__|___|_|___|_|_____________|__|__
+/          /   /                      \
+
+           [ The Castle ]
+      </pre>
+
+      </div><!--map_wrapper-->
     </div><!--map_special-->
+
+    <div id = "castle_special">
+      <select id = "castle_quest">
+        <option value = 'gates'>The Gates</option>
+        <option value = 'armory'>The Armory</option>
+        <option value = 'throne'>Throne Room</option>
+      </select>
+      <button onclick = "getQuestSelect('#castle_quest')">Enter</button>
+    </div><!--castle_special-->
 
     <div id = "tower_special">
       <select id = "tower_quest">
         <option value = 'base'>Tower Entrance</option>
         <option value = 'upper'>Upper Floor</option>
         <option value = 'top'>Top</option>
-        <option value = 'monk'>Monk</option>
       </select>
       <button onclick = "getQuestSelect('#tower_quest')">Enter</button>
     </div><!--tower_special-->
@@ -431,88 +510,6 @@ itz     ,-' ,  `:7b
       </pre>
     </div><!--trainShow-->
 
-    <div id = "cavern">
-      <pre>
-                      _
-                     / \
-                    /   \              /'\       _                              
-\_..           /'.,/     \_         .,'   \     / \_                            
-    \         /            \      _/       \_  /    \     _                     
-     \__,.   /              \    /           \/.,   _|  _/ \                    
-          \_/                \  /',.,''\      \_ \_/  \/    \                   
-                           _  \/   /    ',../',.\    _/      \                  
-             /           _/m\  \  /    |         \  /.,/'\   _\                 
-           _/           /MMmm\  \_     |          \/      \_/  \                
-          /      \     |MMMMmm|   \__   \          \_       \   \_              
-                  \   /MMMMMMm|      \   \           \       \    \             
-                   \  |MMMMMMmm\      \___            \_      \_   \            
-                    \|MMMMMMMMmm|____.'  /\_            \       \   \_          
-                    /'.,___________...,,'   \            \   \        \         
-                   /       \          |      \    |__     \   \_       \        
-                 _/        |           \      \_     \     \    \       \_      
-                /                               \     \     \_   \        \     
-                                                 \     \      \   \__      \    
-                                                  \     \_     \     \      \   
-                                                   |      \     \     \      \  
-                                                    \ms          |            \ 
-        </pre>
-        <select id = "bearcave_quest">
-          <option value = "cave">The Cave</option>
-          <option value = "den">The Den</option>
-        </select>
-        <button onclick = "getQuestSelect('#bearcave_quest')">Enter</button>
-
-        <div id = "wizard1">
-          <pre>
-                                    /\
-                                   /  \
-                                  |    |
-                                --:'''':--
-                                  :'_' :
-                                  _:"":\___
-                   ' '      ____.' :::     '._
-                  . *=====<<=)           \    :
-                   .  '      '-'-'\_      /'._.'
-                                    \====:_ ""
-                                   .'     \\
-                                  :       :
-                                 /   :    \
-                                :   .      '.
-                ,. _        snd :  : :      :
-             '-'    ).          :__:-:__.;--'
-           (        '  )        '-'   '-'
-        ( -   .00.   - _
-       (    .'  _ )     )
-       '-  ()_.\,\,   -
-          </pre>
-        </div><!--wizard1-->
-
-      </div><!--cavern-->
-
-  </div><!--map-->
-
-  <div id = "map2">
-    <pre>
-
-                          ._
-                          |~
-                        uuuuu
-                        |_#-|
-                        | _#|
-                        |_ -|
-   ________ .$$. ______ | - | _____________
-           .#$$$. __    |-  | ....__
-     _.--' $$$$$$    ` -[__N]        `--a:f-
-           $$$$$$    -.
-      -.    `:/'    _.))        .--.
-             ||   .'.-'     _..-.. _.-.
-      ._.-.  '"  /  (     .'      `.
-    -'     `.   .    `. -'
-             `. .      `--..
-                 `.
-
-    </pre>
-  </div><!--map2-->
 
   <div id = "future">
     <div id = "cabin">
@@ -655,52 +652,6 @@ ____0_____0__\|/__@@@@__@@@__________|_\|/__|___\|/__\|/___________|_|_
 
       </div><!--library--> 
     </div><!--future-->
-<!--     <div id = "encyclopedia">
-      <div id = "monster_info">
-        <pre class = "mob_info"> 
-           __(0)__
-          /_______\
-          / -   - \
-         (\ 9   9 /)
-          (  (_)  )
-          /`-vvv-'\
-         /         \
-        / /|,,,,,|\ \    \\
-       /_//  /^\  \\_\    \\
-       WW(  (   )  )WW=====||
-        __\,,\ /,,/__      //
-   jgs (______Y______)    //
-        </pre>
-        <pre class = "mob_info">
-
-
-        |\     ____
-        | \.-./ .-'
-         \ _  _(
-         | .)(./
-         |   \(
-         |     \   |
-         |  \vvv   |
-         |  |__    |
-    jgs /      `-. |
-        </pre>
-        <pre class = "mob_info">
-            ,--. 
-           ([ oo] 
-            `- ^\
-          _  I`-'
-        ,o(`-V' 
-        |( `-H-'
-        |(`--A-'
-        |(`-/_\'\
-        O `'I ``\\ 
-        (\  I    |\,
-         \\-T-"`, |H   Ojo 
-        </pre>
-
-        <p class = "stats">
-        </p>
-    </div><!--encyclopedia-->
 	</div><!--wrapper-->
 
 
