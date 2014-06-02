@@ -179,6 +179,25 @@ __                           /                   \\\n\
                                          \|\|\|\|[] []\|      /\n\
 \<p class \= "level"\>\</p\>\n\ ';
 
+var gate = new levelInfo();
+gate.name = 'gate';
+gate.monster = demon;
+gate.specialMonster = demon;
+gate.levelLength = 40;
+gate.text = 'gatestuff';
+gate.specialMonsterNum = 1;
+gate.monsterNum = 1;
+gate.ascii = '\n\
+\n\
+\n\
+\n\
+                          =o==o=       =o==o=\n\
+                          |    |-------|    |\n\
+                          | [] |=======| [] |\n\
+                          |    |=======|    |\n\
+                          | || |=======| || |\n\
+<p class \= \"level\"></p>\n\ ';
+
 
 var levelObject = {
 	approach: approach,
@@ -189,5 +208,8 @@ var levelObject = {
 	upper: upper,
 	base: base,
 	depths: depths,
-	mine: mine
+	mine: mine,
+	gate: gate,
+	// armory: armory,
+	// throne: throne
 }
