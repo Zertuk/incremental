@@ -190,6 +190,7 @@ _.`   / _,  /_/        /   |     \\     \\_    \\_  \\   \'.         //\\)\\\\_\
 Artur Gawronski\n\ ';
 
 var Pool = new locationInfo();
+Pool.special = '#pool_special'
 Pool.text = 'There is a pool of water which reflects everything.  Do you look into it?'
 Pool.ascii = '                %%%\;       *                      *\n\
    |  %%%\;     %%%~%%%\;               .                     .     *\n\
@@ -221,6 +222,7 @@ lc\'\\\"\"\"\"\"\"||          ||\"\"\"\"\"\"\"\"\"\"\"\"(     )\"\"\"\"\"\"\"\"\
 
 var PoolInside = new locationInfo();
 PoolInside.text = 'You look into the pool, it offers you one reflection on yourself';
+PoolInside.special = '#pool_inside_special'
 PoolInside.ascii = '\n\
 \n\
                       .      .       .       .\n\
@@ -249,6 +251,7 @@ PoolInside.ascii = '\n\
 
 var Tower = new locationInfo();
 Tower.text ='You are at the base of the tower, noise is coming from inside';
+Tower.special = '#tower_special'
 Tower.ascii = '\n\
                           .- ._          *\n\
                  .       (   ) `) ._,--.\n\
@@ -323,6 +326,7 @@ DemonWizardElder.ascii = '\n\
 
 var Mountain = new locationInfo();
 Mountain.text = '';
+Mountain.special = '#mountain_special';
 Mountain.ascii = '\n\
                       (_,.-      _,-\'_,-----------._`-._    _)_)\n\
                          |     ,\'_,-\'  ___________  `-._`.\n\
@@ -360,6 +364,32 @@ Mountain.ascii = '\n\
                  SSt |______|_______________________________|______|\n\ ';
 
 
+var Cave = new locationInfo();
+Cave.special = '#cave_special';
+Cave.ascii = '                      _\n\
+                     / \\\n\
+                    /   \\              /\'\\       _ \n\
+\\_..           /\'.,/     \\_         .,\'   \\     / \\_\n\
+    \\         /            \\      _/       \\_  /    \\     _\n\
+     \\__,.   /              \\    /           \\/.,   _|  _/ \\\n\
+          \\_/                \\  /\',.,\'\'\\      \\_ \\_/  \\/    \\\n\
+                           _  \\/   /    \',../\',.\\    _/      \\\n\
+             /           _/m\\  \\  /    |         \\  /.,/\'\\   _\\\n\
+           _/           /MMmm\\  \\_     |          \\/      \\_/  \\\n\
+          /      \\     |MMMMmm|   \\__   \\          \\_       \\   \\_\n\
+                  \\   /MMMMMMm|      \\   \\           \\       \\    \\\n\
+                   \\  |MMMMMMmm\\      \\___            \\_      \\_   \\\n\
+                    \\|MMMMMMMMmm|____.\'  /\\_            \\       \\   \\_\n\
+                    /\'.,___________...,,\'   \\            \\   \\        \\\n\
+                   /       \\          |      \\    |__     \\   \\_       \\\n\
+                 _/        |           \\      \\_     \\     \\    \\       \\_\n\
+                /                               \\     \\     \\_   \\        \\\n\
+                                                 \\     \\      \\   \\__      \\\n\
+                                                  \\     \\_     \\     \\      \\\n\
+                                                   |      \\     \\     \\      \\\n\
+                                                    \\ms          |            \\\n\ ';
+
+
 var Main = new locationInfo();
 Main.special = '#main_special';
 
@@ -369,6 +399,123 @@ Factory.special = '#factory_special';
 var Inventory = new locationInfo();
 Inventory.special = '#inventory_special';
 
+var Map = new locationInfo();
+Map.special = '#map_special';
+
+var Wizard = new locationInfo();
+Wizard.special = '#wizard_special';
+Wizard.text = 'Hello?';
+Wizard.ascii = '\n\
+                                    /\\\n\
+                                   /  \\\n\
+                                  |    |\n\
+                                --:\'\'\'\':--\n\
+                                  :\'_\' :\n\
+                                  _:\"\":\\___\n\
+                   \' \'      ____.\' :::     \'._\n\
+                  . *=====<<=)           \\    :\n\
+                   .  \'      \'-\'-\'\\_      /\'._.\'\n\
+                                    \\====:_ \"\"\n\
+                                   .\'     \\\\\n\
+                                  :       :\n\
+                                 /   :    \\\n\
+                                :   .      \'.\n\
+                ,. _        snd :  : :      :\n\
+             \'-\'    ).          :__:-:__.;--\'\n\
+           (        \'  )        \'-\'   \'-\'\n\
+        ( -   .00.   - _\n\
+       (    .\'  _ )     )\n\
+       \'-  ()_.\,\,   -\n\ ';
+
+var Castle = new locationInfo();
+Castle.special = "#castle_special";
+Castle.text = 'ok a castle';
+Castle.ascii = '\n\
+                                       ,.=,,==. ,,_\n\
+                      _ ,====, _    |I|`` ||  `|I `|\n\
+                     |`I|    || `==,|``   ^^   ``  |\n\
+                     | ``    ^^    ||_,===TT`==,,_ |\n\
+                     |,==Y``Y==,,__| \\L=_-`\'   +J/`\n\
+                      \\|=_  \' -=#J/..-|=_-     =|\n\
+                       |=_   -;-=\'`. .|=_-     =|----T--,\n\
+                       |=/\\  -|=_-. . |=_-/^\\  =||-|-|::|____\n\
+                       |=||  -|=_-. . |=_-| |  =|-|-||::\\____\n\
+                       |=LJ  -|=_-. . |=_-|_| =||-|-|:::::::\n\
+                       |=_   -|=_-_.  |=_-     =|-|-||:::::::\n\
+                       |=_   -|=//^\\. |=_-     =||-|-|:::::::\n\
+                   ,   |/&_,_-|=||  | |=_-     =|-|-||:::::::\n\
+                ,--``8%,/    \',%||  | |=_-     =||-|-|%::::::\n\
+            ,---`_,888`  ,.\'\'\'\'\'`-.,|,|/!,--,.&\\|&\\-,|&#:::::\n\
+           |;:;K`__,...;=\\_____,=``           %%%&     %#,---\n\
+           |;::::::::::::|       `\'.________+-------\\   ``\n\
+          /8M%;:::;;:::::|                  |        `-------\n\ '
+
+var Litch = new locationInfo();
+Litch.special = '#litch_special';
+Litch.text = 'r i p';
+Litch.ascii = '\n\
+                                          ____\n\
+                                         /    \\\n\
+                                         \\ xx /\n\
+                                          \\||/\n\
+                                         `)||_\n\
+                     _                    /|//}\n\
+                  .\'` `\'.                /////}\n\
+                 /  .\"\"\".\\              //{///\n\
+                /  /    `\\\\            // `||\n\
+                | |      ||          _//   ||\n\
+                | |       |        _///\\   ||\n\
+                | |       |       / |/ |   ||\n\
+               /  /\'-..-\' /    .\'`  \\  |   ||\n\
+              /   |  :: | |_.-`      |  \\  ||\n\
+             /|   `\-::.| |          \\   | ||\n\
+           /` `|   /    | |          |   / ||\n\
+         |`    \\   |    / /          \\  |  ||\n\
+        |       `\\_|    |/      ,.__. \\ |  ||\n\
+        /                     /`    `\\ ||  ||\n\
+       |           .         /        \\||  ||\n\
+       |                     |             ||\n\
+       /         /           |             ||\n\
+      /          .           /             ||\n\
+     |            \\          |             ||\n\
+    /             |          /             ||\n\
+   |\\            /          |              ||\n\
+   \\ `-._       |           /              ||\n\
+    \\ ,//`\\    /`           |              ||\n\
+     ///\\  \\  |             \\              ||\n\
+    |||| ) |__/             |              ||\n\
+    |||| `.(                |              ||\n\
+    `\\\\` /`                 /              ||\n\
+       /`                   /              ||\n\
+ jgs  /                     |              ||\n\
+     |                      \\              ||\n\
+    /                        |             ||\n\
+  /`                          \\            ||\n\
+/`                            |            ||\n\
+`-.___,-.      .-.        ___,\'            ||\n\
+         `---\'`   `\'----\'`\n\ ';
+Litch.ascii2 = '\n\
+          _.--\"\"\"\"\"--._\n\
+        .\'             \'.\n\
+       /                 \\\n\
+      \;                   \;\n\
+      |                   |\n\
+      |                   |\n\
+      \;                   \;\n\
+       \\ (`\'--,   ,--\'`) /\n\
+        ) )(\')/ _ \\(\')( (\n\
+       (_ `\"\"` / \\ `\"\"` _)\n\
+        \\`\"-, /   \ ,-\"`/\n\
+         `\\ / `\"`\"` \\ /`\n\
+          | _. \; \; ._ |\n\
+          |\\ \'-\'-\'-\' /|\n\
+          | | _ _ _ | |\n\
+           \\ \'.\;_\;.\' /\n\
+            \\       /\n\
+      jgs    \',___,\'\n\
+              q___p\n\
+              q___p\n\
+              q___p\n\ ';
 
 
 var locationObject = {
@@ -382,5 +529,10 @@ var locationObject = {
 	Tower: Tower,
 	Camp: Camp,
 	Factory: Factory,
-	Inventory: Inventory
+	Inventory: Inventory,
+	Map: Map,
+	Cave: Cave,
+	Wizard: Wizard,
+	Mountain: Mountain,
+	Castle: Castle
 }
