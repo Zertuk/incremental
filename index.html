@@ -39,9 +39,9 @@
     <div id = "main">     
       <button onclick = "ectoplasmClick(1)">Click</button>
       
-      <button id = "storeButton" value = "store,main">Store</button>      
-      <button id = "fieldButton" value = "field,main">Factory</button>
-      <button class = "location_button" id = "mapButton" value = "map,main">Map</button>
+      <button id = "storeButton" value = "Store">Store</button>      
+      <button id = "fieldButton" value = "Factory">Factory</button>
+      <button class = "location_button" id = "mapButton" value = "Map">Map</button>
       <button id = "invert_button">Inverse</button>
       
     </div><!--main-->
@@ -76,7 +76,7 @@
       <p id = 'location_text'>ttt</p>
       <pre id = 'location_ascii'>--</pre>
       <pre id = 'location_ascii2'>----</pre>
-    </div><!--location_div-->
+    
 
     <div id = 'church_special'>
       <select id = "church_quest">
@@ -105,7 +105,7 @@
 
     <div id = 'pool_special'>
       <button onclick = "usePool()">Yes</button>
-      <button class = 'location_button' value = "map,reflectingPool">No</button>
+      <button class = 'location_button' value = "Map">No</button>
     </div>
 
     <div id = 'factory_special'>
@@ -127,7 +127,7 @@
         <button id = "steal_items" onclick = 'stealItems()'>Take Items</button>
       </div><!--camp_scenario-->
       <div id = "camp_use">
-        <button  class = 'location_button' value = "map">Leave</button>
+        <button  class = 'location_button' value = "Map">Leave</button>
         <button id = 'rest' onclick = 'campRest()'>Rest</button>
         <button id = "confess" onclick = 'campConfess()'>Confess</button>
       </div><!--camp_use-->
@@ -176,7 +176,7 @@
     </div>
 
     <div id = "main_special">
-      <pre value = "Store" id = "house1">
+      <pre class = 'location_ascii' value = "Store" id = "house1">
           (
   
             )
@@ -221,7 +221,7 @@
 
       </pre>
 
-      <pre value = "Church" id = "church">
+      <pre class = 'location_ascii' value = "Church" id = "church">
 
   [ The Church ]
 
@@ -239,7 +239,7 @@
 _/           |==|   \_
 
       </pre>
-      <pre value = "Factory" id = "factory">
+      <pre class = 'location_ascii' value = "Factory" id = "factory">
      __  . .* ,
      ~#@#%(" .,$ @
    .;#$% %
@@ -274,39 +274,16 @@ _/           |==|   \_
     </div><!--main_special-->
 
     <div id = "map_special">
-      <p>THIS IS A MAP</p>
-      <button class = 'location_button' value = "reflectingPool,map">Reflecting Pool</button>
-      <br>
-      <button class = 'location_button' value = "mountain,map" id = "enterCave">The Mountain</button> 
-      <br>
-      <button class = 'location_button' value = "trainShow,map" id = "trainStation">Train Station</button>
-      <br>
-      <button class = 'location_button' value = "camp_ground,map">Campground</button>
-      <br>
-      <button class = 'location_button' value = "main,map">Leave Map</button>
-
-      <pre id = "fountain">
-           ('                                     ______
-           `),                            jgs    /     /\
-       __cD"`.__                                /     /  \
-      !_________!                              /_____/----\_    (  
-        \_____/                                "     "          ).  
-  ~~~~~/_______\~~~~~fsc                      _ ___          o (:') o   
-                                             (@))_))        o ~/~~\~ o   
-  [ Reflecting Pool ]                                          o  o  o
-                                                 [ Camp Site ]
-
-      </pre>
-      <pre id = "mount" value = "Mountain">                                                     
-            ,/k\,
-           /  ih,\
-itz     ,-' ,  `:7b
-     _.-/   '  /b.`.4p,
-  --"  ,    ,-' ^6x, `."^=._
-
-      [ The Mountain ]
-      </pre>
-      <pre id = "Station" value = "Station">   
+      <div id = "map_info">
+      <p>The Map</p>
+      <button class = 'location_button' value = "Pool">Reflecting Pool</button>
+      <button class = 'location_button' value = "Mountain" id = "enterCave">The Mountain</button> 
+      <button class = 'location_button' value = "Station" id = "trainStation">Train Station</button>
+      <button class = 'location_button' value = "Camp">Campground</button>
+      <button class = 'location_button' value = "Main">Leave Map</button>
+      </div><!--map_info-->
+      <div id = 'map_wrapper'>
+      <pre id = "station" value = "Station" class = 'location_ascii'>
                                    (
                            ________[]_ 
                           /^=^-^-^=^-^\ 
@@ -315,9 +292,45 @@ itz     ,-' ,  `:7b
        {"""""LILI|[" "   |  .==.       |   
        /_OO====OO`'OO--^^|  |LI|  [}{] |^^
  ^jgs^^^^^^^^^^^^^^^^^^$$|__|__|_______|$$
-
+                                          
               [ Train Station ]
       </pre>
+      <pre value = 'Pool' id = "fountain" class = 'location_ascii'>
+           (' 
+           `), 
+       __cD"`.__ 
+      !_________!         
+        \_____/         
+  ~~~~~/_______\~~~~~fsc  
+                          
+  [ Reflecting Pool ]            
+
+      </pre>
+      <pre value = 'Camp' id = "tent" class = 'location_ascii'>
+         ______
+ jgs    /     /\
+       /     /  \   
+      /_____/----\_    ( 
+      "     "          ).  
+     _ ___          o (:') o  
+    (@))_))        o ~/~~\~ o 
+                     o  o  o
+        [ Camp Site ]
+
+      </pre>
+      <pre id = "mount" value = "Mountain" class = 'location_ascii'>
+
+            ,/k\,
+           /  ih,\
+itz     ,-' ,  `:7b
+     _.-/   '  /b.`.4p,
+  --"  ,    ,-' ^6x, `."^=._
+
+      [ The Mountain ]
+      </pre>
+      </div><!--map_wrapper-->
+      <br>
+
     </div><!--map_special-->
 
     <div id = "tower_special">
@@ -364,7 +377,8 @@ itz     ,-' ,  `:7b
         <br>
         <button class = 'location_button' value = "Mountain" id = "leaveMountain">Leave</button>
       </div><!--rune_true-->
-    </div>
+    </div><!--mountain_special-->
+  </div><!--location_div-->
 
 		
 

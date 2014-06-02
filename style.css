@@ -1,4 +1,4 @@
-#storeButton, #cave_quest, #map2, #future, #cabin, #cavern, #monk, #base_quest, #upper_quest, #top_quest, #main, #depths_quest, #approach_quest, #cavern_quest, #mine_quest, #mountain, #confess, #camp_use, #steal_items, #man, #man_text, #quest, #camp_ground, #churchInside, #train2, #iron_sword, #trainStation, #trainShow, #shop_keeper_blink, #factory2, #house2, #demon, #mountain,  #rune_true, #tower, #poolYes, #fieldButton, #mapButton, #batteryButton, #inventory, #reflectingPool, #field, #store, #map {
+#mountain_special, #demon_special, #tower_special, #map_special, #main_special, #camp_special, #store_special, #pool_special, #pool_inside_special, #factory_special, #inventory_special, #church_special, #storeButton, #location_ascii2, #den_quest, #cave_quest, #map2, #future, #cabin, #cavern, #monk, #base_quest, #upper_quest, #top_quest, #main, #depths_quest, #approach_quest, #cavern_quest, #mine_quest, #mountain, #confess, #camp_use, #steal_items, #man, #man_text, #quest, #camp_ground, #churchInside, #train2, #iron_sword, #trainStation, #trainShow, #shop_keeper_blink, #factory2, #house2, #demon, #mountain,  #rune_true, #tower, #poolYes, #fieldButton, #mapButton, #batteryButton, #inventory, #reflectingPool, #field, #store, #map {
 	display: none;
 }
 
@@ -8,10 +8,36 @@
 	margin-right: 10%;	
 }
 
-
-#cavern {
+#location_div {
 	display: inline;
 }
+
+#main {
+	display: inline;
+}
+
+
+#camp_special {
+	float: left;
+}
+#camp_scenario,#camp_use {
+	margin-bottom: 100px;
+}
+#man_text {
+	float: right;
+	margin-top: -50px;
+	margin-right: 120px;
+}
+
+#store_special {
+	float: left;
+	margin-left: 50px;
+}
+
+#location_ascii {
+	float: left;
+}
+
 
 pre {
 	font-size: 14px;
@@ -33,18 +59,7 @@ pre p {
 #camp_ground {
 	max-width: 900px;
 }
-#man {
-	float:right;
-	margin-top: -300px;
-}
-#man_text {
-	float: right;
-	margin-top: -350px;
-	margin-right: 120px;
-}
-#tent{
-	position: absolute;
-}
+
 #quest p{
 	display: inline;
 }
@@ -54,20 +69,32 @@ pre p {
 #monster_stats {
 	width: 300px;
 }
-
-#station {
-	float: right;
-	margin-top: -200px;
-	width: 400px;
+#map_info {
+	text-align: center;
+}
+#map_wrapper {
+	margin-top: 50px;
+	border: 2px dashed white;
+	height: 300px;
+	padding: 20px;
 }
 #fountain {
-	margin-left: 350px;
-	margin-top: 150px;
-}
-#mount {
-	width: 300px;
+	float: left;
+	margin-left: 50px;
 
 }
+#mount {
+	float: left;
+	margin-left: 50px;
+	}
+
+#tent{
+	float: left;
+}
+#station {
+	float: left;
+}
+
 #demon1 {
 	margin-left: 100px;
 }
