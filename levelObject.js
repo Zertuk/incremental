@@ -198,6 +198,34 @@ gate.ascii = '\n\
                           | || |=======| || |\n\
 <p class \= \"level\"></p>\n\ ';
 
+var armory = new levelInfo();
+armory.name = 'armory';
+armory.monster = demon;
+armory.specialMonster = demon;
+armory.levelLength = 40;
+armory.text = 'armory stuff';
+armory.specialMonsterNum = 1;
+armory.monsterNum = 1;
+armory.ascii = '
+              
+ 
+_____________________________________________________________________---
+'
+
+var throne = new levelInfo();
+throne.name = 'throne';
+throne.monster = demon;
+throne.specialMonster = demon;
+throne.levelLength = 40;
+throne.text = 'throne stuff';
+throne.specialMonsterNum = 1;
+throne.monsterNum = 1;
+throne.ascii = '
+					      
+					     
+_____________________________';
+
+
 
 var levelObject = {
 	approach: approach,
