@@ -62,9 +62,7 @@ function monsterMove(value) {
 }
 
 function addMoreMonsters(monster) {
-	level[level.length] = monster.value;
-	console.log(level.length + ' level length');
-	console.log(monster + ' monster');
+	level[level.length - 1] = monster.value;
 }
 
 
@@ -175,6 +173,33 @@ elderDruid.value = 'EdR';
 elderDruid.damage = 35;
 elderDruid.maxHealth = 50;
 elderDruid.health = 50;
+elderDruid.name = 'Elder Druid';
+
+var undeadKnight = new Monster();
+undeadKnight.message = 'A knight! But undead?';
+undeadKnight.value = 'UK';
+undeadKnight.maxHealth = 50;
+undeadKnight.damage = 40;
+undeadKnight.health = 50;
+undeadKnight.name = 'Undead Knight';
+
+var warlock = new Monster();
+warlock.message = 'A warlock under lich control!';
+warlock.value = 'W';
+warlock.maxHealth = 75;
+warlock.health = 75;
+warlock.damage = 50;
+warlock.name = 'Warlock';
+
+var necromancer = new Monster();
+necromancer.message = 'He can summon undead!';
+necromancer.value = 'N';
+necromancer.maxHealth = 50;
+necromancer.health = 50;
+necromancer.damage = 10;
+necromancer.name = 'Necromancer';
+
+
 
 
 
