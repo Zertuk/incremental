@@ -1,4 +1,4 @@
-#mountain_special, #demon_special, #tower_special, #map_special, #main_special, #camp_special, #store_special, #pool_special, #pool_inside_special, #factory_special, #inventory_special, #church_special, #storeButton, #location_ascii2, #den_quest, #cave_quest, #map2, #future, #cabin, #cavern, #monk, #base_quest, #upper_quest, #top_quest, #main, #depths_quest, #approach_quest, #cavern_quest, #mine_quest, #mountain, #confess, #camp_use, #steal_items, #man, #man_text, #quest, #camp_ground, #churchInside, #train2, #iron_sword, #trainStation, #trainShow, #shop_keeper_blink, #factory2, #house2, #demon, #mountain,  #rune_true, #tower, #poolYes, #fieldButton, #mapButton, #batteryButton, #inventory, #reflectingPool, #field, #store, #map {
+#armory, #throne, #lich, #upper, #top, #den, #figure, #mine, #depths, #castle_special, #cave_special, #mountain_special, #demon_special, #tower_special, #map_special, #main_special, #camp_special, #store_special, #pool_special, #pool_inside_special, #factory_special, #inventory_special, #church_special, #storeButton, #location_ascii2, #den_quest, #cave_quest, #map2, #future, #cabin, #cavern, #monk, #base_quest, #upper_quest, #top_quest, #main, #depths_quest, #approach_quest, #cavern_quest, #mine_quest, #mountain, #confess, #camp_use, #steal_items, #man, #man_text, #quest, #camp_ground, #churchInside, #train2, #iron_sword, #trainStation, #trainShow, #shop_keeper_blink, #factory2, #house2, #demon, #mountain,  #rune_true, #tower, #poolYes, #fieldButton, #mapButton, #batteryButton, #inventory, #reflectingPool, #field, #store, #map {
 	display: none;
 }
 
@@ -16,8 +16,12 @@
 	display: inline;
 }
 
+#tower_special, #cave_special, #castle_special {
+	margin-left: 25px;
+	float: left;
+}
 
-#camp_special {
+#camp_special, #wizard_home, #castle {
 	float: left;
 }
 #camp_scenario,#camp_use {
@@ -72,20 +76,29 @@ pre p {
 #map_info {
 	text-align: center;
 }
+
 #map_wrapper {
 	margin-top: 50px;
-	border: 2px dashed white;
 	height: 300px;
 	padding: 20px;
 }
+
+#cave {
+	float: left;
+}
+
+pre {
+		border: 1px dashed white;
+		margin: 5px;
+
+}
 #fountain {
 	float: left;
-	margin-left: 50px;
 
 }
 #mount {
 	float: left;
-	margin-left: 50px;
+
 	}
 
 #tent{
@@ -127,6 +140,10 @@ pre p {
 	width: 200px;
 	position: absolute;
 	margin-left: 37%;
+}
+
+#tower2 {
+	float: left;
 }
 
 .wrapper {

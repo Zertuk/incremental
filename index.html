@@ -81,10 +81,11 @@
     <div id = 'church_special'>
       <select id = "church_quest">
         <option value = 'approach'>The Approach</option>
-        <option id = '#figure' value = 'figure'>The Figure</option>
       </select>
       <button onclick = "getQuestSelect('#church_quest')">Enter</button>
+      <button id = '#figure' value = 'figure'>The Figure</option>
       <button class = 'location_button' value = "Main">Leave</button>
+      
     </div><!--church_special-->
 
     <div id = 'store_special'>
@@ -121,11 +122,13 @@
     </div><!--factory_special-->
 
     <div id = "cave_special">
-              <select id = "bearcave_quest">
+        <select id = "bearcave_quest">
           <option value = "cave">The Cave</option>
-          <option value = "den">The Den</option>
+          <option id = "den" value = "den">The Den</option>
         </select>
         <button onclick = "getQuestSelect('#bearcave_quest')">Enter</button>
+        <button class = 'location_button' value = "Map">Leave</button>
+
     </div><!--cave_special-->
 
     <div id = "camp_special">
@@ -407,19 +410,26 @@ jgs^^^^^^^^^^====^^^^^^^^^^^
     <div id = "castle_special">
       <select id = "castle_quest">
         <option value = 'gate'>The Gates</option>
-        <option value = 'armory'>The Armory</option>
-        <option value = 'throne'>Throne Room</option>
+        <option id = "armory" value = 'armory'>The Armory</option>
+        <option id = "throne" value = 'throne'>Throne Room</option>
       </select>
       <button onclick = "getQuestSelect('#castle_quest')">Enter</button>
+      <button id = "lich" value = "lich">The Lich</button>
+      <button class = 'location_button' value = "Map">Leave</button>
+
     </div><!--castle_special-->
 
     <div id = "tower_special">
       <select id = "tower_quest">
         <option value = 'base'>Tower Entrance</option>
-        <option value = 'upper'>Upper Floor</option>
-        <option value = 'top'>Top</option>
+        <option id = "upper" value = 'upper'>Upper Floor</option>
+        <option id = "top" value = 'top'>Top</option>
       </select>
       <button onclick = "getQuestSelect('#tower_quest')">Enter</button>
+      <br>
+      <br>
+      <button class = 'location_button' value = "Map">Leave</button>
+
     </div><!--tower_special-->
 
     <div id = "demon_special">
@@ -435,7 +445,7 @@ jgs^^^^^^^^^^====^^^^^^^^^^^
       <br>
       <p>"If you leave you cant come back, Im a very busy demon!"</p>
       <br>
-      <button>Leave</button>
+      <button class = 'location_button' value = "Main">Leave</button>
     </div><!--demon_special-->
 
     <div id = "mountain_special">
@@ -454,7 +464,7 @@ jgs^^^^^^^^^^====^^^^^^^^^^^
         <button onclick = "getQuestSelect('#mountain_quest')">Enter</button>
         <br>
         <br>
-        <button class = 'location_button' value = "Mountain" id = "leaveMountain">Leave</button>
+        <button class = 'location_button' value = "Map">Leave</button>
       </div><!--rune_true-->
     </div><!--mountain_special-->
   </div><!--location_div-->
