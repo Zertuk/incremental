@@ -3,6 +3,7 @@ function levelInfo() {
 	this.monsterNum = 5,
 	this.specialMonsterNum = 0,
 	this.levelLength = 50
+	this.levelFinished = false;
 
 }
 
@@ -17,6 +18,7 @@ approach.specialMonster = demonWizard;
 approach.levelLength = 60;
 approach.specialMonsterNum = 3;
 approach.text = 'There are demons everywhere!';
+approach.levelUnlock = 'figure';
 approach.ascii = '  ___________________________________________________________\n\
                              \\    /\n\
             _\|\|_              \|  \|            _\|\|_\n\
@@ -41,6 +43,7 @@ cavern.ascii = '\n\
           \n\
 \<p class \= "level"\>\</p\>\n\
 \n\ ';
+cavern.levelUnlock = 'mine';
 
 var mine = new levelInfo();
 mine.name = 'mine';
@@ -48,6 +51,7 @@ mine.monster = goblinMiner;
 mine.specialMonster = demon;
 mine.specialMonster = 5;
 mine.specialMonster = 'Goblin miners are flooding the halls';
+mine.levelUnlock = 'depths';
 mine.ascii = '____________________________________________________\n\
 \n\
       \$            \$\$          \$\$     \$       \n\
@@ -90,6 +94,7 @@ base.specialMonster = vampire;
 base.levelLength = 55;
 base.specialMonsterNum = 1;
 base.text = 'The base of the tower';
+base.levelUnlock = 'upper';
 base.ascii = '_______________________________________________________________\n\
 \n\
    __       __       __       __       __       __       __\n\
@@ -105,6 +110,7 @@ upper.specialMonster = vampire;
 upper.levelLength = 53;
 upper.specialMonsterNum = 1;
 upper.text = 'The upper level of the tower, the top is near!';
+upper.levelUnlock = 'top';
 upper.ascii = '\n\
  ____      ____      ____      ____      ____      ______      _____\n\
 \|    \|____\|    \|____\|    \|____\|    \|____\|    \|____\|    \'\=\|____\|     \|\n\
@@ -123,6 +129,7 @@ top.specialMonster = reaper;
 top.specialMonsterNum = 1;
 top.levelLength = 55;
 top.text = 'The sun is rising in the distance';
+top.levelUnlock = 'monk';
 top.ascii = '\n\
 \n\
 \n\
@@ -142,6 +149,7 @@ cave.monster = bear;
 cave.specialMonster = dropBear;
 cave.monsterNum = 2;
 cave.text = 'Inside a bears cave! ...Is this a good idea?';
+cave.levelUnlock = 'den';
 cave.ascii = '                    _______________________\n\
     _______________________________\\          ____\n\
 ___/                                         /\=\=\=\=\\\n\
@@ -163,6 +171,7 @@ den.levelLength = 36;
 den.text = 'The heart of the bears den! Whats that house doing here?';
 den.specialMonsterNum = 1;
 den.monsterNum = 2;
+den.levelUnlock = 'wizard';
 den.ascii = '\n\
                                  /            \\\n\
                                _/              \\\n\
@@ -181,12 +190,13 @@ __                           /                   \\\n\
 
 var gate = new levelInfo();
 gate.name = 'gate';
-gate.monster = demon;
+gate.monster = castleTroll;
 gate.specialMonster = demon;
 gate.levelLength = 40;
 gate.text = 'gatestuff';
 gate.specialMonsterNum = 1;
 gate.monsterNum = 1;
+gate.levelUnlock = 'armory';
 gate.ascii = '\n\
 \n\
 \n\
@@ -206,11 +216,12 @@ armory.levelLength = 40;
 armory.text = 'armory stuff';
 armory.specialMonsterNum = 1;
 armory.monsterNum = 1;
-armory.ascii = '
+armory.levelUnlock = 'throne';
+// armory.ascii = '
               
  
-_____________________________________________________________________---
-'
+// _____________________________________________________________________---
+// '
 
 var throne = new levelInfo();
 throne.name = 'throne';
@@ -220,10 +231,11 @@ throne.levelLength = 40;
 throne.text = 'throne stuff';
 throne.specialMonsterNum = 1;
 throne.monsterNum = 1;
-throne.ascii = '
+throne.levelUnlock = 'lich';
+// throne.ascii = '
 					      
 					     
-_____________________________';
+// _____________________________';
 
 
 
@@ -238,6 +250,6 @@ var levelObject = {
 	depths: depths,
 	mine: mine,
 	gate: gate,
-	// armory: armory,
-	// throne: throne
+	armory: armory,
+	throne: throne
 }
