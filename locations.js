@@ -25,6 +25,7 @@ function searchCamp() {
 //not a very forgiving man apparently
 function campConfess() {
 	$('#man_text').html('You took my stuff? Guess <br> You are paying extra!');
+	$('#confess_button').hide();
 	confess = true;
 }
 
@@ -84,6 +85,7 @@ function stealItems() {
 	$('#camp_use').show();
 	restPrice = 1;
 	thief = true;
+	locationSwitch(Map);
 	campgroundAfterScenario();
 }
 
@@ -139,6 +141,40 @@ function enterDemon() {
 		}
 		demonFirst = true;
 	}	
+}
+
+function wizardEnchant() {
+	var buttonValue = $(this).attr('value');
+	switch (buttonValue) {
+		case 'damage':
+
+			break;
+
+		case 'heal': 
+
+			break;
+
+		case 'loot':
+
+			break;
+
+		case 'armor':
+
+			break;
+	}
+}
+
+function wizardQuestion() {
+	$('#location_text').html('Ooh arent you the sassy one, how about this, beat me in a battle of wits and I will give you a prize! I am not afraid of losing, Im a pretty good wizard');
+}
+
+function monkCheck() {
+	if (sinChoosen) {
+		console.log('sux');
+	}
+	else {
+		console.log('ok');
+	}
 }
 
 
