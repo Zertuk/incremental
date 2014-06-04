@@ -81,7 +81,7 @@
     <div id = 'church_special'>
       <select id = "church_quest">
         <option value = 'approach'>The Approach</option>
-        <option value = 'figure'>The Figure</option>
+        <option id = '#figure' value = 'figure'>The Figure</option>
       </select>
       <button onclick = "getQuestSelect('#church_quest')">Enter</button>
       <button class = 'location_button' value = "Main">Leave</button>
@@ -406,7 +406,7 @@ jgs^^^^^^^^^^====^^^^^^^^^^^
 
     <div id = "castle_special">
       <select id = "castle_quest">
-        <option value = 'gates'>The Gates</option>
+        <option value = 'gate'>The Gates</option>
         <option value = 'armory'>The Armory</option>
         <option value = 'throne'>Throne Room</option>
       </select>
@@ -448,8 +448,8 @@ jgs^^^^^^^^^^====^^^^^^^^^^^
 
         <select id = "mountain_quest">
           <option value = 'cavern'>Cavern Entrance</option>
-          <option value = 'mines'>Mines</option>
-          <option value = 'depths'>The Depths</option>
+          <option id = 'mine' value = 'mine'>Mine</option>
+          <option id = 'depths' value = 'depths'>The Depths</option>
         </select>
         <button onclick = "getQuestSelect('#mountain_quest')">Enter</button>
         <br>
