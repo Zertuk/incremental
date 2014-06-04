@@ -199,7 +199,13 @@ necromancer.health = 50;
 necromancer.damage = 10;
 necromancer.name = 'Necromancer';
 
-
+var castleTroll = new Monster();
+castleTroll.message ='A troll! But in a castle!';
+castleTroll.value = 'T';
+castleTroll.maxHealth = 100;
+castleTroll.health = 100;
+castleTroll.damage = 50;
+castleTroll.name = 'Castle Troll';
 
 
 
