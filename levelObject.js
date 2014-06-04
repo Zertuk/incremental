@@ -217,11 +217,16 @@ armory.text = 'armory stuff';
 armory.specialMonsterNum = 1;
 armory.monsterNum = 1;
 armory.levelUnlock = 'throne';
-// armory.ascii = '
-              
- 
-// _____________________________________________________________________---
-// '
+armory.ascii = '\n\
+--------------------------------------------------\n\
+\n\
+   I        ___       I        ___    \n\
+  _|_      [===]     _|_      [===]   \n\
+  | |      | $ |     | |      | $ | \n\
+  |\'|      \\___/     |\'|      \\___/  \n\
+  \\_/                \\_/             \n\
+\n\
+<p class = "level"></p>\n\ ';
 
 var throne = new levelInfo();
 throne.name = 'throne';
@@ -232,11 +237,20 @@ throne.text = 'throne stuff';
 throne.specialMonsterNum = 1;
 throne.monsterNum = 1;
 throne.levelUnlock = 'lich';
-// throne.ascii = '
-					      
-					     
-// _____________________________';
-
+throne.ascii = '\n\
+===================================================\n\
+        |           |           |           |      \n\
+     ^__^__^     ^__^__^     ^__^__^     ^__^__^   \n\
+       ===         ===         ===         ===     \n\
+                                                   \n\
+            .___.       .___.       .___.          \n\
+            [===]       [===]       [===]          \n\
+       	    | $ |       | $ |       | $ |          \n\
+            [===]       [===]       [===]     +****+\n\
+             \\_/         \\_/         \\_/     |      |\n\
+                                            (+)----(+)\n\
+                                             ]\'\'\'\'\'\'[ \n\
+<p class = "level"></p>==============\n\ ';
 
 
 var levelObject = {
