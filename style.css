@@ -56,6 +56,7 @@ pre p {
 }
 
 #hp {
+	margin-left: -1px;
 	background-color: green;
 	text-align: center;
 	border: 1px solid #21A652;
@@ -120,7 +121,7 @@ pre {
 	height: 100px;
 	border: 1px solid white;
 	margin-top: -10px;
-	padding-bottom: 10px;
+	padding-bottom: 9px;
 	
 }
 #factory, #factory2 {

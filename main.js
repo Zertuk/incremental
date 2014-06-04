@@ -16,6 +16,7 @@ var fists, woodSword, ironSword;
 
 function updateHealthBar() {
 	$('#hp').html(player.health.toFixed(2) + '/' + player.maxHealth + ' Health');
+	$('#hp').css('width', player.health / player.maxHealth * 100 + '%');
 }
 
 function healthRegen() {
@@ -26,7 +27,7 @@ function healthRegen() {
 //loads dom elements & event listeners
 window.onload = function() {
 	mainLoop();
-
+	locationSwitch(Map);
 	$('#ascii_text').html(cavern.ascii);
 
 	var reflectingPool = document.getElementById('reflectingPool');
@@ -42,23 +43,29 @@ window.onload = function() {
 
  	// event listener to switch location
 
-	$('.location_button, pre').click(function() {
+	$('.location_button, .location_ascii').click(function() {
+		if (levelActive) {
+			$('#error').html('You must leave quest first');
+			return;
+		}
 		var buttonValue = $(this).attr('value');
-		var split = buttonValue.split(',');
-		locationSwitch(split[0]);
-		if (split[0] == 'mountain') {
-			magicDoor();
-		}
-		else if (split[0] == 'trainShow') {
-			trainTicket();
-		}
-		else if (split[0] == 'store') {
-			$('#store_status').html('You looking to buy?');
-		}
-		else if (split[0] == '#inventory') {
-			inventoryList();
-		}
-		error.innerHTML = '';
+		var locationVal = locationObject[buttonValue];
+		console.log(locationVal);
+		locationSwitch(locationVal);
+
+		// if (split[0] == 'mountain') {
+		// 	magicDoor();
+		// }
+		// else if (split[0] == 'trainShow') {
+		// 	trainTicket();
+		// }
+		// else if (split[0] == 'store') {
+		// 	$('#store_status').html('You looking to buy?');
+		// }
+		// else if (split[0] == '#inventory') {
+		// 	inventoryList();
+		// }
+		error.innerHTML = buttonValue;
 	});
 
 	//event listener to buy store items
@@ -93,12 +100,17 @@ window.onload = function() {
 	})
 }
 var previousLocation = levelInfo;
- 	function locationSwitch(location) {
+
+function locationSwitch(location) {
  		$(previousLocation.special).hide();
  		previousLocation = location;
  		$('#location_ascii').hide();
  		$('#location_text').hide();
- 		$(location.special).show();
+ 		if (location == Mountain) {
+ 			magicDoor();
+ 		}
+
+ 		$(location.special).fadeIn('slow');
  		$('#location_ascii').html(location.ascii).fadeIn('slow');
  		$('#location_text').html(location.text).fadeIn('slow');
  	}
@@ -149,50 +161,50 @@ function magicDoor() {
 	}
 }
 
-function smokeAnimate() {
-	if (smoke == true) {
-		$('#house1').show();
-		$('#house2').hide();
-		$('#factory').show();
-		$('#factory2').hide();
-		smoke = false;
-	}
-	else {
-		$('#house2').show();
-		$('#house1').hide();
-		$('#factory').hide();
-		$('#factory2').show();
-		smoke = true;
-	}
-}
+// function smokeAnimate() {
+// 	if (smoke == true) {
+// 		$('#house1').show();
+// 		$('#house2').hide();
+// 		$('#factory').show();
+// 		$('#factory2').hide();
+// 		smoke = false;
+// 	}
+// 	else {
+// 		$('#house2').show();
+// 		$('#house1').hide();
+// 		$('#factory').hide();
+// 		$('#factory2').show();
+// 		smoke = true;
+// 	}
+// }
 
-var trainAni = false;
-function trainAnimate() {
-	if (trainAni == true) {
-		$('#train1').show();
-		$('#train2').hide();
-		trainAni = false;
-	}
-	else {
-		$('#train2').show();
-		$('#train1').hide();
-		trainAni = true;
-	}
-}
+// var trainAni = false;
+// function trainAnimate() {
+// 	if (trainAni == true) {
+// 		$('#train1').show();
+// 		$('#train2').hide();
+// 		trainAni = false;
+// 	}
+// 	else {
+// 		$('#train2').show();
+// 		$('#train1').hide();
+// 		trainAni = true;
+// 	}
+// }
 
-function blinkAnimate() {	
-	if (blink == false) {
-		$('#shop_keeper_blink').show();
-		$('#shop_keeper').hide();
-		blink = true;
-	}
-	else {
-		$('#shop_keeper_blink').hide();
-		$('#shop_keeper').show();
-		count = 0;
-		blink = false;
-	}
-}
+// function blinkAnimate() {	
+// 	if (blink == false) {
+// 		$('#shop_keeper_blink').show();
+// 		$('#shop_keeper').hide();
+// 		blink = true;
+// 	}
+// 	else {
+// 		$('#shop_keeper_blink').hide();
+// 		$('#shop_keeper').show();
+// 		count = 0;
+// 		blink = false;
+// 	}
+// }
 var total = 0;
 var total1= 0;
 
