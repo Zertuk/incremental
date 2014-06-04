@@ -58,6 +58,9 @@ function moveInLevel(monstertest) {
 	//level success, adds loot
 	if (i == level.length && levelActive) {
 		levelActive = false;
+		monstertest.levelFinished = true;
+		$('#' + monstertest.levelUnlock).show();
+		console.log(monstertest.levelFinished + ' after level');
 		ectoplasm = ectoplasm + gainedLoot;
 		$('#error').html('Level complete, you may leave and keep anything you found');
 	}
