@@ -205,6 +205,7 @@ function lichAttack() {
 	$('#location_ascii').html('');
 	$('#location_text').html('...');
 	Main.special = '#future_special';
+	Map.special = '#future_map';
 	$('#lich_attack').hide();
 	$('#continue').show();
 }
