@@ -404,7 +404,7 @@ Map.special = '#map_special';
 
 var Wizard = new locationInfo();
 Wizard.special = '#wizard_special';
-Wizard.text = 'Hello?';
+Wizard.text = 'Hello? Thanks again for saving me! I am a pretty good wizard, want me to enchant your gear?';
 Wizard.ascii = '\n\
                                     /\\\n\
                                    /  \\\n\
@@ -450,10 +450,10 @@ Castle.ascii = '\n\
            |;::::::::::::|       `\'.________+-------\\   ``\n\
           /8M%;:::;;:::::|                  |        `-------\n\ '
 
-var Litch = new locationInfo();
-Litch.special = '#litch_special';
-Litch.text = 'r i p';
-Litch.ascii = '\n\
+var Lich = new locationInfo();
+Lich.special = '#lich_special';
+Lich.text = '. . . .';
+Lich.ascii = '\n\
                                           ____\n\
                                          /    \\\n\
                                          \\ xx /\n\
@@ -494,7 +494,7 @@ Litch.ascii = '\n\
 /`                            |            ||\n\
 `-.___,-.      .-.        ___,\'            ||\n\
          `---\'`   `\'----\'`\n\ ';
-Litch.ascii2 = '\n\
+Lich.ascii2 = '\n\
           _.--\"\"\"\"\"--._\n\
         .\'             \'.\n\
        /                 \\\n\
@@ -518,6 +518,52 @@ Litch.ascii2 = '\n\
               q___p\n\ ';
 
 
+Lich.ascii3 = '\n\
+                   `\"-._\n\
+                      `. \"-._\n\
+                        T.   \"-.\n\
+                         $$p.   \"-.\n\
+                         $$$$b.    `,\n\
+                      .g$$$$$$$b    \;\n\
+                    .d$$$$$$$$$$;   \;\n\
+                 __d$$$$$$P\"\"^T$$   :\n\
+               .d$$$$P^^\"\"___       :\n\
+              d$P\'__..gg$$$$$$$$$$\; \;\n\
+             d$$ :$$$$$$$$$$$$$$$$\;  \;\n\
+            :$$\; $$$$$$$$$$$$$$$$P  :$\n\
+            $$$  $$$$$$$$$$$$$$$$b  $$\n\
+           :$$$ :$$$$$$$$$$$$$$$$$\; $$\;\n\
+           $$$\; $$$$$$$$$$$$$$$$$$\; $$\;\n\
+          :$$$  $$$$$$$$$^$$$$$$$$$ :$$\n\
+          $$$\; :$$$p__gP\' `Tp__g$$$ :$$\n\
+         :$$$  $$P`T$P\' .$. `T$P\'T$\; $$\;\n\
+         $$$\; :$$;     :P^T\;     :$\; $$\;\n\
+        :$$$  $$$$-.           .-$$$ :$$\n\
+        $$$$ :$$$$; \\   T$P   / :$$$  $$\n\
+       :$$$\; $$$$$$  \; b:$\;d :  $$$$\; $$\;\n\
+       $$$$\; $$$$$$; : T T T \; :$$$$$ :$$\n\
+    .g$$$$$  :$$$$$$  \;\' | \':  $$$$$$  T$b\n\
+ .g$$$$$$$$   $$$$$$b :     \; d$$$$$\;   `Tb\n\
+:$$$$$$$$$\;   :$$$$$$$\;     :$$$$$$P       \\\n\
+:$$$$$$$$$\;    T$$$$$$$p._.g$$$$$$P         \;\n\
+$$$P^^T$$$$p.   `T$$$$$$$$$$$$$$P\'     _/`. :\n\
+       `T$$$$$b.  `T$$$$$$$$$$P\'    .g$P   \\\;\n\
+  bug    `T$$$$$b.  \"^T$$$$P^\"     d$P\'\n\
+           `T$$$$$b.             .dP\'\n\
+             \"^T$$$$b.        .g$P\'\n\
+                \"^T$$$b    .g$P^\"\n\
+                   \"^T$b.g$P^\"\n\
+                      \"^$^\"\n\ ';
+
+var MainFuture = new locationInfo();
+MainFuture.special = '#future_special';
+MainFuture.text = 'Everything seems different, what happened after fighting the Lich..';
+
+
+
+
+
+
 var locationObject = {
 	Church: Church,
 	Store: Store,
@@ -534,5 +580,6 @@ var locationObject = {
 	Cave: Cave,
 	Wizard: Wizard,
 	Mountain: Mountain,
-	Castle: Castle
+	Castle: Castle,
+	MainFuture: MainFuture
 }
