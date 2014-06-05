@@ -204,6 +204,7 @@ var dots;
 function lichAttack() {
 	$('#location_ascii').html('');
 	$('#location_text').html('...');
+	Main.special = '#future_special';
 	$('#lich_attack').hide();
 	$('#continue').show();
 }
