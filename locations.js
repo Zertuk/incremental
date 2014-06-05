@@ -177,6 +177,38 @@ function monkCheck() {
 	}
 }
 
+function lichEncounter(buttonValue) {
+	console.log(buttonValue);
+	switch (buttonValue) {
+		case 'who':
+			$('#location_text').html('I am the Lich.');
+			$('#location_ascii').html(Lich.ascii3);
+			console.log('who');
+			break;
+
+		case 'loot':
+
+			break;
+
+		case 'die':
+			$('#location_text').html('Fool! You cant defeat me!');
+			$('#location_ascii').html(Lich.ascii2);
+			$('.lich_button').hide();
+			$('#lich_attack').show();
+			console.log('die');
+			break;
+	}
+}
+var dots;
+
+function lichAttack() {
+	$('#location_ascii').html('');
+	$('#location_text').html('...');
+	$('#lich_attack').hide();
+	$('#continue').show();
+}
+
+
 
 function usePool() {
 	$('#poolChoice').css('display', 'none');
