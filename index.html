@@ -310,11 +310,11 @@ _/           |==|   \_
            (' 
            `), 
        __cD"`.__ 
-      !_________!         
-        \_____/         
-  ~~~~~/_______\~~~~~fsc  
-                          
-  [ Reflecting Pool ]            
+      !_________!     
+        \_____/        
+  ~~~~~/_______\~~~~~fsc        
+                      
+  [ Reflecting Pool ]
 
       </pre>
       <pre value = 'Camp' id = "tent" class = 'location_ascii'>
@@ -416,8 +416,58 @@ jgs^^^^^^^^^^====^^^^^^^^^^^
       <button onclick = "getQuestSelect('#castle_quest')">Enter</button>
       <button id = "lich" value = "lich">The Lich</button>
       <button class = 'location_button' value = "Map">Leave</button>
-
     </div><!--castle_special-->
+
+    <div id = "future_special">
+      <pre class = 'location_ascii' value = "Store">
+
+
+ ^             ^               ^!^
+   ^ _______________________________
+    [=U=U=U=U=U=U=U=U=U=U=U=U=U=U=U=]
+    |.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.|
+    |        +-+-+-+-+-+-+-+        |
+    |        |    Store    |        |
+    |        +-+-+-+-+-+-+-+        |
+    |.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.|
+    |  _________  __ __  _________  |
+  _ | |___   _  ||[]|[]||  _      | | _
+ (!)||OPEN|_(!)_|| ,| ,||_(!)_____| |(!)
+.T~T|:.....:T~T.:|__|__|:.T~T.:....:|T~T.
+||_||||||||||_|||||||||||||_||||||||||_||
+~\=/~~~~~~~~\=/~~~~~~~~~~~\=/~~~~~~~~\=/~
+  | -------- | ----------- | -------- |
+~ |~^ ^~~^ ~~| ~^  ~~ ^~^~ |~ ^~^ ~~^ |^~
+Sher^
+        </pre>
+
+        <pre class = 'location_ascii' value = "Factory">
+  
+
+          ) ) )                     ) ) )
+        ( ( (                      ( ( (
+      ) ) )                       ) ) )
+   (~~~~~~~~~)                 (~~~~~~~~~)
+    | POWER |                   | POWER |
+    |       |                   |       |
+    I      _._                  I       _._
+    I    /'   `\                I     /'   `\
+    I   |   N   |               I    |   N   |
+    f   |   |~~~~~~~~~~~~~~|    f    |    |~~~~~~~~~~~~~~|
+  .'    |   ||~~~~~~~~|    |  .'     |    | |~~~~~~~~|   |
+/'______|___||__###___|____|/'_______|____|_|__###___|___|
+
+                      [ Factory ]
+        </pre>
+
+    </div><!--future_special-->
+
+    <div id = "lich_special">
+      <button value = 'who' class = 'lich_button'>Who are you?</button>
+      <button value = 'die' class = 'lich_button'>Prepare to die!</button>
+      <button id = 'lich_attack' class = 'lich_button' onclick = 'lichAttack()'>Attack the Lich</button>
+      <button id = 'continue' class = 'location_button' value = 'Main'>Continue</button>
+    </div><!--lich_special-->
 
     <div id = "tower_special">
       <select id = "tower_quest">
@@ -437,6 +487,8 @@ jgs^^^^^^^^^^====^^^^^^^^^^^
       <button>Enchant Armor</button>
       <br>
       <button onclick = 'wizardQuestion()'>If you are such a good wizard, How did you get caught?</button>
+      
+
       <div id = "enchant_sword">
         <button>Heal</button>
         <button>Damage</button>
