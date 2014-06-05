@@ -190,12 +190,12 @@ __                           /                   \\\n\
 
 var gate = new levelInfo();
 gate.name = 'gate';
-gate.monster = castleTroll;
-gate.specialMonster = demon;
+gate.monster = skeleton;
+gate.specialMonster = undeadKnight;
 gate.levelLength = 40;
 gate.text = 'gatestuff';
-gate.specialMonsterNum = 1;
-gate.monsterNum = 1;
+gate.specialMonsterNum = 3;
+gate.monsterNum = 10;
 gate.levelUnlock = 'armory';
 gate.ascii = '\n\
 \n\
@@ -210,12 +210,12 @@ gate.ascii = '\n\
 
 var armory = new levelInfo();
 armory.name = 'armory';
-armory.monster = demon;
-armory.specialMonster = demon;
+armory.monster = undeadKnight;
+armory.specialMonster = warlock;
 armory.levelLength = 40;
 armory.text = 'armory stuff';
-armory.specialMonsterNum = 1;
-armory.monsterNum = 1;
+armory.specialMonsterNum = 2;
+armory.monsterNum = 4;
 armory.levelUnlock = 'throne';
 armory.ascii = '\n\
 --------------------------------------------------\n\
@@ -230,12 +230,12 @@ armory.ascii = '\n\
 
 var throne = new levelInfo();
 throne.name = 'throne';
-throne.monster = demon;
-throne.specialMonster = demon;
-throne.levelLength = 40;
+throne.monster = undeadKnight;
+throne.specialMonster = castleTroll;
+throne.levelLength = 35;
 throne.text = 'throne stuff';
 throne.specialMonsterNum = 1;
-throne.monsterNum = 1;
+throne.monsterNum = 5;
 throne.levelUnlock = 'lich';
 throne.ascii = '\n\
 ===================================================\n\
