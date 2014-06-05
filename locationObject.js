@@ -586,9 +586,18 @@ $$$P^^T$$$$p.   `T$$$$$$$$$$$$$$P\'     _/`. :\n\
                    \"^T$b.g$P^\"\n\
                       \"^$^\"\n\ ';
 
-var MainFuture = new locationInfo();
-MainFuture.special = '#future_special';
-MainFuture.text = 'Everything seems different, what happened after fighting the Lich..';
+var City = new locationInfo();
+
+
+
+
+var Cabin = new locationInfo();
+
+
+
+var Forest = new locationInfo();
+
+
 
 
 
