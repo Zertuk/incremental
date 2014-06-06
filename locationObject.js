@@ -588,6 +588,7 @@ $$$P^^T$$$$p.   `T$$$$$$$$$$$$$$P\'     _/`. :\n\
 
 var City = new locationInfo();
 City.text = "Where would you like to go?";
+City.special = "#city_special";
 City.ascii = '\n\
                _________\n\
               |MMMMMMMMM|                _\n\
