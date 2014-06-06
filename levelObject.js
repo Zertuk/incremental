@@ -253,6 +253,34 @@ throne.ascii = '\n\
 <p class = "level"></p>==============\n\ ';
 
 
+var underwater = new levelInfo();
+underwater.monster = fish;
+underwater.specialMonster = demon;
+underwater.levelLength = 40;
+underwater.name = 'underwater';
+underwater.ascii = '\n\
+~^~^~^~^~^~^~^~^~^~^~^^~^~^~^~^~^~~^~^~^~^~^~^~^~^~^~^~^^~^~^~^~^~^~\n\
+\n\
+\n\
+\n\
+\n\
+\n\
+\n\
+\n\
+<p class = "level"></p>\n\
+\n\
+\n\
+\n\
+ \n\
+                 ~          )   )           )   )\n\
+  }     ~              (    (   (      (    (   (\n\
+ {                      )    )   )     )    )   )\n\
+  }  }         .       (    (   (     (    (   (\n\
+ {  {               /^^^^^^^^^^^^jgs^^^^^^^^^^^^\\\n\
+^^^^^^^^^\\         /                            ^^^^^^^^^^^^^^^^^^\n\
+          ^^^^^^^^^\'\n\ ';
+
+
 var levelObject = {
 	approach: approach,
 	cavern: cavern,
@@ -265,5 +293,6 @@ var levelObject = {
 	mine: mine,
 	gate: gate,
 	armory: armory,
-	throne: throne
+	throne: throne,
+	underwater: underwater
 }
