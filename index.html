@@ -585,6 +585,7 @@ ejm96 /|\/|\/|\ /|\ /|\/|\ /|\/|\/|\ /|\/|\
     </div><!--future_map-->
     <div id = "lake_special">
       <button value = "Fish" class = "location_button">Agree</button>
+      <button onclick = "checkFish()">Show Fish</button>
       <button value = "City" class = "location_button">Leave</button>
     </div><!--lake_special-->
     <div id = "city_special">
@@ -595,8 +596,8 @@ ejm96 /|\/|\/|\ /|\ /|\/|\ /|\/|\/|\ /|\/|\
       <button value = "Map" class = "location_button">Leave</button>
     </div><!--city_special-->
     <div id = "fish_special">
-      <button>Cast</button>
-      <button>Reel</button>
+      <button onclick = 'fishCast()'>Cast</button>
+      <button id = "reel" onclick = 'fishReel()'>Reel</button>
       <br>
       <button value = "Lake" class = "location_button">Leave</button>
     </div><!--fish_special-->
