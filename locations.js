@@ -119,8 +119,62 @@ function campgroundWait() {
 	
 	campCount++;
 }
+var reelCount = 0;
+function fishReel() {
+	if (caught) {
+		$('#location_text').html('Keep reeling!');
+		reelCount++;
+		if (reelCount > 5) {
+			fishCatch();
+			reelCount = 0;
+		}
+	}
+	else {
+		$('#location_text').html('Nothing on the line');
+	}
+}
+var fishCaught;
+var caught = false;
+function fishCatch() {
+	$('#location_ascii').html(Fish.ascii3);
+	fishCaught = Math.round(Math.random()*19);
+	if (fishCaught < 18) {
+		$('#location_text').html('You caught a ' + fishCaught + ' pound fish! Some better bait might make this easier.');
+	}
+	else {
+		$('#location_text').html('Wow! a ' + fishCaught + ' pound fish! That will show the fisherman!');
+	}
+	caught = false;
+	$('#reel').hide();
+}
 
+function fishCast() {
+	$('#reel').show();
+	$('#location_ascii').html(Fish.ascii2);
+	$('#location_text').html('Waiting...');
+	fishCounter();
+}
 
+function fishCounter() {
+	var random = Math.floor(Math.random()*100);
+	console.log(random);
+	if (random > 85) {
+		fishEncounter();
+		return;
+	}
+	else {
+		setTimeout(function() {
+			fishCounter();
+		}, 500);
+	}
+}
+
+function fishEncounter() {
+	$('#location_ascii').html(Fish.ascii4);
+	$('#location_text').html('Reel in quick!');
+	caught = true;
+
+}
 //some church stuff
 var demon = false;
 var demonFirst = false;
