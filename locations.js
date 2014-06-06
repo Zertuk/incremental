@@ -133,16 +133,47 @@ function fishReel() {
 		$('#location_text').html('Nothing on the line');
 	}
 }
+
+function lootBait() {
+	if (inventoryObject.bait) {
+		$('#error').html('You already found some bait, leave some for the other anglers!');
+	}
+	else {
+		$('#location_text').html('Hmm found some bait in the bushes!');
+		inventoryObject.bait = true;
+	}
+}
 var fishCaught;
 var caught = false;
+
+function checkFish() {
+	if (player.bigFish) {
+		inventoryObject.flippers = true;
+		Fish.text = 'Hope those flippers are helping you out, maybe check out the sea?';
+		$('#location_text').html('Wow check out that fish! Here you go take these flippers you deserve them!');
+	}
+	else {
+		$('#location_text').html('You are going to have to do better than that if you want these flippers..');
+	}
+
+}
+
+
 function fishCatch() {
 	$('#location_ascii').html(Fish.ascii3);
-	fishCaught = Math.round(Math.random()*19);
+	if (inventoryObject.bait) {
+		fishCaught = 20;
+	}
+	else {
+		fishCaught = Math.round(Math.random()*19);
+	}
+
 	if (fishCaught < 18) {
 		$('#location_text').html('You caught a ' + fishCaught + ' pound fish! Some better bait might make this easier.');
 	}
 	else {
 		$('#location_text').html('Wow! a ' + fishCaught + ' pound fish! That will show the fisherman!');
+		player.bigFish = true;
 	}
 	caught = false;
 	$('#reel').hide();
