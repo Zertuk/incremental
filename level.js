@@ -12,6 +12,9 @@ var bearCave = false;
 function makeLevel(levelInp, monster, monsterCount, specialMonster, specialCount) {
 	for (var i = 0; i < levelInp; i++) {
 		level[i] = '_';
+		if (monster == 'F') {
+			level[i] = ' ';
+		}
 	}
 	for (var j = 0; j < monsterCount; j++) {
 		var random = Math.floor(Math.random()*levelInp);
@@ -33,6 +36,9 @@ function moveInLevel(monstertest) {
 	if (level[i] == '_'); {
 		level[i] = 'Y';
 		level[i - 1] = '_';
+		if (monstertest.name == 'underwater') {
+			level[i - 1] = ' ';
+		}
 		i++;
 		//moves monster if appropriate
 		if (monstertest.monster.move) {
