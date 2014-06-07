@@ -30,21 +30,27 @@ var inventoryObject = {
 	seed: 0,
 	map: false,
 	battery: 0,
-	rune: false,
+	rune: true,
 	sin: false,
-	ticket: false
+	ticket: false,
+	bait: false,
+	flippers: false
 }
 
 var player = {
 	damage: swordObject.fists.damage,
 	health: 75.00,
-	maxHealth: 100
+	maxHealth: 100,
+	bigFish: false
 }
 
 function fixHP() {
 	if (player.health > player.maxHealth) {
 		player.health = player.maxHealth;
 		updateHealthBar();
+	}
+    else if (player.health < 0) {
+		player.health = 0;
 	}
 }
 

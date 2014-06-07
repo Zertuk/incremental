@@ -12,7 +12,7 @@ var bearCave = false;
 function makeLevel(levelInp, monster, monsterCount, specialMonster, specialCount) {
 	for (var i = 0; i < levelInp; i++) {
 		level[i] = '_';
-		if (monster == 'F') {
+		if (monster == 'F' || monster == 'c\'^;={') {
 			level[i] = ' ';
 		}
 	}
