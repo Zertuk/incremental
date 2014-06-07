@@ -558,7 +558,7 @@ Sher^
 Sher^
                    [ The Wizard ]
       </pre>
-      <pre class = "location_ascii" class = "City">
+      <pre class = "location_ascii" value = "City">
                        .|
                        | |
                        |'|            ._____
@@ -571,7 +571,7 @@ jgs~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
                     [ The City ]
       </pre>
-      <pre class = "location_ascii" class = "Cabin">
+      <pre class = "location_ascii" value = "Cabin" id = "forest_map">
 
        ^  ^  ^   ^   ^  ^   ^  ^  ^   ^  ^
       /|\/|\/|\ /|\ /|\/|\ /|\/|\/|\ /|\/|\
@@ -583,6 +583,17 @@ ejm96 /|\/|\/|\ /|\ /|\/|\ /|\/|\/|\ /|\/|\
 
 
     </div><!--future_map-->
+    <div id = "skyscraper_special">
+      <button id = "look_left" value = 'telescope' class = 'tele_button'>Look left</button>
+        <div id = "telescope">
+          <button value = 'left' class = 'tele_button'>Use telescope: Left</button>
+          <button value = 'up' class = 'tele_button'>Use telescope: Up</button>
+          <button value = 'right' class = 'tele_button'>Use telescope: Right</button>
+        </div><!--telescope-->
+        <br>
+        <button class = "location_button" value = "City">Leave</button>
+    </div><!--skyscraper_special-->
+
     <div id = "lake_special">
       <button value = "Fish" class = "location_button">Agree</button>
       <button onclick = "checkFish()">Show Fish</button>
