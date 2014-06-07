@@ -58,6 +58,10 @@ function monsterMove(value) {
 			level[g - 1] = value;
 			level[g] = '_';
 		}
+		if (level[g] == value && level[g-1] == ' ') {
+			level[g - 1] = value;
+			level[g] = ' ';
+		}
 	}
 }
 
@@ -206,6 +210,25 @@ castleTroll.maxHealth = 100;
 castleTroll.health = 100;
 castleTroll.damage = 50;
 castleTroll.name = 'Castle Troll';
+
+var fish = new Monster();
+fish.value = 'F';
+fish.name = 'Fish';
+fish.replace = ' ';
+fish.damage = 35;
+fish.maxHealth = 50;
+fish.health = 50;
+fish.message = 'Just a cute little fish :3';
+
+var shark = new Monster();
+shark.value = 'c\'^;={';
+shark.name = 'Shark';
+shark.damage = 50;
+shark.health = 100;
+shark.maxHealth = 100;
+shark.replace = '      ';
+shark.message = 'Ahhh a shark!';
+
 
 
 
