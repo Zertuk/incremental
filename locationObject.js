@@ -422,7 +422,7 @@ Cave.ascii = '                      _\n\
 
 
 var Main = new locationInfo();
-Main.special = '#main_special';
+Main.special = '#future_special';
 
 var Factory = new locationInfo();
 Factory.special = '#factory_special';
@@ -431,7 +431,7 @@ var Inventory = new locationInfo();
 Inventory.special = '#inventory_special';
 
 var Map = new locationInfo();
-Map.special = '#map_special';
+Map.special = '#future_map';
 
 var Wizard = new locationInfo();
 Wizard.special = '#wizard_special';
@@ -867,6 +867,32 @@ ___ /%%%%%%/%%\\%%/%%%%%%%%\\/%%\\%/%%\\%%\/%%%%%%\\%/%%%%%%%%\\\n\
    _||_ -  \/_-      %\\|/%            %\\|/% \n\
           -~~         -~~-    _-       ~~\n\ ';
 
+var Cabin = new locationInfo();
+Cabin.text = 'A Cabin in the woods, nothing bad can happen here!';
+Cabin.special = '#cabin_special';
+Cabin.ascii = '\n\
+                                                (\n\
+                                                 )       /\\\n\
+                                               (__      /%%\\\n\
+                                              |_I_|     /%%\\\n\
+                   __________________/\',______|I_I|____/%%%%\\/\\\n\
+                  /\\\'.__.\'.__.\'.__.\'/\/_\\\'.__.\'.__.\'.__\\%%%%/%%\\\n\
+                 /%%\\_.\'.__.\'.__.\'./\\/_ _\\_.\'.__.\'.__.\'.\\%%/%%%%\\\n\
+                /%%%%\\.__.\'.__.\'._/\\/|_|_|\\.__.\'.__.\'.__.\\%/%%%%\\   \n\
+                /%%%%\\_.\'.__.\'.__.\\/_|_|_|_\\\'.__.\'.__.\'.__\\%%%%%%\\  \n\
+               /%%%%%%\\____________________________________\\%%%%%%\\\n\
+              /%%%%%%%%\\]== _ _ _ ============______======]%%%%%%%\\\n\
+              /%%%%%%%/\\]==|_|_|_|============|////|======]%%%%%%%%\\__\n\
+           __/%%%%%%%/%%\\==|_|_|_|============|////|======]%%%%%%%%\\lc\n\
+            /%%%%%%%/%%%%\\====================|&///|======]%%%%%%%%%\\\n\
+            /%%%%%%%/%%%%\\====================|////|======]^^^^^^^^^^\n\
+           /%%%%%%%/%%%%%%\\===================|////|======]  _ - _ -\n\
+           /%%%%%%%/%%%%%%\\"""""""""""""""""""\'====\'"""""""\n\
+           ^^^^^^^/%%%%%%%%\\   _ -   _ -              _-\n\
+                  ^^^^^^^^^^              \n\ ';
+
+
+
 
 
 
@@ -899,5 +925,6 @@ var locationObject = {
 	Fish: Fish,
 	Skyscraper: Skyscraper,
 	Sea: Sea,
-	Sewer: Sewer
+	Sewer: Sewer,
+	Cabin: Cabin
 }
