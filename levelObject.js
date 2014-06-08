@@ -337,12 +337,12 @@ cabin.ascii = '\n\
 var sewer = new levelInfo();
 sewer.name = 'sewer';
 sewer.text = 'This place is sick'
-sewer.levelLength = 39;
+sewer.levelLength = 46;
 sewer.monster = turtle;
 sewer.monsterNum = 3;
 sewer.more = false;
-sewer.specialMonster = slime;
-sewer.specialMonsterNum = 2;
+sewer.specialMonster = rat;
+sewer.specialMonsterNum = 1;
 sewer.ascii = '\n\
 _________________________________________________...______\n\
     ""                             ""             =\n\
@@ -352,6 +352,23 @@ _________________________________________________...______\n\
 --------------------------------------------------=-------\n\
 __________________________________________________=_______\n\
 |-|-|-|-|-|-|-|-|-|-||-|-|-|-|-|-|-|-|-|-||-|-|-|\\ \\|-|-|-|\n\
+<p class = "level"></p>\\\n\ ';
+
+var inside = new levelInfo();
+inside.levelLength = 35;
+inside.monster = turtle;
+inside.monsterNum = 2;
+inside.specialMonster = slime;
+inside.specialMonsterNum = 1;
+inside.ascii = '\n\
+__________________________________________________________\n\
+    ""                             ""              \n\
+                 `   $$$$         `             $$$$\n\
+   `                 OBEY          `            OBEY\n\
+                     LICH            -          LICH\n\
+----------------------------------------------------------\n\
+__________________________________________________________\n\
+|-|-|-|-|-|-|-|-|-|-||-|-|-|-|-|-|-|-|-|-||-|-|-||-|-|-|-|\n\
 <p class = "level"></p>\\\n\ ';
 
 
@@ -371,5 +388,6 @@ var levelObject = {
 	underwater: underwater,
 	woods: woods,
 	cabin: cabin,
-	sewer: sewer
+	sewer: sewer,
+	inside: inside
 }
