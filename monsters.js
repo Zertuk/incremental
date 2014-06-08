@@ -182,6 +182,7 @@ elderDruid.name = 'Elder Druid';
 var undeadKnight = new Monster();
 undeadKnight.message = 'A knight! But undead?';
 undeadKnight.value = 'UK';
+undeadKnight.replace = '__';
 undeadKnight.maxHealth = 50;
 undeadKnight.damage = 40;
 undeadKnight.health = 50;
@@ -228,6 +229,52 @@ shark.health = 100;
 shark.maxHealth = 100;
 shark.replace = '      ';
 shark.message = 'Ahhh a shark!';
+
+var undeadBear = new Monster();
+undeadBear.name = 'Undead Bear';
+undeadBear.value = 'UB';
+undeadBear.damage = 75;
+undeadBear.health = 200;
+undeadBear.maxHealth = 200;
+undeadBear.message = 'Under a Lich curse!';
+undeadBear.replace = '__';
+
+var undeadWolf = new Monster();
+undeadWolf.name = 'Undead Wolf';
+undeadWolf.value = 'UW';
+undeadWolf.damage = 50;
+undeadWolf.health = 100;
+undeadWolf.maxHealth = 100;
+undeadWolf.replace = '_____';
+undeadWolf.message = 'Slighly less scary than an Undead Bear';
+
+var undeadWizard = new Monster();
+undeadWizard.name = 'Undead Wizard';
+undeadWizard.value = '!UWi';
+undeadWizard.replace = '____';
+undeadWizard.damage = 100;
+undeadWizard.maxHealth = 500;
+undeadWizard.health = 500;
+undeadWizard.message = 'This guy thinks he owns this cabin';
+
+var turtle = new Monster();
+turtle.name = 'Mutant Turtle';
+turtle.message = 'Looks to be in adolescence and adept at combat';
+turtle.value = 'Tu';
+turtle.replace = '__';
+turtle.damage = 50;
+turtle.health = 75;
+turtle.maxHealth = 75;
+
+var slime = new Monster();
+slime.name = 'Sewer Slime';
+slime.value = '|\'\' |'
+slime.replace = '_____';
+slime.damage = 75;
+slime.health = 75;
+slime.maxHealth = 75;
+slime.message = 'Pretty nasty..';
+
 
 
 
