@@ -4,6 +4,7 @@ function levelInfo() {
 	this.specialMonsterNum = 0,
 	this.levelLength = 50
 	this.levelFinished = false;
+	this.more = true;
 
 }
 
@@ -284,11 +285,14 @@ underwater.ascii = '\n\
 
 
 var woods = new levelInfo();
-woods.monster = demon;
-woods.specialMonster = demon;
+woods.monster = undeadWolf;
+woods.monsterNum = 4;
+woods.specialMonster = undeadBear;
+woods.specialMonsterNum = 1;
 woods.levelLength = 55;
 woods.text = 'These trees are gigantic! And there are lich controlled monsters in here..'
 woods.name = 'woods';
+woods.levelUnlock = 'cabin';
 woods.ascii = '\n\
        |  |   \\\\|.\'    |  |    \\\\|.\'   |  |     \\\\|.\'  |  |\n\
        | ||   \\\\` /   _.| ||,!  \\` /   _| ||\\,!  \\` /   | ||\n\
@@ -305,6 +309,52 @@ woods.ascii = '\n\
       / \'| \\          / \'| \\          / \'| \\          / \'| \\ \n\
       <p class = "level"></p> \n\ ';
 
+var cabin = new levelInfo();
+cabin.monster = undeadBear;
+cabin.monsterNum = 0;
+cabin.specialMonster = undeadWizard;
+cabin.specialMonsterNum = 1;
+cabin.text = 'Theres the cabin! Looks like an Undead Wizard was squatting there';
+cabin.name = 'cabin';
+cabin.more = false;
+cabin.ascii = '\n\
+       |  |   \\\\|.\'    |  |    \\\\|.\'   |  |     \\\\|.\'        |  |\n\
+       | ||   \\\\` /   _.| ||,!  \\` /   _| ||\\,!  \\` /  -.____| ||\n\
+       ||||`. f |_.-\'.\'||||\\`. f |_.-\'.|||| \\`. f |_.-\'----._||||\n\
+       | ||\\ \\|! ,-\'   | || \\ \\|! ,-\'M | ||  \\ \\|! ,-\'       | ||\n\
+       || |W`. ||  N   || |  `. ||   N || |   `. ||          || |\n\
+       ||||H `. |  W   ||||  H`. |   W ||||    `. |          ||||\n\
+       || |N  |L|  M   || |  N |L|   M || |    N|L|          || |\n\
+       | ||W  ||]  H   | ||  W ||]   H | ||    W||]          | ||\n\
+       ||||M  [ I  W   ||||  M [ I   W ||||    M[ I          ||||\n\
+       || |H  I |  M   || |  H I |   M || |    HI |    T     || |\n\
+       | [|N, !l| ,H\  | [| /N,!l|  ,H\| [|   /N!l|   /\\- --\\  | [|\n\
+       || |   \'-`      || |    \'-`     || |     \'-`/  \\ -  \\ || |\n\
+      / \'| \\          / \'| \\          / \'| \\       |[]| [] |/ \'| \\ \n\
+      <p class = "level"></p> \n\ ';
+
+
+var sewer = new levelInfo();
+sewer.name = 'sewer';
+sewer.text = 'This place is sick'
+sewer.levelLength = 39;
+sewer.monster = turtle;
+sewer.monsterNum = 3;
+sewer.more = false;
+sewer.specialMonster = slime;
+sewer.specialMonsterNum = 2;
+sewer.ascii = '\n\
+_________________________________________________...______\n\
+    ""                             ""             =\n\
+                    `     $$$$                    =     $$\n\
+   ` <strike>L!(|-|</strike>               OBEY                    =     OB\n\
+      <strike>5ux</strike>                 LICH                    =     LI\n\
+--------------------------------------------------=-------\n\
+__________________________________________________=_______\n\
+|-|-|-|-|-|-|-|-|-|-||-|-|-|-|-|-|-|-|-|-||-|-|-|\\ \\|-|-|-|\n\
+<p class = "level"></p>\\\n\ ';
+
+
 var levelObject = {
 	approach: approach,
 	cavern: cavern,
@@ -319,5 +369,7 @@ var levelObject = {
 	armory: armory,
 	throne: throne,
 	underwater: underwater,
-	woods: woods
+	woods: woods,
+	cabin: cabin,
+	sewer: sewer
 }
