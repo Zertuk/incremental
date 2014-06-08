@@ -583,6 +583,14 @@ ejm96 /|\/|\/|\ /|\ /|\/|\ /|\/|\/|\ /|\/|\
 
 
     </div><!--future_map-->
+    <div id = "forest_special">
+      <select id = "forest_quest">
+        <option value = 'woods'>Run into the woods</button>
+        <option value = 'cabin'>Assault the cabin</button>
+      </select>
+      <button onclick = "getQuestSelect('#forest_quest')">Enter</button>
+    </div><!--forest_special-->
+
     <div id = "skyscraper_special">
       <button id = "look_left" value = 'telescope' class = 'tele_button'>Look left</button>
         <div id = "telescope">
@@ -613,10 +621,15 @@ ejm96 /|\/|\/|\ /|\ /|\/|\ /|\/|\/|\ /|\/|\
       <button value = "Lake" class = "location_button">Leave</button>
     </div><!--fish_special-->
     <div id = "sea_special">
-      <select id = "sea_quest">
-        <option value = "underwater">Underwater</option>
-      </select>
-      <button onclick = "getQuestSelect('#sea_quest')">Enter</button>
+      <button onclick = "flipperCheck()">Put flippers on</button>
+      <div id = "flipper_on">
+        <select id = "sea_quest">
+          <option value = "underwater">Underwater</option>
+        </select>
+        <button onclick = "getQuestSelect('#sea_quest')">Enter</button>
+      </div><!--flipper_on-->
+      <br>
+      <button value = "City" class = "location_button">Leave</button>
     </div>
 
   </div><!--location_div-->
