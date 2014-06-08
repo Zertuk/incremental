@@ -255,7 +255,9 @@ throne.ascii = '\n\
 
 var underwater = new levelInfo();
 underwater.monster = fish;
-underwater.specialMonster = demon;
+underwater.monsterNum = 1;
+underwater.specialMonster = shark;
+underwater.specialMonsterNum = 1;
 underwater.levelLength = 40;
 underwater.name = 'underwater';
 underwater.ascii = '\n\
@@ -281,6 +283,28 @@ underwater.ascii = '\n\
           ^^^^^^^^^\'\n\ ';
 
 
+var woods = new levelInfo();
+woods.monster = demon;
+woods.specialMonster = demon;
+woods.levelLength = 55;
+woods.text = 'These trees are gigantic! And there are lich controlled monsters in here..'
+woods.name = 'woods';
+woods.ascii = '\n\
+       |  |   \\\\|.\'    |  |    \\\\|.\'   |  |     \\\\|.\'  |  |\n\
+       | ||   \\\\` /   _.| ||,!  \\` /   _| ||\\,!  \\` /   | ||\n\
+       ||||`. f |_.-\'.\'||||\\`. f |_.-\'.|||| \\`. f |_.-\'||||\n\
+       | ||\\ \\|! ,-\'   | || \\ \\|! ,-\'M | ||  \\ \\|! ,-\' | ||\n\
+       || |W`. ||  N   || |  `. ||   N || |   `. ||    || |\n\
+       ||||H `. |  W   ||||  H`. |   W ||||    `. |    ||||\n\
+       || |N  |L|  M   || |  N |L|   M || |    N|L|    || |\n\
+       | ||W  ||]  H   | ||  W ||]   H | ||    W||]    | ||\n\
+       ||||M  [ I  W   ||||  M [ I   W ||||    M[ I    ||||\n\
+       || |H  I |  M   || |  H I |   M || |    HI |    || |\n\
+       | [|N, !l| ,H\  | [| /N,!l|  ,H\| [|   /N!l|    | [|\n\
+       || |   \'-`      || |    \'-`     || |     \'-`    || |\n\
+      / \'| \\          / \'| \\          / \'| \\          / \'| \\ \n\
+      <p class = "level"></p> \n\ ';
+
 var levelObject = {
 	approach: approach,
 	cavern: cavern,
@@ -294,5 +318,6 @@ var levelObject = {
 	gate: gate,
 	armory: armory,
 	throne: throne,
-	underwater: underwater
+	underwater: underwater,
+	woods: woods
 }
