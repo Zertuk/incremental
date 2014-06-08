@@ -587,7 +587,7 @@ $$$P^^T$$$$p.   `T$$$$$$$$$$$$$$P\'     _/`. :\n\
                       \"^$^\"\n\ ';
 
 var City = new locationInfo();
-City.text = "Where would you like to go?";
+City.text = "Not much going on here anymore";
 City.special = "#city_special";
 City.ascii = '\n\
                _________\n\
@@ -698,7 +698,7 @@ __.-`       `------..._\\|/___\n\
 
 var Skyscraper = new locationInfo();
 Skyscraper.special = "#skyscraper_special";
-Skyscraper.text = 'Wow! This sure is high up!'
+Skyscraper.text = 'Wow! This sure is high up! Theres no sign of life left in the city.'
 Skyscraper.ascii = '\n\
                         .-\"L\"-.\n\
       .--\"\"L\"\"---___    J  |  |\n\
@@ -813,7 +813,29 @@ ____.------\'-   ,--.  -    \"\"-------\'\"\"\"\"\n\
 
 var Cabin = new locationInfo();
 
-
+var Sewer = new locationInfo();
+Sewer.text = 'Doubt anyone is here to enforce that sign';
+Sewer.special = '#sewer_special';
+Sewer.ascii = '\n\
+            _________________\n\
+           |                 |\n\
+           |  SEWER  ACCESS  |\n\
+           | AUTHORIZED ONLY |\n\
+           |_________________|\n\
+\n\
+\n\
+\n\
+\n\
+\n\
+\n\
+______________________________________________\n\
+                 ________\n\
+              _||`       `||_\n\
+             / ||=========|| \\\n\
+            |  ||         || |\n\
+            |  ||=========|| |\n\
+             \\_||         ||_/\n\
+               `-.______.-`\n\ ';
 
 var Forest = new locationInfo();
 Forest.text = 'A spooky forest';
@@ -829,7 +851,7 @@ Forest.ascii = '\n\
 .\'    /%%\\ /\\       /%%\\  /%%\\ /%%%%\\/%%\\/%%\\%%\\%%%/%%\\\n\
       /%%\\/%%\\ /\\  /%%%%\\/%%%%/%%%%%%\\%%/%%%%\\%%\\%/%%%%\\ \n\
      /%%%%\\%%%/%%\\ /%%%%\\/%%/\\/%%/\\%%\\%%/%%%%\\%%\\/%%%%%%\\\n\
-    /%%%%%%\\/\\/%%\\/%%%%%%\\%/%%\%/%%\%%\/%%%%%%\%%/%%%%%%\\\n\
+    /%%%%%%\\/\\/%%\\/%%%%%%\\%/%%\\%/%%\\%%\\/%%%%%%\\%%/%%%%%%\\\n\
 ___ /%%%%%%/%%\\%%/%%%%%%%%\\/%%\\%/%%\\%%\/%%%%%%\\%/%%%%%%%%\\\n\
    /%%%%%%%/%%\\%%/%%/\\%%%%/%%%%\\%%%%\\%/%%%%%%%%\\/%%%%%%%%\\\n\
   /%%%%%%%/%%%%\\/%%/%%\\%%%/%%%%\\%%%%\\/%%%%%%%%%%\\%%%%%%%%%\\\n\
@@ -845,7 +867,7 @@ ___ /%%%%%%/%%\\%%/%%%%%%%%\\/%%\\%/%%\\%%\/%%%%%%\\%/%%%%%%%%\\\n\
    _||_ -  \/_-      %\\|/%            %\\|/% \n\
           -~~         -~~-    _-       ~~\n\ ';
 
-          
+
 
 
 
@@ -876,5 +898,6 @@ var locationObject = {
 	Lake: Lake,
 	Fish: Fish,
 	Skyscraper: Skyscraper,
-	Sea: Sea
+	Sea: Sea,
+	Sewer: Sewer
 }
