@@ -270,11 +270,19 @@ var slime = new Monster();
 slime.name = 'Sewer Slime';
 slime.value = '|\'\' |'
 slime.replace = '_____';
-slime.damage = 75;
+slime.damage = 60;
 slime.health = 75;
 slime.maxHealth = 75;
 slime.message = 'Pretty nasty..';
 
+var rat = new Monster();
+rat.name = 'Giant Rat';
+rat.value = 'GR';
+rat.message = 'Seems oddly wise';
+rat.replace = '__';
+rat.damage = 125;
+rat.health = 50;
+rat.maxHealth = 50;
 
 
 
