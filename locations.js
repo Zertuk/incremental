@@ -1,9 +1,45 @@
-function trainTicket() {
-	if (inventoryObject.ticket == true) {
-		$('#trainStation').toggle();
+function telescope(direction) {
+	switch(direction) {
+		case 'up': 
+			$('#location_ascii').html(Skyscraper.ascii5);
+			$('#location_text').html('The moon, sure seems far away');
+			break;
+		case 'left':
+			$('#location_ascii').html(Skyscraper.ascii4);
+			$('#location_text').html('The sea! Going for a swim would be nice right now');
+			break;
+		case 'right':
+			$('#location_ascii').html(Skyscraper.ascii2);
+			$('#location_text').html('Looks like there is a cabin in the woods over there, should probably check that out');
+			$('#forest_map').show();
+			break;
+		case 'telescope':
+			$('#location_ascii').html(Skyscraper.ascii3);
+			$('#location_text').html('Wow who left this up here?');
+			$('#telescope').show();
+			$('#look_left').hide();
+			break;
+	}
+}
+
+function spaceShipCheck() {
+	if (inventoryObject.shipBase) {
+		$('#phase1').hide();
+		$('#phase2').show();
+	}
+	else if (inventoryObject.shipTop) {
+		$('#phase2').hide();
+		$('#phase3').show();
+	}
+}
+
+function flipperCheck() {
+	if (inventoryObject.flippers) {
+		$('#flipper_on').show();
+		$('#location_text').html('Good to go!');
 	}
 	else {
-		$('#error').html('You need a ticket to ues that');
+		$('#error').html('Hey you dont have any flippers!');
 	}
 }
 
