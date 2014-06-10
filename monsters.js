@@ -17,7 +17,8 @@ function Monster() {
 		$('#loot').html('You have gained ' + gainedLoot + ' ectoplasm');
 	}
 	this.monsterInfo = function() {
-		$('#monster_stats').html(this.message + ':  ' +
+		$('#monster_message').html(this.message);
+		$('#monster_stats').html(this.name + ':  ' +
 								'Dmg: ' + this.damage +
 								' HP: ' + this.health + '|' + this.maxHealth);
 	};
