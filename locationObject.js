@@ -980,5 +980,7 @@ var locationObject = {
 	Skyscraper: Skyscraper,
 	Sea: Sea,
 	Sewer: Sewer,
-	Cabin: Cabin
+	Cabin: Cabin,
+  CabinInside: CabinInside,
+  Book: Book
 }
