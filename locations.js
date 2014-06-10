@@ -79,12 +79,19 @@ function raiseRestPrice() {
 	$('#rest').html('Rest(' + restPrice + ')');
 }
 
+
+function cabinRest() {
+	player.health = player.maxHealth;
+	updateHealthBar();
+	$('#location_text').html('You are fully rested');
+}
+
 //rest if you have the money to give full hp, otherwise error
 function campRest() {
 	if (ectoplasm > restPrice) {
 		ectoplasm = ectoplasm - restPrice;
 		player.health = player.maxHealth;
-		$('camp_text').html('You are fully rested');
+		$('#location_text').html('You are fully rested');
 		raiseRestPrice();
 		updateHealthBar();
 	}
