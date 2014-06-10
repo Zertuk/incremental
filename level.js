@@ -12,8 +12,11 @@ var bearCave = false;
 function makeLevel(levelInp, monster, monsterCount, specialMonster, specialCount) {
 	for (var i = 0; i < levelInp; i++) {
 		level[i] = '_';
-		if (monster == 'F' || monster == 'c\'^;={') {
+		if (monster == 'F') {
 			level[i] = ' ';
+		}
+		if (monster == '`') {
+			level[40] = monster;
 		}
 	}
 	for (var j = 0; j < monsterCount; j++) {
@@ -52,11 +55,11 @@ function moveInLevel(monstertest) {
 	var random = Math.round(Math.random()*100);
 	console.log(random + ' random num');
 	//these two add more monsters if the random num fits the requirments
-	if (random > 90) {
+	if (random > 90 && monstertest.more) {
 		addMoreMonsters(monstertest.monster);
 		$('#quest_text').html('A ' + monstertest.monster.name + ' has appeared!');
 	}
-	else if (random == 1) {
+	else if (random == 1 && monstertest.more) {
 		addMoreMonsters(monstertest.specialMonster);
 		$('#quest_text').html('A ' + monstertest.specialMonster.name + ' has appeared! How unlucky..');
 
@@ -91,7 +94,7 @@ function battleTime(monster) {
 	i--;
 	if (player.health <= 0) {
 		levelActive = false;
-		$('#error').html('You have been slain');
+		$('#error').html('The ' + monster.name + ' killed you rip ;-;');
 	}
 	else if (monster.health <= 0) {
 
