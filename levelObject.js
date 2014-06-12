@@ -373,6 +373,7 @@ __________________________________________________________\n\
 <p class = "level"></p>\n\ ';
 
 var entrance = new levelInfo();
+entrance.levelUnlock = 'prison';
 entrance.text = 'No backing out now!';
 entrance.levelLength = 33;
 entrance.monster = undeadKnight;
@@ -398,6 +399,7 @@ entrance.ascii = '\n\
                                                                   \n\ ';
 
 var prison = new levelInfo();
+prison.levelUnlock = 'tunnel';
 prison.text = 'Wonder what these guys did';
 prison.levelLength = 40;
 prison.monster = undeadKnight;
@@ -422,6 +424,7 @@ ____  ____  ____  ____  ____  ____  ____\n\
 
 
 var tunnel = new levelInfo();
+tunnel.levelUnlock = 'danger';
 tunnel.text = 'A giant Jail Ogre is here!';
 tunnel.levelLength = 28;
 tunnel.monster = jailer;
@@ -442,6 +445,7 @@ ______||||______||||______|----|_____||||______\n\
 ---------------------------------------------------\n\ ';
 
 var hanger = new levelInfo();
+hanger.levelUnlock = 'laboratory';
 hanger.text = 'Finally! The rockets!';
 hanger.levelLength = 45;
 hanger.monster = rocketScientist;
@@ -467,6 +471,7 @@ _______/ | | \\_______/ | | \\_______/ | | \\_________\n\
 
 
 var danger = new levelInfo();
+danger.levelUnlock = 'hanger';
 danger.levelLength = 40;
 danger.monster = beast;
 danger.text = 'some kind of arena... A giant beast is in the center!';

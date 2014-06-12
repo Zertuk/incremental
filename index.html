@@ -617,12 +617,14 @@ Sher^
     <div id = "lab_special">
       <select id = "lab_quest">
         <option value = 'entrance'>Break In</option>
-        <option value = 'prison'>Prison</option>
-        <option value = 'tunnel'>Enter Tunnel</option>
-        <option value = 'danger'>$--DANGER--$</option>
-        <option value = 'hanger'>The Hanger</option>
+        <option id = 'prison' value = 'prison'>Prison</option>
+        <option id = 'tunnel' value = 'tunnel'>Enter Tunnel</option>
+        <option id = 'danger' value = 'danger'>$--DANGER--$</option>
+        <option id = 'hanger' value = 'hanger'>The Hanger</option>
       </select>
       <button onclick = "getQuestSelect('#lab_quest')">Enter</button>
+      <br>
+      <button id = 'laboratory' value = 'Laboratory' class = 'location_button'>The Chemist Lab</button>
       <br>
       <button value = 'Map' class = 'location_ascii'>Leave</button>
     </div><!--lab_special-->
