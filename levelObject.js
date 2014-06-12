@@ -336,7 +336,7 @@ cabin.ascii = '\n\
 
 var sewer = new levelInfo();
 sewer.name = 'sewer';
-sewer.text = 'This place is sick'
+sewer.text = 'This place is sick';
 sewer.levelLength = 46;
 sewer.monster = turtle;
 sewer.monsterNum = 3;
@@ -355,6 +355,7 @@ __________________________________________________=_______\n\
 <p class = "level"></p>\\\n\ ';
 
 var inside = new levelInfo();
+inside.text = 'This place is sick';
 inside.levelLength = 35;
 inside.monster = turtle;
 inside.monsterNum = 2;
@@ -372,9 +373,12 @@ __________________________________________________________\n\
 <p class = "level"></p>\n\ ';
 
 var entrance = new levelInfo();
+entrance.text = 'No backing out now!';
 entrance.levelLength = 33;
-entrance.monster = demon;
-entrance.specialMonster = demon;
+entrance.monster = undeadKnight;
+entrance.monsterNum = 1;
+entrance.specialMonster = scientist;
+entrance.specialMonsterNum = 3;
 entrance.ascii = '\n\
 --|------|------------|-------|------------|-------|-----------|-------|-\n\
   ========            =========            =========           =========\n\
@@ -394,9 +398,12 @@ entrance.ascii = '\n\
                                                                   \n\ ';
 
 var prison = new levelInfo();
+prison.text = 'Wonder what these guys did';
 prison.levelLength = 40;
-prison.monster = demon;
-prison.specialMonster = demon;
+prison.monster = undeadKnight;
+prison.monsterNum = 2;
+prison.specialMonster = jailer;
+prison.specialMonsterNum = 3;
 prison.ascii = '\n\
 -----------------------------------------------\n\
                                                \n\
@@ -415,9 +422,12 @@ ____  ____  ____  ____  ____  ____  ____\n\
 
 
 var tunnel = new levelInfo();
+tunnel.text = 'A giant Jail Ogre is here!';
 tunnel.levelLength = 28;
-tunnel.monster = demon;
-tunnel.specialMonster = demon;
+tunnel.monster = jailer;
+tunnel.monsterNum = 2;
+tunnel.specialMonster = jailOgre;
+tunnel.specialMonsterNum = 1;
 tunnel.ascii = '\n\
 ----------------------------------------------\n\
    $$$$$$$$$$$$$$$$$$$$                    \n\
@@ -432,9 +442,10 @@ ______||||______||||______|----|_____||||______\n\
 ---------------------------------------------------\n\ ';
 
 var hanger = new levelInfo();
+hanger.text = 'Finally! The rockets!';
 hanger.levelLength = 45;
-hanger.monster = demon;
-hanger.specialMonster = demon;
+hanger.monster = rocketScientist;
+hanger.specialMonster = astronaut;
 hanger.more = false;
 hanger.ascii = '\n\
 ------|--------|------|--------|------|--------|------\n\
@@ -458,7 +469,7 @@ _______/ | | \\_______/ | | \\_______/ | | \\_________\n\
 var danger = new levelInfo();
 danger.levelLength = 40;
 danger.monster = beast;
-danger.text = 'some kind of arena... A giant beast is in the center!'
+danger.text = 'some kind of arena... A giant beast is in the center!';
 danger.monsterNum = 0;
 danger.specialMonster = rock;
 danger.more = false;
