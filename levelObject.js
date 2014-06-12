@@ -316,6 +316,7 @@ cabin.specialMonster = undeadWizard;
 cabin.specialMonsterNum = 1;
 cabin.text = 'Theres the cabin! Looks like an Undead Wizard was squatting there';
 cabin.name = 'cabin';
+cabin.levelUnlock = 'cabin_map'
 cabin.more = false;
 cabin.ascii = '\n\
        |  |   \\\\|.\'    |  |    \\\\|.\'   |  |     \\\\|.\'        |  |\n\
@@ -355,6 +356,7 @@ __________________________________________________=_______\n\
 <p class = "level"></p>\\\n\ ';
 
 var inside = new levelInfo();
+inside.levelUnlock = 'sewer';
 inside.text = 'This place is sick';
 inside.levelLength = 35;
 inside.monster = turtle;
