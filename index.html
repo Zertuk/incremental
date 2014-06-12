@@ -75,9 +75,9 @@
     </div><!--quest-->
 
     <div id = 'location_div'>
-      <p id = 'location_text'>ttt</p>
-      <pre id = 'location_ascii'>--</pre>
-      <pre id = 'location_ascii2'>----</pre>
+      <p id = 'location_text'></p>
+      <pre id = 'location_ascii'></pre>
+      <pre id = 'location_ascii2'></pre>
     
 
     <div id = 'church_special'>
@@ -542,6 +542,8 @@ Sher^
     </div><!--mountain_special-->
 
     <div id = "future_map">
+      <button class = 'location_button' value = 'Main'>Leave</button>
+      <br>
       <pre class = "location_ascii" value = "Wizard">
 
          _._._                       _._._
@@ -618,6 +620,9 @@ Sher^
       <button value = 'pass' onclick = 'labScenario("pass")'>Im just passing through</button>
       <button value = 'grab' onclick = 'labScenario("grab")'>Im here to pick up the fuel</button>
       <button value = 'rip' onclick = 'labScenario("rip")'>I am your end</button>
+      <br>
+      <br>
+      <button value = 'Lab' class = 'location_button'>Leave</button>
     </div><!--laboratory_special-->
     <div id = "lab_special">
       <select id = "lab_quest">
@@ -693,7 +698,7 @@ ___________|_|_
     <div id = "forest_special">
       <select id = "forest_quest">
         <option value = 'woods'>Run into the woods</button>
-        <option value = 'cabin'>Assault the cabin</button>
+        <option id = 'cabin' value = 'cabin'>Assault the cabin</button>
       </select>
       <button onclick = "getQuestSelect('#forest_quest')">Enter</button>
       <br>
@@ -703,7 +708,7 @@ ___________|_|_
     <div id = "sewer_special">
       <select id = "sewer_quest">
         <option value = 'inside'>Go Inside</option>
-        <option value = 'sewer'>The Sewer</option>
+        <option id = 'sewer' value = 'sewer'>The Sewer</option>
       </select>
       <button onclick = "getQuestSelect('#sewer_quest')">Enter</button>
       <br>
