@@ -285,6 +285,61 @@ rat.damage = 125;
 rat.health = 50;
 rat.maxHealth = 50;
 
+var beast = new Monster();
+beast.name = 'Beast';
+beast.value = '`';
+beast.message =  'How did this even get in here?';
+beast.replace = '_';
+beast.damage = 250;
+beast.health = 500;
+beast.maxHealth = 500;
+beast.move = false;
+
+var scientist = new Monster();
+scientist.name = 'Undead Scientist';
+scientist.value = 'US';
+scientist.message = 'f';
+scientist.replace = '__';
+scientist.damage = 100;
+scientist.health = 100;
+scientist.maxHealth = 100;
+
+var jailer = new Monster();
+jailer.name = 'Jailer';
+jailer.value = 'J';
+jailer.message = 'A prison guard';
+jailer.damage = 125;
+jailer.health = 125;
+jailer.maxHealth = 125;
+
+var jailOgre = new Monster();
+jailOgre.name = 'Jail Ogre';
+jailOgre.value = 'JO';
+jailOgre.message = 'He is huge!';
+jailOgre.damage = 150;
+jailOgre.health = 150;
+jailOgre.maxHealth = 150;
+
+var rocketScientist = new Monster();
+rocketScientist.name = 'Rocket Scientist';
+rocketScientist.value = 'RS';
+rocketScientist.message = 'f';
+rocketScientist.damage = 150;
+rocketScientist.maxHealth = 150;
+rocketScientist.health = 150;
+
+var astronaut = new Monster();
+astronaut.name = 'Astronaut';
+astronaut.value = 'A';
+astronaut.message = 'A Lich astronaut, he wont give up easy';
+astronaut.damage = 200;
+astronaut.maxHealth = 200;
+astronaut.health = 200;
+
+
+
+
+
 
 
 
