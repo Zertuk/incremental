@@ -431,6 +431,29 @@ ______||||______||||______|----|_____||||______\n\
 <p class = "level"></p>_____________________\n\
 ---------------------------------------------------\n\ ';
 
+var hanger = new levelInfo();
+hanger.levelLength = 45;
+hanger.monster = demon;
+hanger.specialMonster = demon;
+hanger.more = false;
+hanger.ascii = '\n\
+------|--------|------|--------|------|--------|------\n\
+      ==========      ==========      ==========\n\
+\n\
+\n\
+\n\
+          A             A             A\n\
+         / \\           / \\           / \\\n\
+         |=|           |=|           |=|\n\
+         | |           | |           | |\n\
+         | |           | |           | |\n\
+        _|=|_         _|=|_         _|=|_\n\
+_______/ | | \\_______/ | | \\_______/ | | \\_________\n\
+       | \\,/ |       | \\,/ |       | \\,/ |\n\
+       |/\" \"\\|       |/\" \"\\|       |/\" \"\\| \n\
+\n\
+<p class = "level"></p>_______ \n\ ';
+
 
 var danger = new levelInfo();
 danger.levelLength = 40;
@@ -482,5 +505,6 @@ var levelObject = {
   entrance: entrance,
   prison: prison,
   tunnel: tunnel,
-  danger: danger
+  danger: danger,
+  hanger: hanger
 }
