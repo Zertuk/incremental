@@ -80,6 +80,7 @@ function raiseRestPrice() {
 }
 
 
+
 function cabinRest() {
 	player.health = player.maxHealth;
 	updateHealthBar();
@@ -162,6 +163,26 @@ function campgroundWait() {
 	
 	campCount++;
 }
+
+function labScenario(buttonValue) {
+	console.log(buttonValue + ' the value');
+	if (buttonValue == 'grab') {
+		$('#location_text').html('Oh okay heres a fresh batch for you');
+		inventoryObject.shipFuel = true;
+	}
+	else if (buttonValue == 'pass') {
+		$('#location_text').html('But this is a dead end?..');
+	}
+	else {
+		$('#location_text').html('You kill the Chemist in one hit, she was defenseless, you grab the rocket fuel off her corpse');
+		inventoryObject.shipFuel = true;
+		$('#location_ascii').html(Laboratory.ascii2);
+	}
+}
+
+
+
+
 var reelCount = 0;
 function fishReel() {
 	if (caught) {
