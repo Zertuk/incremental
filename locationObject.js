@@ -969,11 +969,37 @@ _/ )(__|"|"|"|"| [=][=] [=] [=][=] |"|"|"|"|__)_/)_\n\
      """"""""""""""""""|   |""""""""""""""""""\n\
 Sher^  4/8/98\n\ ';
 
-
-
-
-
-
+var Laboratory = new locationInfo();
+Laboratory.text = 'Who are you? Whats going on out there?';
+Laboratory.special = '#laboratory_special';
+Laboratory.ascii = '\n\
+                                         \n\
+                    _..._                \n\
+ hjm               //\'\'\\\\\\            \n\
+                   ||. .||               \n\
+                   |\\ _ /|      (         \n\
+                  .-/\\ /\\-.     )   |      \n\
+                 |  ` \\ \'  |    _   |      \n\
+           (     | |  |  | |    H=--+-      \n\
+           ))    | |__|[ | |    U   |       \n\
+           __    \\___(_3/ /     )   |      \n\
+-|_H_H_|---||---------|!|/------|---|---.  \n\
+ |_U_U_|  /__\\        |_|      _[_ _|__  \\ \n\
+------------------------------------------`\n\ ';
+Laboratory.ascii2 = '\n\
+                                         \n\
+                    _..._                \n\
+ hjm               //\'\'\\\\\\            \n\
+                   ||X X||               \n\
+                   |\\ _ /|      (         \n\
+                  .-/\\ /\\-.     )   |      \n\
+                 |  ` \\ \'  |    _   |      \n\
+           (     | |  |  | |    H=--+-      \n\
+           ))    | |__|[ | |    U   |       \n\
+           __    \\___(_3/ /     )   |      \n\
+-|_H_H_|---||---------|!|/------|---|---.  \n\
+ |_U_U_|  /__\\        |_|      _[_ _|__  \\ \n\
+------------------------------------------`\n\ ';
 
 
 var locationObject = {
@@ -1003,5 +1029,6 @@ var locationObject = {
 	Cabin: Cabin,
   CabinInside: CabinInside,
   Book: Book,
-  Lab: Lab
+  Lab: Lab,
+  Laboratory: Laboratory
 }
