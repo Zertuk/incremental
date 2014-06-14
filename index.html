@@ -77,8 +77,6 @@
     <div id = 'location_div'>
       <p id = 'location_text'></p>
       <pre id = 'location_ascii'></pre>
-      <pre id = 'location_ascii2'></pre>
-    
 
     <div id = 'church_special'>
       <select id = "church_quest">
@@ -132,7 +130,9 @@
         <button class = 'location_button' value = "Map">Leave</button>
 
     </div><!--cave_special-->
-
+    <div id = "rocket_special">
+      <button value = 'Dock' class = 'location_button'>Dock Ship</button>
+    </div><!--rocket_special-->
     <div id = "camp_special">
       <div id = "camp_scenario">
         <button onclick = 'campgroundWait()'>Wait</button>
@@ -691,6 +691,7 @@ ___________|_|_
            | |
 ___________|_|_
         </pre>
+        <button id = "rocket_launch" class = "location_button" value = "Rocket">Launch Rocket</button>
         <button value = 'CabinInside' class = "location_button">Go Inside</button>
         <button value = 'Map' class = "location_button">Leave</button>
     </div><!--cabin_special-->
@@ -732,6 +733,7 @@ ___________|_|_
       <button onclick = "checkFish()">Show Fish</button>
       <button value = "City" class = "location_button">Leave</button>
     </div><!--lake_special-->
+
     <div id = "city_special">
       <button value = "Lake" class = "location_button">The Lake</button>
       <button value = "Sea" class = "location_button">The Sea</button>
@@ -740,12 +742,14 @@ ___________|_|_
       <br>
       <button value = "Map" class = "location_button">Leave</button>
     </div><!--city_special-->
+
     <div id = "fish_special">
       <button onclick = 'fishCast()'>Cast</button>
       <button id = "reel" onclick = 'fishReel()'>Reel</button>
       <br>
       <button value = "Lake" class = "location_button">Leave</button>
     </div><!--fish_special-->
+
     <div id = "sea_special">
       <button onclick = "flipperCheck()">Put flippers on</button>
       <div id = "flipper_on">
