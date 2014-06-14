@@ -1004,14 +1004,13 @@ Laboratory.ascii2 = '\n\
 var Rocket = new locationInfo();
 Rocket.special = '#rocket_special';
 Rocket.ascii = '\n\
-                                                   ,:  \n\
-                                                 ,\' |  \n\
-                                                /   :  \n\
-                                             --\'   /  \n\
-                                             \\/ /\>/  \n\
-                                             / <//  \n\
-                                          __/   /\n\
-                                          )\'-. /\n\
+                                                   ,:\n\
+                                                 ,\' \|\n\
+                                                /   :\n\
+                                            .--\'   /\n\
+                                             `\\\/ \/\>\/\n\
+                                           __/   /\n\
+                                           )\'-. /\n\
                                           ./  :\\\n\
                                            /.\' \'\n\
                                          \'/\'\n\
@@ -1037,6 +1036,38 @@ Rocket.ascii = '\n\
          ( 8)  ( _.aP\" _a   \\( \\   *\n\
        +  )/    (8P   (88    )  )\n\
           (a:f   \"     `\"       `\n\ ';
+
+var SpaceStation = new locationInfo();
+SpaceStation.text = 'This must be where the Lich is'
+SpaceStation.special = '#space_station_special'
+SpaceStation.ascii = '\n\
+_/\'-.\n\
+_     `.                  *                      *\n\
+ \\//  / \\\n\
+   \\  | |\n\
+_  /  | |         *                  *\n\
+ //    \\:    \n\
+       /       \n\
+_    .\' ___      \n\
+_\\.-\'  =| |=     \n\
+       _| |_          *\n\
+______|-----|______________     \n\
+______| $L$ |______________|            \n\
+      |o o o|     `                              *\n\
+      |||||||` \'                           \n\
+       |   |       *               \n\
+       |___|                          *\n\
+||||||||o o|||||||||||          \n\
+||||||||o o|||||||||||             \n\
+       (___)                \n\
+      __| |__            \n\
+   ___|o o o|___                              *\n\
+  |___|     |___|       *           *                 *\n\
+      |_____|\n\
+JRO            *                         *\n\ ';
+
+
+
 
 var Dock = new locationInfo();
 
@@ -1070,5 +1101,6 @@ var locationObject = {
   Lab: Lab,
   Laboratory: Laboratory,
   Dock: Dock,
-  Rocket: Rocket
+  Rocket: Rocket,
+  SpaceStation: SpaceStation
 }
