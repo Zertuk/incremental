@@ -1002,13 +1002,14 @@ Laboratory.ascii2 = '\n\
 ------------------------------------------`\n\ ';
 
 var Rocket = new locationInfo();
+Rocket.special = '#rocket_special';
 Rocket.ascii = '\n\
-                                                   ,:\n\
-                                                 ,\' |\n\
-                                                /   :\n\
-                                             --\'   /\n\
-                                             \\/ />/\n\
-                                             / <//_\\\n\
+                                                   ,:  \n\
+                                                 ,\' |  \n\
+                                                /   :  \n\
+                                             --\'   /  \n\
+                                             \\/ /\>/  \n\
+                                             / <//  \n\
                                           __/   /\n\
                                           )\'-. /\n\
                                           ./  :\\\n\
@@ -1036,6 +1037,8 @@ Rocket.ascii = '\n\
          ( 8)  ( _.aP\" _a   \\( \\   *\n\
        +  )/    (8P   (88    )  )\n\
           (a:f   \"     `\"       `\n\ ';
+
+var Dock = new locationInfo();
 
 var locationObject = {
 	Church: Church,
@@ -1065,5 +1068,7 @@ var locationObject = {
   CabinInside: CabinInside,
   Book: Book,
   Lab: Lab,
-  Laboratory: Laboratory
+  Laboratory: Laboratory,
+  Dock: Dock,
+  Rocket: Rocket
 }
