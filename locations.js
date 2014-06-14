@@ -27,9 +27,10 @@ function spaceShipCheck() {
 		$('#phase1').hide();
 		$('#phase2').show();
 	}
-	else if (inventoryObject.shipTop) {
+	else if (inventoryObject.shipTop && inventoryObject.shipBase) {
 		$('#phase2').hide();
 		$('#phase3').show();
+		$('#rocket_launch').show();
 	}
 }
 
