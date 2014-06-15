@@ -6,6 +6,10 @@ var i = 0;
 var bearCave = false;
 
 
+function testing() {
+	$('#quest_ascii').css('color', 'red');
+	$('.level').css('color', 'purple');
+}
 //makes the level, takes in the level length to determine length and the monster
 //to determine what monster to fill with, randomly spawns monsters throughout the level array
 //also takes in the number of monsters to spawn
@@ -17,6 +21,9 @@ function makeLevel(levelInp, monster, monsterCount, specialMonster, specialCount
 		}
 		if (monster == '`') {
 			level[40] = monster;
+		}
+		if (monster == '^') {
+			level[46] = monster;
 		}
 	}
 	for (var j = 0; j < monsterCount; j++) {
@@ -36,7 +43,7 @@ function makeLevel(levelInp, monster, monsterCount, specialMonster, specialCount
 //stops when player reaches end and gives them their loot 
 function moveInLevel(monstertest) {
 	var player = 'Y';
-	if (level[i] == '_'); {
+	if (level[i] == '_') {
 		level[i] = 'Y';
 		level[i - 1] = '_';
 		if (monstertest.name == 'underwater') {
