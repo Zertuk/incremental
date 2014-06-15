@@ -502,6 +502,30 @@ danger.ascii = '\n\
                                          .*\' /  .*\' ; .*`- +\'  `*\'                                |\n\
 <p class = "level"></p>*-*   `*-*  `*-*                                       |\n\ ';       
 
+var finish = new levelInfo();
+finish.levelLength = 46;
+finish.monster = lich;
+finish.monsterNum = 0;
+finish.more = false;
+finish.specialMonster = rock;
+finish.ascii = '\n\
+\n\
+                                             /,\\\n\
+                                             \\|/\n\
+                                              |     ___\n\
+                                             (=\\.  /-. \\\n\
+                                              |\\/\\_| |  |\n\
+                                              |_\\ |;-|  ;\n\
+                                              | / \\| |_/ \\\n\
+                                              | )/\\/      \\\n\
+                                              | ( \'|  \\   |\n\
+                                              |    \\_ /   \\\n\
+                                              |    /  \\_.--\\\n\
+                                              \\    |    (|\\`\n\
+                                               |   |     \\\n\
+                                               |   |      \'.\n\
+                                               |  /         \\\n\
+<p class = "level"></p>  \\.__.__.-._)\n\ '
 var levelObject = {
 	approach: approach,
 	cavern: cavern,
@@ -524,5 +548,6 @@ var levelObject = {
   prison: prison,
   tunnel: tunnel,
   danger: danger,
-  hanger: hanger
+  hanger: hanger,
+  finish: finish
 }
