@@ -337,6 +337,16 @@ astronaut.maxHealth = 200;
 astronaut.health = 200;
 
 
+var lich = new Monster();
+lich.name = 'Lich';
+lich.value = '^';
+lich.message = 'The Lich!';
+lich.damage = 500;
+lich.maxHealth = 10000;
+lich.health = 10000;
+lich.move = false;
+
+
 
 
 
