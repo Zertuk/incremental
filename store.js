@@ -5,20 +5,60 @@ var timeFrozen = false;
 var swordObject = {
 	fists : {
 		name: 'Fists',
-		damage: 1,
-		enchant: false
+		damage: 1
 	},
 
 	woodSword : {
 		name: 'Wooden Sword',
-		damage: 2,
-		enchant: false
+		damage: 2
 	},
 
 	ironSword : {
 		name: 'Iron Sword',
-		damage: 4,
-		enchant: false
+		damage: 4
+	},
+	diamondSword: {
+		name: 'Diamond Sword',
+		damage: 10
+	},
+	spaceSword: {
+		name: 'The Space Sword',
+		damage: 100
+	},
+	candySword: {
+		name: 'The Candy Sword',
+		damage: 75
+	},
+	beastClawSword: {
+		name: 'The Beasts Claw',
+		damage: 50
+	},
+	sharkToothSword : {
+		name: 'Shark Tooth',
+		damage: 20
+	}
+}
+
+var armorObject = {
+	ironArmor : {
+		name: 'Iron Armor',
+		reduction: 1
+	},
+	diamondArmor : {
+		name: 'Diamond Armor',
+		reduction: 5
+	},
+	knightsArmor : {
+		name: 'Knights Armor',
+		reduction: 20
+	},
+	astronautSuit : {
+		name: 'Astronaut Suit',
+		reduction: 100
+	},
+	jailOgreHide : {
+		jailOgreHide: 'Jail Ogre Hide',
+		reduction: 50
 	}
 }
 
@@ -34,7 +74,10 @@ var inventoryObject = {
 	sin: false,
 	ticket: false,
 	bait: false,
-	flippers: false
+	flippers: false,
+	shipBase: true,
+	shipTop: false,
+	shipFuel: false
 }
 
 var player = {
