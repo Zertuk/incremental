@@ -26,27 +26,27 @@
 <body>
   <div class = "wrapper">
 		<div id = "ectoplasmDiv">
-
+      <button class = "location_button" id = "mapButton" value = "Map">Map</button>
 			<button class = "location_button" id = "inventoryButton" value = "Inventory">Inventory</button>
+      <button id = 'click_button' onclick = "ectoplasmClick(1)">Click</button>
+
+
 			
 			<p id = "ectoplasm">You have 0 ectoplasm</p>
 			<p id = "blood">?</p>
-			<p id = "hp">50.00/100 Health</p>
+			<p id = "hp">50/100</p>
 
 		</div><!--ectoplasmDiv-->
 		<div id = "error"></div>
-    <br>
-    <div id = "main">     
-      <button onclick = "ectoplasmClick(1)">Click</button>
-      
-      <button id = "storeButton" value = "Store">Store</button>      
-      <button id = "fieldButton" value = "Factory">Factory</button>
-      <button class = "location_button" id = "mapButton" value = "Map">Map</button>
-      <button id = "invert_button">Inverse</button>
-      
-    </div><!--main-->
 
     <div id = "quest">
+      <button id = "health_potion_button" class = "potion_button" value = "healthPotion">Use HP(0)</button>
+      <button onclick = "useTeleportPotion()">Teleport Potion</button>
+      <button onclick = "useFreezePotion()">Freeze</button>
+      <button onclick = "resetSpells()">Reset</button>
+      <br>
+      <p id = "potionCDText">Potion Cooldown: 0</p>
+      <br>
       <p id = "quest_text">--</p>
 
       <pre id = 'quest_ascii'>test</pre>      
@@ -61,14 +61,6 @@
         <p id = "loot">--</p>
         <br>
         <p id = "special_loot">--</p>
-        <br>
-        <br>
-        <button id = "health_potion_button" class = "potion_button" value = "healthPotion">Use HP(0)</button>
-        <button onclick = "useTeleportPotion()">Teleport Potion</button>
-        <button onclick = "useFreezePotion()">Freeze</button>
-        <button onclick = "resetSpells()">Reset</button>
-        <br>
-        <p id = "potionCDText">Potion Cooldown: 0</p>
         <br>
         <button id = "leave_quest">Leave</button>
       </div><!--stat_wrap-->
@@ -702,7 +694,7 @@ ___________|_|_
 
     <div id = "dock_special">
       <select id = "dock_quest">
-        <option value = 'final'>Fight the Lich</option>
+        <option value = 'finish'>Fight the Lich</option>
       </select>
       <button onclick = "getQuestSelect('#dock_quest')">Enter</button>
     </div><!--dock_special-->
