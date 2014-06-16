@@ -31,6 +31,7 @@ approach.ascii = '  ___________________________________________________________\
 <p class = "level">\n\ ';
 
 var cavern = new levelInfo();
+cavern.more = false;
 cavern.name = 'cavern';
 cavern.monster = rock;
 cavern.specialMonster = rock;
