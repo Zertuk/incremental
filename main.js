@@ -1,6 +1,5 @@
-//i really am going to need to split this into multiple files soon
 //global variable init
-var ectoplasm = 50000;
+var ectoplasm = 0;
 var ghostStoreVal = false;
 var inverse = false;
 var smoke = true;
@@ -15,7 +14,7 @@ var flesh = 0;
 var fists, woodSword, ironSword;
 
 function updateHealthBar() {
-	$('#hp').html(player.health.toFixed(2) + '/' + player.maxHealth + ' Health');
+	$('#hp').html(player.health.toFixed(2) + '/' + player.maxHealth);
 	$('#hp').css('width', player.health / player.maxHealth * 100 + '%');
 }
 
@@ -27,7 +26,7 @@ function healthRegen() {
 //loads dom elements & event listeners
 window.onload = function() {
 	mainLoop();
-	locationSwitch(Map);
+	locationSwitch(Church);
 	$('#ascii_text').html(cavern.ascii);
 
 	var reflectingPool = document.getElementById('reflectingPool');
@@ -68,15 +67,25 @@ window.onload = function() {
 		error.innerHTML = buttonValue;
 	});
 
+	//telescope event listener
+	$('.tele_button').click(function() {
+		var buttonValue = $(this).attr('value');
+		telescope(buttonValue);
+	})
+
+
+	//lich event listener
+	$('.lich_button').click(function() {
+		var buttonValue = $(this).attr('value');
+		lichEncounter(buttonValue);
+	})
+
 	//event listener to buy store items
 	$('.store_button').click(function() {
 		var buttonValue = $(this).attr('value');
 		var split = buttonValue.split(',');
-		storeItems(split[0]);
-		//removes the item from store if it has a secondary value
-		if (split[1]) {
-			$(this).parent().remove();
-		}
+		storeItems(split);
+
 	});
 
 	$('.potion_button').click(function() {
@@ -118,7 +127,7 @@ function locationSwitch(location) {
 
 //generates ectoplasm on click
 function ectoplasmClick(num) {
-	ectoplasm = ectoplasm + num*10;
+	ectoplasm = ectoplasm + num;
 	document.getElementById('ectoplasm').innerHTML = "You have " + ectoplasm + " ectoplasm";
 }
 
@@ -147,6 +156,12 @@ function ghostStore()  {
 		return ghostStoreVal;
 	}
 	return ghostStoreVal;
+}
+
+function lightFire() {
+	$('#cabin_rest').show();
+	$('#location_text').html('The fire is roaring.  You may now rest here freely.');
+
 }
 
 function magicDoor() {

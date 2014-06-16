@@ -40,9 +40,13 @@ var swordObject = {
 }
 
 var armorObject = {
+	noArmor : {
+		name: 'No Armor',
+		reduction: 0
+	},
 	ironArmor : {
 		name: 'Iron Armor',
-		reduction: 1
+		reduction: 2
 	},
 	diamondArmor : {
 		name: 'Diamond Armor',
@@ -65,6 +69,7 @@ var armorObject = {
 //inventory
 var inventoryObject = {
 	weapon: swordObject.fists,
+	armor: armorObject.noArmor,
 	healthPotion: 10,
 	manaPotion: 0,
 	seed: 0,
@@ -82,7 +87,8 @@ var inventoryObject = {
 
 var player = {
 	damage: swordObject.fists.damage,
-	health: 75.00,
+	reduction: inventoryObject.armor.reduction,
+	health: 100.00,
 	maxHealth: 100,
 	bigFish: false
 }
@@ -177,7 +183,7 @@ function inventoryList() {
 }
 
 //buys item if you have enough money else error
-function itemBuy() {
+function itemBuy(item) {
 	var itemBought = false;
 	if (ectoplasm < itemPrice) {
 		storeStatus('Hey! you need more money than that punk');
@@ -185,6 +191,7 @@ function itemBuy() {
 	else {
 		ectoplasm = ectoplasm - itemPrice;
 		itemBought = true;
+		//removes the item from store if it has a secondary value
 	}
 	return itemBought;
 }
@@ -198,10 +205,10 @@ function storeStatus(text) {
 which checks if player has enough money, if true, then add the item to inventory/remove
 money, if false, then display error. Removes bought sword and shows better sword  ****/
 function storeItems(item) {
-	switch (item) {
+	switch (item[0]) {
 		case "woodSword":
 			this.itemPrice = 100;
-			var itemBought = itemBuy();
+			var itemBought = itemBuy(item);
 			if (itemBought == true) {
 				inventoryObject.weapon = swordObject.woodSword;
 				player.damage = swordObject.woodSword.damage;
@@ -211,7 +218,7 @@ function storeItems(item) {
 			break;
 		case "ironSword":
 			this.itemPrice = 1000;
-			var itemBought = itemBuy();
+			var itemBought = itemBuy(item);
 			if(itemBought == true) {
 				inventoryObject.weapon = swordObject.ironSword;
 				player.damage = swordObject.ironSword.damage;
@@ -220,7 +227,7 @@ function storeItems(item) {
 			break;
 		case "healthPotion":
 			this.itemPrice = 50;
-			var itemBought = itemBuy();
+			var itemBought = itemBuy(item);
 			if (itemBought == true) {
 				inventoryObject.healthPotion++;
 				storeStatus('Heres a Healh Potion, hope you wont need it..');
@@ -228,7 +235,7 @@ function storeItems(item) {
 			break;
 		case "manaPotion":
 			this.itemPrice = 50;
-			var itemBought = itemBuy();
+			var itemBought = itemBuy(item);
 			if (itemBought == true) {
 				inventoryObject.manaPotion++;
 				storeStatus('You know you dont even have mana right?');
@@ -236,7 +243,7 @@ function storeItems(item) {
 			break;
 		case "seed":
 			this.itemPrice = 500;
-			var itemBought = itemBuy();
+			var itemBought = itemBuy(item);
 			if (itemBought == true) {
 				inventoryObject.seed++;
 				fieldButton.style.display = "inline";
@@ -245,17 +252,16 @@ function storeItems(item) {
 			break;
 		case "map":
 			this.itemPrice = 50;
-			var itemBought = itemBuy();
+			var itemBought = itemBuy(item);
 			if (itemBought == true) {
 				inventoryObject.map = true;
-				mapButton.style.display = "inline";
-				console.log('hell0');
+				$('#mapButton').css('display', 'inline');
 				storeStatus('Hey! Dont open that map in my store!');
 			}
 			break;
 		case "battery":
 			this.itemPrice = 2000;
-			var itemBought = itemBuy();
+			var itemBought = itemBuy(item);
 			if (itemBought == true) {
 				inventoryObject.battery++;
 				storeStatus('Battery! What could you use this for?');				
@@ -263,7 +269,7 @@ function storeItems(item) {
 			break;
 		case "rune":
 			this.itemPrice = 1;
-			var itemBought = itemBuy();
+			var itemBought = itemBuy(item);
 			if (itemBought == true) {
 				inventoryObject.rune = true;
 				storeStatus('Magic Rune! It is glowing strangely.');				
