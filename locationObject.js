@@ -422,7 +422,7 @@ Cave.ascii = '                      _\n\
 
 
 var Main = new locationInfo();
-Main.special = '#future_special';
+Main.special = '#main_special';
 
 var Factory = new locationInfo();
 Factory.special = '#factory_special';
@@ -431,7 +431,7 @@ var Inventory = new locationInfo();
 Inventory.special = '#inventory_special';
 
 var Map = new locationInfo();
-Map.special = '#future_map';
+Map.special = '#map_special';
 
 var Wizard = new locationInfo();
 Wizard.special = '#wizard_special';
