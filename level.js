@@ -22,8 +22,8 @@ function makeLevel(levelInp, monster, monsterCount, specialMonster, specialCount
 		if (monster == '`') {
 			level[40] = monster;
 		}
-		if (monster == '^') {
-			level[46] = monster;
+		if (monster == 'o') {
+			level[45] = monster;
 		}
 	}
 	for (var j = 0; j < monsterCount; j++) {
@@ -43,7 +43,7 @@ function makeLevel(levelInp, monster, monsterCount, specialMonster, specialCount
 //stops when player reaches end and gives them their loot 
 function moveInLevel(monstertest) {
 	var player = 'Y';
-	if (level[i] == '_') {
+	if (level[i] == '_'); {
 		level[i] = 'Y';
 		level[i - 1] = '_';
 		if (monstertest.name == 'underwater') {
@@ -89,6 +89,15 @@ function moveInLevel(monstertest) {
 	}
 	$('.level').html(level);
 }
+function roundDamage(monster) {
+	if ((monster.damage - player.reduction) < 0) {
+		player.health = player.health;
+	}
+	else {
+		player.health = player.health - (monster.damage - player.reduction);
+	}
+}
+
 
 //takes in the monster the player is next to as parameter
 //then uses the info from this object to battle, taking/giving
@@ -96,7 +105,7 @@ function moveInLevel(monstertest) {
 function battleTime(monster) {
 	$('#player_stats').html('Player Dmg: ' + player.damage);
 	monster.monsterInfo();
-	player.health = player.health - monster.damage;
+	roundDamage(monster);
 	monster.health = monster.health - player.damage;
 	i--;
 	if (player.health <= 0) {
