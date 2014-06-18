@@ -5,7 +5,7 @@ var timeFrozen = false;
 var swordObject = {
 	fists : {
 		name: 'Fists',
-		damage: 1
+		damage: 1000
 	},
 
 	woodSword : {
@@ -88,8 +88,8 @@ var inventoryObject = {
 var player = {
 	damage: swordObject.fists.damage,
 	reduction: inventoryObject.armor.reduction,
-	health: 100.00,
-	maxHealth: 100,
+	health: 10000.00,
+	maxHealth: 10000,
 	bigFish: false
 }
 
@@ -206,6 +206,16 @@ which checks if player has enough money, if true, then add the item to inventory
 money, if false, then display error. Removes bought sword and shows better sword  ****/
 function storeItems(item) {
 	switch (item[0]) {
+		case "diamondSword":
+			this.itemPrice = 10000;
+			var itemBought = itemBuy(item);
+			if (itemBought == true) {
+				inventoryObject.weapon = swordObject.diamondSword;
+				player.damage = swordObject.diamondSword.damage;
+				$('#diamond_sword').hide();
+				storeStatus('Not made out of blood diamonds but will cause blood~');
+			}
+			break;
 		case "woodSword":
 			this.itemPrice = 100;
 			var itemBought = itemBuy(item);
@@ -214,6 +224,7 @@ function storeItems(item) {
 				player.damage = swordObject.woodSword.damage;
 				$('#iron_sword').show();
 				storeStatus('This thing wont do much but its better than fists');
+				$('#wood_sword').hide();
 			}
 			break;
 		case "ironSword":
@@ -223,6 +234,29 @@ function storeItems(item) {
 				inventoryObject.weapon = swordObject.ironSword;
 				player.damage = swordObject.ironSword.damage;
 				storeStatus('Now this will show them');
+				$('#iron_sword').hide();
+				$('#diamond_sword').show();
+			}
+			break;
+		case "ironArmor":
+			this.itemPrice = 500;
+			var itemBought = itemBuy(item);
+			if (itemBought == true) {
+				inventoryObject.armor = armorObject.ironArmor;
+				player.reduction = armorObject.ironArmor.reduction;
+				storeStatus('');
+				$('#iron_armor').hide();
+				$('#diamond_armor').show();
+			}
+			break;
+		case 'diamondArmor':
+			this.itemPrice = 5000;
+			var itemBought = itemBuy(item);
+			if (itemBought == true) {
+				inventoryObject.armor = armorObject.diamondArmor;
+				player.reduction - armorObject.diamondArmor.reduction;
+				storeStatus('');
+				$('#diamond_armor').hide();
 			}
 			break;
 		case "healthPotion":
@@ -255,7 +289,8 @@ function storeItems(item) {
 			var itemBought = itemBuy(item);
 			if (itemBought == true) {
 				inventoryObject.map = true;
-				$('#mapButton').css('display', 'inline');
+				$('#mapButton').show();
+				$('#mapListing').hide();
 				storeStatus('Hey! Dont open that map in my store!');
 			}
 			break;
