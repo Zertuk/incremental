@@ -32,9 +32,6 @@ $('.location_button, pre').click(function() {
 		if (split[0] == 'mountain') {
 			magicDoor();
 		}
-		else if (split[0] == 'trainShow') {
-			trainTicket();
-		}
 		else if (split[0] == 'store') {
 			$('#store_status').html('You looking to buy?');
 		}
@@ -161,7 +158,7 @@ Store.text = 'You looking to buy?';
 Store.special = '#store_special';
 
 var Church = new locationInfo();
-Church.text = 'You walk into the church and it is very dark inside, there is a figure behind the podium yet no sign of anyone else';
+Church.text = 'You walk into the church and it is very dark inside, there is a figure behind the podium yet no sign of anyone else, maybe you should checkout the Mountain first..';
 Church.special = '#church_special';
 Church.ascii = '\n\
           	  ____                                               ____\n\
@@ -310,27 +307,29 @@ Tower.ascii = '\n\
 
 var Monk = new locationInfo();
 Monk.text = '';
+Monk.special = '#monk_special';
 Monk.ascii = '                          \n\
                                 .---.\n\
-                               /\" \" \"\\n\
+                               /\" \" \"\\\n\
                               (| -_- |)\n\
                                \\  =  /\n\
                            ____/`---\'\____\n\
                          .\'  \\\\|     |//  `.\n\
-                        /  \\\\|||  :  |||//  \\n\
-                       /  _||||| -:- |||||_  \\n\
+                        /  \\\\|||  :  |||//  \\\n\
+                       /  _||||| -:- |||||_  \\\n\
                        |   | \\\\\\  -  /\'| |   |\n\
                        | \\_|  `\\`---\'//  |_/ |\n\
                        \\  .-\\__ `-. -\'__/-.  /\n\
                      ___`. .\'  /--.--\  `. .\'___\n\
-                  .\"\" \'<  `.___\_<|>_/___.\' _> \\\"\".\n\
-                 | | :  `- \`. ;`. _/\; .\'/ /  .\' \; |\n\
-                 \  \ `-.   \_\_`. _.\'_/_/  -\' _.\' /\n\
-==================`-.`___`-.__\ \___  /__.-\'_.\'_.-\'=====================\n\
+                  .\"\" \'<  `.___\\_<|>_/___.\' _> \\\"\".\n\
+                 | | :  `- \\`. ;`. _/\; .\'/ /  .\' \; |\n\
+                 \\  \\ `-.   \\_\\_`. _.\'_/_/  -\' _.\' /\n\
+==================`-.`___`-.__\\ \\___  /__.-\'_.\'_.-\'=====================\n\
                                `=--=-\'                    hjw\n\ ';
 
 
 var DemonWizardElder = new locationInfo();
+DemonWizardElder.special = '#demon_special';
 DemonWizardElder.text = 'Hello, I am the Demon Wizard Elder, I can grant you amazing power, for a price of course.  Choose your sin, but remember, you can only choose one.';
 DemonWizardElder.ascii = '\n\
     ,-----.\n\
@@ -435,7 +434,7 @@ Map.special = '#map_special';
 
 var Wizard = new locationInfo();
 Wizard.special = '#wizard_special';
-Wizard.text = 'Hello? Thanks again for saving me! I am a pretty good wizard, want me to enchant your gear?';
+Wizard.text = 'Hello? Thanks for saving me! I am a pretty good wizard, want me to enchant your gear?';
 Wizard.ascii = '\n\
                                     /\\\n\
                                    /  \\\n\
@@ -460,7 +459,7 @@ Wizard.ascii = '\n\
 
 var Castle = new locationInfo();
 Castle.special = "#castle_special";
-Castle.text = 'ok a castle';
+Castle.text = 'This must be the Lichs castle!';
 Castle.ascii = '\n\
                                        ,.=,,==. ,,_\n\
                       _ ,====, _    |I|`` ||  `|I `|\n\
@@ -1120,5 +1119,6 @@ var locationObject = {
   Laboratory: Laboratory,
   Dock: Dock,
   Rocket: Rocket,
-  SpaceStation: SpaceStation
+  SpaceStation: SpaceStation,
+  Lich: Lich
 }
