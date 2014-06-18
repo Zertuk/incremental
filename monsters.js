@@ -122,12 +122,10 @@ skeleton.name = 'Skeleton';
 
 var vampire = new Monster();
 vampire.message = 'Thats no bat!';
-vampire.value = 'V';
+vampire.value = 'Va';
 vampire.damage = 10;
 vampire.maxHealth = 10;
 vampire.health = 10;
-vampire.specialLoot = 'Vampiric Gem';
-vampire.specialDrop = 5;
 vampire.name = 'Vampire';
 
 var reaper = new Monster();
@@ -136,8 +134,6 @@ reaper.value = '\'|R';
 reaper.damage = 20;
 reaper.maxHealth = 20;
 reaper.health = 20;
-reaper.specialLoot = 'ticket';
-reaper.specialDrop = 100;
 reaper.name = 'Reaper';
 
 var monk = new Monster();
@@ -339,7 +335,7 @@ astronaut.health = 200;
 
 var lich = new Monster();
 lich.name = 'Lich';
-lich.value = '^';
+lich.value = 'o';
 lich.message = 'The Lich!';
 lich.damage = 500;
 lich.maxHealth = 10000;
