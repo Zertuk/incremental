@@ -68,6 +68,7 @@ mine.ascii = '____________________________________________________\n\
 
 var depths = new levelInfo();
 depths.name = 'depths';
+depths.levelUnlock = 'tower_map';
 depths.monster = demon;
 depths.specialMonster = demonWizard;
 depths.specialMonsterNum = 1;
@@ -131,7 +132,7 @@ top.specialMonster = reaper;
 top.specialMonsterNum = 1;
 top.levelLength = 55;
 top.text = 'The sun is rising in the distance';
-top.levelUnlock = 'monk';
+top.levelUnlock = 'monk_button';
 top.ascii = '\n\
 \n\
 \n\
@@ -173,7 +174,7 @@ den.levelLength = 36;
 den.text = 'The heart of the bears den! Whats that house doing here?';
 den.specialMonsterNum = 1;
 den.monsterNum = 2;
-den.levelUnlock = 'wizard';
+den.levelUnlock = 'wizard_button';
 den.ascii = '\n\
                                  /            \\\n\
                                _/              \\\n\
