@@ -34,7 +34,7 @@
 			
 			<p id = "ectoplasm">You have 0 ectoplasm</p>
 			<p id = "blood">?</p>
-			<p id = "hp">50/100</p>
+			<p id = "hp">100/100</p>
 
 		</div><!--ectoplasmDiv-->
 		<div id = "error"></div>
@@ -75,7 +75,7 @@
         <option value = 'approach'>The Approach</option>
       </select>
       <button onclick = "getQuestSelect('#church_quest')">Enter</button>
-      <button id = '#figure' value = 'figure'>The Figure</option>
+      <button id = 'figure' value = 'DemonWizardElder' class = 'location_button'>The Figure</option>
       <button class = 'location_button' value = "Main">Leave</button>
 
     </div><!--church_special-->
@@ -119,6 +119,8 @@
           <option id = "den" value = "den">The Den</option>
         </select>
         <button onclick = "getQuestSelect('#bearcave_quest')">Enter</button>
+        <br>
+        <button value = 'Wizard' id = "wizard_button" class = "location_button">Go in House</button>
         <button class = 'location_button' value = "Map">Leave</button>
 
     </div><!--cave_special-->
@@ -288,18 +290,7 @@ _/           |==|   \_
       <button class = 'location_button' value = "Main">Leave Map</button>
       </div><!--map_info-->
       <div id = 'map_wrapper'>
-      <pre id = "station" value = "Station" class = 'location_ascii'>
-                                   (
-                           ________[]_ 
-                          /^=^-^-^=^-^\ 
-                         /^-^-^-^-^-^-^\  
-              ____.-==--/__^_^_^_^^_^_^_\ 
-       {"""""LILI|[" "   |  .==.       |   
-       /_OO====OO`'OO--^^|  |LI|  [}{] |^^
- ^jgs^^^^^^^^^^^^^^^^^^$$|__|__|_______|$$
-                                          
-              [ Train Station ]
-      </pre>
+      
       <pre value = 'Pool' id = "fountain" class = 'location_ascii'>
            (' 
            `), 
@@ -334,7 +325,7 @@ itz     ,-' ,  `:7b
       [ The Mountain ]
       </pre>
       <br>
-      <pre value = "Tower" id = "tower2" class = 'location_ascii'>
+      <pre value = "Tower" id = "tower_mapto" class = 'location_ascii'>
 
                           ._
                           |~
@@ -408,7 +399,9 @@ jgs^^^^^^^^^^====^^^^^^^^^^^
         <option id = "throne" value = 'throne'>Throne Room</option>
       </select>
       <button onclick = "getQuestSelect('#castle_quest')">Enter</button>
-      <button id = "lich" value = "lich">The Lich</button>
+      <br>
+      <button id = "lich" value = "Lich" class = "location_button">The Lich</button>
+      <br>
       <button class = 'location_button' value = "Map">Leave</button>
     </div><!--castle_special-->
 
@@ -471,12 +464,15 @@ Sher^
       </select>
       <button onclick = "getQuestSelect('#tower_quest')">Enter</button>
       <br>
+      <button id = "monk_button" class = "location_button" value = 'Monk'>The Monk</button>
       <br>
       <button class = 'location_button' value = "Map">Leave</button>
 
     </div><!--tower_special-->
 
     <div id = "wizard_special">
+      <button>Whats going on? What happened?</button>
+      <br>
       <button>Enchant Weapon</button>
       <button>Enchant Armor</button>
       <br>
@@ -496,6 +492,11 @@ Sher^
       <br>
       <button class = 'location_button' value = "Map">Leave</button>
     </div><!--wizard_special-->
+
+
+    <div id = "monk_special">
+      <button>hello</button>
+    </div><!--monk_special-->
 
     <div id = "demon_special">
       <div id = "choiceWrap">
