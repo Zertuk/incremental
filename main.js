@@ -1,5 +1,5 @@
 //global variable init
-var ectoplasm = 0;
+var ectoplasm = 500;
 var ghostStoreVal = false;
 var inverse = false;
 var smoke = true;
@@ -26,7 +26,7 @@ function healthRegen() {
 //loads dom elements & event listeners
 window.onload = function() {
 	mainLoop();
-	locationSwitch(Church);
+	locationSwitch(City);
 	$('#ascii_text').html(cavern.ascii);
 
 	var reflectingPool = document.getElementById('reflectingPool');
@@ -49,22 +49,16 @@ window.onload = function() {
 		}
 		var buttonValue = $(this).attr('value');
 		var locationVal = locationObject[buttonValue];
-		console.log(locationVal);
 		locationSwitch(locationVal);
-
-		// if (split[0] == 'mountain') {
-		// 	magicDoor();
-		// }
-		// else if (split[0] == 'trainShow') {
-		// 	trainTicket();
-		// }
-		// else if (split[0] == 'store') {
-		// 	$('#store_status').html('You looking to buy?');
-		// }
-		// else if (split[0] == '#inventory') {
-		// 	inventoryList();
-		// }
-		error.innerHTML = buttonValue;
+		if (buttonValue == 'Mountain') {
+			magicDoor();
+		}
+		else if (buttonValue == 'Inventory') {
+			inventoryList();
+		}
+		else if (buttonValue == 'Book') {
+			showLab();
+		}
 	});
 
 	//telescope event listener
@@ -90,7 +84,6 @@ window.onload = function() {
 
 	$('.potion_button').click(function() {
 		var buttonValue = $(this).attr('value');
-		console.log(buttonValue);
 		useHealthPotion();
 	});
 
@@ -104,7 +97,6 @@ window.onload = function() {
 
 	$('.factory_button').click(function() {
 		var buttonValue = $(this).attr('value');
-		console.log(buttonValue);
 		factoryFunction(buttonValue);
 	})
 }
@@ -274,7 +266,7 @@ var questLoop = function(monster) {
 	}
 	setTimeout(function() {
 		questLoop(monster);
-	}, 500);
+	}, 50);
 }
 //not current being called
 function animateLoop() {

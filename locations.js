@@ -22,12 +22,16 @@ function telescope(direction) {
 	}
 }
 
+function showLab() {
+	$('#lab_map').show();
+}
+
 function spaceShipCheck() {
 	if (inventoryObject.shipBase) {
 		$('#phase1').hide();
 		$('#phase2').show();
 	}
-	else if (inventoryObject.shipTop && inventoryObject.shipBase) {
+	else if (inventoryObject.shipTop && inventoryObject.shipBase && inventoryObject.shipFuel) {
 		$('#phase2').hide();
 		$('#phase3').show();
 		$('#rocket_launch').show();
@@ -353,12 +357,15 @@ var dots;
 
 function lichAttack() {
 	$('#location_ascii').html('');
-	$('#location_text').html('...');
+	$('#location_text').html('. . .');
 	Main.special = '#future_special';
 	Map.special = '#future_map';
+	Wizard.text = 'Wow I havent seen you in awhile!';
+	Main.text = 'what happened..?'
 	$('#lich_attack').hide();
 	$('#continue').show();
 }
+
 
 
 
