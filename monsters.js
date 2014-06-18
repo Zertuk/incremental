@@ -179,7 +179,6 @@ elderDruid.name = 'Elder Druid';
 var undeadKnight = new Monster();
 undeadKnight.message = 'A knight! But undead?';
 undeadKnight.value = 'UK';
-undeadKnight.replace = '__';
 undeadKnight.maxHealth = 50;
 undeadKnight.damage = 40;
 undeadKnight.health = 50;
@@ -242,7 +241,6 @@ undeadWolf.value = 'UW';
 undeadWolf.damage = 50;
 undeadWolf.health = 100;
 undeadWolf.maxHealth = 100;
-undeadWolf.replace = '_____';
 undeadWolf.message = 'Slighly less scary than an Undead Bear';
 
 var undeadWizard = new Monster();
