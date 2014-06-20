@@ -1,5 +1,5 @@
 //global variable init
-var ectoplasm = 500;
+var ectoplasm = 50000;
 var ghostStoreVal = false;
 var inverse = false;
 var smoke = true;
@@ -55,6 +55,7 @@ window.onload = function() {
 		}
 		else if (buttonValue == 'Inventory') {
 			inventoryList();
+			playerInfoUpdate();
 		}
 		else if (buttonValue == 'Book') {
 			showLab();
@@ -107,14 +108,10 @@ function locationSwitch(location) {
  		previousLocation = location;
  		$('#location_ascii').hide();
  		$('#location_text').hide();
- 		if (location == Mountain) {
- 			magicDoor();
- 		}
-
  		$(location.special).fadeIn('slow');
  		$('#location_ascii').html(location.ascii).fadeIn('slow');
  		$('#location_text').html(location.text).fadeIn('slow');
- 	}
+}
 
 
 //generates ectoplasm on click
@@ -185,20 +182,6 @@ function magicDoor() {
 // 	}
 // }
 
-// var trainAni = false;
-// function trainAnimate() {
-// 	if (trainAni == true) {
-// 		$('#train1').show();
-// 		$('#train2').hide();
-// 		trainAni = false;
-// 	}
-// 	else {
-// 		$('#train2').show();
-// 		$('#train1').hide();
-// 		trainAni = true;
-// 	}
-// }
-
 // function blinkAnimate() {	
 // 	if (blink == false) {
 // 		$('#shop_keeper_blink').show();
@@ -212,8 +195,6 @@ function magicDoor() {
 // 		blink = false;
 // 	}
 // }
-var total = 0;
-var total1= 0;
 
 //main game loop, adds resources and hp
 function mainLoop() {
@@ -275,11 +256,4 @@ function animateLoop() {
 
 	setTimeout(animateLoop, 750);
 }
-
-
-
-	// if (trainShow == true) {
-	// 	trainAnimate();
-	// }
-	
 

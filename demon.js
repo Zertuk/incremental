@@ -5,6 +5,7 @@ var moneySpell = false;
 var envySpell = false;
 var expSpell = false;
 var prideSpell = false;
+var sinChoosen = false;
 
 function speedSpell() {
 
@@ -70,6 +71,7 @@ function chooseSin(choice) {
 				prideSpell = true;
 				break;
 		}
+		sinChoosen = true;
 		enterDemon();
 		console.log(inventoryObject.sin);
 	}

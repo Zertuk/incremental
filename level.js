@@ -33,7 +33,6 @@ function makeLevel(levelInp, monster, monsterCount, specialMonster, specialCount
 	for (var j = 0; j < specialCount; j++) {
 			var randomSpecial = Math.floor(Math.random()*levelInp);
 			level[randomSpecial] = specialMonster;
-			console.log(j);
 	}
 };
 
@@ -60,7 +59,6 @@ function moveInLevel(monstertest) {
 	}
 	//why dont i have a master random num function yet
 	var random = Math.round(Math.random()*100);
-	console.log(random + ' random num');
 	//these two add more monsters if the random num fits the requirments
 	if (random > 90 && monstertest.more) {
 		addMoreMonsters(monstertest.monster);
@@ -76,7 +74,6 @@ function moveInLevel(monstertest) {
 		levelActive = false;
 		monstertest.levelFinished = true;
 		$('#' + monstertest.levelUnlock).show();
-		console.log(monstertest.levelFinished + ' after level');
 		ectoplasm = ectoplasm + gainedLoot;
 		$('#error').html('Level complete, you may leave and keep anything you found');
 	}
@@ -140,8 +137,6 @@ function leaveQuest() {
 	level = [0];
 	i = 0;
 	gainedLoot = 0;
-	console.log(questToHide);
-	console.log(questSelected);
 	bearCave = false;
 }
 

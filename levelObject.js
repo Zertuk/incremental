@@ -268,10 +268,6 @@ underwater.ascii = '\n\
 \n\
 \n\
 \n\
-\n\
-\n\
-\n\
-\n\
 <p class = "level"></p>\n\
 \n\
 \n\

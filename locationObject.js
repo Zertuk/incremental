@@ -697,7 +697,7 @@ __.-`       `------..._\\|/___\n\
 
 var Skyscraper = new locationInfo();
 Skyscraper.special = "#skyscraper_special";
-Skyscraper.text = 'Wow! This sure is high up! Theres no sign of life left in the city.'
+Skyscraper.text = 'Wow! This sure is high up! The city looks abandonded..'
 Skyscraper.ascii = '\n\
                         .-\"L\"-.\n\
       .--\"\"L\"\"---___    J  |  |\n\

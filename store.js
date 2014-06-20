@@ -182,6 +182,12 @@ function inventoryList() {
 							+ "Batteries: " + inventoryObject.battery );
 }
 
+function playerInfoUpdate() {
+	$('#playerInfo').html("Damage: " + player.damage + " <br>"
+						+ "Armor: " + player.reduction + " <br>"
+						+ "Max Health: " + player.maxHealth + " <br>")
+}
+
 //buys item if you have enough money else error
 function itemBuy(item) {
 	var itemBought = false;
