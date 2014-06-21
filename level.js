@@ -86,6 +86,7 @@ function moveInLevel(monstertest) {
 	}
 	$('.level').html(level);
 }
+
 function roundDamage(monster) {
 	if ((monster.damage - player.reduction) < 0) {
 		player.health = player.health;
@@ -103,7 +104,7 @@ function battleTime(monster) {
 	$('#player_stats').html('Player Dmg: ' + player.damage);
 	monster.monsterInfo();
 	roundDamage(monster);
-	monster.health = monster.health - player.damage;
+	monster.health = monster.health - player.damage*player.power;
 	i--;
 	if (player.health <= 0) {
 		levelActive = false;
