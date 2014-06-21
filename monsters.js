@@ -9,12 +9,13 @@ function Monster() {
 	this.message = 'A mean monster',
 	this.specialLoot = 'nothing',
 	this.dropChance = 0,
+	this.freedom = 1,
 	this.move = true,
 	this.replace = '_',
 	this.monsterMoney = 1,
 	this.loot = function() {
 		var lootDropped = Math.round(15 + Math.random()*10);
-		gainedLoot = lootDropped + Math.floor(gainedLoot*this.monsterMoney);
+		gainedLoot = lootDropped + Math.floor(gainedLoot*this.monsterMoney*this.freedom);
 		$('#loot').html('You have gained ' + gainedLoot + ' ectoplasm');
 	}
 	this.monsterInfo = function() {
