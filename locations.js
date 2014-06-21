@@ -48,6 +48,23 @@ function flipperCheck() {
 	}
 }
 
+function reflectingPoolChoice() {
+	if (poolChoice ==  'health') {
+		$('#error').html('Your sword now grants life on hit');
+		player.swordHP = true;
+	}
+	else if (poolChoice == 'power') {
+		player.power = 1.5;
+		$('#error').html('Your weapons now deal extra damage');
+	}
+	else {
+		Monster.freedom = 2;
+		$('#error').html('You now gain extra money from monsters');
+	}
+}
+
+
+
 //camp stuff ahead
 var campCount = 0;
 var thief;
