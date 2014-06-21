@@ -11,9 +11,10 @@ function Monster() {
 	this.dropChance = 0,
 	this.move = true,
 	this.replace = '_',
+	this.monsterMoney = 1,
 	this.loot = function() {
-		var lootDropped = Math.round(Math.random()*25);
-		gainedLoot = lootDropped + gainedLoot;
+		var lootDropped = Math.round(15 + Math.random()*10);
+		gainedLoot = lootDropped + Math.floor(gainedLoot*this.monsterMoney);
 		$('#loot').html('You have gained ' + gainedLoot + ' ectoplasm');
 	}
 	this.monsterInfo = function() {
@@ -87,6 +88,7 @@ demon.damage = 5;
 demon.specialLoot = 'hat';
 demon.dropChance = 75;
 demon.name = 'Demon';
+demon.monsterMoney = 1.1;
 
 var rock = new Monster();
 rock.message = 'Just a rock';
@@ -103,6 +105,7 @@ demonWizard.maxHealth = 10;
 demonWizard.health = 10;
 demonWizard.name = 'Demon Wizard';
 demonWizard.replace = '____';
+demonWizard.monsterMoney = 1.2;
 
 var bat = new Monster();
 bat.message = 'A spooky bat';
@@ -111,6 +114,7 @@ bat.damage = 5;
 bat.maxHealth = 5;
 bat.health = 5;
 bat.name = 'Bat';
+bat.monsterMoney = 1.1;
 
 var skeleton = new Monster();
 skeleton.message = 'Too spooky';
@@ -119,6 +123,7 @@ skeleton.damage = 5;
 skeleton.maxHealth = 10;
 skeleton.health = 10;
 skeleton.name = 'Skeleton';
+skeleton.monsterMoney = 1.2;
 
 var vampire = new Monster();
 vampire.message = 'Thats no bat!';
@@ -127,6 +132,7 @@ vampire.damage = 10;
 vampire.maxHealth = 10;
 vampire.health = 10;
 vampire.name = 'Vampire';
+vampire.monsterMoney = 1.3;
 
 var reaper = new Monster();
 reaper.message = 'A Reaper';
@@ -135,14 +141,7 @@ reaper.damage = 20;
 reaper.maxHealth = 20;
 reaper.health = 20;
 reaper.name = 'Reaper';
-
-var monk = new Monster();
-monk.message = 'An unarmed monk';
-monk.value = 'M';
-monk.damage = 1;
-monk.maxHealth = 10;
-monk.health = 10;
-monk.name = 'Monk';
+reaper.monsterMoney = 1.4;
 
 var bear = new Monster();
 bear.message = 'Just a bear?';
@@ -151,6 +150,7 @@ bear.damage = 10;
 bear.maxHealth = 20;
 bear.health = 20;
 bear.name = 'Bear';
+bear.monsterMoney = 1.3;
 
 var dropBear = new Monster();
 dropBear.message = 'It fell from above!'
@@ -159,6 +159,7 @@ dropBear.damage = 15;
 dropBear.maxHealth = 15;
 dropBear.health = 15;
 dropBear.name = 'Drop Bear';
+dropBear.monsterMoney = 1.35;
 
 var druid = new Monster();
 druid.message = 'Guess those werent just bears';
@@ -167,6 +168,7 @@ druid.damage = 20;
 druid.maxHealth = 30;
 druid.health = 30;
 druid.name = 'Druid';
+druid.monsterMoney = 1.45;
 
 var elderDruid = new Monster();
 elderDruid.message = 'Guess those werent just.. old bears';
@@ -175,6 +177,7 @@ elderDruid.damage = 35;
 elderDruid.maxHealth = 50;
 elderDruid.health = 50;
 elderDruid.name = 'Elder Druid';
+elderDruid.monsterMoney = 1.5;
 
 var undeadKnight = new Monster();
 undeadKnight.message = 'A knight! But undead?';
@@ -183,6 +186,7 @@ undeadKnight.maxHealth = 50;
 undeadKnight.damage = 40;
 undeadKnight.health = 50;
 undeadKnight.name = 'Undead Knight';
+undeadKnight.monsterMoney = 1.55;
 
 var warlock = new Monster();
 warlock.message = 'A warlock under lich control!';
@@ -191,6 +195,7 @@ warlock.maxHealth = 75;
 warlock.health = 75;
 warlock.damage = 50;
 warlock.name = 'Warlock';
+warlock.monsterMoney = 1.5;
 
 var necromancer = new Monster();
 necromancer.message = 'He can summon undead!';
@@ -199,6 +204,7 @@ necromancer.maxHealth = 50;
 necromancer.health = 50;
 necromancer.damage = 10;
 necromancer.name = 'Necromancer';
+necromancer.monsterMoney = 1.5;
 
 var castleTroll = new Monster();
 castleTroll.message ='A troll! But in a castle!';
@@ -207,6 +213,7 @@ castleTroll.maxHealth = 100;
 castleTroll.health = 100;
 castleTroll.damage = 50;
 castleTroll.name = 'Castle Troll';
+castleTroll.monsterMoney = 1.75;
 
 var fish = new Monster();
 fish.value = 'F';
@@ -216,6 +223,7 @@ fish.damage = 35;
 fish.maxHealth = 50;
 fish.health = 50;
 fish.message = 'Just a cute little fish :3';
+fish.monsterMoney = 1.6;
 
 var shark = new Monster();
 shark.value = 'c\'^;={';
@@ -225,6 +233,7 @@ shark.health = 100;
 shark.maxHealth = 100;
 shark.replace = '      ';
 shark.message = 'Ahhh a shark!';
+shark.monsterMoney = 2;
 
 var undeadBear = new Monster();
 undeadBear.name = 'Undead Bear';
@@ -234,6 +243,7 @@ undeadBear.health = 200;
 undeadBear.maxHealth = 200;
 undeadBear.message = 'Under a Lich curse!';
 undeadBear.replace = '__';
+undeadBear.monsterMoney = 2.1;
 
 var undeadWolf = new Monster();
 undeadWolf.name = 'Undead Wolf';
@@ -242,6 +252,7 @@ undeadWolf.damage = 50;
 undeadWolf.health = 100;
 undeadWolf.maxHealth = 100;
 undeadWolf.message = 'Slighly less scary than an Undead Bear';
+undeadWolf.monsterMoney = 2;
 
 var undeadWizard = new Monster();
 undeadWizard.name = 'Undead Wizard';
@@ -251,6 +262,7 @@ undeadWizard.damage = 100;
 undeadWizard.maxHealth = 500;
 undeadWizard.health = 500;
 undeadWizard.message = 'This guy thinks he owns this cabin';
+undeadWizard.monsterMoney = 5;
 
 var turtle = new Monster();
 turtle.name = 'Mutant Turtle';
@@ -260,6 +272,7 @@ turtle.replace = '__';
 turtle.damage = 50;
 turtle.health = 75;
 turtle.maxHealth = 75;
+turtle.monsterMoney = 2;
 
 var slime = new Monster();
 slime.name = 'Sewer Slime';
@@ -269,6 +282,7 @@ slime.damage = 60;
 slime.health = 75;
 slime.maxHealth = 75;
 slime.message = 'Pretty nasty..';
+slime.monsterMoney = 2.2;
 
 var rat = new Monster();
 rat.name = 'Giant Rat';
@@ -278,6 +292,7 @@ rat.replace = '__';
 rat.damage = 125;
 rat.health = 50;
 rat.maxHealth = 50;
+rat.monsterMoney = 2.5;
 
 var beast = new Monster();
 beast.name = 'Beast';
@@ -288,6 +303,7 @@ beast.damage = 250;
 beast.health = 500;
 beast.maxHealth = 500;
 beast.move = false;
+beast.monsterMoney = 7;
 
 var scientist = new Monster();
 scientist.name = 'Undead Scientist';
@@ -297,6 +313,7 @@ scientist.replace = '__';
 scientist.damage = 100;
 scientist.health = 100;
 scientist.maxHealth = 100;
+scientist.monsterMoney = 3;
 
 var jailer = new Monster();
 jailer.name = 'Jailer';
@@ -305,6 +322,7 @@ jailer.message = 'A prison guard';
 jailer.damage = 125;
 jailer.health = 125;
 jailer.maxHealth = 125;
+jailer.monsterMoney = 3.2;
 
 var jailOgre = new Monster();
 jailOgre.name = 'Jail Ogre';
@@ -313,6 +331,7 @@ jailOgre.message = 'He is huge!';
 jailOgre.damage = 150;
 jailOgre.health = 150;
 jailOgre.maxHealth = 150;
+jailOgre.monsterMoney = 3.4;
 
 var rocketScientist = new Monster();
 rocketScientist.name = 'Rocket Scientist';
@@ -321,6 +340,7 @@ rocketScientist.message = 'f';
 rocketScientist.damage = 150;
 rocketScientist.maxHealth = 150;
 rocketScientist.health = 150;
+rocketScientist.monsterMoney = 3.5;
 
 var astronaut = new Monster();
 astronaut.name = 'Astronaut';
@@ -329,6 +349,7 @@ astronaut.message = 'A Lich astronaut, he wont give up easy';
 astronaut.damage = 200;
 astronaut.maxHealth = 200;
 astronaut.health = 200;
+astronaut.monsterMoney = 3.6;
 
 
 var lich = new Monster();
@@ -339,6 +360,7 @@ lich.damage = 500;
 lich.maxHealth = 10000;
 lich.health = 10000;
 lich.move = false;
+lich.monsterMoney = 10;
 
 
 
