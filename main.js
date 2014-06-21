@@ -22,7 +22,6 @@ function healthRegen() {
 	player.health = player.health + 0.25;
 }
 
-
 //loads dom elements & event listeners
 window.onload = function() {
 	mainLoop();
@@ -49,6 +48,11 @@ window.onload = function() {
 		}
 		var buttonValue = $(this).attr('value');
 		var locationVal = locationObject[buttonValue];
+		console.log(buttonValue + ' = LOCATION VALUE ');
+		if (buttonValue == 'DemonWizardElder' && player.demonVisit) {
+			$('#error').html('The Demon Wizard Elder does not allow repeat visits');
+			return;
+		}
 		locationSwitch(locationVal);
 		if (buttonValue == 'Mountain') {
 			magicDoor();
@@ -59,6 +63,9 @@ window.onload = function() {
 		}
 		else if (buttonValue == 'Book') {
 			showLab();
+		}
+		else if (buttonValue == 'DemonWizardElder') {
+			noDemon();
 		}
 	});
 
@@ -101,6 +108,7 @@ window.onload = function() {
 		factoryFunction(buttonValue);
 	})
 }
+
 var previousLocation = levelInfo;
 
 function locationSwitch(location) {
@@ -112,7 +120,6 @@ function locationSwitch(location) {
  		$('#location_ascii').html(location.ascii).fadeIn('slow');
  		$('#location_text').html(location.text).fadeIn('slow');
 }
-
 
 //generates ectoplasm on click
 function ectoplasmClick(num) {
@@ -137,20 +144,9 @@ function bloodGenerator(num) {
 	}
 }
 
-//gives option for store once you have 100+ ectoplasm
-function ghostStore()  {
-	if (ectoplasm > 99) {
-		ghostStoreVal = true;
-		document.getElementById('storeButton').style.display = "inline";
-		return ghostStoreVal;
-	}
-	return ghostStoreVal;
-}
-
 function lightFire() {
 	$('#cabin_rest').show();
 	$('#location_text').html('The fire is roaring.  You may now rest here freely.');
-
 }
 
 function magicDoor() {
@@ -210,7 +206,6 @@ function mainLoop() {
 	setTimeout(mainLoop, 1000);
 }
 
-
 var testloop;
 
 //quest loop, called if level is active
@@ -228,7 +223,6 @@ var questLoop = function(monster) {
 		if (frozeTimer == 0) {
 			timeFrozen = false;
 		}
-
 	}
 
 	if (potionUsed) {
@@ -245,10 +239,12 @@ var questLoop = function(monster) {
 		potionUsed = false;
 		return;
 	}
+
 	setTimeout(function() {
 		questLoop(monster);
 	}, 50);
 }
+
 //not current being called
 function animateLoop() {
 	smokeAnimate();
@@ -256,4 +252,3 @@ function animateLoop() {
 
 	setTimeout(animateLoop, 750);
 }
-
