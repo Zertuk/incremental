@@ -86,9 +86,12 @@ var inventoryObject = {
 }
 
 var player = {
-	damage: swordObject.fists.damage,
-	reduction: inventoryObject.armor.reduction,
+	damage: swordObject.fists.damage + this.swordEnchant,
+	reduction: inventoryObject.armor.reduction + this.armorEnchant,
+	armorEnchant: this.reduction * armorEnchantVal,
+	swordEnchant: this.damage * swordEnchantVal,
 	power: 1,
+	demonVisit: false,
 	swordHP: false,
 	health: 10000.00,
 	maxHealth: 10000,

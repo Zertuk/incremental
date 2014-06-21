@@ -38,6 +38,10 @@ function spaceShipCheck() {
 	}
 }
 
+function noDemon() {
+	player.demonVisit = true;
+}
+
 function flipperCheck() {
 	if (inventoryObject.flippers) {
 		$('#flipper_on').show();
@@ -314,23 +318,18 @@ function enterDemon() {
 	}	
 }
 
+var swordEnchantVal = 0;
+var armorEnchantVal = 0;
+
 function wizardEnchant() {
 	var buttonValue = $(this).attr('value');
 	switch (buttonValue) {
-		case 'damage':
-
+		case 'sword':
+			swordEnchantVal = swordEnchantVal + 0.1;
 			break;
 
-		case 'heal': 
-
-			break;
-
-		case 'loot':
-
-			break;
-
-		case 'armor':
-
+		case 'armor': 
+			armorEnchantVal = armorEnchantVal + 0.1;
 			break;
 	}
 }
