@@ -21,7 +21,7 @@ var swordObject = {
 		name: 'Diamond Sword',
 		damage: 10
 	},
-	spaceSword: {
+	spiralSword: {
 		name: 'The Space Sword',
 		damage: 100
 	},
@@ -88,6 +88,8 @@ var inventoryObject = {
 var player = {
 	damage: swordObject.fists.damage,
 	reduction: inventoryObject.armor.reduction,
+	power: 1,
+	swordHP: false,
 	health: 10000.00,
 	maxHealth: 10000,
 	bigFish: false
@@ -171,8 +173,6 @@ function resetSpells() {
 	}
 }
 
-
-
 //updated inventory list for use when navigating to inventory screen
 function inventoryList() {
 	$('#inventoryItems').html("Health Potions: " + inventoryObject.healthPotion + "<br>"
@@ -186,7 +186,7 @@ function playerInfoUpdate() {
 	$('#playerInfo').html("Damage: " + player.damage + " <br>"
 						+ "Armor: " + player.reduction + " <br>"
 						+ "Max Health: " + player.maxHealth + " <br>")
-}
+};
 
 //buys item if you have enough money else error
 function itemBuy(item) {
