@@ -55,7 +55,7 @@ function flipperCheck() {
 function reflectingPoolChoice() {
 	if (poolChoice ==  'health') {
 		$('#error').html('Your sword now grants life on hit');
-		player.swordHP = true;
+		player.swordHP = player.damage * 0.25;
 	}
 	else if (poolChoice == 'power') {
 		player.power = 1.5;

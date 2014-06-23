@@ -86,13 +86,12 @@ function moveInLevel(monstertest) {
 	}
 	$('.level').html(level);
 }
-
 function roundDamage(monster) {
 	if ((monster.damage - player.reduction) < 0) {
 		player.health = player.health;
 	}
 	else {
-		player.health = player.health - (monster.damage - player.reduction);
+		player.health = player.health - (monster.damage - player.reduction - player.armorEnchant);
 	}
 }
 
@@ -104,7 +103,7 @@ function battleTime(monster) {
 	$('#player_stats').html('Player Dmg: ' + player.damage);
 	monster.monsterInfo();
 	roundDamage(monster);
-	monster.health = monster.health - player.damage*player.power;
+	monster.health = monster.health - player.damage + player.swordEnchant;
 	i--;
 	if (player.health <= 0) {
 		levelActive = false;

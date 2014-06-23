@@ -86,7 +86,7 @@ var inventoryObject = {
 }
 
 var player = {
-	damage: swordObject.fists.damage + this.swordEnchant,
+	damage: swordObject.fists.damage,
 	reduction: inventoryObject.armor.reduction + this.armorEnchant,
 	armorEnchant: this.reduction * armorEnchantVal,
 	swordEnchant: this.damage * swordEnchantVal,
