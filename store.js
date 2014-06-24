@@ -97,8 +97,8 @@ var player = {
 	maxHealth: 10000,
 	bigFish: false
 }
-var enchantDmg;
-var armorRed;
+var enchantDmg = 0;
+var armorRed = 0;
 function swordEnchantDmg() {
 	enchantDmg = player.damage * swordEnchantVal;
 	return enchantDmg;
@@ -197,7 +197,9 @@ function inventoryList() {
 
 function playerInfoUpdate() {
 	$('#playerInfo').html("Damage: " + player.damage + " <br>"
+						+ "Sword Enchant: " + Math.round(swordEnchantVal*100) + "%" + "<br>"
 						+ "Armor: " + player.reduction + " <br>"
+						+ "Armor Enchant: " + Math.round(armorEnchantVal*100) + "%" + "<br>"
 						+ "Max Health: " + player.maxHealth + " <br>")
 };
 

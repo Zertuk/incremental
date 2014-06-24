@@ -320,17 +320,39 @@ function enterDemon() {
 
 var swordEnchantVal = 0;
 var armorEnchantVal = 0;
+var swordEnchantCost = 1000;
+var armorEnchantCost = 1000;
 
-function wizardEnchant() {
-	var buttonValue = $(this).attr('value');
+function wizardEnchant(buttonValue) {
 	switch (buttonValue) {
 		case 'sword':
-			swordEnchantVal = swordEnchantVal + 0.1;
+			if (enoughMoney(swordEnchantCost)) {
+				swordEnchantVal = swordEnchantVal + 0.1;
+				swordEnchantCost = swordEnchantCost * 2;
+				$('#enchantDmg').html('Enchant Sword (' + swordEnchantCost + ')');
+			break;
+			}
 			break;
 
 		case 'armor': 
-			armorEnchantVal = armorEnchantVal + 0.1;
+			if (enoughMoney(swordEnchantCost)) {
+				armorEnchantVal = armorEnchantVal + 0.1;
+				armorEnchantCost = armorEnchantCost * 2;
+				$('#enchantRed').html('Enchant Armor (' + armorEnchantCost + ')');
 			break;
+			}
+			break;
+	}
+}
+
+function enoughMoney(cost) {
+	if (cost > ectoplasm) {
+		$('#error').html('Not enough money!');
+		return false;
+	}
+	else {
+		ectoplasm = ectoplasm - cost;
+		return true;
 	}
 }
 

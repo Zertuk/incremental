@@ -82,6 +82,11 @@ window.onload = function() {
 		lichEncounter(buttonValue);
 	})
 
+	$('.enchantButton').click(function() {
+		var buttonValue = $(this).attr('value');
+		wizardEnchant(buttonValue);
+	})
+
 	//event listener to buy store items
 	$('.store_button').click(function() {
 		var buttonValue = $(this).attr('value');
