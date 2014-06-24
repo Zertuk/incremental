@@ -87,7 +87,7 @@ var inventoryObject = {
 
 var player = {
 	damage: swordObject.fists.damage,
-	reduction: inventoryObject.armor.reduction + this.armorEnchant,
+	reduction: inventoryObject.armor.reduction,
 	armorEnchant: this.reduction * armorEnchantVal,
 	swordEnchant: this.damage * swordEnchantVal,
 	power: 1,
@@ -96,6 +96,11 @@ var player = {
 	health: 10000.00,
 	maxHealth: 10000,
 	bigFish: false
+}
+var enchantDmg;
+function swordEnchantDmg() {
+	enchantDmg = player.damage * swordEnchantVal;
+	return enchantDmg;
 }
 
 function fixHP() {

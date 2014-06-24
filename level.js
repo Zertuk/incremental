@@ -100,10 +100,11 @@ function roundDamage(monster) {
 //then uses the info from this object to battle, taking/giving
 //damage until someone dies, dispenses loot if appropriate.
 function battleTime(monster) {
+	swordEnchantDmg();
 	$('#player_stats').html('Player Dmg: ' + player.damage);
 	monster.monsterInfo();
 	roundDamage(monster);
-	monster.health = monster.health - player.damage + player.swordEnchant;
+	monster.health = monster.health - player.damage - enchantDmg;
 	i--;
 	if (player.health <= 0) {
 		levelActive = false;
