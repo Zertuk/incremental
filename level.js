@@ -91,7 +91,8 @@ function roundDamage(monster) {
 		player.health = player.health;
 	}
 	else {
-		player.health = player.health - (monster.damage - player.reduction - player.armorEnchant);
+		armorEnchantRed();
+		player.health = player.health - (monster.damage - player.reduction - armorRed);
 	}
 }
 

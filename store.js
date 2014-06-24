@@ -98,9 +98,14 @@ var player = {
 	bigFish: false
 }
 var enchantDmg;
+var armorRed;
 function swordEnchantDmg() {
 	enchantDmg = player.damage * swordEnchantVal;
 	return enchantDmg;
+}
+function armorEnchantRed() {
+	armorRed = player.reduction * armorEnchantVal;
+	return armorRed;
 }
 
 function fixHP() {

@@ -318,8 +318,8 @@ function enterDemon() {
 	}	
 }
 
-var swordEnchantVal = 0.1;
-var armorEnchantVal = 1;
+var swordEnchantVal = 0;
+var armorEnchantVal = 0;
 
 function wizardEnchant() {
 	var buttonValue = $(this).attr('value');
