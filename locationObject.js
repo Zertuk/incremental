@@ -267,7 +267,7 @@ PoolInside.ascii = '\n\
                               . . . .\n\
                                I . I\n\
                  _______________III_______________\n\
-                /    .       .       .       .    \\n\
+                /    .       .       .       .    \\\n\
                ( ~~~ .  ~~~  .  ~~~  .  ~~~  . ~~~ )\n\
                  \\SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS/\n\
                     \\ ======================= /\n\

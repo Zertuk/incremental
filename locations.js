@@ -52,7 +52,7 @@ function flipperCheck() {
 	}
 }
 
-function reflectingPoolChoice() {
+function reflectingPoolChoice(poolChoice) {
 	if (poolChoice ==  'health') {
 		$('#error').html('Your sword now grants life on hit');
 		player.swordHP = player.damage * 0.25;
@@ -65,6 +65,7 @@ function reflectingPoolChoice() {
 		Monster.freedom = 2;
 		$('#error').html('You now gain extra money from monsters');
 	}
+	$('.pool_button').hide();
 }
 
 
@@ -389,8 +390,6 @@ function monkAction(buttonValue) {
 	}
 }
 
-
-
 function lichEncounter(buttonValue) {
 	console.log(buttonValue);
 	switch (buttonValue) {
@@ -413,7 +412,6 @@ function lichEncounter(buttonValue) {
 			break;
 	}
 }
-var dots;
 
 function lichAttack() {
 	$('#location_ascii').html('');
@@ -424,12 +422,4 @@ function lichAttack() {
 	Main.text = 'what happened..?'
 	$('#lich_attack').hide();
 	$('#continue').show();
-}
-
-
-
-
-function usePool() {
-	$('#poolChoice').css('display', 'none');
-	$('#poolYes').css('display', 'inline');
 }

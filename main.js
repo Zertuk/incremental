@@ -107,6 +107,11 @@ window.onload = function() {
 
 	});
 
+	$('.pool_button').click(function() {
+		var buttonValue = $(this).attr('value');
+		reflectingPoolChoice(buttonValue);
+	})
+
 	$('.potion_button').click(function() {
 		var buttonValue = $(this).attr('value');
 		useHealthPotion();
