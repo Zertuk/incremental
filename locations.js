@@ -371,6 +371,23 @@ function monkCheck() {
 	}
 }
 
+function monkAction(buttonValue) {
+	if (buttonValue == 'kill') {
+		$('#location_ascii').html(Monk.ascii2);
+		$('#location_text').html('. . .');
+		$('#error').html('There was nothing on his corpse');
+		$('#monk_button').hide();
+		$('#kill_monk').hide();
+	}
+	else {
+		$('#location_text').html('');
+		$('#error').html('You gain +10% armor & sword enchants');
+		swordEnchantVal = swordEnchantVal + 0.1;
+		armorEnchantVal = armorEnchantVal + 0.1;
+		$('#learn_monk').hide();
+		$('#monk_button').hide();
+	}
+}
 
 
 

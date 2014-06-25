@@ -76,6 +76,7 @@ window.onload = function() {
 			monkCheck();
 		}
 		else {
+			$('#greet_monk').hide();
 			monkAction(buttonValue);
 		}
 	})
