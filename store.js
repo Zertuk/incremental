@@ -92,8 +92,8 @@ var player = {
 	swordEnchant: this.damage * swordEnchantVal,
 	power: 1,
 	demonVisit: false,
-	swordHP: false,
-	health: 10000.00,
+	swordHP: 500,
+	health: 100.00,
 	maxHealth: 10000,
 	bigFish: false
 }

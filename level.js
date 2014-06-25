@@ -86,16 +86,16 @@ function moveInLevel(monstertest) {
 	}
 	$('.level').html(level);
 }
+
 function roundDamage(monster) {
 	if ((monster.damage - player.reduction) < 0) {
-		player.health = player.health;
+		player.health = player.health + player.swordHP;
 	}
 	else {
 		armorEnchantRed();
-		player.health = player.health - (monster.damage - player.reduction - armorRed);
+		player.health = player.health - (monster.damage - player.reduction - armorRed) + player.swordHP;
 	}
 }
-
 
 //takes in the monster the player is next to as parameter
 //then uses the info from this object to battle, taking/giving
@@ -164,7 +164,7 @@ function dropBearFall() {
 	if (random > 90) {
 		level[i+4] = dropBear.value;
 		$(questText).html('A Drop Bear falls from above!');
- 	}	
+ 	}
 }
 
 //function to load all levels, takes in levelInfo object as parameter with
@@ -180,7 +180,5 @@ function loadLevel(levelInfo) {
  	if (levelInfo.name == 'cave') {
 		bearCave = true;
 	}
-
  	makeLevel(levelInfo.levelLength, levelInfo.monster.value, levelInfo.monsterNum, levelInfo.specialMonster.value, levelInfo.specialMonsterNum);
-
 }
