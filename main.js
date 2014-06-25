@@ -69,6 +69,17 @@ window.onload = function() {
 		}
 	});
 
+	$('.monk_button').click(function() {
+		var buttonValue = $(this).attr('value');
+		console.log(buttonValue);
+		if (buttonValue == 'greet') {
+			monkCheck();
+		}
+		else {
+			monkAction(buttonValue);
+		}
+	})
+
 	//telescope event listener
 	$('.tele_button').click(function() {
 		var buttonValue = $(this).attr('value');

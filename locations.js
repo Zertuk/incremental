@@ -362,12 +362,17 @@ function wizardQuestion() {
 
 function monkCheck() {
 	if (sinChoosen) {
-		console.log('sux');
+		$('#location_text').html('Thank you for rescuing me, unfortunately I cant teach someone afflicted with the demons mark and have nothing else to offer');
+		$('#kill_monk').show();	
 	}
 	else {
-		console.log('ok');
+		$('#location_text').html('Thank you for rescuing me, I can teach you the practice of meditation');
+		$('#learn_monk').show();
 	}
 }
+
+
+
 
 function lichEncounter(buttonValue) {
 	console.log(buttonValue);
