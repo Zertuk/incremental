@@ -22,7 +22,7 @@ var swordObject = {
 		damage: 10
 	},
 	spiralSword: {
-		name: 'The Space Sword',
+		name: 'The Spiral Drill Sword',
 		damage: 100
 	},
 	candySword: {
@@ -34,7 +34,7 @@ var swordObject = {
 		damage: 50
 	},
 	sharkToothSword : {
-		name: 'Shark Tooth',
+		name: 'Shark Tooth Sword',
 		damage: 20
 	}
 }
@@ -107,64 +107,94 @@ function itemEquip(item) {
 	console.log(item + '  test');
 	switch (item) {
 		case 'miningPick':
-			if (inventoryObject.miningPick == false) {
-			player.freedom = player.freedom + 0.1;
-			inventoryObject.miningPick = true;
+			if (!inventoryObject.miningPick) {
+				player.freedom = player.freedom + 0.1;
+				inventoryObject.miningPick = true;
 			}
 			break;
 		case 'staff':
-			swordEnchantVal = swordEnchantVal + 0.05;
-			inventoryObject.staff = true;
+			if (!inventoryObject.staff)
+				swordEnchantVal = swordEnchantVal + 0.05;
+				inventoryObject.staff = true;
 			break;
 		case 'lifeGem':
-			player.regenVal = player.regenVal + 0.75;
-			inventoryObject.lifeGem = true;
+			if (!inventoryObject.lifeGem) {
+				player.regenVal = player.regenVal + 0.75;
+				inventoryObject.lifeGem = true;
+			}
 			break;
 		case 'hood':
-			swordEnchantVal = swordEnchantVal + 0.1;
-			inventoryObject.hood = true;
+			if (!inventoryObject.hood) {
+				swordEnchantVal = swordEnchantVal + 0.1;
+				inventoryObject.hood = true;
+			}
 			break;
 		case 'miniBear':
-			Monster.freedom = Monster.freedom + 0.2;
-			inventoryObject.miniBear = true;
+			if (!inventoryObject.miniBear) {
+				Monster.freedom = Monster.freedom + 0.2;
+				inventoryObject.miniBear = true;
+			}
 			break;
 		case 'skull':
-			player.swordHP = player.swordHP + 0.1;
-			inventoryObject.skull = true;
+			if (!inventoryObject.skull) {
+				player.swordHP = player.swordHP + 0.1;
+				inventoryObject.skull = true;
+			}
 			break;
 		case 'trollHair':
-			armorEnchantVal = armorEnchantVal + 0.1;
-			inventoryObject.trollHair = true;
+			if (!inventoryObject.trollHair) {
+				armorEnchantVal = armorEnchantVal + 0.1;
+				inventoryObject.trollHair = true;
+			}
 			break;
 		case 'skullStaff':
-			swordEnchantVal = swordEnchantVal + 0.05;
-			armorEnchantVal = armorEnchantVal + 0.05;
-			player.regenVal = player.regenVal + 2.5;
-			inventoryObject.skullStaff = true;
+			if (!inventoryObject.skullStaff) {
+				swordEnchantVal = swordEnchantVal + 0.05;
+				armorEnchantVal = armorEnchantVal + 0.05;
+				player.regenVal = player.regenVal + 2.5;
+				inventoryObject.skullStaff = true;
+			}
 		case 'stickySlime':
-			Monster.freedom = Monster.freedom + 0.3;
-			inventoryObject.stickySlime = true;
+			if (!inventoryObject.stickySlime) {
+				Monster.freedom = Monster.freedom + 0.3;
+				inventoryObject.stickySlime = true;
+			}
 			break;
 		case 'pizza':
-			player.maxHealth = player.maxHealth + 420;
-			inventoryObject.pizza = true;
+			if (!inventoryObject.pizza) {
+				player.maxHealth = player.maxHealth + 420;
+				inventoryObject.pizza = true;
+			}
 			break;
 		case 'robe':
+			if (!inventoryObject.robe) {
 			player.regenVal = player.regenVal + 5;
 			inventoryObject.robe = true;
+			}
 			break;
 		case 'riotShield':
+			if (!inventoryObject.riotShield) {
 			armorEnchantVal = armorEnchantVal + 0.25;
 			inventoryObject.riotShield = true;
+			}
 			break;
 		case 'beastClaw':
-
+			if (!inventoryObject.beastClaw) {
+			inventoryObject.beastClaw = true;
+			equipSword();
+			}
 			break;
 		case 'spaceSword':
-
+			if (!inventoryObject.spiralSword) {
+			inventoryObject.spiralSword = true;
+			equipSword();
+			}
 			break;
 		case 'sharkTooth':
-
+			if (!inventoryObject.sharkTooth) {
+			inventoryObject.sharkTooth = true;
+			equipSword();
+			}
 			break;
 		case 'none':
 			break;
@@ -349,8 +379,8 @@ function storeItems(item) {
 			this.itemPrice = 10000;
 			var itemBought = itemBuy(item);
 			if (itemBought == true) {
-				inventoryObject.weapon = swordObject.diamondSword;
-				player.damage = swordObject.diamondSword.damage;
+				inventoryObject.diamondSword = true;
+				equipSword();
 				$('#diamond_sword').hide();
 				storeStatus('Not made out of blood diamonds but will cause blood~');
 			}
@@ -359,8 +389,8 @@ function storeItems(item) {
 			this.itemPrice = 100;
 			var itemBought = itemBuy(item);
 			if (itemBought == true) {
-				inventoryObject.weapon = swordObject.woodSword;
-				player.damage = swordObject.woodSword.damage;
+				inventoryObject.woodSword = true;
+				equipSword();
 				$('#iron_sword').show();
 				storeStatus('This thing wont do much but its better than fists');
 				$('#wood_sword').hide();
@@ -370,8 +400,8 @@ function storeItems(item) {
 			this.itemPrice = 1000;
 			var itemBought = itemBuy(item);
 			if(itemBought == true) {
-				inventoryObject.weapon = swordObject.ironSword;
-				player.damage = swordObject.ironSword.damage;
+				inventoryObject.ironSword = true;
+				equipSword();
 				storeStatus('Now this will show them');
 				$('#iron_sword').hide();
 				$('#diamond_sword').show();

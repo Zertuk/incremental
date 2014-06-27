@@ -26,7 +26,7 @@ function Monster() {
 
 	this.specialDrop = function(item, dropChance) {
 		var randomNum = Math.round(Math.random()*100);
-		console.log(inventoryObject.item);
+		console.log(randomNum);
 		if (randomNum < this.dropChance) {
 			 console.log('success');
 			 itemEquip(this.specialLoot);
@@ -80,7 +80,7 @@ goblinMiner.message = "'He has a pick!'";
 goblinMiner.value = '\'\\G';
 goblinMiner.specialLoot = 'miningPick';
 goblinMiner.itemName = 'Mining Pick';
-goblinMiner.dropChance = 7;
+goblinMiner.dropChance = 10;
 goblinMiner.name = 'Goblin Miner';
 
 
