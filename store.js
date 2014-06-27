@@ -213,7 +213,9 @@ var player = {
 	maxHealth: 10000,
 	bigFish: false,
 	regenVal: 0.25,
-	freedom: 1
+	freedom: 1,
+	num: 3,
+	sinChoosen: false
 }
 
 var enchantDmg = 0;

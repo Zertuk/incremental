@@ -34,45 +34,43 @@ function chooseSin(choice) {
 	var message = "You can only pick one and thats what you are going with?";
 	if (confirm(message)) {
 		switch (choice) {
-			//causes player to gain extra exp
 			case "lust":
-				inventoryObject.sin = 'lust';
-				expSpell = true;
+				player.freedom = player.freedom + 0.5;
+				$('#error').html('You choose Pride. Monsters drop more money');
 				break;
-			//causes player to gain extra hp when making flesh
 			case "gluttony":
-				inventoryObject.sin = 'gluttony';
-				fleshSpell = true;
+				player.regenVal = player.regenVal + 3;
+				$('#error').html('You choose Gluttony. You heal faster');
 				break;
-			//causes player to gain extra ectoplasm/blood
 			case "greed":
-				inventoryObject.sin = 'greed';
 				ectoplasm = ectoplasm * 2;
 				moneySpell = true;
+				$('#error').html('You choose Greed. You gain extra money');
 				break;
-			//grants the speed up spell to the player, which increases speed
 			case "sloth":
-				inventoryObject.sin = 'sloth';
-				speedSpell = true;
+				seedsPlanted = seedsPlanted * 5;
+				batteriesUsed = batteriesUsed * 5;
+				$('#error').html('You choose Sloth. You generate resources faster');
 				break;
-			//grants the berserk ability to the player, which makes them do more damage
 			case "wrath":
-				inventoryObject.sin = 'wrath';
-				berserkSpell = true;
+				swordEnchantVal = swordEnchantVal + 0.25;
+				$('#error').html('You choose Wrath. You deal more damage')
 				break;
-			//grants the envy spell to the player, which causes them to 
 			case "envy":
-				inventoryObject.sin = 'envy';
-				envySpell = true;
+				player.freedom = player.freedom + 0.1;
+				batteriesUsed = batteriesUsed * 2;
+				seedsPlanted = seedsPlanted * 2;
+				swordEnchantVal = swordEnchantVal + 0.075
+				armorEnchantVal = armorEnchantVal + 0.075;
+				$('#error').html('You choose Envy. You get a little of everything')
 				break;
-			//grants pride spell to the player, which causes them to take less damage when they are low hp
 			case "pride":
-				inventoryObject.sin = 'pride';
-				prideSpell = true;
+				armorEnchantVal = armorEnchantVal + 0.25;
+				$('#error').html('You choose pride. You can take more damage now')
 				break;
 		}
-		sinChoosen = true;
-		enterDemon();
-		console.log(inventoryObject.sin);
+		player.sinChoosen = true;
+
+
 	}
 }

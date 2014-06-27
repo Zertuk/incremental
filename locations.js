@@ -362,7 +362,7 @@ function wizardQuestion() {
 }
 
 function monkCheck() {
-	if (sinChoosen) {
+	if (player.sinChoosen) {
 		$('#location_text').html('Thank you for rescuing me, unfortunately I cant teach someone afflicted with the demons mark and have nothing else to offer');
 		$('#kill_monk').show();	
 	}
