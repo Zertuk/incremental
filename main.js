@@ -136,6 +136,7 @@ var previousLocation = levelInfo;
 function locationSwitch(location) {
  		$(previousLocation.special).hide();
  		previousLocation = location;
+ 		$('#error').html('');
  		$('#location_ascii').hide();
  		$('#location_text').hide();
  		$(location.special).fadeIn('slow');
