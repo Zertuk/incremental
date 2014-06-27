@@ -19,7 +19,7 @@ function updateHealthBar() {
 }
 
 function healthRegen() {
-	player.health = player.health + 0.25;
+	player.health = player.health + player.regenVal;
 }
 
 //loads dom elements & event listeners
