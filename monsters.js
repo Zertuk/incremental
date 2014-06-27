@@ -1,5 +1,5 @@
 var addMonstersValue = 0;
-
+var lootmessage = 'You have found: ';
 //default monster object
 function Monster() {
 	this.maxHealth = 5,
@@ -7,15 +7,14 @@ function Monster() {
 	this.damage = 1,
 	this.value = 'M',
 	this.message = 'A mean monster',
-	this.specialLoot = 'nothing',
+	this.specialLoot = 'none',
 	this.dropChance = 0,
-	this.freedom = 1,
 	this.move = true,
 	this.replace = '_',
 	this.monsterMoney = 1,
 	this.loot = function() {
 		var lootDropped = Math.round(15 + Math.random()*10);
-		gainedLoot = lootDropped + Math.floor(gainedLoot*this.monsterMoney*this.freedom);
+		gainedLoot = lootDropped + Math.floor(gainedLoot*this.monsterMoney*player.freedom);
 		$('#loot').html('You have gained ' + gainedLoot + ' ectoplasm');
 	}
 	this.monsterInfo = function() {
@@ -27,10 +26,12 @@ function Monster() {
 
 	this.specialDrop = function(item, dropChance) {
 		var randomNum = Math.round(Math.random()*100);
-		if (randomNum < dropChance) {
-			 var lootMessage;
-			 lootmessage = 'You have found: ' + item + ' ';
-			 lootmessage = lootmessage + ' ' + item;
+		console.log(inventoryObject.item);
+		if (randomNum < this.dropChance) {
+			 console.log('success');
+			 itemEquip(this.specialLoot);
+			 lootmessage = 'You found a ' + this.itemName;
+			 $('#special_loot').html(lootmessage);
 		}
 	}
 	this.monsterMove = function(levelInp) {
@@ -77,8 +78,9 @@ function addMoreMonsters(monster) {
 var goblinMiner = new Monster();
 goblinMiner.message = "'He has a pick!'";
 goblinMiner.value = '\'\\G';
-goblinMiner.specialLoot = 'pick';
-goblinMiner.dropChance = 5;
+goblinMiner.specialLoot = 'miningPick';
+goblinMiner.itemName = 'Mining Pick';
+goblinMiner.dropChance = 7;
 goblinMiner.name = 'Goblin Miner';
 
 
@@ -86,7 +88,6 @@ var demon = new Monster();
 demon.message = 'A demon';
 demon.value = 'D';
 demon.damage = 5;
-demon.specialLoot = 'hat';
 demon.dropChance = 75;
 demon.name = 'Demon';
 demon.monsterMoney = 1.1;
@@ -107,6 +108,9 @@ demonWizard.health = 10;
 demonWizard.name = 'Demon Wizard';
 demonWizard.replace = '____';
 demonWizard.monsterMoney = 1.2;
+demonWizard.specialLoot = 'staff';
+demonWizard.dropChance = 10;
+demonWizard.itemName = 'Staff';
 
 var bat = new Monster();
 bat.message = 'A spooky bat';
@@ -134,6 +138,9 @@ vampire.maxHealth = 10;
 vampire.health = 10;
 vampire.name = 'Vampire';
 vampire.monsterMoney = 1.3;
+vampire.specialLoot = 'lifeGem';
+vampire.dropChance = 10;
+vampire.itemName = 'Life Gem';
 
 var reaper = new Monster();
 reaper.message = 'A Reaper';
@@ -143,6 +150,9 @@ reaper.maxHealth = 20;
 reaper.health = 20;
 reaper.name = 'Reaper';
 reaper.monsterMoney = 1.4;
+reaper.specialLoot = 'hood';
+reaper.dropChance = 25;
+reaper.itemName = 'Reapers Hood';
 
 var bear = new Monster();
 bear.message = 'Just a bear?';
@@ -161,6 +171,9 @@ dropBear.maxHealth = 15;
 dropBear.health = 15;
 dropBear.name = 'Drop Bear';
 dropBear.monsterMoney = 1.35;
+dropBear.specialLoot = 'miniBear';
+dropBear.dropChance = 15;
+dropBear.itemName = 'Mini Drop Bear'
 
 var druid = new Monster();
 druid.message = 'Guess those werent just bears';
@@ -197,6 +210,9 @@ warlock.health = 75;
 warlock.damage = 50;
 warlock.name = 'Warlock';
 warlock.monsterMoney = 1.5;
+warlock.specialLoot = 'skull';
+warlock.dropChance = 10;
+warlock.itemName = 'Skull';
 
 var necromancer = new Monster();
 necromancer.message = 'He can summon undead!';
@@ -215,6 +231,9 @@ castleTroll.health = 100;
 castleTroll.damage = 50;
 castleTroll.name = 'Castle Troll';
 castleTroll.monsterMoney = 1.75;
+castleTroll.specialLoot = 'trollHair';
+castleTroll.dropChance = 50;
+castleTroll.itemName = 'Patch of Troll Hair';
 
 var fish = new Monster();
 fish.value = 'F';
@@ -235,6 +254,9 @@ shark.maxHealth = 100;
 shark.replace = '      ';
 shark.message = 'Ahhh a shark!';
 shark.monsterMoney = 2;
+shark.specialLoot = 'sharkTooth';
+shark.dropChance = 50;
+shark.itemName = 'Shark Tooth Sword!';
 
 var undeadBear = new Monster();
 undeadBear.name = 'Undead Bear';
@@ -264,6 +286,9 @@ undeadWizard.maxHealth = 500;
 undeadWizard.health = 500;
 undeadWizard.message = 'This guy thinks he owns this cabin';
 undeadWizard.monsterMoney = 5;
+undeadWizard.specialLoot = 'skullStaff';
+undeadWizard.dropChance = 75;
+undeadWizard.itemName = 'Skull Staff';
 
 var turtle = new Monster();
 turtle.name = 'Mutant Turtle';
@@ -274,6 +299,9 @@ turtle.damage = 50;
 turtle.health = 75;
 turtle.maxHealth = 75;
 turtle.monsterMoney = 2;
+turtle.specialLoot = 'pizza';
+turtle.dropChance = 10;
+turtle.itemName = 'Pizza Slice';
 
 var slime = new Monster();
 slime.name = 'Sewer Slime';
@@ -284,6 +312,9 @@ slime.health = 75;
 slime.maxHealth = 75;
 slime.message = 'Pretty nasty..';
 slime.monsterMoney = 2.2;
+slime.specialLoot = 'stickySlime';
+slime.dropChance = 5;
+slime.itemName = 'Sticky Slime Chunk';
 
 var rat = new Monster();
 rat.name = 'Giant Rat';
@@ -294,6 +325,9 @@ rat.damage = 125;
 rat.health = 50;
 rat.maxHealth = 50;
 rat.monsterMoney = 2.5;
+rat.specialLoot = 'robe';
+rat.dropChance = 25;
+rat.itemName = 'Used Robe';
 
 var beast = new Monster();
 beast.name = 'Beast';
@@ -305,6 +339,9 @@ beast.health = 500;
 beast.maxHealth = 500;
 beast.move = false;
 beast.monsterMoney = 7;
+beast.specialLoot = 'beastClaw';
+beast.dropChance = 100;
+beast.itemName = 'Beast Claw Sword!';
 
 var scientist = new Monster();
 scientist.name = 'Undead Scientist';
@@ -324,6 +361,9 @@ jailer.damage = 125;
 jailer.health = 125;
 jailer.maxHealth = 125;
 jailer.monsterMoney = 3.2;
+jailer.specialLoot = 'riotShield';
+jailer.dropChance = 15;
+jailer.itemName = 'Riot Shield';
 
 var jailOgre = new Monster();
 jailOgre.name = 'Jail Ogre';
@@ -333,6 +373,9 @@ jailOgre.damage = 150;
 jailOgre.health = 150;
 jailOgre.maxHealth = 150;
 jailOgre.monsterMoney = 3.4;
+jailOgre.specialLoot = 'trollHair';
+jailOgre.itemName = 'Patch of Troll Hair';
+jailOgre.dropChance = 100;
 
 var rocketScientist = new Monster();
 rocketScientist.name = 'Rocket Scientist';
@@ -351,7 +394,9 @@ astronaut.damage = 200;
 astronaut.maxHealth = 200;
 astronaut.health = 200;
 astronaut.monsterMoney = 3.6;
-
+astronaut.specialLoot = 'spaceSword';
+astronaut.dropChance = 10;
+astronaut.itemName = 'Spiral Drill Sword!!';
 
 var lich = new Monster();
 lich.name = 'Lich';
