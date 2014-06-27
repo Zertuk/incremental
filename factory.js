@@ -1,4 +1,4 @@
-var batteryDisplay = false;
+var batteryDisplay = true;
 
 //master factory function for the event listener, pretty trashy atm
 function factoryFunction(value) {
@@ -30,8 +30,9 @@ function createFlesh() {
 			ectoplasm = ectoplasm - flesh;
 			blood = blood - flesh;
 			console.log(flesh);
-			player.maxHealth = player.maxHealth + Math.round(flesh / 5);
+			player.maxHealth = player.maxHealth + Math.round(flesh / player.num);
 			flesh = 0;
+			player.num = player.num + 0.2;
 	}
 }
 
