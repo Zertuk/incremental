@@ -251,7 +251,7 @@ function useHealthPotion() {
 			$('#error').html('You already have full health dont be silly');
 		}
 		else {		
-			player.health = player.health + 35;
+			player.health = player.health + player.maxHealth*0.35;
 			inventoryObject.healthPotion--;
 			updateHealthBar();
 			inventoryList();
