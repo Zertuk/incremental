@@ -55,14 +55,14 @@ function flipperCheck() {
 function reflectingPoolChoice(poolChoice) {
 	if (poolChoice ==  'health') {
 		$('#error').html('Your sword now grants life on hit');
-		player.swordHP = player.damage * 0.25;
+		player.swordHP = player.swordHP + 0.25;
 	}
 	else if (poolChoice == 'power') {
 		player.power = 1.5;
 		$('#error').html('Your weapons now deal extra damage');
 	}
 	else {
-		Monster.freedom = 2;
+		Monster.freedom = Monster.freedom + 1;
 		$('#error').html('You now gain extra money from monsters');
 	}
 	$('.pool_button').hide();
