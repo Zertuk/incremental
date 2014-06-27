@@ -82,7 +82,61 @@ var inventoryObject = {
 	flippers: false,
 	shipBase: true,
 	shipTop: false,
-	shipFuel: false
+	shipFuel: false,
+	miningPick: false,
+	staff: false,
+	lifeGem: false,
+	hood: false,
+	miniBear: false,
+	skull: false,
+	trollHair: false,
+	skullStaff: false,
+	stickySlime: false,
+	ninjaGear: false,
+	robes: false,
+	riotShield: false
+}
+
+function itemEquip(item) {
+	switch (item) {
+		case 'miningPick':
+			Monster.freedom = Monster.freedom + 0.5;
+			break;
+		case 'staff':
+			swordEnchantVal = swordEnchantVal + 0.05;
+			break;
+		case 'lifeGem':
+			player.regenVal = player.regenVal + 0.75;
+			break;
+		case 'hood':
+			swordEnchantVal = swordEnchantVal + 0.1;
+			break;
+		case 'miniBear':
+			Monster.freedom = Monster.freedom + 0.5;
+			break;
+		case 'skull':
+			player.swordHP = player.swordHP + 0.1;
+			break;
+		case 'trollHair':
+			armorEnchantVal = armorEnchantVal + 0.1;
+			break;
+		case 'skullStaff':
+			swordEnchantVal = swordEnchantVal + 0.05;
+			armorEnchantVal = armorEnchantVal + 0.05;
+			player.regenVal = player.regenVal + 2.5;
+		case 'stickySlime':
+			Monster.freedom = Monster.freedom + 0.5;
+			break;
+		case 'ninjaGear':
+			swordEnchantVal = swordEnchantVal + 0.1;
+			break;
+		case 'robe':
+			player.regenVal = player.regenVal + 5;
+			break;
+		case 'riotShield':
+			armorEnchantVal = armorEnchantVal + 0.25;
+			break;
+	}
 }
 
 var player = {
@@ -95,14 +149,18 @@ var player = {
 	swordHP: 0,
 	health: 100.00,
 	maxHealth: 10000,
-	bigFish: false
+	bigFish: false,
+	regenVal: 0.25
 }
+
 var enchantDmg = 0;
 var armorRed = 0;
+
 function swordEnchantDmg() {
 	enchantDmg = player.damage * swordEnchantVal;
 	return enchantDmg;
 }
+
 function armorEnchantRed() {
 	armorRed = player.reduction * armorEnchantVal;
 	return armorRed;
