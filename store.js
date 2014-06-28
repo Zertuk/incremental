@@ -39,6 +39,29 @@ var swordObject = {
 	}
 }
 
+function equipArmor() {
+	if (inventoryObject.astronautSuit) {
+		inventoryObject.armor = armorObject.astronautSuit;
+		player.reduction = armorObject.astronautSuit.reduction;
+	}
+	else if (inventoryObject.jailOgreHide) {
+		inventoryObject.armor = armorObject.jailOgreHide;
+		player.reduction = armorObject.jailOgreHide.reduction;
+	}
+	else if (inventoryObject.knightsArmor) {
+		inventoryObject.armor = armorObject.knightsArmor;
+		player.reduction = armorObject.knightsArmor.reduction;
+	}
+	else if (inventoryObject.diamondArmor) {
+		inventoryObject.armor = armorObject.diamondArmor;
+		player.reduction = armorObject.diamondArmor.reduction;
+	}
+	else if (inventoryObject.ironArmor) {
+		inventoryObject.armor = armorObject.ironArmor;
+		player.reduction = armorObject.ironArmor.reduction;
+	}
+}
+
 var armorObject = {
 	noArmor : {
 		name: 'No Armor',
@@ -70,6 +93,11 @@ var armorObject = {
 var inventoryObject = {
 	weapon: swordObject.fists,
 	armor: armorObject.noArmor,
+	ironArmor: false,
+	diamondArmor: false,
+	knightsArmor: false,
+	jailOgreHide: false,
+	astronautSuit: false,
 	healthPotion: 10,
 	manaPotion: 0,
 	seed: 0,
@@ -100,7 +128,8 @@ var inventoryObject = {
 	ironSword: false,
 	woodSword: false,
 	beastClaw: false,
-	sharkTooth: false
+	sharkTooth: false,
+	tome: false
 }
 
 function itemEquip(item) {
@@ -180,28 +209,48 @@ function itemEquip(item) {
 			break;
 		case 'beastClaw':
 			if (!inventoryObject.beastClaw) {
-			inventoryObject.beastClaw = true;
-			equipSword();
+				inventoryObject.beastClaw = true;
+				equipSword();
 			}
 			break;
 		case 'spaceSword':
 			if (!inventoryObject.spiralSword) {
-			inventoryObject.spiralSword = true;
-			equipSword();
+				inventoryObject.spiralSword = true;
+				equipSword();
 			}
 			break;
 		case 'sharkTooth':
 			if (!inventoryObject.sharkTooth) {
-			inventoryObject.sharkTooth = true;
-			equipSword();
+				inventoryObject.sharkTooth = true;
+				equipSword();
 			}
 			break;
 		case 'tome':
 			if (!inventoryObject.tome) {
 				inventoryObject.tome = true;
-
-
+				player.regenVal = player.regenVal + 1;
+				player.swordHP = player.swordHP + 0.1;
+				player.maxHealth = player.maxHealth + 500;
 			}
+			break;
+		case 'knightsArmor':
+			if (!inventoryObject.knightsArmor) {
+				inventoryObject.knightsArmor = true;
+				equipArmor();
+			}
+			break;
+		case 'jailOgreHide':
+			if (!inventoryObject.jailOgreHide) {
+				inventoryObject.jailOgreHide = true;
+				equipArmor();
+			}
+			break;
+		case 'astronautSuit':
+			if (!inventoryObject.astronautSuit) {
+				inventoryObject.astronautSuit = true;
+				equipArmor();
+			}
+			break;
 		case 'none':
 			break;
 	}
@@ -223,7 +272,9 @@ var player = {
 	num: 3,
 	sinChoosen: false,
 	potionCost: 25,
+	manaCost: 25,
 	gearCost: 200,
+	runeCost: 5,
 	batteryCost: 2000,
 	teleport: false,
 	reset: false,
@@ -268,6 +319,8 @@ function useHealthPotion() {
 		}
 		else {		
 			player.health = player.health + player.maxHealth*0.35;
+			potionUsed = true;
+			potionCD = 15;
 			inventoryObject.healthPotion--;
 			updateHealthBar();
 			inventoryList();
@@ -278,14 +331,14 @@ function useHealthPotion() {
 
 function useTeleportPotion() {
 	if (inventoryObject.teleportPotion == 0) {
-		$('#error').html('No Teleport Potions ;-;');
+		$('#error').html('No magic runes ;-;');
 	}
 	else if (potionUsed) {
-		$('#error').html('Potions are on Cooldown!');
+		$('#error').html('Spellss are on Cooldown!');
 	}
 	else {
 		potionUsed = true;	
-		potionCD = 20;
+		potionCD = 15;
 		console.log(potionUsed);
 		console.log('hello');
 		level[i - 1] = '_';
@@ -296,21 +349,43 @@ function useTeleportPotion() {
 
 function useFreezePotion() {
 	if (inventoryObject.rune == 0) {
-		$('#error').html('No Freeze Potions ;-;');
+		$('#error').html('No magic runes ;-;');
 	}
 	else if (potionUsed) {
-		$('#error').html('Potions are on Cooldown!');
+		$('#error').html('Spells are on Cooldown!');
 	}
 	else {
+		potionUsed = true;
+		potionCD = 10;
 		timeFrozen = true;
 		frozeTimer = 5;
 	}
 }
+var oldPower;
+var berserkUsed = false;
+
+function useBerserk() {
+	if (inventoryObject.rune == 0) {
+		$('#error').html('No magic runes ;-;');
+	}
+	else if (potionUsed) {
+		$('#error').html('Spells are on Cooldown!');
+	}
+	else {
+		berserkUsed = true;
+		oldPower = player.power;
+		player.power = player.power*2;
+		potionUsed = true;
+		potionCD = 15;
+		berserkTimer = 5;
+	}
+}
+
 var resetSpellUsed = false;
 
 function resetSpells() {
 	if (inventoryObject.rune == 0) {
-		$('#error').html('No Freeze Potions ;-;');
+		$('#error').html('No magic runes ;-;');
 	}
 	else if (resetSpellUsed) {
 		$('#error').html('You can only cast reset once per level!');
@@ -319,7 +394,7 @@ function resetSpells() {
 		potionCD = 0;
 		potionUsed = false;
 		resetSpellUsed = true;
-		$('#potionCDText').html('Potion CD: ' + potionCD);
+		$('#potionCDText').html('Potion/Spell CD: ' + potionCD);
 	}
 }
 
@@ -391,6 +466,7 @@ function storePriceUpdate() {
 	$('#rune_buy').html(player.runeCost);
 	$('#hp_buy').html(player.potionCost);
 	$('#gear_buy').html(player.gearCost);
+	$('#mana_buy').html(player.manaCost);
 }
 
 
@@ -436,9 +512,9 @@ function storeItems(item) {
 			this.itemPrice = 500;
 			var itemBought = itemBuy(item);
 			if (itemBought == true) {
-				inventoryObject.armor = armorObject.ironArmor;
-				player.reduction = armorObject.ironArmor.reduction;
-				storeStatus('');
+				inventoryObject.ironArmor = true;
+				equipArmor();
+				storeStatus('Better than nothing I guess');
 				$('#iron_armor').hide();
 				$('#diamond_armor').show();
 			}
@@ -447,9 +523,9 @@ function storeItems(item) {
 			this.itemPrice = 5000;
 			var itemBought = itemBuy(item);
 			if (itemBought == true) {
-				inventoryObject.armor = armorObject.diamondArmor;
-				player.reduction - armorObject.diamondArmor.reduction;
-				storeStatus('');
+				inventoryObject.diamondArmor = true;
+				equipArmor();
+				storeStatus('This took 9 diamonds to make, dont ruin it!');
 				$('#diamond_armor').hide();
 			}
 			break;
