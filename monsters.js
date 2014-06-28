@@ -8,7 +8,7 @@ function Monster() {
 	this.value = 'M',
 	this.message = 'A mean monster',
 	this.specialLoot = 'none',
-	this.dropChance = 0,
+	this.dropChance = -1,
 	this.move = true,
 	this.replace = '_',
 	this.monsterMoney = 1,
@@ -30,7 +30,7 @@ function Monster() {
 		if (randomNum < this.dropChance) {
 			 console.log('success');
 			 itemEquip(this.specialLoot);
-			 lootmessage = 'You found a ' + this.itemName;
+			 lootmessage = 'You found a(n) ' + this.itemName;
 			 $('#special_loot').html(lootmessage);
 		}
 	}
@@ -83,12 +83,10 @@ goblinMiner.itemName = 'Mining Pick';
 goblinMiner.dropChance = 10;
 goblinMiner.name = 'Goblin Miner';
 
-
 var demon = new Monster();
 demon.message = 'A demon';
 demon.value = 'D';
 demon.damage = 5;
-demon.dropChance = 75;
 demon.name = 'Demon';
 demon.monsterMoney = 1.1;
 
@@ -201,6 +199,9 @@ undeadKnight.damage = 40;
 undeadKnight.health = 50;
 undeadKnight.name = 'Undead Knight';
 undeadKnight.monsterMoney = 1.55;
+undeadKnight.specialLoot = 'knightsArmor';
+undeadKnight.dropChance = 10;
+undeadKnight.itemName = 'Knights Armor';
 
 var warlock = new Monster();
 warlock.message = 'A warlock under lich control!';
@@ -373,8 +374,8 @@ jailOgre.damage = 150;
 jailOgre.health = 150;
 jailOgre.maxHealth = 150;
 jailOgre.monsterMoney = 3.4;
-jailOgre.specialLoot = 'trollHair';
-jailOgre.itemName = 'Patch of Troll Hair';
+jailOgre.specialLoot = 'jailOgreHide';
+jailOgre.itemName = 'Ogre Hide Armor';
 jailOgre.dropChance = 100;
 
 var rocketScientist = new Monster();
@@ -385,6 +386,9 @@ rocketScientist.damage = 150;
 rocketScientist.maxHealth = 150;
 rocketScientist.health = 150;
 rocketScientist.monsterMoney = 3.5;
+rocketScientist.dropChance = 10;
+rocketScientist.specialLoot = 'spaceSword';
+rocketScientist.itemName = 'Spiral Drill Sword!!';
 
 var astronaut = new Monster();
 astronaut.name = 'Astronaut';
@@ -394,9 +398,9 @@ astronaut.damage = 200;
 astronaut.maxHealth = 200;
 astronaut.health = 200;
 astronaut.monsterMoney = 3.6;
-astronaut.specialLoot = 'spaceSword';
+astronaut.specialLoot = 'astronautSuit';
 astronaut.dropChance = 10;
-astronaut.itemName = 'Spiral Drill Sword!!';
+astronaut.itemName = 'Astronaut Suit!!';
 
 var lich = new Monster();
 lich.name = 'Lich';
