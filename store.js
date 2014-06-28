@@ -196,6 +196,12 @@ function itemEquip(item) {
 			equipSword();
 			}
 			break;
+		case 'tome':
+			if (!inventoryObject.tome) {
+				inventoryObject.tome = true;
+
+
+			}
 		case 'none':
 			break;
 	}
@@ -215,7 +221,15 @@ var player = {
 	regenVal: 0.25,
 	freedom: 1,
 	num: 3,
-	sinChoosen: false
+	sinChoosen: false,
+	potionCost: 25,
+	gearCost: 200,
+	batteryCost: 2000,
+	teleport: false,
+	reset: false,
+	freeze: false,
+	berserk: false,
+	shield: false
 }
 
 var enchantDmg = 0;
@@ -371,6 +385,15 @@ function equipSword() {
 	}
 }
 
+//updates the cost on the button of the store items if it scales
+function storePriceUpdate() {
+	$('#battery_buy').html(player.batteryCost);
+	$('#rune_buy').html(player.runeCost);
+	$('#hp_buy').html(player.potionCost);
+	$('#gear_buy').html(player.gearCost);
+}
+
+
 /***Store Functionality:
 	Takes input based on button clicked for each item, passes into itemBuy(),
 which checks if player has enough money, if true, then add the item to inventory/remove
@@ -431,27 +454,36 @@ function storeItems(item) {
 			}
 			break;
 		case "healthPotion":
-			this.itemPrice = 50;
+			this.itemPrice = player.potionCost;
 			var itemBought = itemBuy(item);
 			if (itemBought == true) {
+				player.potionCost = player.potionCost + Math.floor(player.potionCost/5);
 				inventoryObject.healthPotion++;
 				storeStatus('Heres a Healh Potion, hope you wont need it..');
 			}
 			break;
 		case "manaPotion":
-			this.itemPrice = 50;
+			this.itemPrice = player.manaCost;
 			var itemBought = itemBuy(item);
 			if (itemBought == true) {
+				player.manaCost = player.manaCost + Math.floor(player.manaCost/5);
 				inventoryObject.manaPotion++;
 				storeStatus('You know you dont even have mana right?');
+				if (inventoryObject.manaPotion > 10) {
+					storeStatus('Really. I am telling you the truth, these are worthless to you');
+					if (inventoryObject.manaPotion > 50) {
+						storeStatus('Your determination to be a magic user inspires me ;-;  Please, take this tome, maybe it can help you');
+						itemEquip('tome');
+					}
+				}
 			}
 			break;
 		case "seed":
-			this.itemPrice = 500;
+			this.itemPrice = player.gearCost;
 			var itemBought = itemBuy(item);
 			if (itemBought == true) {
 				inventoryObject.seed++;
-				fieldButton.style.display = "inline";
+				player.gearCost = player.gearCost + Math.floor(player.gearCost/5);
 				storeStatus('Gear huh? Might want to checkout the factory.');
 			}
 			break;
@@ -466,19 +498,23 @@ function storeItems(item) {
 			}
 			break;
 		case "battery":
-			this.itemPrice = 2000;
+			this.itemPrice = player.batteryCost;
 			var itemBought = itemBuy(item);
 			if (itemBought == true) {
+				player.batteryCost = player.batteryCost + Math.floor(player.batteryCost/5);
+				$('#')
 				inventoryObject.battery++;
 				storeStatus('Battery! What could you use this for?');				
 			}
 			break;
 		case "rune":
-			this.itemPrice = 1;
+			this.itemPrice = player.runeCost;
 			var itemBought = itemBuy(item);
 			if (itemBought == true) {
 				inventoryObject.rune = true;
-				storeStatus('Magic Rune! It is glowing strangely.');				
+				storeStatus('Magic Rune! It is glowing strangely.');
+				player.runeCost = player.runeCost + Math.floor(player.runeCost/5);				
 			}
 	}
+	storePriceUpdate();
 }
