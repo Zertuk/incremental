@@ -39,29 +39,6 @@ var swordObject = {
 	}
 }
 
-function equipArmor() {
-	if (inventoryObject.astronautSuit) {
-		inventoryObject.armor = armorObject.astronautSuit;
-		player.reduction = armorObject.astronautSuit.reduction;
-	}
-	else if (inventoryObject.jailOgreHide) {
-		inventoryObject.armor = armorObject.jailOgreHide;
-		player.reduction = armorObject.jailOgreHide.reduction;
-	}
-	else if (inventoryObject.knightsArmor) {
-		inventoryObject.armor = armorObject.knightsArmor;
-		player.reduction = armorObject.knightsArmor.reduction;
-	}
-	else if (inventoryObject.diamondArmor) {
-		inventoryObject.armor = armorObject.diamondArmor;
-		player.reduction = armorObject.diamondArmor.reduction;
-	}
-	else if (inventoryObject.ironArmor) {
-		inventoryObject.armor = armorObject.ironArmor;
-		player.reduction = armorObject.ironArmor.reduction;
-	}
-}
-
 var armorObject = {
 	noArmor : {
 		name: 'No Armor',
@@ -256,12 +233,73 @@ function itemEquip(item) {
 	}
 }
 
+function equipArmor() {
+	if (inventoryObject.astronautSuit) {
+		inventoryObject.armor = armorObject.astronautSuit;
+		player.reduction = armorObject.astronautSuit.reduction;
+	}
+	else if (inventoryObject.jailOgreHide) {
+		inventoryObject.armor = armorObject.jailOgreHide;
+		player.reduction = armorObject.jailOgreHide.reduction;
+	}
+	else if (inventoryObject.knightsArmor) {
+		inventoryObject.armor = armorObject.knightsArmor;
+		player.reduction = armorObject.knightsArmor.reduction;
+	}
+	else if (inventoryObject.diamondArmor) {
+		inventoryObject.armor = armorObject.diamondArmor;
+		player.reduction = armorObject.diamondArmor.reduction;
+	}
+	else if (inventoryObject.ironArmor) {
+		inventoryObject.armor = armorObject.ironArmor;
+		player.reduction = armorObject.ironArmor.reduction;
+	}
+}
+
+function equipSword() {
+	if (inventoryObject.spiralSword) {
+		inventoryObject.weapon = swordObject.spiralSword;
+		player.damage = swordObject.spiralSword.damage;
+	}
+	else if (inventoryObject.beastClaw) {
+		inventoryObject.weapon = swordObject.beastClawSword;
+		player.damage = swordObject.beastClawSword.damage;
+	}
+	else if (inventoryObject.sharkTooth) {
+		inventoryObject.weapon = swordObject.sharkToothSword;
+		player.damage = swordObject.sharkToothSword.damage;
+	}
+	else if (inventoryObject.diamondSword) {
+		inventoryObject.weapon = swordObject.diamondSword;
+		player.damage = swordObject.diamondSword.damage;
+	}
+	else if (inventoryObject.ironSword) {
+		inventoryObject.weapon = swordObject.ironSword;
+		player.damage = swordObject.ironSword.damage;
+	}
+	else if (inventoryObject.woodSword) {
+		inventoryObject.weapon = swordObject.woodSword;
+		player.damage = swordObject.woodSword.damage;
+	}
+}
+
+
+
 var player = {
 	damage: swordObject.fists.damage,
 	reduction: inventoryObject.armor.reduction,
-	armorEnchant: this.reduction * armorEnchantVal,
-	swordEnchant: this.damage * swordEnchantVal,
+	armorEnchant: this.reduction * this.armorEnchantVal,
+	swordEnchant: this.damage * this.swordEnchantVal,
 	power: 1,
+	swordEnchantVal: 0,
+	armorEnchantVal: 0,
+	swordEnchantCost: 1000,
+	armorEnchantCost: 1000,
+	monkVisit: false,
+	postLich: false,
+	restPrice: 0,
+	thief: false,
+	confess: false,
 	demonVisit: false,
 	swordHP: 0,
 	health: 100.00,
@@ -363,6 +401,20 @@ function useFreezePotion() {
 }
 var oldPower;
 var berserkUsed = false;
+var shieldUsed = false;
+
+function useShield() {
+	if (potionUsed) {
+		$('#error').html('Spells are on Cooldown!');
+	}
+	else {
+		shieldUsed = true;
+		oldReduction = player.reduction;
+		player.reduction = 1000000;
+		shieldTimer = 4;
+		potionCD = 20;
+	}
+}
 
 function useBerserk() {
 	if (inventoryObject.rune == 0) {
@@ -431,33 +483,6 @@ function itemBuy(item) {
 
 function storeStatus(text) {
 	$('#location_text').html(text);
-}
-
-function equipSword() {
-	if (inventoryObject.spiralSword) {
-		inventoryObject.weapon = swordObject.spiralSword;
-		player.damage = swordObject.spiralSword.damage;
-	}
-	else if (inventoryObject.beastClaw) {
-		inventoryObject.weapon = swordObject.beastClawSword;
-		player.damage = swordObject.beastClawSword.damage;
-	}
-	else if (inventoryObject.sharkTooth) {
-		inventoryObject.weapon = swordObject.sharkToothSword;
-		player.damage = swordObject.sharkToothSword.damage;
-	}
-	else if (inventoryObject.diamondSword) {
-		inventoryObject.weapon = swordObject.diamondSword;
-		player.damage = swordObject.diamondSword.damage;
-	}
-	else if (inventoryObject.ironSword) {
-		inventoryObject.weapon = swordObject.ironSword;
-		player.damage = swordObject.ironSword.damage;
-	}
-	else if (inventoryObject.woodSword) {
-		inventoryObject.weapon = swordObject.woodSword;
-		player.damage = swordObject.woodSword.damage;
-	}
 }
 
 //updates the cost on the button of the store items if it scales

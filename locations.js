@@ -1,3 +1,4 @@
+//telescope interactivity
 function telescope(direction) {
 	switch(direction) {
 		case 'up': 
@@ -38,6 +39,7 @@ function spaceShipCheck() {
 	}
 }
 
+//cant visit demon more than once
 function noDemon() {
 	player.demonVisit = true;
 }
@@ -72,9 +74,6 @@ function reflectingPoolChoice(poolChoice) {
 
 //camp stuff ahead
 var campCount = 0;
-var thief;
-var confess;
-var restPrice;
 
 
 function searchCamp() {
@@ -89,21 +88,21 @@ function searchCamp() {
 function campConfess() {
 	$('#man_text').html('You took my stuff? Guess <br> You are paying extra!');
 	$('#confess_button').hide();
-	confess = true;
+	player.confess = true;
 }
 
 //raises price based on outcome of scenario, then updates button
 function raiseRestPrice() {
-	if (confess) {
-		restPrice = restPrice * 3;
+	if (player.confess) {
+		player.restPrice = player.restPrice * 3;
 	}
-	else if (thief) {
-		restPrice = restPrice * 2
+	else if (player.thief) {
+		player.restPrice = player.restPrice * 2
 	}
 	else {
-		restPrice = 0;
+		player.restPrice = 0;
 	}
-	$('#rest').html('Rest(' + restPrice + ')');
+	$('#rest').html('Rest(' + player.restPrice + ')');
 }
 
 
@@ -116,8 +115,8 @@ function cabinRest() {
 
 //rest if you have the money to give full hp, otherwise error
 function campRest() {
-	if (ectoplasm > restPrice) {
-		ectoplasm = ectoplasm - restPrice;
+	if (ectoplasm > player.restPrice) {
+		ectoplasm = ectoplasm - player.restPrice;
 		player.health = player.maxHealth;
 		$('#location_text').html('You are fully rested');
 		raiseRestPrice();
@@ -132,10 +131,10 @@ function campRest() {
 //just displays the relevant text/buttons depending on how scenario played out
 function campgroundAfterScenario() {
 	Camp.text = 'The fire is roaring';
-	if (confess) {
+	if (player.confess) {
 		$('#man_text').html('Hey jerk want to rest? <br> Special Price..');		
 	}
-	else if (thief) {
+	else if (player.thief) {
 		$('#man_text').show().html('Sorry but someone stole my supplies, Im going <br> to have to charge for you to rest here');
 	    $('#man').show();
 	    $('#confess').show();
@@ -154,8 +153,8 @@ function stealItems() {
 	ectoplasm = ectoplasm + 5000;
 	$('#camp_scenario').hide();
 	$('#camp_use').show();
-	restPrice = 1;
-	thief = true;
+	player.restPrice = 1;
+	player.thief = true;
 	locationSwitch(Map);
 	campgroundAfterScenario();
 }
@@ -184,7 +183,7 @@ function campgroundWait() {
 		$('#man').show();
 		$('#man_text').show();
 		$('#camp_use').show();
-		restPrice = 0;
+		player.restPrice = 0;
 	}
 	}, 5000);
 	
@@ -279,7 +278,6 @@ function fishCast() {
 
 function fishCounter() {
 	var random = Math.floor(Math.random()*100);
-	console.log(random);
 	if (random > 85) {
 		fishEncounter();
 		return;
@@ -297,49 +295,23 @@ function fishEncounter() {
 	caught = true;
 
 }
-//some church stuff
-var demon = false;
-var demonFirst = false;
-function enterDemon() {
-	if (demon == false) {
-		$('#churchInside').hide();
-		$('#demon').show();
-		demon = true;
-
-	}
-	else {
-		$('#main').show();
-		$('#demon').hide();
-		$('#churchInside').hide();
-		mainShow = true;
-		if (demonFirst == true) {
-			$('#error').html('You have already visited the demon wizard, he doesnt have time for repeat visits!');
-		}
-		demonFirst = true;
-	}	
-}
-
-var swordEnchantVal = 0;
-var armorEnchantVal = 0;
-var swordEnchantCost = 1000;
-var armorEnchantCost = 1000;
 
 function wizardEnchant(buttonValue) {
 	switch (buttonValue) {
 		case 'sword':
-			if (enoughMoney(swordEnchantCost)) {
-				swordEnchantVal = swordEnchantVal + 0.1;
-				swordEnchantCost = swordEnchantCost * 2;
-				$('#enchantDmg').html('Enchant Sword (' + swordEnchantCost + ')');
+			if (enoughMoney(player.swordEnchantCost)) {
+				player.swordEnchantVal = player.swordEnchantVal + 0.1;
+				player.swordEnchantCost = player.swordEnchantCost * 3;
+				$('#enchantDmg').html('Enchant Sword (' + player.swordEnchantCost + ')');
 			break;
 			}
 			break;
 
 		case 'armor': 
-			if (enoughMoney(swordEnchantCost)) {
-				armorEnchantVal = armorEnchantVal + 0.1;
-				armorEnchantCost = armorEnchantCost * 2;
-				$('#enchantRed').html('Enchant Armor (' + armorEnchantCost + ')');
+			if (enoughMoney(player.swordEnchantCost)) {
+				player.armorEnchantVal = player.armorEnchantVal + 0.1;
+				player.armorEnchantCost = player.armorEnchantCost * 3;
+				$('#enchantRed').html('Enchant Armor (' + player.armorEnchantCost + ')');
 			break;
 			}
 			break;
@@ -357,12 +329,37 @@ function enoughMoney(cost) {
 	}
 }
 
+function wizardExplain(buttonValue) {
+	console.log(buttonValue + 'wizzz')
+	if (buttonValue == 'explain') {
+		$('#location_text').html('The Lich killed you.  Or not.  You are here now.. You must have some kind of Lich Curse on you.');
+		$('#wizard_time').show();
+		$('#wizard_explain').hide();
+	}
+	else if (buttonValue == 'time') {
+		$('#location_text').html('I dont measure time like you I am a wizard.  It has been 0.63 wizard years, a lot sure has changed in that little time! Little for me at least.');
+		$('#wizard_help').show();
+		$('#wizard_time').hide();
+	}
+	else if (buttonValue == 'help') {
+		$('#wizard_help').hide()
+		$('#wizard_explain').show();
+		$('#location_text').html('Dont ask me Im just a wizard');
+
+	}
+
+}
+
 function wizardQuestion() {
 	$('#location_text').html('Ooh arent you the sassy one, how about this, beat me in a battle of wits and I will give you a prize! I am not afraid of losing, Im a pretty good wizard');
 }
 
 function monkCheck() {
-	if (player.sinChoosen) {
+	if (player.monkVisit) {
+		$('#location_text').html('The monk is no longer here').
+		$('#location_ascii').html('');
+	}
+	else if (player.sinChoosen) {
 		$('#location_text').html('Thank you for rescuing me, unfortunately I cant teach someone afflicted with the demons mark and have nothing else to offer');
 		$('#kill_monk').show();	
 	}
@@ -383,32 +380,25 @@ function monkAction(buttonValue) {
 	else {
 		$('#location_text').html('');
 		$('#error').html('You gain +10% armor & sword enchants');
-		swordEnchantVal = swordEnchantVal + 0.1;
-		armorEnchantVal = armorEnchantVal + 0.1;
+		player.swordEnchantVal = player.swordEnchantVal + 0.1;
+		player.armorEnchantVal = player.armorEnchantVal + 0.1;
 		$('#learn_monk').hide();
 		$('#monk_button').hide();
 	}
+	player.monkVisit = true;
 }
 
 function lichEncounter(buttonValue) {
-	console.log(buttonValue);
 	switch (buttonValue) {
 		case 'who':
 			$('#location_text').html('I am the Lich.');
 			$('#location_ascii').html(Lich.ascii3);
-			console.log('who');
 			break;
-
-		case 'loot':
-
-			break;
-
 		case 'die':
 			$('#location_text').html('Fool! You cant defeat me!');
 			$('#location_ascii').html(Lich.ascii2);
 			$('.lich_button').hide();
 			$('#lich_attack').show();
-			console.log('die');
 			break;
 	}
 }
@@ -418,8 +408,10 @@ function lichAttack() {
 	$('#location_text').html('. . .');
 	Main.special = '#future_special';
 	Map.special = '#future_map';
+	$('#post_lich').show();
 	Wizard.text = 'Wow I havent seen you in awhile!';
 	Main.text = 'what happened..?'
 	$('#lich_attack').hide();
 	$('#continue').show();
+	player.postLich = true;
 }

@@ -25,7 +25,7 @@ function healthRegen() {
 //loads dom elements & event listeners
 window.onload = function() {
 	mainLoop();
-	locationSwitch(City);
+	locationSwitch(Wizard);
 	$('#ascii_text').html(cavern.ascii);
 
 	var reflectingPool = document.getElementById('reflectingPool');
@@ -71,7 +71,6 @@ window.onload = function() {
 
 	$('.monk_button').click(function() {
 		var buttonValue = $(this).attr('value');
-		console.log(buttonValue);
 		if (buttonValue == 'greet') {
 			monkCheck();
 		}
@@ -79,6 +78,11 @@ window.onload = function() {
 			$('#greet_monk').hide();
 			monkAction(buttonValue);
 		}
+	})
+
+	$('.wizard_button').click(function() {
+		var buttonValue = $(this).attr('value');
+		wizardExplain(buttonValue);
 	})
 
 	//telescope event listener
@@ -245,6 +249,22 @@ var questLoop = function(monster) {
 		$('#error').html('Time Frozen: ' + frozeTimer);
 		if (frozeTimer == 0) {
 			timeFrozen = false;
+		}
+	}
+	if (shieldUsed) {
+		shieldTimer--;
+		$('#error').html('Shield Left: ' +  shieldTimer);
+		if (shieldTimer == 0) {
+			shieldUsed = false;
+			player.reduction = oldReduction;
+		}
+	} 
+	if (berserkUsed) {
+		berserkTimer--;
+		$('#error').html('Berserk Left: ' + berserkTimer);
+		if (berserkTimer == 0) {
+			berserkUsed = false;
+			player.power = oldPower;
 		}
 	}
 

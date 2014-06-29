@@ -1,4 +1,3 @@
-var addMonstersValue = 0;
 var lootmessage = 'You have found: ';
 //default monster object
 function Monster() {
@@ -34,6 +33,7 @@ function Monster() {
 			 $('#special_loot').html(lootmessage);
 		}
 	}
+	//**not currently in use**
 	this.monsterMove = function(levelInp) {
 		console.log(this.value);
 		for (var g = 0; g < levelInp; g++) {
@@ -43,6 +43,7 @@ function Monster() {
 			}
 		}
 	}
+	//**not currently in use**
 	this.monsterHeal = function(val) {
 		if (this.health < 10) {
 			this.health = this.health + val;

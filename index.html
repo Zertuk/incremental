@@ -42,10 +42,11 @@
 		<div id = "error"></div>
 
     <div id = "quest">
-      <button id = "health_potion_button" class = "potion_button" value = "healthPotion">Use HP(0)</button>
-      <button onclick = "useTeleportPotion()">Teleport Potion</button>
+      <button id = "health_potion_button" class = "potion_button" value = "healthPotion">Health Potion</button>
+      <button onclick = "useTeleportPotion()">Teleport</button>
       <button onclick = "useFreezePotion()">Freeze</button>
-      <button onclick = "resetSpells()">Reset</button>
+      <button onclick = "useBerserk()">Berserk</button>
+      <button onclick = "resetSpells()">Reset CDs</button>
       <br>
       <p id = "potionCDText">Potion Cooldown: 0</p>
       <br>
@@ -90,12 +91,12 @@
         <p id = "wood_sword">Wood Sword: <button class = 'store_button' value = 'woodSword,true'>100</button></p>
         <p id = "iron_armor">Iron Armor: <button class = 'store_button' value = 'ironArmor'>500</button></p>
         <p id = "diamond_armor">Diamond Armor: <button class = "store_button" value = "diamondArmor">5000</button></p>
-        <p>Health Potion: <button class = 'store_button' id = "hp_buy" value = 'healthPotion'>50</button></p>
-        <p>Mana Potion: <button class = 'store_button' id = "mp_buy" value = 'manaPotion'>50</button></p>
-        <p>Gear: <button class = 'store_button' id = "gear_buy" value = 'seed'>500</button></p>
+        <p>Health Potion: <button class = 'store_button' id = "hp_buy" value = 'healthPotion'>25</button></p>
+        <p>Mana Potion: <button class = 'store_button' id = "mana_buy" value = 'manaPotion'>25</button></p>
+        <p>Gear: <button class = 'store_button' id = "gear_buy" value = 'seed'>200</button></p>
         <p id = "mapListing">Map: <button class = 'store_button' value = 'map,true'>50</button></p>
         <p>Battery: <button class = 'store_button' id = "battery_buy" value = 'battery'>2000</button></p>
-        <p id = "runez">Magic Rune: <button class = 'store_button' id = "rune_buy" value = 'rune'>1</button></p>
+        <p id = "runez">Magic Rune: <button class = 'store_button' id = "rune_buy" value = 'rune'>5</button></p>
         <br>
         <button class = 'location_button' value = "Main">Leave Store</button>
       </div><!--storeWrapper-->
@@ -478,24 +479,15 @@ Sher^
     </div><!--tower_special-->
 
     <div id = "wizard_special">
-      <button>Whats going on? What happened?</button>
+      <div id = "post_lich">
+        <button class = "wizard_button" value = "explain" id = "wizard_explain">Whats going on? What happened?</button>
+        <button class = "wizard_button" value = "time" id = "wizard_time">How long has it been?</button>
+        <button class = "wizard_button" value = "help" id = "wizard_help">What should I do?</button>
+      </div><!--post_lich-->
+
       <br>
       <button id = "enchantDmg" value = "sword" class = "enchantButton">Enchant Weapon (1000)</button>
       <button id = "enchantRed" value = "armor" class = "enchantButton">Enchant Armor (1000)</button>
-      <br>
-      <button onclick = 'wizardQuestion()'>If you are such a good wizard, How did you get caught?</button>
-      
-
-      <div id = "enchant_sword">
-        <button>Heal</button>
-        <button>Damage</button>
-        <button>Loot</button>
-      </div>
-      <div id = "enchant_armor">
-        <button>Heal</button>
-        <button>Damage</button>
-        <button>Armor</button>
-      </div>
       <br>
       <button class = 'location_button' value = "Map">Leave</button>
     </div><!--wizard_special-->
@@ -775,7 +767,11 @@ ___________|_|_
       </div><!--flipper_on-->
       <br>
       <button value = "City" class = "location_button">Leave</button>
-    </div>
+    </div><!--sea_special-->
+
+    <div id = "credits_special">
+      STUFF
+    </div><!--credits_special-->
 
   </div><!--location_div-->
 	</div><!--wrapper-->
