@@ -1,13 +1,6 @@
 //global variable init
-var ectoplasm = 50000;
-var ghostStoreVal = false;
 var inverse = false;
-var smoke = true;
-var blink = false;
 var count = 0;
-var batteriesUsed = 0;
-var blood = 500;
-var seedsPlanted = 1;
 var batteryOn = true;
 var levelActive = false;
 var flesh = 0;
@@ -48,7 +41,6 @@ window.onload = function() {
 		}
 		var buttonValue = $(this).attr('value');
 		var locationVal = locationObject[buttonValue];
-		console.log(buttonValue + ' = LOCATION VALUE ');
 		if (buttonValue == 'DemonWizardElder' && player.demonVisit) {
 			$('#error').html('The Demon Wizard Elder does not allow repeat visits');
 			return;
@@ -66,6 +58,9 @@ window.onload = function() {
 		}
 		else if (buttonValue == 'DemonWizardElder') {
 			noDemon();
+		}
+		else if (buttonValue == 'Store') {
+			storePriceUpdate();
 		}
 	});
 
@@ -150,24 +145,24 @@ function locationSwitch(location) {
 
 //generates ectoplasm on click
 function ectoplasmClick(num) {
-	ectoplasm = ectoplasm + num;
-	document.getElementById('ectoplasm').innerHTML = "You have " + ectoplasm + " ectoplasm";
+	player.money = player.money + num;
+	document.getElementById('ectoplasm').innerHTML = "You have " + player.money + " gold";
 }
 
 //generates ectoplasm overtime, passing in gears placed
 function ectoplasmGenerator(num) {
 	ectoplasm = ectoplasm + num;
-	document.getElementById('ectoplasm').innerHTML = "You have " + ectoplasm + " ectoplasm";
-	$('#ecto_gen').html('ectoplasm/s: ' + num);
+	document.getElementById('ectoplasm').innerHTML = "You have " + player.money + " gold";
+	$('#ecto_gen').html('gold/s: ' + num);
 }
 
 //generatres blood overtime, passing in batteries in use
 function bloodGenerator(num) {
-	if (num * 2 <= ectoplasm) {
-	blood = blood + num*2;
-	ectoplasm = ectoplasm - num*2;
-	$('#blood').html("You have " + blood + " blood");
-	$('#blood_gen').html('blood/s: ' + num*2);
+	if (num * 2 <= player.money) {
+	player.gunk = player.gunk + num*2;
+	player.money = player.money - num*2;
+	$('#blood').html("You have " + player.gunk + " gunk");
+	$('#blood_gen').html('gunk/s: ' + num*2);
 	}
 }
 
@@ -188,52 +183,19 @@ function magicDoor() {
 	}
 }
 
-// function smokeAnimate() {
-// 	if (smoke == true) {
-// 		$('#house1').show();
-// 		$('#house2').hide();
-// 		$('#factory').show();
-// 		$('#factory2').hide();
-// 		smoke = false;
-// 	}
-// 	else {
-// 		$('#house2').show();
-// 		$('#house1').hide();
-// 		$('#factory').hide();
-// 		$('#factory2').show();
-// 		smoke = true;
-// 	}
-// }
-
-// function blinkAnimate() {	
-// 	if (blink == false) {
-// 		$('#shop_keeper_blink').show();
-// 		$('#shop_keeper').hide();
-// 		blink = true;
-// 	}
-// 	else {
-// 		$('#shop_keeper_blink').hide();
-// 		$('#shop_keeper').show();
-// 		count = 0;
-// 		blink = false;
-// 	}
-// }
-
 //main game loop, adds resources and hp
 function mainLoop() {
-	ectoplasmGenerator(seedsPlanted);
+	ectoplasmGenerator(player.gears);
 	if (player.health < player.maxHealth) {
 		healthRegen();
 		updateHealthBar();
 	}
 	fixHP();
 	if (batteryOn == true) {
-		bloodGenerator(batteriesUsed);
+		bloodGenerator(player.batteries);
 	}
 	setTimeout(mainLoop, 1000);
 }
-
-var testloop;
 
 //quest loop, called if level is active
 var questLoop = function(monster) {
@@ -241,9 +203,9 @@ var questLoop = function(monster) {
 		dropBearFall();
 	}
 	if (timeFrozen == false) {
-		moveInLevel(monster);
-		
+		moveInLevel(monster);		
 	}
+	
 	if (timeFrozen) {
 		frozeTimer--;
 		$('#error').html('Time Frozen: ' + frozeTimer);
