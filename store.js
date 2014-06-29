@@ -120,7 +120,7 @@ function itemEquip(item) {
 			break;
 		case 'staff':
 			if (!inventoryObject.staff)
-				swordEnchantVal = swordEnchantVal + 0.05;
+				player.swordEnchantVal = player.swordEnchantVal + 0.05;
 				inventoryObject.staff = true;
 			break;
 		case 'lifeGem':
@@ -131,7 +131,7 @@ function itemEquip(item) {
 			break;
 		case 'hood':
 			if (!inventoryObject.hood) {
-				swordEnchantVal = swordEnchantVal + 0.1;
+				player.swordEnchantVal = player.swordEnchantVal + 0.1;
 				inventoryObject.hood = true;
 			}
 			break;
@@ -149,14 +149,14 @@ function itemEquip(item) {
 			break;
 		case 'trollHair':
 			if (!inventoryObject.trollHair) {
-				armorEnchantVal = armorEnchantVal + 0.1;
+				player.armorEnchantVal = player.armorEnchantVal + 0.1;
 				inventoryObject.trollHair = true;
 			}
 			break;
 		case 'skullStaff':
 			if (!inventoryObject.skullStaff) {
-				swordEnchantVal = swordEnchantVal + 0.05;
-				armorEnchantVal = armorEnchantVal + 0.05;
+				player.swordEnchantVal = player.swordEnchantVal + 0.05;
+				player.armorEnchantVal = player.armorEnchantVal + 0.05;
 				player.regenVal = player.regenVal + 2.5;
 				inventoryObject.skullStaff = true;
 			}
@@ -180,7 +180,7 @@ function itemEquip(item) {
 			break;
 		case 'riotShield':
 			if (!inventoryObject.riotShield) {
-			armorEnchantVal = armorEnchantVal + 0.25;
+			player.armorEnchantVal = player.armorEnchantVal + 0.25;
 			inventoryObject.riotShield = true;
 			}
 			break;
@@ -291,6 +291,10 @@ var player = {
 	armorEnchant: this.reduction * this.armorEnchantVal,
 	swordEnchant: this.damage * this.swordEnchantVal,
 	power: 1,
+	gears: 0,
+	batteries: 0,
+	money: 0,
+	gunk: 0,
 	swordEnchantVal: 0,
 	armorEnchantVal: 0,
 	swordEnchantCost: 1000,
@@ -377,8 +381,6 @@ function useTeleportPotion() {
 	else {
 		potionUsed = true;	
 		potionCD = 15;
-		console.log(potionUsed);
-		console.log('hello');
 		level[i - 1] = '_';
 		i = 0;
 		level[0] = 'Y';		
@@ -470,11 +472,11 @@ function playerInfoUpdate() {
 //buys item if you have enough money else error
 function itemBuy(item) {
 	var itemBought = false;
-	if (ectoplasm < itemPrice) {
+	if (player.money < itemPrice) {
 		storeStatus('Hey! you need more money than that punk');
 	}
 	else {
-		ectoplasm = ectoplasm - itemPrice;
+		player.money = player.money - itemPrice;
 		itemBought = true;
 		//removes the item from store if it has a secondary value
 	}
