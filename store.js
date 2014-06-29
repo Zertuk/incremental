@@ -291,7 +291,7 @@ var player = {
 	armorEnchant: this.reduction * this.armorEnchantVal,
 	swordEnchant: this.damage * this.swordEnchantVal,
 	power: 1,
-	gears: 0,
+	gears: 1,
 	batteries: 0,
 	money: 0,
 	gunk: 0,
