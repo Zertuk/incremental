@@ -74,7 +74,7 @@ function moveInLevel(monstertest) {
 		levelActive = false;
 		monstertest.levelFinished = true;
 		$('#' + monstertest.levelUnlock).show();
-		ectoplasm = ectoplasm + gainedLoot;
+		player.money = player.money + gainedLoot;
 		$('#error').html('Level complete, you may leave and keep anything you found');
 	}
 	//calls battle function if next space is monster
@@ -88,11 +88,11 @@ function moveInLevel(monstertest) {
 }
 
 function roundDamage(monster) {
-	if ((monster.damage - player.reduction) < 0) {
+	armorEnchantRed();
+	if ((monster.damage - player.reduction - armorRed) < 0) {
 		player.health = player.health + player.swordHP;
 	}
 	else {
-		armorEnchantRed();
 		player.health = player.health - (monster.damage - player.reduction - armorRed) + player.swordHP;
 	}
 }
