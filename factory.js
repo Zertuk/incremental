@@ -20,16 +20,15 @@ function factoryFunction(value) {
 }
 
 function createFlesh() {
-	if ((ectoplasm > 0 ) && (blood > 0)) {
-		if (ectoplasm > blood) {
-			flesh = blood;
+	if ((player.money > 0 ) && (player.gunk > 0)) {
+		if (player.money > player.gunk) {
+			flesh = player.gunk;
 		}
 		else {
-			flesh = ectoplasm;
+			flesh = player.money;
 		}
-			ectoplasm = ectoplasm - flesh;
-			blood = blood - flesh;
-			console.log(flesh);
+			player.money = player.money - flesh;
+			player.gunk = player.gunk - flesh;
 			player.maxHealth = player.maxHealth + Math.round(flesh / player.num);
 			flesh = 0;
 			player.num = player.num + 0.2;
@@ -39,9 +38,9 @@ function createFlesh() {
 //functions associated with the factory, placegears/usebatteries
 function plantSeed() {
 	if (inventoryObject.seed > 0) {
-		seedsPlanted++;
+		player.gears++;
 		inventoryObject.seed--;
-		$('#seeds_planted').html("Gears Placed: " + seedsPlanted);
+		$('#seeds_planted').html("Gears Placed: " + player.gears);
 	}
 	else {
 		error.innerHTML = 'you have no gears';
@@ -50,9 +49,9 @@ function plantSeed() {
 
 function plantAll() {
 	if (inventoryObject.seed > 0) {
-		seedsPlanted = seedsPlanted + inventoryObject.seed;
+		player.gears = player.gears + inventoryObject.seed;
 		inventoryObject.seed = 0;
-		$('#seeds_planted').html("Geards Placed: " + seedsPlanted);
+		$('#seeds_planted').html("Geards Placed: " + player.gears);
 	}
 	else {
  		error.innerHTML = 'you have no gears';
@@ -60,7 +59,7 @@ function plantAll() {
 }
 
 function batteryEnable() {
-	if (seedsPlanted > 9) {
+	if (player.gears > 1) {
 		$('#batteryButton').css('display', 'inline');
 		batteryDisplay = true;
 		batteryOn = true;
@@ -70,7 +69,7 @@ function batteryEnable() {
 
 function useBattery() {
 	if (inventoryObject.battery > 0) {
-		batteriesUsed++;
+		player.batteries++;
 		inventoryObject.battery--;
 	}
 	else {
@@ -81,7 +80,7 @@ function useBattery() {
 function turnOffBattery() {
 	if (batteryOn == false) {
 		batteryOn = true;
-		$('#blood_gen').html('blood/s: ' + batteriesUsed*2);
+		$('#blood_gen').html('blood/s: ' + player.batteries*2);
 		$('#turn_off').html('Turn Off Machine');
 	}
 	else {
