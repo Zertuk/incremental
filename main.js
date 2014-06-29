@@ -151,7 +151,7 @@ function ectoplasmClick(num) {
 
 //generates ectoplasm overtime, passing in gears placed
 function ectoplasmGenerator(num) {
-	ectoplasm = ectoplasm + num;
+	player.money = player.money + num;
 	document.getElementById('ectoplasm').innerHTML = "You have " + player.money + " gold";
 	$('#ecto_gen').html('gold/s: ' + num);
 }
@@ -205,7 +205,7 @@ var questLoop = function(monster) {
 	if (timeFrozen == false) {
 		moveInLevel(monster);		
 	}
-	
+
 	if (timeFrozen) {
 		frozeTimer--;
 		$('#error').html('Time Frozen: ' + frozeTimer);
