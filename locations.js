@@ -115,8 +115,8 @@ function cabinRest() {
 
 //rest if you have the money to give full hp, otherwise error
 function campRest() {
-	if (ectoplasm > player.restPrice) {
-		ectoplasm = ectoplasm - player.restPrice;
+	if (player.money > player.restPrice) {
+		player.money = player.money - player.restPrice;
 		player.health = player.maxHealth;
 		$('#location_text').html('You are fully rested');
 		raiseRestPrice();
@@ -148,9 +148,9 @@ function campgroundAfterScenario() {
 //adds the loot to the thieves inventory
 //immediately leaves campground
 function stealItems() {
-	$('#error').html('You take the items and leave, gained 5000 ectoplasm, 100 blood');
-	blood = blood + 100;
-	ectoplasm = ectoplasm + 5000;
+	$('#error').html('You take the items and leave, gained 5000 gold and 500 gunk');
+	player.gunk = player.gunk + 500;
+	player.money = player.money + 5000;
 	$('#camp_scenario').hide();
 	$('#camp_use').show();
 	player.restPrice = 1;
@@ -319,12 +319,12 @@ function wizardEnchant(buttonValue) {
 }
 
 function enoughMoney(cost) {
-	if (cost > ectoplasm) {
+	if (cost > player.money) {
 		$('#error').html('Not enough money!');
 		return false;
 	}
 	else {
-		ectoplasm = ectoplasm - cost;
+		player.money = player.money - cost;
 		return true;
 	}
 }
