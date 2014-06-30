@@ -1,6 +1,72 @@
 var potionUsed = false;
 var potionCD = 0;
 var timeFrozen = false;
+
+
+
+
+
+
+
+
+var stuffToShow = {
+	mapButton: false,
+	post_lich: false,
+	wood_sword: true,
+	iron_sword: false,
+	diamond_sword: false,
+	iron_armor: true,
+	diamond_armor: false,
+	mapListing: true,
+	pool_use: true,
+	den: false,
+	wizard_button: false,
+	camp_scenario: true,
+	camp_use: false,
+	man: false,
+	figure: false,
+	mine: false,
+	depths: false,
+	tower_map: false,
+	upper: false,
+	top: false,
+	monk_button: false,
+	den: false,
+	wizard_button: false,
+	armory: false,
+	throne: false,
+	lich: false,
+	cabin: false,
+	cabin_map: false,
+	sewer: false,
+	prison: false,
+	tunnel: false,
+	danger: false,
+	laboratory: false,
+	hanger: false
+}
+
+function showStuff() {
+for (var key in stuffToShow) {
+	var obj = stuffToShow[key];
+	if (obj) {
+		$('#' + key).show();
+	}
+	else {
+		$('#' + key).hide();
+	}
+}
+}
+
+
+
+
+
+
+
+
+
+
 //object containing weapon types
 var swordObject = {
 	fists : {
@@ -312,7 +378,7 @@ var player = {
 	regenVal: 0.25,
 	freedom: 1,
 	num: 3,
-	sinChoosen: false,
+	sin_Choosen: false,
 	potionCost: 25,
 	manaCost: 25,
 	gearCost: 200,
@@ -322,19 +388,20 @@ var player = {
 	reset: false,
 	freeze: false,
 	berserk: false,
-	shield: false
+	shield: false,
+	figure: false
 }
 
 var enchantDmg = 0;
 var armorRed = 0;
 
 function swordEnchantDmg() {
-	enchantDmg = player.damage * swordEnchantVal;
+	enchantDmg = player.damage * player.swordEnchantVal;
 	return enchantDmg;
 }
 
 function armorEnchantRed() {
-	armorRed = player.reduction * armorEnchantVal;
+	armorRed = player.reduction * player.armorEnchantVal;
 	return armorRed;
 }
 
