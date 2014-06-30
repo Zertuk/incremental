@@ -74,6 +74,10 @@ function moveInLevel(monstertest) {
 		levelActive = false;
 		monstertest.levelFinished = true;
 		$('#' + monstertest.levelUnlock).show();
+		monstertest.unlockSave();
+		monstertest.levelFinished = true;
+		var unlock = monstertest.levelUnlock;
+		monstertest.finish = true;
 		player.money = player.money + gainedLoot;
 		$('#error').html('Level complete, you may leave and keep anything you found');
 	}
@@ -115,8 +119,6 @@ function battleTime(monster) {
 
 		level[i - 1] = monster.replace;
 		level[i] = 'Y';
-		
-		monsterDeathSpace = '';
 		i++;
 		monster.monsterInfo();
 		monster.loot();
