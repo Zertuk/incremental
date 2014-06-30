@@ -308,7 +308,7 @@ function wizardEnchant(buttonValue) {
 			break;
 
 		case 'armor': 
-			if (enoughMoney(player.swordEnchantCost)) {
+			if (enoughMoney(player.armorEnchantCost)) {
 				player.armorEnchantVal = player.armorEnchantVal + 0.1;
 				player.armorEnchantCost = player.armorEnchantCost * 3;
 				$('#enchantRed').html('Enchant Armor (' + player.armorEnchantCost + ')');
@@ -316,6 +316,11 @@ function wizardEnchant(buttonValue) {
 			}
 			break;
 	}
+}
+
+function updateWizardButtons() {
+	$('#enchantDmg').html('Enchant Sword (' + player.swordEnchantCost + ')');
+	$('#enchantRed').html('Enchant Armor (' + player.armorEnchantCost + ')');
 }
 
 function enoughMoney(cost) {
