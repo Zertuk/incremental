@@ -1,10 +1,36 @@
-//global variable init
+//global varble init
 var inverse = false;
 var count = 0;
 var batteryOn = true;
 var levelActive = false;
 var flesh = 0;
 var fists, woodSword, ironSword;
+
+
+function loadGame() {
+	if (!localStorage['player_save']) return;
+	var player_data = JSON.parse(atob(localStorage['player_save']));
+	player = player_data;
+	var inventory_data = JSON.parse(atob(localStorage['inventory_save']));
+	inventoryObject = inventory_data;
+	var show_data = JSON.parse(atob(localStorage['show_save']));
+	stuffToShow = show_data;
+	showStuff();
+	updateWizardButtons();
+	if (player.postLich) {
+		Main.special = '#future_special';
+		Map.special = '#future_map';
+		$('#post_lich').show();
+		Wizard.text = 'Wow I havent seen you in awhile!';
+		Main.text = 'what happened..?'
+	}
+}
+function saveGame() {
+	localStorage['player_save'] = btoa(JSON.stringify(player));
+	localStorage['inventory_save'] = btoa(JSON.stringify(inventoryObject));
+	localStorage['show_save'] = btoa(JSON.stringify(stuffToShow));
+}
+
 
 function updateHealthBar() {
 	$('#hp').html(player.health.toFixed(2) + '/' + player.maxHealth);
@@ -17,7 +43,9 @@ function healthRegen() {
 
 //loads dom elements & event listeners
 window.onload = function() {
+	loadGame();
 	mainLoop();
+	saveLoop();
 	locationSwitch(Wizard);
 	$('#ascii_text').html(cavern.ascii);
 
@@ -95,6 +123,7 @@ window.onload = function() {
 
 	$('.enchantButton').click(function() {
 		var buttonValue = $(this).attr('value');
+		console.log(buttonValue);
 		wizardEnchant(buttonValue);
 	})
 
@@ -195,6 +224,11 @@ function mainLoop() {
 		bloodGenerator(player.batteries);
 	}
 	setTimeout(mainLoop, 1000);
+}
+
+function saveLoop() {
+	saveGame();
+	setTimeout(saveLoop, 10000);
 }
 
 //quest loop, called if level is active
