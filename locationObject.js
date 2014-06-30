@@ -41,22 +41,22 @@ $('.location_button, pre').click(function() {
 		error.innerHTML = '';
 	});
 }
-var animateRecurse;
-function animateAscii(location) {
-	if (location != undefined){
-	animateRecurse = location;
-	$('#location_ascii2').html(location.ascii2);
-	}
-	if (animateRecurse.animate = true) {
-	$('#location_ascii').toggle();
-	$('#location_ascii2').toggle();
+// var animateRecurse;
+// function animateAscii(location) {
+// 	if (location != undefined){
+// 	animateRecurse = location;
+// 	$('#location_ascii2').html(location.ascii2);
+// 	}
+// 	if (animateRecurse.animate = true) {
+// 	$('#location_ascii').toggle();
+// 	$('#location_ascii2').toggle();
 	
-	setTimeout(animateAscii, animateRecurse.animateInterval);
-	}
-	else {
-		return;
-	}
-}
+// 	setTimeout(animateAscii, animateRecurse.animateInterval);
+// 	}
+// 	else {
+// 		return;
+// 	}
+// }
 
 var Store = new locationInfo();
 Store.animate = true;
@@ -1104,6 +1104,10 @@ _____    /____   \\   /_____________________\\   /   ____\\    ____\n\
  /   _    -        _|  \\__   - - - -   __/  |_        -    _   \\\n\
 /                                                               \n\ ';
 
+var Credits = new locationInfo();
+Credits.special = "#credits_special";
+Credits.ascii = '';
+
 
 var locationObject = {
 	Church: Church,
@@ -1137,5 +1141,6 @@ var locationObject = {
   Dock: Dock,
   Rocket: Rocket,
   SpaceStation: SpaceStation,
-  Lich: Lich
+  Lich: Lich,
+  Credits: Credits
 }
