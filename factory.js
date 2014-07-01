@@ -27,11 +27,29 @@ function createFlesh() {
 		else {
 			flesh = player.money;
 		}
+		if (flesh > 5000) {
+			player.num = 7.5
+		}
+		if (flesh > 10000) {
+			player.num = 10;
+		}
+		if (flesh > 50000) {
+			player.num = 20;
+		}
+		if (flesh > 100000) {
+			player.num = 30;
+		}
+		if (flesh > 200000) {
+			player.num = 50; 
+		}
 			player.money = player.money - flesh;
 			player.gunk = player.gunk - flesh;
 			player.maxHealth = player.maxHealth + Math.round(flesh / player.num);
 			flesh = 0;
-			player.num = player.num + 0.2;
+			player.num = 5;
+		if (player.maxHealth > player.maximum) {
+			player.maxHealth = player.maximum;
+		}
 	}
 }
 
