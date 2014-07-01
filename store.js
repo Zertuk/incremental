@@ -224,7 +224,7 @@ function itemEquip(item) {
 			}
 		case 'stickySlime':
 			if (!inventoryObject.stickySlime) {
-				Monster.freedom = Monster.freedom + 0.3;
+				player.extraMoneyGen = 3;
 				inventoryObject.stickySlime = true;
 			}
 			break;
@@ -232,6 +232,7 @@ function itemEquip(item) {
 			if (!inventoryObject.pizza) {
 				player.maxHealth = player.maxHealth + 420;
 				inventoryObject.pizza = true;
+				player.maximum = 110000;
 			}
 			break;
 		case 'robe':
@@ -374,7 +375,7 @@ var player = {
 	bigFish: false,
 	regenVal: 0.25,
 	freedom: 1,
-	num: 3,
+	num: 5,
 	sin_Choosen: false,
 	potionCost: 25,
 	manaCost: 25,
@@ -386,7 +387,11 @@ var player = {
 	freeze: false,
 	berserk: false,
 	shield: false,
-	figure: false
+	figure: false,
+	extraMoneyGen: 1,
+	player.maximum: 100000
+
+
 }
 
 var enchantDmg = 0;
@@ -658,7 +663,7 @@ function storeItems(item) {
 			var itemBought = itemBuy(item);
 			if (itemBought == true) {
 				inventoryObject.seed++;
-				player.gearCost = player.gearCost + Math.floor(player.gearCost/5);
+				player.gearCost = player.gearCost + Math.floor(player.gearCost/7);
 				storeStatus('Gear huh? Might want to checkout the factory.');
 			}
 			break;
