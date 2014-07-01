@@ -38,5 +38,6 @@ function chooseSin(choice) {
 				break;
 		}
 		player.sinChoosen = true;
+		$('#choiceWrap').hide();
 	}
 }
