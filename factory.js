@@ -1,5 +1,4 @@
 var batteryDisplay = true;
-
 //master factory function for the event listener, pretty trashy atm
 function factoryFunction(value) {
 	if (value == 'place_one') {
@@ -80,7 +79,7 @@ function batteryEnable() {
 	if (player.gears > 1) {
 		$('#batteryButton').css('display', 'inline');
 		batteryDisplay = true;
-		batteryOn = true;
+		batteryOn = true;;
 	}
 }
 
