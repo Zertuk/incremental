@@ -43,7 +43,9 @@ var stuffToShow = {
 	tunnel: false,
 	danger: false,
 	laboratory: false,
-	hanger: false
+	hanger: false,
+	rest_perm: false,
+	cave: false
 }
 
 function showStuff() {
@@ -61,17 +63,11 @@ for (var key in stuffToShow) {
 
 
 
-
-
-
-
-
-
 //object containing weapon types
 var swordObject = {
 	fists : {
 		name: 'Fists',
-		damage: 1000
+		damage: 1
 	},
 
 	woodSword : {
@@ -356,6 +352,7 @@ var player = {
 	reduction: inventoryObject.armor.reduction,
 	armorEnchant: this.reduction * this.armorEnchantVal,
 	swordEnchant: this.damage * this.swordEnchantVal,
+	camp: false,
 	power: 1,
 	gears: 1,
 	batteries: 0,
@@ -373,7 +370,7 @@ var player = {
 	demonVisit: false,
 	swordHP: 0,
 	health: 100.00,
-	maxHealth: 10000,
+	maxHealth: 100,
 	bigFish: false,
 	regenVal: 0.25,
 	freedom: 1,
@@ -427,7 +424,7 @@ function useHealthPotion() {
 			$('#error').html('You already have full health dont be silly');
 		}
 		else {		
-			player.health = player.health + player.maxHealth*0.35;
+			player.health = player.health + player.maxHealth*0.2;
 			potionUsed = true;
 			potionCD = 15;
 			inventoryObject.healthPotion--;
@@ -577,6 +574,7 @@ function storeItems(item) {
 				inventoryObject.diamondSword = true;
 				equipSword();
 				$('#diamond_sword').hide();
+				stuffToShow.diamond_sword = false;
 				storeStatus('Not made out of blood diamonds but will cause blood~');
 			}
 			break;
@@ -587,8 +585,10 @@ function storeItems(item) {
 				inventoryObject.woodSword = true;
 				equipSword();
 				$('#iron_sword').show();
+				stuffToShow.iron_sword = true;
 				storeStatus('This thing wont do much but its better than fists');
 				$('#wood_sword').hide();
+				stuffToShow.wood_sword = false;
 			}
 			break;
 		case "ironSword":
@@ -600,6 +600,8 @@ function storeItems(item) {
 				storeStatus('Now this will show them');
 				$('#iron_sword').hide();
 				$('#diamond_sword').show();
+				stuffToShow.iron_sword = false;
+				stuffToShow.diamond_sword = true;
 			}
 			break;
 		case "ironArmor":
@@ -610,7 +612,9 @@ function storeItems(item) {
 				equipArmor();
 				storeStatus('Better than nothing I guess');
 				$('#iron_armor').hide();
+				stuffToShow.iron_armor = false;
 				$('#diamond_armor').show();
+				stuffToShow.diamond_armor = true;
 			}
 			break;
 		case 'diamondArmor':
@@ -621,6 +625,7 @@ function storeItems(item) {
 				equipArmor();
 				storeStatus('This took 9 diamonds to make, dont ruin it!');
 				$('#diamond_armor').hide();
+				stuffToShow.diamond_armor = false;
 			}
 			break;
 		case "healthPotion":
@@ -663,7 +668,9 @@ function storeItems(item) {
 			if (itemBought == true) {
 				inventoryObject.map = true;
 				$('#mapButton').show();
+				stuffToShow.mapButton = true;
 				$('#mapListing').hide();
+				stuffToShow.mapListing = false;
 				storeStatus('Hey! Dont open that map in my store!');
 			}
 			break;
