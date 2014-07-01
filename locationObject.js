@@ -1108,6 +1108,31 @@ var Credits = new locationInfo();
 Credits.special = "#credits_special";
 Credits.ascii = '';
 
+var End = new locationInfo();
+End.ascii = '\n\
+                                                   _____        .\n\
+                .                               .-\'.  \':\'-.    .\n\
+     *   .                  .                 .\'\'::: .:    \'.      .\n\
+  .         .                     .          /   :::::\'      \\        .\n\
+                                    .       ;.    \':\' `       ;     +     .\n\
+         .              .   *               |       \'..       |           .\n\
+                .                           ; \'      ::::.    ;\n\
+                 .                           \\       \'::::   /             ,    ,\n\
+ .                       O                    \'.      :::  .\'   .\n\
+      .          ,      /                       \'-.___\'_.-\'          +\n\
+   .          .     .  /              .                   .            .\n\
+     .          ,,,  ,o          ,             .                .\n\
+              #*#,  #/#,,  .                              .        .\n\
+            ##*#,  #/##,#               .                        .\n\
+   .       ##*#,  #O##,#*#                +     .                     ,\n\
+        .    #,  #/##,#*##              .                     .\n\
+      .     \\   #%##,#*##         .                             ,       .\n\
+____^/\\___^--_O__/\\_____-^^-^--_______/\\/\\---/\\___________---______________\n\
+   /\\^   ^  ^    ^       ^/\\        ^^ ^  \'\\ ^          ^       ---\n\
+         --       __ _-            --  -      -         ---  __       ^\n\
+   --  __                      ___--  ^  ^           ^^ ^   ^-__   --  __\n\ ';
+End.text = 'The Lichs space station crashes into the Moon after the chaos following the battle.  You survive thanks to the Lichs curse still being active.  The Lich is dead, the curse wont last forever.  All there is left to do is wait.';
+
 
 var locationObject = {
 	Church: Church,
@@ -1142,5 +1167,6 @@ var locationObject = {
   Rocket: Rocket,
   SpaceStation: SpaceStation,
   Lich: Lich,
-  Credits: Credits
+  Credits: Credits,
+  End: End
 }
