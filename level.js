@@ -5,11 +5,6 @@ var currentLevelInfo;
 var i = 0;
 var bearCave = false;
 
-
-function testing() {
-	$('#quest_ascii').css('color', 'red');
-	$('.level').css('color', 'purple');
-}
 //makes the level, takes in the level length to determine length and the monster
 //to determine what monster to fill with, randomly spawns monsters throughout the level array
 //also takes in the number of monsters to spawn
@@ -36,6 +31,9 @@ function makeLevel(levelInp, monster, monsterCount, specialMonster, specialCount
 	}
 };
 
+function addMoney() {
+	player.money = player.money + gainedLoot;
+}
 
 //function for the player to move, moves player and monster forward if '_'
 //otherwise battles the enemy
@@ -71,6 +69,8 @@ function moveInLevel(monstertest) {
 	}
 	//level success, adds loot
 	if (i == level.length && levelActive) {
+		addMoney();
+		console.log('sycces');
 		levelActive = false;
 		monstertest.levelFinished = true;
 		$('#' + monstertest.levelUnlock).show();
@@ -78,7 +78,6 @@ function moveInLevel(monstertest) {
 		monstertest.levelFinished = true;
 		var unlock = monstertest.levelUnlock;
 		monstertest.finish = true;
-		player.money = player.money + gainedLoot;
 		$('#error').html('Level complete, you may leave and keep anything you found');
 	}
 	//calls battle function if next space is monster
@@ -109,10 +108,11 @@ function battleTime(monster) {
 	$('#player_stats').html('Player Dmg: ' + player.damage);
 	monster.monsterInfo();
 	roundDamage(monster);
-	monster.health = monster.health - player.damage - enchantDmg;
+	monster.health = monster.health - Math.floor(player.damage + enchantDmg);
 	i--;
 	if (player.health <= 0) {
 		levelActive = false;
+		monster.health = monster.maxHealth;
 		$('#error').html('The ' + monster.name + ' killed you rip ;-;');
 	}
 	else if (monster.health <= 0) {
