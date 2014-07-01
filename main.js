@@ -95,6 +95,9 @@ window.onload = function() {
 		else if (buttonValue == 'Store') {
 			storePriceUpdate();
 		}
+		else if (buttonValue == 'Cabin') {
+			spaceShipCheck();
+		}
 	});
 
 	$('.monk_button').click(function() {
