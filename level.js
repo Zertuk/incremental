@@ -69,6 +69,10 @@ function moveInLevel(monstertest) {
 	}
 	//level success, adds loot
 	if (i == level.length && levelActive) {
+		if (monstertest.text == hanger.text) {
+			$('#error').html('You find the space ship top and bottom pieces');
+
+		}
 		addMoney();
 		console.log('sycces');
 		levelActive = false;
@@ -89,6 +93,22 @@ function moveInLevel(monstertest) {
 	}
 	$('.level').html(level);
 }
+var beastCount = 0;
+function beastCleave() {
+	beastCount++;
+	if (beastCount > 15) {
+		$('#error').html('The beast is powering a powerful attack! Get ready!');
+		$('#level_text').html('The beast is powering a powerful attack! Get ready!');
+	}
+	if (beastCount > 19) {
+		$('#error').html('');
+		$('#location_text').html('');
+		beastCount = 0;
+		if (level[danger.levelLength - 1] == 'Y') {
+			player.health = player.health - 5000;
+		}
+	}
+}
 
 function roundDamage(monster) {
 	armorEnchantRed();
@@ -106,10 +126,13 @@ function roundDamage(monster) {
 function battleTime(monster) {
 	armorEnchantRed();
 	swordEnchantDmg();
-	$('#player_stats').html('Player Dmg: ' + Math.round(player.damage + enchantDmg) + ' | Armor: ' + Math.round(player.reduction + armorRed));
+	$('#player_stats').html('Player Dmg: ' + Math.round(player.power * (player.damage + enchantDmg)) + ' | Armor: ' + Math.round(player.reduction + armorRed));
 	monster.monsterInfo();
 	roundDamage(monster);
-	monster.health = monster.health - Math.floor(player.damage + enchantDmg);
+	if (monster.name = 'Beast') {
+		beastCleave();
+	}
+	monster.health = monster.health - Math.floor((player.damage + enchantDmg)*player.power);
 	i--;
 	if (player.health <= 0) {
 		levelActive = false;
