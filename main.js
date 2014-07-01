@@ -1,7 +1,7 @@
 //global varble init
 var inverse = false;
 var count = 0;
-var batteryOn = true;
+var batteryOn = false;
 var levelActive = false;
 var flesh = 0;
 var fists, woodSword, ironSword;
@@ -17,6 +17,11 @@ function loadGame() {
 	stuffToShow = show_data;
 	showStuff();
 	updateWizardButtons();
+	$('#blood').html('You have ' + player.gunk + ' gunk');
+	$('#hp').html(player.health + '/' + player.maxHealth);
+	if (player.camp) {
+		campgroundAfterScenario();
+	}
 	if (player.postLich) {
 		Main.special = '#future_special';
 		Map.special = '#future_map';
@@ -46,7 +51,7 @@ window.onload = function() {
 	loadGame();
 	mainLoop();
 	saveLoop();
-	locationSwitch(Wizard);
+	locationSwitch(Main);
 	$('#ascii_text').html(cavern.ascii);
 
 	var reflectingPool = document.getElementById('reflectingPool');
@@ -180,7 +185,7 @@ function ectoplasmClick(num) {
 
 //generates ectoplasm overtime, passing in gears placed
 function ectoplasmGenerator(num) {
-	player.money = player.money + num;
+	player.money = player.money + num*player.extraMoneyGen;
 	document.getElementById('ectoplasm').innerHTML = "You have " + player.money + " gold";
 	$('#ecto_gen').html('gold/s: ' + num);
 }
@@ -281,7 +286,7 @@ var questLoop = function(monster) {
 
 	setTimeout(function() {
 		questLoop(monster);
-	}, 50);
+	}, 500);
 }
 
 //not current being called
