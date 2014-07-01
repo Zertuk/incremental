@@ -18,7 +18,7 @@ function makeLevel(levelInp, monster, monsterCount, specialMonster, specialCount
 			level[40] = monster;
 		}
 		if (monster == 'o') {
-			level[45] = monster;
+			level[44] = monster;
 		}
 	}
 	for (var j = 0; j < monsterCount; j++) {
@@ -39,6 +39,10 @@ function addMoney() {
 //otherwise battles the enemy
 //stops when player reaches end and gives them their loot 
 function moveInLevel(monstertest) {
+	if (monstertest.monster.name == 'Lich') {
+		lichBattle();
+		console.log('okk')
+	}
 	var player = 'Y';
 	if (level[i] == '_'); {
 		level[i] = 'Y';
@@ -93,6 +97,8 @@ function moveInLevel(monstertest) {
 	}
 	$('.level').html(level);
 }
+
+
 var beastCount = 0;
 function beastCleave() {
 	beastCount++;
@@ -108,6 +114,47 @@ function beastCleave() {
 			player.health = player.health - 5000;
 		}
 	}
+}
+var lichCount = 0;
+function lichBattle() {
+	lichCount++;
+	if (lichCount > 52) {
+		lichCount = 0;
+		$('#error').html('');
+		$('#level_text').html('');
+		lich.damage = 500;
+	}
+	else if (lichCount > 46) {
+		$('#error').html('The Lich must recover his power, his damage is weakened');
+		$('#level_text').html('The lich must recover his power, his damage is weakened');
+	}
+	else if (lichCount == 46) {
+		$('#error').html('The Lich must recover his power, his damage is weakened');
+		$('#level_text').html('The lich must recover his power, his damage is weakened');
+		if (!shieldUsed) {
+			player.health = player.health - 50000;
+		}
+		lich.damage = 10;
+	}
+	else if (lichCount > 42) {
+		$('#error').html('The Lich is using a powerful wide range attack! Get ready!');
+		$('#level_text').html('The Lich is using a powerful wide range attack! Get ready!');
+	}
+	else if (lichCount > 24)  {
+		$('#error').html('');
+		$('#level_text').html('');
+	}
+	else if (lichCount == 24) {
+		$('#error').html('');
+		$('#level_text').html('');
+		if (level[finish.levelLength - 2] == 'Y') {
+			player.health = player.health - 50000;
+		}
+	}
+	else if (lichCount > 20) {
+		$('#error').html('The Lich is powering a powerful close ranged attack! Get ready!');
+		$('#level_text').html('The Lich is powering a powerful close ranged attack! Get ready!');
+	}	
 }
 
 function roundDamage(monster) {
@@ -129,7 +176,7 @@ function battleTime(monster) {
 	$('#player_stats').html('Player Dmg: ' + Math.round(player.power * (player.damage + enchantDmg)) + ' | Armor: ' + Math.round(player.reduction + armorRed));
 	monster.monsterInfo();
 	roundDamage(monster);
-	if (monster.name = 'Beast') {
+	if (monster.name == 'Beast') {
 		beastCleave();
 	}
 	monster.health = monster.health - Math.floor((player.damage + enchantDmg)*player.power);
@@ -166,6 +213,8 @@ function leaveQuest() {
 	i = 0;
 	gainedLoot = 0;
 	bearCave = false;
+	beastCount = 0;
+	lichCount = 0;
 	$('#monster_stats').html('---');
 	$('#monster_message').html('---');
 	$('#loot').html('---');
