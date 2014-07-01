@@ -476,6 +476,7 @@ hanger.text = 'Finally! The rockets!';
 hanger.levelLength = 45;
 hanger.monster = rocketScientist;
 hanger.specialMonster = astronaut;
+hanger.specialMonsterNum = 4;
 hanger.more = false;
 hanger.ascii = '\n\
 ------|--------|------|--------|------|--------|------\n\
