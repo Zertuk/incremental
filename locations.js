@@ -12,6 +12,7 @@ function telescope(direction) {
 		case 'right':
 			$('#location_ascii').html(Skyscraper.ascii2);
 			$('#location_text').html('Looks like there is a cabin in the woods over there, should probably check that out');
+			stuffToShow.forest_map = true;
 			$('#forest_map').show();
 			break;
 		case 'telescope':
@@ -25,17 +26,15 @@ function telescope(direction) {
 
 function showLab() {
 	$('#lab_map').show();
+	stuffToShow.lab_map = true;
 }
 
 function spaceShipCheck() {
-	if (inventoryObject.shipBase) {
-		$('#phase1').hide();
-		$('#phase2').show();
-	}
-	else if (inventoryObject.shipTop && inventoryObject.shipBase && inventoryObject.shipFuel) {
-		$('#phase2').hide();
+	if (player.parts) {
 		$('#phase3').show();
 		$('#rocket_launch').show();
+		stuffToShow.phase3 = true;
+		stuffToShow.rocket_launch = true;
 	}
 }
 
@@ -103,6 +102,7 @@ function raiseRestPrice() {
 		player.restPrice = 0;
 	}
 	$('#rest').html('Rest(' + player.restPrice + ')');
+	$('#rest_perm').html('Rest(' + player.restPrice + ')');
 }
 
 
@@ -115,6 +115,10 @@ function cabinRest() {
 
 //rest if you have the money to give full hp, otherwise error
 function campRest() {
+	if (levelActive) {
+		$('#error').html('hey you cant rest in battle!');
+		return;
+	}
 	if (player.money > player.restPrice) {
 		player.money = player.money - player.restPrice;
 		player.health = player.maxHealth;
@@ -131,6 +135,9 @@ function campRest() {
 //just displays the relevant text/buttons depending on how scenario played out
 function campgroundAfterScenario() {
 	Camp.text = 'The fire is roaring';
+	$('#rest_perm').show();
+	$('#rest_perm').html('Rest (' + player.restPrice + ')');
+	stuffToShow.rest_perm = true;
 	if (player.confess) {
 		$('#man_text').html('Hey jerk want to rest? <br> Special Price..');		
 	}
@@ -148,7 +155,6 @@ function campgroundAfterScenario() {
 //adds the loot to the thieves inventory
 //immediately leaves campground
 function stealItems() {
-	$('#error').html('You take the items and leave, gained 5000 gold and 500 gunk');
 	player.gunk = player.gunk + 500;
 	player.money = player.money + 5000;
 	$('#camp_scenario').hide();
@@ -156,6 +162,8 @@ function stealItems() {
 	player.restPrice = 1;
 	player.thief = true;
 	locationSwitch(Map);
+	$('#error').html('You take the items and leave, gained 5000 gold and 500 gunk');
+	player.camp = true;
 	campgroundAfterScenario();
 }
 
@@ -183,7 +191,9 @@ function campgroundWait() {
 		$('#man').show();
 		$('#man_text').show();
 		$('#camp_use').show();
+		player.camp = true;
 		player.restPrice = 0;
+		campgroundAfterScenario();
 	}
 	}, 5000);
 	
@@ -195,6 +205,8 @@ function labScenario(buttonValue) {
 	if (buttonValue == 'grab') {
 		$('#location_text').html('Oh okay heres a fresh batch for you');
 		inventoryObject.shipFuel = true;
+		player.parts = true;
+		('#laboratory').hide();
 	}
 	else if (buttonValue == 'pass') {
 		$('#location_text').html('But this is a dead end?..');
@@ -202,7 +214,9 @@ function labScenario(buttonValue) {
 	else {
 		$('#location_text').html('You kill the Chemist in one hit, she was defenseless, you grab the rocket fuel off her corpse');
 		inventoryObject.shipFuel = true;
+		player.parts = true;
 		$('#location_ascii').html(Laboratory.ascii2);
+		$('#laboratory').hide();
 	}
 }
 
@@ -361,7 +375,8 @@ function wizardQuestion() {
 
 function monkCheck() {
 	if (player.monkVisit) {
-		$('#location_text').html('The monk is no longer here').
+		$('#location_text').html('The monk is no longer here');
+		$('#greet_monk').hide();
 		$('#location_ascii').html('');
 	}
 	else if (player.sinChoosen) {
@@ -372,6 +387,8 @@ function monkCheck() {
 		$('#location_text').html('Thank you for rescuing me, I can teach you the practice of meditation');
 		$('#learn_monk').show();
 	}
+	stuffToShow.cave = true;
+	$('#cave').show();
 }
 
 function monkAction(buttonValue) {
