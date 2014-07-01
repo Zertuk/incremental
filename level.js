@@ -142,6 +142,10 @@ function leaveQuest() {
 	i = 0;
 	gainedLoot = 0;
 	bearCave = false;
+	$('#monster_stats').html('---');
+	$('#monster_message').html('---');
+	$('#loot').html('---');
+	$('#special_loot').html('---');
 }
 
 //gets quest select from the value of the option selected
