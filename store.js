@@ -45,7 +45,13 @@ var stuffToShow = {
 	laboratory: false,
 	hanger: false,
 	rest_perm: false,
-	cave: false
+	cave: false,
+	castle: false,
+	wizard_home: false,
+	forest_map: false,
+	lab_map: false,
+	phase3: false,
+	rocket_launch: false,
 }
 
 function showStuff() {
@@ -389,9 +395,8 @@ var player = {
 	shield: false,
 	figure: false,
 	extraMoneyGen: 1,
-	player.maximum: 100000
-
-
+	maximum: 100000,
+	parts: false
 }
 
 var enchantDmg = 0;
@@ -479,10 +484,11 @@ function useShield() {
 		$('#error').html('Spells are on Cooldown!');
 	}
 	else {
+		potionUsed = true;
 		shieldUsed = true;
 		oldReduction = player.reduction;
-		player.reduction = 1000000;
-		shieldTimer = 4;
+		player.reduction = 100000000;
+		shieldTimer = 3;
 		potionCD = 20;
 	}
 }
