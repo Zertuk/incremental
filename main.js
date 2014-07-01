@@ -236,7 +236,7 @@ function mainLoop() {
 
 function saveLoop() {
 	saveGame();
-	setTimeout(saveLoop, 10000);
+	setTimeout(saveLoop, 5000);
 }
 
 //quest loop, called if level is active
@@ -247,6 +247,7 @@ var questLoop = function(monster) {
 	if (timeFrozen == false) {
 		moveInLevel(monster);		
 	}
+
 
 	if (timeFrozen) {
 		frozeTimer--;
