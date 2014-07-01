@@ -190,7 +190,11 @@ den.text = 'The heart of the bears den! Whats that house doing here?';
 den.specialMonsterNum = 1;
 den.monsterNum = 2;
 den.levelUnlock = 'wizard_button';
-den.unlockSave = function() { stuffToShow.wizard_button = true };
+den.unlockSave = function() { stuffToShow.wizard_button = true;
+                              stuffToShow.wizard_home = true;
+                              $('#wizard_home').show();
+                              stuffToShow.castle = true;
+                              $('#castle').show(); };
 den.ascii = '\n\
                                  /            \\\n\
                                _/              \\\n\
