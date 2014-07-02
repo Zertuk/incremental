@@ -1108,6 +1108,10 @@ var Credits = new locationInfo();
 Credits.special = "#credits_special";
 Credits.ascii = '';
 
+var About = new locationInfo();
+About.special = "#about_special";
+About.ascii = '';
+
 var End = new locationInfo();
 End.ascii = '\n\
                                                    _____        .\n\
@@ -1131,8 +1135,11 @@ ____^/\\___^--_O__/\\_____-^^-^--_______/\\/\\---/\\___________---______________
    /\\^   ^  ^    ^       ^/\\        ^^ ^  \'\\ ^          ^       ---\n\
          --       __ _-            --  -      -         ---  __       ^\n\
    --  __                      ___--  ^  ^           ^^ ^   ^-__   --  __\n\ ';
-End.text = 'The Lichs space station crashes into the Moon after the chaos following the battle.  You survive thanks to the Lichs curse still being active.  The Lich is dead, the curse wont last forever.  All there is left to do is wait.';
+End.text = 'The Lichs space station crashes into the Moon after the chaos from destroying the Lichs Phylactery.  You survive thanks to the Lichs curse still being active.  The Lich is dead, the curse wont last forever.  All there is left to do is wait.';
 
+var badEnd = new locationInfo();
+badEnd.text = 'You decide to infuse your soul with the Lichs Phylactery to gain infinite power.  However the Lichs curse is still strong within you.  It was a trick!  The curse was a piece of the Lichs soul.  Now what remains of yourself is stuck inside of the Lich.  He will surely regenerate with his Phylactery intact.'
+badEnd.ascii = '';
 
 var locationObject = {
 	Church: Church,
@@ -1168,5 +1175,7 @@ var locationObject = {
   SpaceStation: SpaceStation,
   Lich: Lich,
   Credits: Credits,
-  End: End
+  End: End,
+  About: About,
+  badEnd: badEnd
 }
