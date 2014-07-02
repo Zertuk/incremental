@@ -12,7 +12,7 @@ function Monster() {
 	this.replace = '_',
 	this.monsterMoney = 1,
 	this.loot = function() {
-		var lootDropped = Math.round(15 + Math.random()*30);
+		var lootDropped = 50;
 		gainedLoot = Math.floor(lootDropped*this.monsterMoney*player.freedom + gainedLoot);
 		$('#loot').html('You have gained ' + gainedLoot + ' gold');
 	}
@@ -25,9 +25,7 @@ function Monster() {
 
 	this.specialDrop = function(item, dropChance) {
 		var randomNum = Math.round(Math.random()*100);
-		console.log(randomNum);
 		if (randomNum < this.dropChance) {
-			 console.log('success');
 			 itemEquip(this.specialLoot);
 			 lootmessage = 'You found a(n) ' + this.itemName;
 			 $('#special_loot').html(lootmessage);
@@ -35,7 +33,6 @@ function Monster() {
 	}
 	//**not currently in use**
 	this.monsterMove = function(levelInp) {
-		console.log(this.value);
 		for (var g = 0; g < levelInp; g++) {
 			if (level[g] == this.value && level[g-1] == '_') {
 				level[g-1] = 'G';
@@ -47,11 +44,9 @@ function Monster() {
 	this.monsterHeal = function(val) {
 		if (this.health < 10) {
 			this.health = this.health + val;
-			console.log('success');
 			$('quest_text').html(this.name + ' has healed for ' + val + '!');
 			setTimeout(this.monsterHeal, 10000);
 		}
-		console.log('fail');
 	}
 }
 
@@ -199,7 +194,7 @@ undeadKnight.maxHealth = 50;
 undeadKnight.damage = 50;
 undeadKnight.health = 50;
 undeadKnight.name = 'Undead Knight';
-undeadKnight.monsterMoney = 1.75;
+undeadKnight.monsterMoney = 2;
 undeadKnight.specialLoot = 'knightsArmor';
 undeadKnight.dropChance = 10;
 undeadKnight.itemName = 'Knights Armor';
@@ -211,7 +206,7 @@ warlock.maxHealth = 75;
 warlock.health = 75;
 warlock.damage = 50;
 warlock.name = 'Warlock';
-warlock.monsterMoney = 1.8;
+warlock.monsterMoney = 2;
 warlock.specialLoot = 'skull';
 warlock.dropChance = 10;
 warlock.itemName = 'Skull';
@@ -223,7 +218,7 @@ necromancer.maxHealth = 50;
 necromancer.health = 50;
 necromancer.damage = 10;
 necromancer.name = 'Necromancer';
-necromancer.monsterMoney = 1.5;
+necromancer.monsterMoney = 2.5;
 
 var castleTroll = new Monster();
 castleTroll.message ='A troll! But in a castle!';
@@ -232,7 +227,7 @@ castleTroll.maxHealth = 100;
 castleTroll.health = 100;
 castleTroll.damage = 75;
 castleTroll.name = 'Castle Troll';
-castleTroll.monsterMoney = 2.5;
+castleTroll.monsterMoney = 3.5;
 castleTroll.specialLoot = 'trollHair';
 castleTroll.dropChance = 50;
 castleTroll.itemName = 'Patch of Troll Hair';
@@ -255,7 +250,7 @@ shark.health = 100;
 shark.maxHealth = 100;
 shark.replace = '      ';
 shark.message = 'Ahhh a shark!';
-shark.monsterMoney = 5;
+shark.monsterMoney = 10;
 shark.specialLoot = 'sharkTooth';
 shark.dropChance = 50;
 shark.itemName = 'Shark Tooth Sword!';
@@ -268,7 +263,7 @@ undeadBear.health = 200;
 undeadBear.maxHealth = 200;
 undeadBear.message = 'Under a Lich curse!';
 undeadBear.replace = '__';
-undeadBear.monsterMoney = 6.5;
+undeadBear.monsterMoney = 7.5;
 
 var undeadWolf = new Monster();
 undeadWolf.name = 'Undead Wolf';
@@ -277,7 +272,7 @@ undeadWolf.damage = 75;
 undeadWolf.health = 125;
 undeadWolf.maxHealth = 125;
 undeadWolf.message = 'Slighly less scary than an Undead Bear';
-undeadWolf.monsterMoney = 6;
+undeadWolf.monsterMoney = 7;
 
 var undeadWizard = new Monster();
 undeadWizard.name = 'Undead Wizard';
@@ -287,7 +282,7 @@ undeadWizard.damage = 100;
 undeadWizard.maxHealth = 500;
 undeadWizard.health = 500;
 undeadWizard.message = 'This guy thinks he owns this cabin';
-undeadWizard.monsterMoney = 10;
+undeadWizard.monsterMoney = 20;
 undeadWizard.specialLoot = 'skullStaff';
 undeadWizard.dropChance = 75;
 undeadWizard.itemName = 'Skull Staff';
@@ -300,7 +295,7 @@ turtle.replace = '__';
 turtle.damage = 75;
 turtle.health = 75;
 turtle.maxHealth = 75;
-turtle.monsterMoney = 5;
+turtle.monsterMoney = 6;
 turtle.specialLoot = 'pizza';
 turtle.dropChance = 10;
 turtle.itemName = 'Pizza Slice';
@@ -313,7 +308,7 @@ slime.damage = 75;
 slime.health = 100;
 slime.maxHealth = 100;
 slime.message = 'Pretty nasty..';
-slime.monsterMoney = 5;
+slime.monsterMoney = 7;
 slime.specialLoot = 'stickySlime';
 slime.dropChance = 5;
 slime.itemName = 'Sticky Slime Chunk';
@@ -326,7 +321,7 @@ rat.replace = '__';
 rat.damage = 150;
 rat.health = 50;
 rat.maxHealth = 50;
-rat.monsterMoney = 6;
+rat.monsterMoney = 8;
 rat.specialLoot = 'robe';
 rat.dropChance = 25;
 rat.itemName = 'Used Robe';
@@ -340,7 +335,7 @@ beast.damage = 250;
 beast.health = 1000;
 beast.maxHealth = 1000;
 beast.move = false;
-beast.monsterMoney = 25;
+beast.monsterMoney = 75;
 beast.specialLoot = 'beastClaw';
 beast.dropChance = 100;
 beast.itemName = 'Beast Claw Sword!';
@@ -348,12 +343,12 @@ beast.itemName = 'Beast Claw Sword!';
 var scientist = new Monster();
 scientist.name = 'Undead Scientist';
 scientist.value = 'US';
-scientist.message = 'f';
+scientist.message = 'Just trying to do research ;-;';
 scientist.replace = '__';
 scientist.damage = 200;
 scientist.health = 150;
 scientist.maxHealth = 150;
-scientist.monsterMoney = 8;
+scientist.monsterMoney = 11;
 
 var jailer = new Monster();
 jailer.name = 'Jailer';
@@ -362,7 +357,7 @@ jailer.message = 'A prison guard';
 jailer.damage = 200;
 jailer.health = 250;
 jailer.maxHealth = 250;
-jailer.monsterMoney = 8;
+jailer.monsterMoney = 12;
 jailer.specialLoot = 'riotShield';
 jailer.dropChance = 15;
 jailer.itemName = 'Riot Shield';
@@ -374,7 +369,7 @@ jailOgre.message = 'He is huge!';
 jailOgre.damage = 250;
 jailOgre.health = 250;
 jailOgre.maxHealth = 250;
-jailOgre.monsterMoney = 10;
+jailOgre.monsterMoney = 13;
 jailOgre.specialLoot = 'jailOgreHide';
 jailOgre.itemName = 'Ogre Hide Armor';
 jailOgre.dropChance = 100;
@@ -382,25 +377,25 @@ jailOgre.dropChance = 100;
 var rocketScientist = new Monster();
 rocketScientist.name = 'Rocket Scientist';
 rocketScientist.value = 'RS';
-rocketScientist.message = 'f';
+rocketScientist.message = 'Wields a spiral drill';
 rocketScientist.damage = 250;
 rocketScientist.maxHealth = 250;
 rocketScientist.health = 250;
 rocketScientist.monsterMoney = 12.5;
-rocketScientist.dropChance = 10;
+rocketScientist.dropChance = 15;
 rocketScientist.specialLoot = 'spaceSword';
 rocketScientist.itemName = 'Spiral Drill Sword!!';
 
 var astronaut = new Monster();
 astronaut.name = 'Astronaut';
 astronaut.value = 'A';
-astronaut.message = 'A Lich astronaut, he wont give up easy';
+astronaut.message = 'Wearing a fancy space suit';
 astronaut.damage = 300;
 astronaut.maxHealth = 300;
 astronaut.health = 300;
 astronaut.monsterMoney = 15;
 astronaut.specialLoot = 'astronautSuit';
-astronaut.dropChance = 10;
+astronaut.dropChance = 15;
 astronaut.itemName = 'Astronaut Suit!!';
 
 var lich = new Monster();
@@ -411,7 +406,7 @@ lich.damage = 500;
 lich.maxHealth = 10000;
 lich.health = 10000;
 lich.move = false;
-lich.monsterMoney = 10;
+lich.monsterMoney = 10000;
 
 
 
