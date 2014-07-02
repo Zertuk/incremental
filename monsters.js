@@ -241,7 +241,7 @@ fish.damage = 50;
 fish.maxHealth = 75;
 fish.health = 75;
 fish.message = 'Just a cute little fish :3';
-fish.monsterMoney = 4.5;
+fish.monsterMoney = 7;
 
 var shark = new Monster();
 shark.value = 'c\'^;={';
@@ -251,9 +251,9 @@ shark.health = 100;
 shark.maxHealth = 100;
 shark.replace = '      ';
 shark.message = 'Ahhh a shark!';
-shark.monsterMoney = 10;
+shark.monsterMoney = 15;
 shark.specialLoot = 'sharkTooth';
-shark.dropChance = 50;
+shark.dropChance = 75;
 shark.itemName = 'Shark Tooth Sword!';
 
 var undeadBear = new Monster();
