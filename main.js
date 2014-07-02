@@ -340,9 +340,6 @@ function locationSwitch(location) {
 function ectoplasmClick(num) {
 	player.money = player.money + num;
 	document.getElementById('ectoplasm').innerHTML = "You have " + player.money + " gold";
-	if (player.money > 1000) {
-		$('#click_button').hide();
-	}
 }
 
 //generates ectoplasm overtime, passing in gears placed
@@ -350,6 +347,12 @@ function ectoplasmGenerator(num) {
 	player.money = player.money + num*player.extraMoneyGen;
 	document.getElementById('ectoplasm').innerHTML = "You have " + player.money + " gold";
 	$('#ecto_gen').html('gold/s: ' + num);
+	if (player.money > 1000) {
+		$('#click_button').hide();
+	}
+	else if (player.money < 1000) {
+		$('#click_button').show();
+	}
 }
 
 //generatres blood overtime, passing in batteries in use
