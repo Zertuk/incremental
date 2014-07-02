@@ -60,8 +60,8 @@ var mine = new levelInfo();
 mine.name = 'mine';
 mine.monster = goblinMiner;
 mine.specialMonster = demon;
-mine.specialMonster = 5;
-mine.specialMonster = 'Goblin miners are flooding the halls';
+mine.specialMonsterNum = 0;
+mine.text = 'Goblin miners are flooding the halls';
 mine.levelUnlock = 'depths';
 mine.unlockSave = function() { stuffToShow.depths = true };
 mine.ascii = '____________________________________________________\n\
