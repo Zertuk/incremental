@@ -265,6 +265,8 @@ undeadBear.maxHealth = 200;
 undeadBear.message = 'Under a Lich curse!';
 undeadBear.replace = '__';
 undeadBear.monsterMoney = 7.5;
+undeadBear.specialLoot = 'skull';
+undeadBear.itemName = 'Skull';
 
 var undeadWolf = new Monster();
 undeadWolf.name = 'Undead Wolf';
