@@ -276,7 +276,7 @@ function fishCatch() {
 	}
 
 	if (fishCaught < 18) {
-		$('#location_text').html('You caught a ' + fishCaught + ' pound fish! Some better bait might make this easier.');
+		$('#location_text').html('You caught a ' + fishCaught + ' pound fish! Some better bait might make this easier. I bet the fisherman knows where to look');
 	}
 	else {
 		$('#location_text').html('Wow! a ' + fishCaught + ' pound fish! That will show the fisherman!');
