@@ -288,6 +288,7 @@ underwater.specialMonster = shark;
 underwater.specialMonsterNum = 1;
 underwater.levelLength = 40;
 underwater.name = 'underwater';
+underwater.text = 'These fish have some sharp looking teeth!';
 underwater.ascii = '\n\
 ~^~^~^~^~^~^~^~^~^~^~^^~^~^~^~^~^~~^~^~^~^~^~^~^~^~^~^~^^~^~^~^~^~^~\n\
 \n\
