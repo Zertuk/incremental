@@ -41,7 +41,9 @@ function addMoney() {
 function moveInLevel(monstertest) {
 	if (monstertest.monster.name == 'Lich') {
 		lichBattle();
-		console.log('okk')
+	}
+	if (monstertest.monster.name == 'Beast') {
+		beastCleave();
 	}
 	var player = 'Y';
 	if (level[i] == '_'); {
@@ -78,7 +80,6 @@ function moveInLevel(monstertest) {
 
 		}
 		addMoney();
-		console.log('sycces');
 		levelActive = false;
 		monstertest.levelFinished = true;
 		$('#' + monstertest.levelUnlock).show();
@@ -102,16 +103,16 @@ function moveInLevel(monstertest) {
 var beastCount = 0;
 function beastCleave() {
 	beastCount++;
-	if (beastCount > 15) {
+	if (beastCount > 45) {
 		$('#error').html('The beast is powering a powerful attack! Get ready!');
 		$('#level_text').html('The beast is powering a powerful attack! Get ready!');
 	}
-	if (beastCount > 19) {
+	if (beastCount > 50) {
 		$('#error').html('');
 		$('#location_text').html('');
 		beastCount = 0;
 		if (level[danger.levelLength - 1] == 'Y') {
-			player.health = player.health - 5000;
+			player.health = player.health - 10000;
 		}
 	}
 }
@@ -176,9 +177,7 @@ function battleTime(monster) {
 	$('#player_stats').html('Player Dmg: ' + Math.round(player.power * (player.damage + enchantDmg)) + ' | Armor: ' + Math.round(player.reduction + armorRed));
 	monster.monsterInfo();
 	roundDamage(monster);
-	if (monster.name == 'Beast') {
-		beastCleave();
-	}
+
 	monster.health = monster.health - Math.floor((player.damage + enchantDmg)*player.power);
 	i--;
 	if (player.health <= 0) {
