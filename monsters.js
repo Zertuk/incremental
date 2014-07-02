@@ -267,6 +267,7 @@ undeadBear.replace = '__';
 undeadBear.monsterMoney = 7.5;
 undeadBear.specialLoot = 'skull';
 undeadBear.itemName = 'Skull';
+undeadBear.dropChance = 10;
 
 var undeadWolf = new Monster();
 undeadWolf.name = 'Undead Wolf';
