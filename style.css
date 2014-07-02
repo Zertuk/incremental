@@ -2,7 +2,7 @@
 	display: none;
 }
 
-#click_button, #mapButton, #rest_perm, #about_button, #item_list, #inverse_button {
+#click_button, #mapButton, #rest_perm, #about_button, #item_list, #inverse_button, #town_button {
 	float: right;
 }
 
