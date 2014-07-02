@@ -23,6 +23,7 @@ function loadGame() {
 		campgroundAfterScenario();
 	}
 	if (player.postLich) {
+		Store.ascii = Store.ascii3;
 		Main.special = '#future_special';
 		Map.special = '#future_map';
 		$('#post_lich').show();
@@ -131,7 +132,6 @@ window.onload = function() {
 
 	$('.enchantButton').click(function() {
 		var buttonValue = $(this).attr('value');
-		console.log(buttonValue);
 		wizardEnchant(buttonValue);
 	})
 
