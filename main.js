@@ -6,7 +6,161 @@ var levelActive = false;
 var flesh = 0;
 var fists, woodSword, ironSword;
 
+//resets all objects back to original state
+function resetGame() {
+	var message = 'This will reset your entire playthrough, this is not reversible, are you sure?';
+	if (confirm(message)) {
+		stuffToShow = {
+			mapButton: false,
+			post_lich: false,
+			wood_sword: true,
+			iron_sword: false,
+			diamond_sword: false,
+			iron_armor: true,
+			diamond_armor: false,
+			mapListing: true,
+			pool_use: true,
+			den: false,
+			wizard_button: false,
+			camp_scenario: true,
+			camp_use: false,
+			man: false,
+			figure: false,
+			mine: false,
+			depths: false,
+			tower_map: false,
+			upper: false,
+			top: false,
+			monk_button: false,
+			den: false,
+			wizard_button: false,
+			armory: false,
+			throne: false,
+			lich: false,
+			cabin: false,
+			cabin_map: false,
+			sewer: false,
+			prison: false,
+			tunnel: false,
+			danger: false,
+			laboratory: false,
+			hanger: false,
+			rest_perm: false,
+			cave: false,
+			castle: false,
+			wizard_home: false,
+			forest_map: false,
+			lab_map: false,
+			phase3: false,
+			rocket_launch: false,
+			miningPick_item: false,
+			staff_item: false,
+			lifeGem_item: false,
+			hood_item: false,
+			miniBear_item: false,
+			skull_item: false,
+			trollHair_item: false,
+			skullStaff_item: false,
+			stickySlime_item: false,
+			pizza_item: false,
+			robe_item: false,
+			riotShield_item: false,
+			tome_item: false,
+			end_button: false,
+			badEnd_button: false
+		}
 
+		inventoryObject = {
+			weapon: swordObject.fists,
+			armor: armorObject.noArmor,
+			ironArmor: false,
+			diamondArmor: false,
+			knightsArmor: false,
+			jailOgreHide: false,
+			astronautSuit: false,
+			healthPotion: 10,
+			manaPotion: 0,
+			seed: 0,
+			map: false,
+			battery: 0,
+			rune: true,
+			sin: false,
+			ticket: false,
+			bait: false,
+			flippers: false,
+			shipBase: true,
+			shipTop: false,
+			shipFuel: false,
+			miningPick: false,
+			staff: false,
+			lifeGem: false,
+			hood: false,
+			miniBear: false,
+			skull: false,
+			trollHair: false,
+			skullStaff: false,
+			stickySlime: false,
+			pizza: false,
+			robe: false,
+			riotShield: false,
+			spiralSword: false,
+			diamondSword: false,
+			ironSword: false,
+			woodSword: false,
+			beastClaw: false,
+			sharkTooth: false,
+			tome: false
+		}
+
+		player = {
+			damage: swordObject.fists.damage,
+			reduction: inventoryObject.armor.reduction,
+			armorEnchant: this.reduction * this.armorEnchantVal,
+			swordEnchant: this.damage * this.swordEnchantVal,
+			camp: false,
+			power: 1,
+			gears: 1,
+			batteries: 0,
+			money: 0,
+			gunk: 0,
+			swordEnchantVal: 0,
+			armorEnchantVal: 0,
+			swordEnchantCost: 1000,
+			armorEnchantCost: 1000,
+			monkVisit: false,
+			postLich: false,
+			restPrice: 0,
+			thief: false,
+			confess: false,
+			demonVisit: false,
+			swordHP: 0,
+			health: 100.00,
+			maxHealth: 100,
+			bigFish: false,
+			regenVal: 0.25,
+			freedom: 1,
+			num: 5,
+			sin_Choosen: false,
+			potionCost: 25,
+			manaCost: 25,
+			gearCost: 200,
+			runeCost: 5,
+			batteryCost: 2000,
+			teleport: false,
+			reset: false,
+			freeze: false,
+			berserk: false,
+			shield: false,
+			figure: false,
+			extraMoneyGen: 1,
+			maximum: 100000,
+			parts: false
+		}
+		saveGame();
+		$('#error').html('Please refresh the window for the entire reset to work');
+	}
+}
+//load game using local storage, runs necessary functions so that everything is the same it was before quitting
 function loadGame() {
 	if (!localStorage['player_save']) return;
 	var player_data = JSON.parse(atob(localStorage['player_save']));
@@ -31,6 +185,8 @@ function loadGame() {
 		Main.text = 'what happened..?'
 	}
 }
+
+//save game to local storage
 function saveGame() {
 	localStorage['player_save'] = btoa(JSON.stringify(player));
 	localStorage['inventory_save'] = btoa(JSON.stringify(inventoryObject));

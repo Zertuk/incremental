@@ -74,9 +74,6 @@ for (var key in stuffToShow) {
 }
 }
 
-
-
-
 //object containing weapon types
 var swordObject = {
 	fists : {
