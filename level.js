@@ -4,7 +4,8 @@ var level = new Array;
 var currentLevelInfo;
 var i = 0;
 var bearCave = false;
-
+var berserkMult = 1;
+var shieldMult = 1;
 //makes the level, takes in the level length to determine length and the monster
 //to determine what monster to fill with, randomly spawns monsters throughout the level array
 //also takes in the number of monsters to spawn
@@ -119,11 +120,11 @@ function beastCleave() {
 var lichCount = 0;
 function lichBattle() {
 	lichCount++;
-	if (lichCount > 52) {
+	if (lichCount > 56) {
 		lichCount = 0;
 		$('#error').html('');
 		$('#level_text').html('');
-		lich.damage = 500;
+		lich.damage = 400;
 	}
 	else if (lichCount > 46) {
 		$('#error').html('The Lich must recover his power, his damage is weakened');
@@ -207,8 +208,11 @@ function leaveQuest() {
 		$('#error').html('You abandon your quest, leaving anything found behind')
 	}
 	if (berserkUsed) {
-		player.power = player.power/2;
-		berserkUsed = false
+
+		berserkUsed = false;
+	}
+	if (shieldUsed) {
+		shieldUsed = false;
 	}
 	$('#quest').hide();
 	$('#error2').html('');
