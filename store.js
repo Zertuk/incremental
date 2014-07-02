@@ -480,7 +480,7 @@ function useTeleportPotion() {
 		$('#error').html('No magic runes ;-;');
 	}
 	else if (potionUsed) {
-		$('#error').html('Spellss are on Cooldown!');
+		$('#error').html('Spells are on Cooldown!');
 	}
 	else {
 		potionUsed = true;	
@@ -571,7 +571,7 @@ function inventoryList() {
 function playerInfoUpdate() {
 	$('#playerInfo').html("Damage: " + player.damage + " <br>"
 						+ "Sword Enchant: " + Math.round(player.swordEnchantVal*100) + "%" + "<br>"
-						+ "Combined Damage: " + Math.round(player.swordEnchantVal*player.damage + player.damage) + "<br>"
+						+ "Combined Damage: " + Math.round((player.swordEnchantVal*player.damage + player.damage)*player.power) + "<br>"
 						+ "Armor: " + player.reduction + " <br>"
 						+ "Armor Enchant: " + Math.round(player.armorEnchantVal*100) + "%" + "<br>"
 						+ "Combined Armor: " + Math.round(player.armorEnchantVal*player.reduction + player.reduction) + "<br>"

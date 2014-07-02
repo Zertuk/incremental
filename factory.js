@@ -68,7 +68,7 @@ function plantAll() {
 	if (inventoryObject.seed > 0) {
 		player.gears = player.gears + inventoryObject.seed;
 		inventoryObject.seed = 0;
-		$('#seeds_planted').html("Geards Placed: " + player.gears);
+		$('#seeds_planted').html("Gears Placed: " + player.gears);
 	}
 	else {
  		error.innerHTML = 'you have no gears';
