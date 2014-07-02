@@ -63,7 +63,7 @@ function reflectingPoolChoice(poolChoice) {
 		$('#error').html('Your weapons now deal extra damage');
 	}
 	else {
-		Monster.freedom = Monster.freedom + 1;
+		player.freedom = player.freedom + 1;
 		$('#error').html('You now gain extra money from monsters');
 	}
 	$('.pool_button').hide();
@@ -430,6 +430,7 @@ function lichAttack() {
 	$('#location_text').html('. . .');
 	Main.special = '#future_special';
 	Map.special = '#future_map';
+	Store.ascii = Store.ascii3;
 	$('#post_lich').show();
 	Wizard.text = 'Wow I havent seen you in awhile!';
 	Main.text = 'what happened..?'
