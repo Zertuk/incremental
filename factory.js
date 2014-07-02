@@ -97,7 +97,7 @@ function useBattery() {
 function turnOffBattery() {
 	if (batteryOn == false) {
 		batteryOn = true;
-		$('#blood_gen').html('blood/s: ' + player.batteries*2);
+		$('#blood_gen').html('gunk/s: ' + player.batteries*2);
 		$('#turn_off').html('Turn Off Machine');
 	}
 	else {

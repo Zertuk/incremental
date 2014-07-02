@@ -5,7 +5,7 @@ function chooseSin(choice) {
 		switch (choice) {
 			case "lust":
 				player.freedom = player.freedom + 0.5;
-				$('#error').html('You choose Pride. Monsters drop more money');
+				$('#error').html('You choose lust. Monsters drop more money');
 				break;
 			case "gluttony":
 				player.regenVal = player.regenVal + 3;
@@ -16,8 +16,8 @@ function chooseSin(choice) {
 				$('#error').html('You choose Greed. You gain extra money');
 				break;
 			case "sloth":
-				player.gears = player.gears * 5;
-				player.batteries = player.batteries * 5;
+				player.gears = player.gears + 3;
+				player.batteries = player.batteries + 3;
 				$('#error').html('You choose Sloth. You generate resources faster');
 				break;
 			case "wrath":
@@ -26,8 +26,8 @@ function chooseSin(choice) {
 				break;
 			case "envy":
 				player.freedom = player.freedom + 0.1;
-				player.batteries = player.batteries * 2;
-				player.gears = player.gears * 2;
+				player.batteries = player.batteries + 1;
+				player.gears = player.gears + 1;
 				player.swordEnchantVal = player.swordEnchantVal + 0.075
 				player.armorEnchantVal = player.armorEnchantVal + 0.075;
 				$('#error').html('You choose Envy. You get a little of everything')

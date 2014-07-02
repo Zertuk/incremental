@@ -39,6 +39,7 @@
 			<button class = "location_button" id = "inventoryButton" value = "Inventory">Inventory</button>
       <button id = 'click_button' onclick = "ectoplasmClick(1)">Click</button>
       <button id = "about_button" class = "location_button" value = "About">About</button>
+      <button id = "inverse_button" onclick = 'inverseColors()'>Inverse</button>
 			
 			<p id = "ectoplasm">You have 0 gold</p>
 			<p id = "blood">?</p>
@@ -56,6 +57,7 @@
       <button onclick = "resetSpells()">Reset CDs</button>
       <br>
       <p id = "potionCDText">Potion Cooldown: 0</p>
+      <p id = "error2"></p>
       <br>
       <p id = "quest_text">--</p>
 
@@ -148,7 +150,7 @@
       <div id = "camp_use">
         <button  class = 'location_button' value = "Map">Leave</button>
         <button id = 'rest' onclick = 'campRest()'>Rest</button>
-        <button id = "confess_button" onclick = 'campConfess()'>Confess</button>
+        <button id = "confess" onclick = 'campConfess()'>Confess</button>
       </div><!--camp_use-->
       <div id = "man">
         <p id = "man_text">Hello traveler, you are free to join me
@@ -318,10 +320,6 @@ _/           |==|   \_
     <div id = "map_special">
       <div id = "map_info">
       <p>The Map</p>
-      <button class = 'location_button' value = "Pool">Reflecting Pool</button>
-      <button class = 'location_button' value = "Mountain" id = "enterCave">The Mountain</button> 
-      <button class = 'location_button' value = "Station" id = "trainStation">Train Station</button>
-      <button class = 'location_button' value = "Camp">Campground</button>
       <button class = 'location_button' value = "Main">Leave Map</button>
       </div><!--map_info-->
       <div id = 'map_wrapper'>
@@ -861,6 +859,19 @@ ___________|_|_
 	</div><!--wrapper-->
 
 
+
 </body>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-48873622-9', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
 
 </html>

@@ -153,7 +153,7 @@ var inventoryObject = {
 	seed: 0,
 	map: false,
 	battery: 0,
-	rune: true,
+	rune: false,
 	sin: false,
 	ticket: false,
 	bait: false,
@@ -551,7 +551,7 @@ function resetSpells() {
 function inventoryList() {
 	$('#inventoryItems').html("Health Potions: " + inventoryObject.healthPotion + "<br>"
 							+ "Mana Potions: " + inventoryObject.manaPotion + "<br>"
-							+ "Seeds: " + inventoryObject.seed + "<br>"
+							+ "Gears: " + inventoryObject.seed + "<br>"
 							+ "Weapon: " + inventoryObject.weapon.name + "<br>"
 							+ "Batteries: " + inventoryObject.battery );
 }
@@ -565,7 +565,7 @@ function playerInfoUpdate() {
 						+ "Combined Armor: " + Math.round(player.armorEnchantVal*player.reduction + player.reduction) + "<br>"
 						+ "Max Health: " + player.maxHealth + " <br>"
 						+ "Sword Healing: " + player.swordHP*100 + "%" + "<br>"
-						+ "Extra Loot Multiplier: " + ((player.freedom*100) -100) + "%");
+						+ "Extra Loot Multiplier: " + Math.round((player.freedom*100) -100) + "%");
 };
 
 //buys item if you have enough money else error

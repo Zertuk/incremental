@@ -59,7 +59,7 @@ function reflectingPoolChoice(poolChoice) {
 		player.swordHP = player.swordHP + 0.25;
 	}
 	else if (poolChoice == 'power') {
-		player.power = 1.5;
+		player.power = player.power + 0.25;
 		$('#error').html('Your weapons now deal extra damage');
 	}
 	else {
@@ -138,18 +138,22 @@ function campgroundAfterScenario() {
 	Camp.text = 'The fire is roaring';
 	$('#rest_perm').show();
 	$('#rest_perm').html('Rest (' + player.restPrice + ')');
+	$('#camp_scenario').hide();
+	$('#camp_use').show();
 	stuffToShow.rest_perm = true;
 	if (player.confess) {
 		$('#man_text').html('Hey jerk want to rest? <br> Special Price..');		
 	}
 	else if (player.thief) {
 		$('#man_text').show().html('Sorry but someone stole my supplies, Im going <br> to have to charge for you to rest here');
-	    $('#man').show();
 	    $('#confess').show();
 	}
 	else {
+		$('#confess').hide();
 		$('#man_text').html('Good to see you again, <br> feel free to rest');
 	}
+	$('#man_text').show();
+	$('#man').show();
 }
 
 //stealing is bad okay

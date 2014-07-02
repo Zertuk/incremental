@@ -178,12 +178,14 @@ function battleTime(monster) {
 	monster.monsterInfo();
 	roundDamage(monster);
 
-	monster.health = monster.health - Math.floor((player.damage + enchantDmg)*player.power);
+	monster.health = monster.health - Math.round((player.damage + enchantDmg)*player.power);
 	i--;
 	if (player.health <= 0) {
 		levelActive = false;
 		monster.health = monster.maxHealth;
 		$('#error').html('The ' + monster.name + ' killed you rip ;-;');
+		$('#error2').html('The ' + monster.name + ' killed you rip ;-;');
+
 	}
 	else if (monster.health <= 0) {
 
@@ -205,6 +207,7 @@ function leaveQuest() {
 		$('#error').html('You abandon your quest, leaving anything found behind')
 	}
 	$('#quest').hide();
+	$('#error2').html('');
 	levelActive = false;
 	resetSpellUsed = false;
 	$('#location_div').show();

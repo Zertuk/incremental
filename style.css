@@ -2,8 +2,12 @@
 	display: none;
 }
 
-#click_button, #mapButton, #rest_perm, #about_button, #item_list {
+#click_button, #mapButton, #rest_perm, #about_button, #item_list, #inverse_button {
 	float: right;
+}
+
+#error2 {
+	color: red;
 }
 
 #item_list {
