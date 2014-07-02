@@ -25,7 +25,7 @@ function Monster() {
 
 	this.specialDrop = function(item, dropChance) {
 		var randomNum = Math.round(Math.random()*100);
-		if (randomNum < this.dropChance) {
+		if (randomNum < this.dropChance && inventoryObject[this.specialLoot] == false) {
 			 itemEquip(this.specialLoot);
 			 lootmessage = 'You found a(n) ' + this.itemName;
 			 $('#special_loot').html(lootmessage);
