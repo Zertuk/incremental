@@ -27,7 +27,7 @@ function createFlesh() {
 			flesh = player.money;
 		}
 		if (flesh > 5000) {
-			player.num = 7.5
+			player.num = 7.5;
 		}
 		if (flesh > 10000) {
 			player.num = 10;
