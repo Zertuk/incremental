@@ -130,7 +130,6 @@ function campRest() {
 	else {
 		$('#error').html('You need more money to rest');
 	}
-
 }
 
 //just displays the relevant text/buttons depending on how scenario played out
@@ -261,7 +260,7 @@ function checkFish() {
 		$('#location_text').html('Wow check out that fish! Here you go take these flippers you deserve them!');
 	}
 	else {
-		$('#location_text').html('You are going to have to do better than that if you want these flippers..');
+		$('#location_text').html('You are going to have to do better than that if you want these flippers. Heres a hint: These fish love the worms that live around the pond');
 	}
 
 }
