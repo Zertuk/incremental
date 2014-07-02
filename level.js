@@ -206,6 +206,10 @@ function leaveQuest() {
 	if (levelActive) {
 		$('#error').html('You abandon your quest, leaving anything found behind')
 	}
+	if (berserkUsed) {
+		player.power = player.power/2;
+		berserkUsed = false
+	}
 	$('#quest').hide();
 	$('#error2').html('');
 	levelActive = false;
