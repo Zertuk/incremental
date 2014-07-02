@@ -1138,7 +1138,7 @@ ____^/\\___^--_O__/\\_____-^^-^--_______/\\/\\---/\\___________---______________
 End.text = 'The Lichs space station crashes into the Moon after the chaos from destroying the Lichs Phylactery.  You survive thanks to the Lichs curse still being active.  The Lich is dead, the curse wont last forever.  All there is left to do is wait.';
 
 var badEnd = new locationInfo();
-badEnd.text = 'You decide to infuse your soul with the Lichs Phylactery to gain infinite power.  However the Lichs curse is still strong within you.  It was a trick!  The curse was a piece of the Lichs soul.  Now what remains of yourself is stuck inside of the Lich.  He will surely regenerate with his Phylactery intact.'
+badEnd.text = 'You decide to infuse your soul with the Lichs Phylactery to gain infinite power.  However the Lichs curse is still strong within you.  It was a trick!  The curse was a piece of the Lichs soul.  Now what remains of yourself is stuck inside of the Lich.  He will surely regenerate with his Phylactery intact.  The Lich will takeover the world once again, except this time all you can do is watch.';
 badEnd.ascii = '';
 
 var locationObject = {
