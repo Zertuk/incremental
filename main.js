@@ -159,6 +159,7 @@ function resetGame() {
 		saveGame();
 		$('#error').html('Please refresh the window for the entire reset to work');
 		loadGame();
+
 	}
 }
 //load game using local storage, runs necessary functions so that everything is the same it was before quitting
@@ -172,6 +173,7 @@ function loadGame() {
 	stuffToShow = show_data;
 	showStuff();
 	updateWizardButtons();
+	equipSword();
 	$('#blood').html('You have ' + player.gunk + ' gunk');
 	$('#hp').html(player.health + '/' + player.maxHealth);
 	if (player.money > 1000) {
