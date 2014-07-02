@@ -25,7 +25,9 @@ function Monster() {
 
 	this.specialDrop = function(item, dropChance) {
 		var randomNum = Math.round(Math.random()*100);
-		if (randomNum < this.dropChance) {
+		var lootCheck = this.specialLoot;
+		lootCheck = lootCheck.replace(/"/g, "");
+		if (randomNum < this.dropChance && inventoryObject[lootCheck] == false) {
 			 itemEquip(this.specialLoot);
 			 lootmessage = 'You found a(n) ' + this.itemName;
 			 $('#special_loot').html(lootmessage);
@@ -197,7 +199,7 @@ undeadKnight.health = 50;
 undeadKnight.name = 'Undead Knight';
 undeadKnight.monsterMoney = 2;
 undeadKnight.specialLoot = 'knightsArmor';
-undeadKnight.dropChance = 50;
+undeadKnight.dropChance = 0;
 undeadKnight.itemName = 'Knights Armor';
 
 var warlock = new Monster();
