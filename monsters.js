@@ -199,7 +199,7 @@ undeadKnight.health = 50;
 undeadKnight.name = 'Undead Knight';
 undeadKnight.monsterMoney = 2;
 undeadKnight.specialLoot = 'knightsArmor';
-undeadKnight.dropChance = 0;
+undeadKnight.dropChance = 50;
 undeadKnight.itemName = 'Knights Armor';
 
 var warlock = new Monster();
@@ -279,6 +279,9 @@ undeadWolf.health = 125;
 undeadWolf.maxHealth = 125;
 undeadWolf.message = 'Slighly less scary than an Undead Bear';
 undeadWolf.monsterMoney = 7;
+undeadWolf.specialLoot = 'knightsArmor';
+undeadWolf.itemName = 'Knights Armor';
+undeadWolf.dropChance = 25;
 
 var undeadWizard = new Monster();
 undeadWizard.name = 'Undead Wizard';
