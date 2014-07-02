@@ -214,7 +214,7 @@ function itemEquip(item) {
 			break;
 		case 'miniBear':
 			if (!inventoryObject.miniBear) {
-				Monster.freedom = Monster.freedom + 0.2;
+				player..freedom = player.freedom + 0.2;
 				inventoryObject.miniBear = true;
 				stuffToShow.miniBear_item = true;
 			}
@@ -553,6 +553,7 @@ function inventoryList() {
 							+ "Mana Potions: " + inventoryObject.manaPotion + "<br>"
 							+ "Gears: " + inventoryObject.seed + "<br>"
 							+ "Weapon: " + inventoryObject.weapon.name + "<br>"
+							+ "Armor: " + inventoryObject.armor.name + "<br>"
 							+ "Batteries: " + inventoryObject.battery );
 }
 
