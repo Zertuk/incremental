@@ -229,6 +229,8 @@ function leaveQuest() {
 //which contains all of the relevant info to make a level
 //also calls the main questLoop using that object
 function getQuestSelect(quest) {
+	$('#error').html('');
+	$('#error2').html('');
 	questSelected = $(quest).val();
 	currentLevelInfo = levelObject[questSelected];
 	loadLevel(currentLevelInfo)
