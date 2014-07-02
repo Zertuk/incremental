@@ -2,13 +2,6 @@ var potionUsed = false;
 var potionCD = 0;
 var timeFrozen = false;
 
-
-
-
-
-
-
-
 var stuffToShow = {
 	mapButton: false,
 	post_lich: false,
@@ -52,6 +45,21 @@ var stuffToShow = {
 	lab_map: false,
 	phase3: false,
 	rocket_launch: false,
+	miningPick_item: false,
+	staff_item: false,
+	lifeGem_item: false,
+	hood_item: false,
+	miniBear_item: false,
+	skull_item: false,
+	trollHair_item: false,
+	skullStaff_item: false,
+	stickySlime_item: false,
+	pizza_item: false,
+	robe_item: false,
+	riotShield_item: false,
+	tome_item: false,
+	end_button: false,
+	badEnd_button: false
 }
 
 function showStuff() {
@@ -184,41 +192,48 @@ function itemEquip(item) {
 			if (!inventoryObject.miningPick) {
 				player.freedom = player.freedom + 0.1;
 				inventoryObject.miningPick = true;
+				stuffToShow.miningPick_item = true;
 			}
 			break;
 		case 'staff':
 			if (!inventoryObject.staff)
 				player.swordEnchantVal = player.swordEnchantVal + 0.05;
 				inventoryObject.staff = true;
+				stuffToShow.staff_item = true;
 			break;
 		case 'lifeGem':
 			if (!inventoryObject.lifeGem) {
 				player.regenVal = player.regenVal + 0.75;
 				inventoryObject.lifeGem = true;
+				stuffToShow.lifeGem_item = true;
 			}
 			break;
 		case 'hood':
 			if (!inventoryObject.hood) {
 				player.swordEnchantVal = player.swordEnchantVal + 0.1;
 				inventoryObject.hood = true;
+				stuffToShow.hood_item = true;
 			}
 			break;
 		case 'miniBear':
 			if (!inventoryObject.miniBear) {
 				Monster.freedom = Monster.freedom + 0.2;
 				inventoryObject.miniBear = true;
+				stuffToShow.miniBear_item = true;
 			}
 			break;
 		case 'skull':
 			if (!inventoryObject.skull) {
 				player.swordHP = player.swordHP + 0.1;
 				inventoryObject.skull = true;
+				stuffToShow.skull_item = true;
 			}
 			break;
 		case 'trollHair':
 			if (!inventoryObject.trollHair) {
 				player.armorEnchantVal = player.armorEnchantVal + 0.1;
 				inventoryObject.trollHair = true;
+				stuffToShow.trollHair_item = true;
 			}
 			break;
 		case 'skullStaff':
@@ -227,30 +242,35 @@ function itemEquip(item) {
 				player.armorEnchantVal = player.armorEnchantVal + 0.05;
 				player.regenVal = player.regenVal + 2.5;
 				inventoryObject.skullStaff = true;
+				stuffToShow.skullStaff_item = true;
 			}
 		case 'stickySlime':
 			if (!inventoryObject.stickySlime) {
-				player.extraMoneyGen = 3;
+				player.extraMoneyGen = 2;
 				inventoryObject.stickySlime = true;
+				stuffToShow.stickySlime_item = true;
 			}
 			break;
 		case 'pizza':
 			if (!inventoryObject.pizza) {
 				player.maxHealth = player.maxHealth + 420;
 				inventoryObject.pizza = true;
-				player.maximum = 110000;
+				player.maximum = 100420;
+				stuffToShow.pizza_item = true;
 			}
 			break;
 		case 'robe':
 			if (!inventoryObject.robe) {
-			player.regenVal = player.regenVal + 5;
-			inventoryObject.robe = true;
+				player.regenVal = player.regenVal + 5;
+				inventoryObject.robe = true;
+				stuffToShow.robe_item = true;
 			}
 			break;
 		case 'riotShield':
 			if (!inventoryObject.riotShield) {
-			player.armorEnchantVal = player.armorEnchantVal + 0.25;
-			inventoryObject.riotShield = true;
+				player.armorEnchantVal = player.armorEnchantVal + 0.25;
+				inventoryObject.riotShield = true;
+				stuffToShow.riotShield_item = true;
 			}
 			break;
 		case 'beastClaw':
@@ -277,6 +297,7 @@ function itemEquip(item) {
 				player.regenVal = player.regenVal + 1;
 				player.swordHP = player.swordHP + 0.1;
 				player.maxHealth = player.maxHealth + 500;
+				stuffToShow.tome_item = true;
 			}
 			break;
 		case 'knightsArmor':
@@ -300,6 +321,7 @@ function itemEquip(item) {
 		case 'none':
 			break;
 	}
+	showStuff();
 }
 
 function equipArmor() {
@@ -456,6 +478,7 @@ function useTeleportPotion() {
 		potionUsed = true;	
 		potionCD = 15;
 		level[i - 1] = '_';
+		level[i] = '_';
 		i = 0;
 		level[0] = 'Y';		
 	}
@@ -538,10 +561,14 @@ function inventoryList() {
 
 function playerInfoUpdate() {
 	$('#playerInfo').html("Damage: " + player.damage + " <br>"
-						+ "Sword Enchant: " + Math.round(swordEnchantVal*100) + "%" + "<br>"
+						+ "Sword Enchant: " + Math.round(player.swordEnchantVal*100) + "%" + "<br>"
+						+ "Combined Damage: " + Math.round(player.swordEnchantVal*player.damage + player.damage) + "<br>"
 						+ "Armor: " + player.reduction + " <br>"
-						+ "Armor Enchant: " + Math.round(armorEnchantVal*100) + "%" + "<br>"
-						+ "Max Health: " + player.maxHealth + " <br>")
+						+ "Armor Enchant: " + Math.round(player.armorEnchantVal*100) + "%" + "<br>"
+						+ "Combined Armor: " + Math.round(player.armorEnchantVal*player.reduction + player.reduction) + "<br>"
+						+ "Max Health: " + player.maxHealth + " <br>"
+						+ "Sword Healing: " + player.swordHP*100 + "%" + "<br>"
+						+ "Extra Loot Multiplier: " + ((player.freedom*100) -100) + "%");
 };
 
 //buys item if you have enough money else error
