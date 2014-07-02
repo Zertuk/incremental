@@ -115,6 +115,7 @@ function cabinRest() {
 
 //rest if you have the money to give full hp, otherwise error
 function campRest() {
+	campgroundAfterScenario();
 	if (levelActive) {
 		$('#error').html('hey you cant rest in battle!');
 		return;
@@ -193,7 +194,6 @@ function campgroundWait() {
 		$('#camp_use').show();
 		player.camp = true;
 		player.restPrice = 0;
-		campgroundAfterScenario();
 	}
 	}, 5000);
 	
