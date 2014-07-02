@@ -173,6 +173,9 @@ function loadGame() {
 	updateWizardButtons();
 	$('#blood').html('You have ' + player.gunk + ' gunk');
 	$('#hp').html(player.health + '/' + player.maxHealth);
+	if (player.money > 1000) {
+		$('#click_button').hide();
+	}
 	if (player.camp) {
 		campgroundAfterScenario();
 	}
