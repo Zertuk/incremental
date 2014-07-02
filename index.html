@@ -3,23 +3,29 @@
 <html>
   <head>
 
-<link href = "style.css" rel = "stylesheet">
+  <title>Space Lich Omega</title>
 
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <meta name = "description" content = 'An incremental rpg called Space Lich Omega where you must defeat the awful lich created by Zertuk / Justin Forcier.  Inspired by Candybox by aniwey.'>
 
-<script src ="jquery.js"></script>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8">
 
-<script src = "locations.js"></script>
-<script src = "options.js"></script>
-<script src = "demon.js"></script>
-<script src = "factory.js"></script>
-<script src = "store.js"></script>
-<script src = "reflecting.js"></script>
-<script src = "monsters.js"></script>
-<script src = "levelObject.js"></script>
-<script src = "locationObject.js"></script>
-<script src = "level.js"></script>
-<script src = "main.js"></script>
+  <link rel="shortcut icon" href="favicon.ico">
+
+  <link href = "style.css" rel = "stylesheet">
+
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+  <script src = "locations.js"></script>
+  <script src = "options.js"></script>
+  <script src = "demon.js"></script>
+  <script src = "factory.js"></script>
+  <script src = "store.js"></script>
+  <script src = "reflecting.js"></script>
+  <script src = "monsters.js"></script>
+  <script src = "levelObject.js"></script>
+  <script src = "locationObject.js"></script>
+  <script src = "level.js"></script>
+  <script src = "main.js"></script>
 
 <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
 
@@ -32,8 +38,7 @@
       <button class = "location_button" id = "mapButton" value = "Map">Map</button>
 			<button class = "location_button" id = "inventoryButton" value = "Inventory">Inventory</button>
       <button id = 'click_button' onclick = "ectoplasmClick(1)">Click</button>
-
-
+      <button id = "about_button" class = "location_button" value = "About">About</button>
 			
 			<p id = "ectoplasm">You have 0 gold</p>
 			<p id = "blood">?</p>
@@ -175,12 +180,31 @@
     </div><!--camp_special-->
 
     <div id = "inventory_special">
-      <p>The Inventory</p>
-      <p id = "inventoryItems"></p>
+      <div id = "item_list">
+        <h3>Items Found</h3>
+        <p id = "miningPick_item">Mining Pick: gives 10% extra money drops</p>
+        <p id = "staff_item">Staff: gives 5% sword enchant</p>
+        <p id = "lifeGem_item">Life Gem: gives 0.75hp/s</p>
+        <p id = "hood_item">Reaper Hood: gives 10% sword enchant</p>
+        <p id = "miniBear_item">Mini Drop Bear: gives 20% extra money drops</p>
+        <p id = "skull_item">Skull: gives 10% sword healing</p>
+        <p id = "trollHair_item">Troll Hair: gives 10% armor enchant</p>
+        <p id = "skullStaff_item">Skull Staff: gives 5% armor and sword enchant. gives 2.5hp/s</p>
+        <p id = "stickySlime_item">Sticky Slime: gives double money from gears</p>
+        <p id = "pizza_item">Pizza: gives an extra 420hp</p>
+        <p id = "robe_item">Robe: gives 5hp/s</p>
+        <p id = "riotShield_item">Riot Shield: gives 25% armor enchant</p>
+        <p id = "tome_item">Tome: gives 1hp/s, 10% sword healing, and an extra 500hp</p> 
+
+      </div><!--item_list-->
+      <h3>The Inventory</h3>
+
+      <p id = "inventoryItems">---</p>
+      <button class = 'potion_button' value = 'healthPotion'>Use Health Potion</button>
+
       <br>
-      <p>Player Stats</p>
-      <p id = "playerInfo">f</p>
-      <button class = 'potion_button' value = 'healthPotion'>Use HP</button>
+      <h3>Player Stats</h3>
+      <p id = "playerInfo">---</p>
       <br>
       <button class = 'location_button' value = "Main">Leave Inventory</button>
     </div><!--inventory-->
@@ -703,6 +727,11 @@ ___________|_|_
         <option value = 'finish'>Fight the Lich</option>
       </select>
       <button onclick = "getQuestSelect('#dock_quest')">Enter</button>
+      <br>
+      <button value = "End" class = "location_button" id = "end_button">Destory the Lichs Phylactery</button>
+      <button value = "badEnd" class = "location_button" id = "badEnd_button">Fuse your soul with the Phylactery for unimaginable power</button>
+      <br>
+      <button value = "Map" class = "location_button">Leave</button>
     </div><!--dock_special-->
 
     <div id = "forest_special">
@@ -772,9 +801,61 @@ ___________|_|_
     </div><!--sea_special-->
 
     <div id = "credits_special">
-      STUFF
+      <button class = "location_button" value = "Main">Leave</button>
+      <br>
+      <h2>Ascii Art Credit</h2>
+      <br>
+      <p class = "credits"><a class = "credits_link" href = "http://www.chris.com/ascii/index.php?art=people/other">Shopkeeper</a></p>
+      <p class = "credits"><a class = "credits_link" href = "http://ascii.co.uk/art/church">Church Inside and Out</a></p>
+      <p class = "credits"><a class = "credits_link" href = "http://ascii.co.uk/art/tent">Tent</a></p>
+      <p class = "credits"><a class = "credits_link" href = "http://www.retrojunkie.com/asciiart/building/fountain.htm">Park and Fountain</a></p>
+      <p class = "credits"><a class = "credits_link" href = "http://www.retrojunkie.com/asciiart/building/castles.htm">Tower and Castle</a></p>
+      <p class = "credits"><a class = "credits_link" href = "http://www.chris.com/ascii/index.php?art=religion/buddhism">Monk</a></p>
+      <p class = "credits"><a class = "credits_link" href = "http://ascii.co.uk/art/demon">Demon Wizard</a></p>
+      <p class = "credits"><a class = "credits_link" href = "http://www.retrojunkie.com/asciiart/building/factory.htm">Factory 1</a></p>
+      <p class = "credits"><a class = "credits_link" href = "http://www.retrojunkie.com/asciiart/building/powrplnt.htm">Factory 2</a></p>
+      <p class = "credits"><a class = "credits_link" href = "http://www.asciiworld.com/-Lord-of-the-Rings-.html">Rune Door</a></p>
+      <p class = "credits"><a class = "credits_link" href = "http://ascii.co.uk/art/cave">Cave</a></p>
+      <p class = "credits"><a class = "credits_link" href = "http://ascii.co.uk/art/magician">Wizard</a></p>
+      <p class = "credits"><a class = "credits_link" href = "http://www.chris.com/ascii/index.php?art=creatures/grim+reapers">Lich Hood</a></p>
+      <p class = "credits"><a class = "credits_link" href = "http://www.chris.com/ascii/index.php?art=people/skeletons">Lich Face</a></p>
+      <p class = "credits"><a class = "credits_link" href = "http://ascii.co.uk/art/city">City Upclose</a></p>
+      <p class = "credits"><a class = "credits_link" href = "http://www.ascii-art.de/ascii/def/fishing.txt">Fisherman</a></p>
+      <p class = "credits"><a class = "credits_link" href = "http://www.retrojunkie.com/asciiart/building/skyscrap.htm">Skyscraper</a></p>
+      <p class = "credits"><a class = "credits_link" href = "http://www.ascii-art.de/ascii/t/telescope.txt">Telescope</a></p>
+      <p class = "credits"><a class = "credits_link" href = "http://www.geocities.com/spunk1111/celestal.htm">Moon and Sea</a></p>
+      <p class = "credits"><a class = "credits_link" href = "http://ascii.co.uk/art/cabins">Cabin</a></p>
+      <p class = "credits"><a class = "credits_link" href = "http://www.retrojunkie.com/asciiart/building/rooms.htm">Cabin Inside</a></p>
+      <p class = "credits"><a class = "credits_link" href = "http://www.chris.com/ascii/index.php?art=objects/books">Book</a></p>
+      <p class = "credits"><a class = "credits_link" href = "http://www.chris.com/ascii/index.php?art=objects/buildings">Lich Lab</a></p>
+      <p class = "credits"><a class = "credits_link" href = "http://ascii.co.uk/art/chemistry">Chemist</a></p>
+      <p class = "credits"><a class = "credits_link" href = "http://www.ascii-art.de/ascii/pqr/rockets.txt">Launch</a></p>
+      <p class = "credits"><a class = "credits_link" href = "http://www.retrojunkie.com/asciiart/celest/stations.htm">Space Station</a></p>
+      <p class = "credits"><a class = "credits_link" href = "http://sunnyspot.org/asciiart/gallery/startrek.html">Space Station Inside</a></p>
+      <p class = "credits"><a class = "credits_link" href = "http://www.retrojunkie.com/asciiart/celest/planets.htm">Post Battle</a></p>
+      <p class = "credits"><a class = "credits_link" href = "http://ascii.co.uk/art/mountain">Mountain</a></p>
+      <p class = "credits"><a class = "credits_link" href = "http://www.ascii-art.de/ascii/def/fishing.txt">Fisherman</a></p>
+      <p class = "credits"><a class = "credits_link" href = "http://www.ascii-art.de/ascii/c/cat.txt">The Beast</a></p>
+      <p class = "credits"><a class = "credits_link" href = "http://www.retrojunkie.com/asciiart/vehicles/rockets.htm">Rockets</a></p>
+      <p class = "credits"><a class = "credits_link" href = "http://www.geocities.com/spunk1111/mythos.htm#reaper">Lich</a></p>
+      <p class = "credits"><a class = "credits_link" href = "http://www.geocities.com/spunk1111/build.htm#skyline">City</a></p>
+      <p class = "credits"><a class = "credits_link" href = "http://www.geocities.com/spunk1111/build.htm#for%20sale">Shop</a></p>
+      <p class = "credits"><a class = "credits_link" href = "http://www.geocities.com/spunk1111/build.htm#tinhouses">Wizards Home</a></p>
+      <p class = "credits"><a class = "credits_link" href = "http://www.retrojunkie.com/asciiart/nature/forests.htm">Forest, Cabin in woods, Scary trees</a></p>
+      <br>
     </div><!--credits_special-->
-
+    <div id = "about_special">
+      <button value = "Credits" class = "location_button">Ascii Art Credit</button>
+      <button value = "Main" class = "location_button">Leave</button>
+      <br>
+      <br>
+      <h2>About</h2>
+      <p>Space Lich Omega was created as a project to expand my javascript abilities.  It was heavily inspired by the game <a href = "http://candies.aniwey.net/">Candybox</a> made by aniwey.</p>
+      <p>The source code is availible on <a href = "https://github.com/Zertuk/incremental">Github</a>!</p>
+      <p>Visit my website <a href = "http://zertukis.com">zertukis.com</a> or follow me on <a href = "https://twitter.com/Zertuk">twitter.</a>
+      <p>If you find any bugs/issues you can <a href = "mailto:just.forcier@gmail.com">e-mail</a>
+      and Ill take care of it. Thanks for playing!</p>
+      
   </div><!--location_div-->
 	</div><!--wrapper-->
 
