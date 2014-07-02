@@ -158,6 +158,7 @@ function resetGame() {
 		}
 		saveGame();
 		$('#error').html('Please refresh the window for the entire reset to work');
+		loadGame();
 	}
 }
 //load game using local storage, runs necessary functions so that everything is the same it was before quitting
@@ -400,7 +401,13 @@ function mainLoop() {
 }
 
 function saveLoop() {
-	saveGame();
+	if (levelActive || shieldUsed || berserkUsed) {
+		console.log('cant save in level');
+	}
+	else {
+		saveGame();
+		console.log('game saved');
+	}
 	setTimeout(saveLoop, 5000);
 }
 
