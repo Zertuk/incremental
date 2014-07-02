@@ -534,28 +534,33 @@ danger.ascii = '\n\
 
 var finish = new levelInfo();
 finish.levelLength = 46;
+finish.levelUnlock = 'end_button';
+finish.unlockSave = function() { stuffToShow.end_button = true;
+                                 stuffToShow.badEnd_button = true;
+                                 $('#badEnd_button').show();  }
+finish.text = 'The final battle!';
 finish.monster = lich;
 finish.monsterNum = 0;
 finish.more = false;
 finish.specialMonster = rock;
 finish.ascii = '\n\
 \n\
-                                             /,\\\n\
-                                             \\|/\n\
-                                              |     ___\n\
-                                             (=\\.  /-. \\\n\
+     .                                       /,\\\n\
+                                   .         \\|/\n\
+       *          .                           |     ___\n\
+                                       .     (=\\.  /-. \\\n\
                                               |\\/\\_| |  |\n\
-                                              |_\\ |;-|  ;\n\
-                                              | / \\| |_/ \\\n\
-                                              | )/\\/      \\\n\
-                                              | ( \'|  \\   |\n\
-                                              |    \\_ /   \\\n\
-                                              |    /  \\_.--\\\n\
+    .                *                        |_\\ |;-|  ;\n\
+                               .              | / \\| |_/ \\\n\
+                  .                           | )/\\/      \\\n\
+         .                                    | ( \'|  \\   |\n\
+   .                              .           |    \\_ /   \\\n\
+                     .                        |    /  \\_.--\\\n\
                                               \\    |    (|\\`\n\
                                                |   |     \\\n\
-                                               |   |      \'.\n\
+               .                               |   |      \'.\n\
                                                |  /         \\\n\
-<p class = "level"></p>  \\.__.__.-._)\n\ '
+<p class = "level"></p>  \\.__.__.-._)\n\ ';
 var levelObject = {
 	approach: approach,
 	cavern: cavern,
