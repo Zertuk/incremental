@@ -134,7 +134,7 @@ var armorObject = {
 		reduction: 100
 	},
 	jailOgreHide : {
-		jailOgreHide: 'Jail Ogre Hide',
+		name: 'Jail Ogre Hide',
 		reduction: 50
 	}
 }
@@ -191,12 +191,15 @@ function itemEquip(item) {
 				inventoryObject.miningPick = true;
 				stuffToShow.miningPick_item = true;
 			}
+			
 			break;
 		case 'staff':
-			if (!inventoryObject.staff)
+			if (!inventoryObject.staff) {
 				player.swordEnchantVal = player.swordEnchantVal + 0.05;
 				inventoryObject.staff = true;
 				stuffToShow.staff_item = true;
+			}
+			
 			break;
 		case 'lifeGem':
 			if (!inventoryObject.lifeGem) {
@@ -204,6 +207,7 @@ function itemEquip(item) {
 				inventoryObject.lifeGem = true;
 				stuffToShow.lifeGem_item = true;
 			}
+			
 			break;
 		case 'hood':
 			if (!inventoryObject.hood) {
@@ -211,13 +215,15 @@ function itemEquip(item) {
 				inventoryObject.hood = true;
 				stuffToShow.hood_item = true;
 			}
+			
 			break;
 		case 'miniBear':
 			if (!inventoryObject.miniBear) {
-				player..freedom = player.freedom + 0.2;
+				player.freedom = player.freedom + 0.2;
 				inventoryObject.miniBear = true;
 				stuffToShow.miniBear_item = true;
 			}
+
 			break;
 		case 'skull':
 			if (!inventoryObject.skull) {
@@ -225,6 +231,7 @@ function itemEquip(item) {
 				inventoryObject.skull = true;
 				stuffToShow.skull_item = true;
 			}
+
 			break;
 		case 'trollHair':
 			if (!inventoryObject.trollHair) {
@@ -241,11 +248,15 @@ function itemEquip(item) {
 				inventoryObject.skullStaff = true;
 				stuffToShow.skullStaff_item = true;
 			}
+			break;
 		case 'stickySlime':
 			if (!inventoryObject.stickySlime) {
 				player.extraMoneyGen = 2;
 				inventoryObject.stickySlime = true;
 				stuffToShow.stickySlime_item = true;
+			}
+			else {
+				$('#special_loot').html('---');
 			}
 			break;
 		case 'pizza':
@@ -682,7 +693,7 @@ function storeItems(item) {
 				storeStatus('You know you dont even have mana right?');
 				if (inventoryObject.manaPotion > 10) {
 					storeStatus('Really. I am telling you the truth, these are worthless to you');
-					if (inventoryObject.manaPotion > 50) {
+					if (inventoryObject.manaPotion > 20) {
 						storeStatus('Your determination to be a magic user inspires me ;-;  Please, take this tome, maybe it can help you');
 						itemEquip('tome');
 					}

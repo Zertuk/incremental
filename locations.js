@@ -122,10 +122,9 @@ function campRest() {
 	}
 	if (player.money > player.restPrice) {
 		player.money = player.money - player.restPrice;
-		player.health = player.maxHealth;
-		$('#location_text').html('You are fully rested');
+		player.health = player.maxHealth - 1;
+		$('#error').html('You are fully rested');
 		raiseRestPrice();
-		updateHealthBar();
 	}
 	else {
 		$('#error').html('You need more money to rest');
