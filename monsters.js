@@ -197,7 +197,7 @@ undeadKnight.health = 50;
 undeadKnight.name = 'Undead Knight';
 undeadKnight.monsterMoney = 2;
 undeadKnight.specialLoot = 'knightsArmor';
-undeadKnight.dropChance = 10;
+undeadKnight.dropChance = 50;
 undeadKnight.itemName = 'Knights Armor';
 
 var warlock = new Monster();
