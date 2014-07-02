@@ -391,7 +391,7 @@ rocketScientist.damage = 250;
 rocketScientist.maxHealth = 250;
 rocketScientist.health = 250;
 rocketScientist.monsterMoney = 12.5;
-rocketScientist.dropChance = 15;
+rocketScientist.dropChance = 100;
 rocketScientist.specialLoot = 'spaceSword';
 rocketScientist.itemName = 'Spiral Drill Sword!!';
 
@@ -404,16 +404,16 @@ astronaut.maxHealth = 300;
 astronaut.health = 300;
 astronaut.monsterMoney = 15;
 astronaut.specialLoot = 'astronautSuit';
-astronaut.dropChance = 15;
+astronaut.dropChance = 30;
 astronaut.itemName = 'Astronaut Suit!!';
 
 var lich = new Monster();
 lich.name = 'Lich';
 lich.value = 'o';
 lich.message = 'The Lich!';
-lich.damage = 500;
-lich.maxHealth = 15000;
-lich.health = 15000;
+lich.damage = 400;
+lich.maxHealth = 10000;
+lich.health = 10000;
 lich.move = false;
 lich.monsterMoney = 10000;
 
