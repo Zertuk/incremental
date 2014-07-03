@@ -8,7 +8,7 @@ var fists, woodSword, ironSword;
 
 //resets all objects back to original state
 function resetGame() {
-	var message = 'This will reset your entire playthrough, this is not reversible, are you sure?';
+	var message = 'This will reset your entire playthrough, this is not reversible, are you sure?  Make sure you refresh the browser window after you reset!';
 	if (confirm(message)) {
 		stuffToShow = {
 			mapButton: false,
