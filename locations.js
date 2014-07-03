@@ -66,6 +66,7 @@ function reflectingPoolChoice(poolChoice) {
 		player.freedom = player.freedom + 1;
 		$('#error').html('You now gain extra money from monsters');
 	}
+	player.fountain = true;
 	$('.pool_button').hide();
 }
 

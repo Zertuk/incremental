@@ -59,7 +59,8 @@ var stuffToShow = {
 	riotShield_item: false,
 	tome_item: false,
 	end_button: false,
-	badEnd_button: false
+	badEnd_button: false,
+	fountain_buttons: true
 }
 
 function showStuff() {
@@ -426,7 +427,8 @@ var player = {
 	figure: false,
 	extraMoneyGen: 1,
 	maximum: 100000,
-	parts: false
+	parts: false,
+	fountain: false
 }
 
 var enchantDmg = 0;

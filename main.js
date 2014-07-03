@@ -176,6 +176,9 @@ function loadGame() {
 	equipSword();
 	$('#blood').html('You have ' + player.gunk + ' gunk');
 	$('#hp').html(player.health + '/' + player.maxHealth);
+	if (player.fountain) {
+		$('.pool_button').hide();
+	}
 	if (player.money > 1000) {
 		$('#click_button').hide();
 	}
