@@ -208,10 +208,12 @@ function leaveQuest() {
 		$('#error').html('You abandon your quest, leaving anything found behind')
 	}
 	if (berserkUsed) {
-
+		player.power = oldPower;
 		berserkUsed = false;
+		
 	}
 	if (shieldUsed) {
+		player.reduction = oldReduction;
 		shieldUsed = false;
 	}
 	$('#quest').hide();
