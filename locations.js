@@ -24,6 +24,23 @@ function telescope(direction) {
 	}
 }
 
+function lightFire() {
+	$('#cabin_rest').show();
+	$('#location_text').html('The fire is roaring.  You may now rest here freely.');
+}
+
+function magicDoor() {
+	if (inventoryObject.rune == true) {
+		$('#rune_true').css('display', 'inline');
+		$('#rune_false').css('display', 'none');
+		$('#magic_door').css('color', '#4FE8D6');
+	}
+	else {
+		$('#rune_false').css('display', 'inline-block');
+		$('#rune_true').css('display', 'none');
+	}
+}
+
 function showLab() {
 	$('#lab_map').show();
 	stuffToShow.lab_map = true;

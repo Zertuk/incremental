@@ -49,6 +49,7 @@ function createFlesh() {
 		if (player.maxHealth > player.maximum) {
 			player.maxHealth = player.maximum;
 		}
+		$('#blood').html('You have ' + player.gunk + ' gunk');
 	}
 }
 
@@ -105,4 +106,42 @@ function turnOffBattery() {
 		$('#blood_gen').html('The machine is off');
 		$('#turn_off').html('Turn On Machine');
 	}
+}
+
+//generates ectoplasm on click
+function ectoplasmClick(num) {
+	player.money = player.money + num;
+	document.getElementById('ectoplasm').innerHTML = "You have " + player.money + " gold";
+}
+
+//generates ectoplasm overtime, passing in gears placed
+function ectoplasmGenerator(num) {
+	player.money = player.money + num*player.extraMoneyGen;
+	$('#ecto_gen').html('gold/s: ' + num);
+	updateResources();
+	hideClickButton();
+}
+
+//hides/shows click button if over/under 1000 money
+function hideClickButton() {
+	if (player.money > 1000) {
+		$('#click_button').hide();
+	}
+	else if (player.money < 1000) {
+		$('#click_button').show();
+	}
+}
+
+//generates blood overtime, passing in batteries placed
+function bloodGenerator(num) {
+	if (num * 2 <= player.money) {
+	player.gunk = player.gunk + num*2;
+	player.money = player.money - num*2;
+	$('#blood_gen').html('gunk/s: ' + num*2);
+	}
+}
+
+function updateResources() {
+	$('#blood').html('You have ' + player.gunk + ' gunk');
+	$('#ectoplasm').html('You have ' + player.money + ' gold');
 }

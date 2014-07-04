@@ -2,6 +2,17 @@ var potionUsed = false;
 var potionCD = 0;
 var timeFrozen = false;
 
+function updateHealthBar() {
+	$('#hp').html(player.health.toFixed(2) + '/' + player.maxHealth);
+	$('#hp').css('width', player.health / player.maxHealth * 100 + '%');
+}
+
+function healthRegen() {
+	player.health = player.health + player.regenVal;
+}
+
+
+
 var stuffToShow = {
 	mapButton: false,
 	post_lich: false,
