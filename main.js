@@ -1,16 +1,19 @@
 //global varble init
 var inverse = false;
-var count = 0;
 var batteryOn = false;
 var levelActive = false;
 var flesh = 0;
-var fists, woodSword, ironSword;
 
-//resets all objects back to original state
-function resetGame() {
-	var message = 'This will reset your entire playthrough, this is not reversible, are you sure?  Make sure you refresh the browser window after you reset!';
-	if (confirm(message)) {
-		stuffToShow = {
+/*********************************************
+
+		Reset, Load, Save Functionality
+
+**********************************************/
+
+
+//resets the objects back to the default state
+function objectReset() {
+	stuffToShow = {
 			mapButton: false,
 			post_lich: false,
 			wood_sword: true,
@@ -156,26 +159,44 @@ function resetGame() {
 			maximum: 100000,
 			parts: false
 		}
+}
+
+//resets the value of some of the locations back to the original state
+function resetLocations() {
+	$('.pool_button').show();
+	Store.ascii = Store.ascii;
+	Main.special = '#main_special';
+	Map.special = '#map_special';
+	$('#post_lich').hide();
+	Wizard.text = 'Hello? Thanks for saving me! I am a pretty good wizard, want me to enchant your gear?';
+	Main.text = '';
+}
+
+//resets game back to original state
+function resetGame() {
+	var message = 'This will reset your entire playthrough, this is not reversible, are you sure?  Make sure you refresh the browser window after you reset!';
+	if (confirm(message)) {
+		objectReset();
+		resetLocations();
 		saveGame();
 		$('#error').html('Please refresh the window for the entire reset to work');
 		loadGame();
-
 	}
 }
-//load game using local storage, runs necessary functions so that everything is the same it was before quitting
-function loadGame() {
-	if (!localStorage['player_save']) return;
+
+
+//loads the objects from local storage
+function loadObjects() {
 	var player_data = JSON.parse(atob(localStorage['player_save']));
 	player = player_data;
 	var inventory_data = JSON.parse(atob(localStorage['inventory_save']));
 	inventoryObject = inventory_data;
 	var show_data = JSON.parse(atob(localStorage['show_save']));
 	stuffToShow = show_data;
-	showStuff();
-	updateWizardButtons();
-	equipSword();
-	$('#blood').html('You have ' + player.gunk + ' gunk');
-	$('#hp').html(player.health + '/' + player.maxHealth);
+}
+
+//loads certain location info based on what the player has done so far
+function loadLocation() {
 	if (player.fountain) {
 		$('.pool_button').hide();
 	}
@@ -195,6 +216,18 @@ function loadGame() {
 	}
 }
 
+//master load game function, runs everything needed
+function loadGame() {
+	if (!localStorage['player_save']) return;
+	loadObjects();
+	showStuff();
+	updateWizardButtons();
+	equipSword();
+	updateResources();
+	updateHealthBar();
+	loadLocation();	
+}
+
 //save game to local storage
 function saveGame() {
 	localStorage['player_save'] = btoa(JSON.stringify(player));
@@ -202,15 +235,18 @@ function saveGame() {
 	localStorage['show_save'] = btoa(JSON.stringify(stuffToShow));
 }
 
+/*******************************************************
 
-function updateHealthBar() {
-	$('#hp').html(player.health.toFixed(2) + '/' + player.maxHealth);
-	$('#hp').css('width', player.health / player.maxHealth * 100 + '%');
-}
+		End Reset, Load, and Save functionality
 
-function healthRegen() {
-	player.health = player.health + player.regenVal;
-}
+*******************************************************/
+
+/******************************************************
+
+			DOM info, loop calls, event listeners
+
+*******************************************************/
+
 
 //loads dom elements & event listeners
 window.onload = function() {
@@ -218,33 +254,29 @@ window.onload = function() {
 	mainLoop();
 	saveLoop();
 	locationSwitch(Main);
-	$('#ascii_text').html(cavern.ascii);
 
-	var reflectingPool = document.getElementById('reflectingPool');
-	var store = document.getElementById('store');
-	var main = document.getElementById('main');
-	var error = document.getElementById('error');
-	var inventory = document.getElementById('inventory');
-	var fieldButton = document.getElementById('fieldButton');
-	var mapButton = document.getElementById('mapButton');
 
-	var locationTo;
-	var locationFrom;
 
  	// event listener to switch location
-
 	$('.location_button, .location_ascii').click(function() {
 		if (levelActive) {
 			$('#error').html('You must leave quest first');
 			return;
 		}
+
 		var buttonValue = $(this).attr('value');
 		var locationVal = locationObject[buttonValue];
+
 		if (buttonValue == 'DemonWizardElder' && player.demonVisit) {
 			$('#error').html('The Demon Wizard Elder does not allow repeat visits');
 			return;
 		}
 		locationSwitch(locationVal);
+		locationCheck();
+	});
+
+	//checks location to see if any functions need to be called
+	function locationCheck() {
 		if (buttonValue == 'Mountain') {
 			magicDoor();
 		}
@@ -264,8 +296,9 @@ window.onload = function() {
 		else if (buttonValue == 'Cabin') {
 			spaceShipCheck();
 		}
-	});
+	}
 
+	//monk event listener
 	$('.monk_button').click(function() {
 		var buttonValue = $(this).attr('value');
 		if (buttonValue == 'greet') {
@@ -277,6 +310,7 @@ window.onload = function() {
 		}
 	})
 
+	//wizard event listener
 	$('.wizard_button').click(function() {
 		var buttonValue = $(this).attr('value');
 		wizardExplain(buttonValue);
@@ -288,13 +322,13 @@ window.onload = function() {
 		telescope(buttonValue);
 	})
 
-
 	//lich event listener
 	$('.lich_button').click(function() {
 		var buttonValue = $(this).attr('value');
 		lichEncounter(buttonValue);
 	})
 
+	//enchant event listener
 	$('.enchantButton').click(function() {
 		var buttonValue = $(this).attr('value');
 		wizardEnchant(buttonValue);
@@ -308,32 +342,41 @@ window.onload = function() {
 
 	});
 
+	//pool event listener
 	$('.pool_button').click(function() {
 		var buttonValue = $(this).attr('value');
 		reflectingPoolChoice(buttonValue);
 	})
 
+	//potion event listener
 	$('.potion_button').click(function() {
 		var buttonValue = $(this).attr('value');
 		useHealthPotion();
 	});
 
+	//leave event listener
 	$('#leave_quest').click(function() {
 		leaveQuest();
 	});
 
+	//inverse colors listener
 	$('#invert_button').click(function() {
 		inverseColors();
 	});
 
+	//factory event listener
 	$('.factory_button').click(function() {
 		var buttonValue = $(this).attr('value');
 		factoryFunction(buttonValue);
 	})
 }
 
+/**
+sets old location to previous location so that we can return here after
+hides all the ids related to location, then sets them to the new location
+passed in from the event listener, and fades them back in
+**/
 var previousLocation = levelInfo;
-
 function locationSwitch(location) {
  		$(previousLocation.special).hide();
  		previousLocation = location;
@@ -345,74 +388,38 @@ function locationSwitch(location) {
  		$('#location_text').html(location.text).fadeIn('slow');
 }
 
-//generates ectoplasm on click
-function ectoplasmClick(num) {
-	player.money = player.money + num;
-	document.getElementById('ectoplasm').innerHTML = "You have " + player.money + " gold";
-}
+/*************************************************************
+		
+				Main, Save, and Quest Loops
 
-//generates ectoplasm overtime, passing in gears placed
-function ectoplasmGenerator(num) {
-	player.money = player.money + num*player.extraMoneyGen;
-	document.getElementById('ectoplasm').innerHTML = "You have " + player.money + " gold";
-	$('#ecto_gen').html('gold/s: ' + num);
-	if (player.money > 1000) {
-		$('#click_button').hide();
-	}
-	else if (player.money < 1000) {
-		$('#click_button').show();
-	}
-}
-
-//generatres blood overtime, passing in batteries in use
-function bloodGenerator(num) {
-	if (num * 2 <= player.money) {
-	player.gunk = player.gunk + num*2;
-	player.money = player.money - num*2;
-	$('#blood').html("You have " + player.gunk + " gunk");
-	$('#blood_gen').html('gunk/s: ' + num*2);
-	}
-}
-
-function lightFire() {
-	$('#cabin_rest').show();
-	$('#location_text').html('The fire is roaring.  You may now rest here freely.');
-}
-
-function magicDoor() {
-	if (inventoryObject.rune == true) {
-		$('#rune_true').css('display', 'inline');
-		$('#rune_false').css('display', 'none');
-		$('#magic_door').css('color', '#4FE8D6');
-	}
-	else {
-		$('#rune_false').css('display', 'inline-block');
-		$('#rune_true').css('display', 'none');
-	}
-}
+**************************************************************/
 
 //main game loop, adds resources and hp
 function mainLoop() {
-	ectoplasmGenerator(player.gears);
 	if (player.health < player.maxHealth) {
 		healthRegen();
 		updateHealthBar();
 	}
 	fixHP();
+
+	ectoplasmGenerator(player.gears);
 	if (batteryOn == true) {
 		bloodGenerator(player.batteries);
 	}
+
 	setTimeout(mainLoop, 1000);
 }
 
+//save loop, will save every 5 seconds if player isnt in level and shield/berserk are not active
 function saveLoop() {
 	if (levelActive || shieldUsed || berserkUsed) {
-		console.log('cant save in level');
+		console.log('cant save in level!');
 	}
 	else {
 		saveGame();
-		console.log('game saved');
+		console.log('game saved!');
 	}
+
 	setTimeout(saveLoop, 5000);
 }
 
@@ -425,7 +432,21 @@ var questLoop = function(monster) {
 		moveInLevel(monster);		
 	}
 
+	activeSpellCheck();	
 
+	if (levelActive == false) {
+		potionCD = 0;
+		potionUsed = false;
+		return;
+	}
+
+	setTimeout(function() {
+		questLoop(monster);
+	}, 500);
+}
+
+//checks to see if a spell is active and updates appropriately if active
+function activeSpellCheck() {
 	if (timeFrozen) {
 		frozeTimer--;
 		$('#error').html('Time Frozen: ' + frozeTimer);
@@ -449,7 +470,6 @@ var questLoop = function(monster) {
 			player.power = oldPower;
 		}
 	}
-
 	if (potionUsed) {
 		potionCD--;
 		$('#potionCDText').html("Potion Cooldown: " + potionCD);
@@ -458,22 +478,4 @@ var questLoop = function(monster) {
 			$('#error').html('');
 		}
 	}
-
-	if (levelActive == false) {
-		potionCD = 0;
-		potionUsed = false;
-		return;
-	}
-
-	setTimeout(function() {
-		questLoop(monster);
-	}, 500);
-}
-
-//not current being called
-function animateLoop() {
-	smokeAnimate();
-	blinkAnimate();
-
-	setTimeout(animateLoop, 750);
 }
