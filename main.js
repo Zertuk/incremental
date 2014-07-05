@@ -284,11 +284,11 @@ window.onload = function() {
 			return;
 		}
 		locationSwitch(locationVal);
-		locationCheck();
+		locationCheck(buttonValue);
 	});
 
 	//checks location to see if any functions need to be called
-	function locationCheck() {
+	function locationCheck(buttonValue) {
 		if (buttonValue == 'Mountain') {
 			magicDoor();
 		}
@@ -418,7 +418,7 @@ function mainLoop() {
 	if (batteryOn == true) {
 		bloodGenerator(player.batteries);
 	}
-	
+
 	setTimeout(mainLoop, 1000);
 }
 
