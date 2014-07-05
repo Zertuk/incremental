@@ -474,7 +474,7 @@ function useHealthPotion() {
 	}
 	else {
 		if (player.health >= player.maxHealth) {
-			$('#error').html('You already have full health dont be silly');
+			$('#error').html('You already have full health don\'t be silly');
 		}
 		else {		
 			player.health = player.health + player.maxHealth*0.2;
@@ -646,7 +646,7 @@ function storeItems(item) {
 				equipSword();
 				$('#iron_sword').show();
 				stuffToShow.iron_sword = true;
-				storeStatus('This thing wont do much but its better than fists');
+				storeStatus('This thing won\'t do much but its better than fists');
 				$('#wood_sword').hide();
 				stuffToShow.wood_sword = false;
 			}
@@ -683,7 +683,7 @@ function storeItems(item) {
 			if (itemBought == true) {
 				inventoryObject.diamondArmor = true;
 				equipArmor();
-				storeStatus('This took 9 diamonds to make, dont ruin it!');
+				storeStatus('This took 9 diamonds to make, don\;t ruin it!');
 				$('#diamond_armor').hide();
 				stuffToShow.diamond_armor = false;
 			}
@@ -694,7 +694,7 @@ function storeItems(item) {
 			if (itemBought == true) {
 				player.potionCost = player.potionCost + Math.floor(player.potionCost/5);
 				inventoryObject.healthPotion++;
-				storeStatus('Heres a Healh Potion, hope you wont need it..');
+				storeStatus('Heres a Health Potion, hope you won\'t need it..');
 			}
 			break;
 		case "manaPotion":
@@ -703,7 +703,7 @@ function storeItems(item) {
 			if (itemBought == true) {
 				player.manaCost = player.manaCost + Math.floor(player.manaCost/5);
 				inventoryObject.manaPotion++;
-				storeStatus('You know you dont even have mana right?');
+				storeStatus('You know you don\'t even have mana right?');
 				if (inventoryObject.manaPotion > 10) {
 					storeStatus('Really. I am telling you the truth, these are worthless to you');
 					if (inventoryObject.manaPotion > 20) {
@@ -731,7 +731,7 @@ function storeItems(item) {
 				stuffToShow.mapButton = true;
 				$('#mapListing').hide();
 				stuffToShow.mapListing = false;
-				storeStatus('Hey! Dont open that map in my store!');
+				storeStatus('Hey! Don\'t open that map in my store!');
 			}
 			break;
 		case "battery":

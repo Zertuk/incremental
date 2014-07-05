@@ -211,7 +211,7 @@ function loadLocation() {
 		Main.special = '#future_special';
 		Map.special = '#future_map';
 		$('#post_lich').show();
-		Wizard.text = 'Wow I havent seen you in awhile!';
+		Wizard.text = 'Wow, I haven\'t seen you in a while!';
 		Main.text = 'what happened..?'
 	}
 }
@@ -413,7 +413,7 @@ function mainLoop() {
 //save loop, will save every 5 seconds if player isnt in level and shield/berserk are not active
 function saveLoop() {
 	if (levelActive || shieldUsed || berserkUsed) {
-		console.log('cant save in level!');
+		console.log('can\'t save in level!');
 	}
 	else {
 		saveGame();
