@@ -70,7 +70,8 @@ function objectReset() {
 			riotShield_item: false,
 			tome_item: false,
 			end_button: false,
-			badEnd_button: false
+			badEnd_button: false,
+			hc: false
 		}
 
 		inventoryObject = {
@@ -157,7 +158,8 @@ function objectReset() {
 			figure: false,
 			extraMoneyGen: 1,
 			maximum: 100000,
-			parts: false
+			parts: false,
+			hardcore: false
 		}
 }
 
@@ -179,9 +181,19 @@ function resetGame() {
 		objectReset();
 		resetLocations();
 		saveGame();
-		$('#error').html('Please refresh the window for the entire reset to work');
 		loadGame();
 	}
+}
+
+function resetGameHC() {
+	leaveQuest();
+	objectReset();
+	resetLocations();
+	player.hardcore = true;
+	stuffToShow.hc = true;
+	saveGame();
+	loadGame();
+	locationSwitch(Main);
 }
 
 
@@ -406,7 +418,7 @@ function mainLoop() {
 	if (batteryOn == true) {
 		bloodGenerator(player.batteries);
 	}
-
+	
 	setTimeout(mainLoop, 1000);
 }
 
@@ -443,6 +455,18 @@ var questLoop = function(monster) {
 	setTimeout(function() {
 		questLoop(monster);
 	}, 500);
+}
+
+function totalTimer() {
+	player.timer++
+	$('#timer').html(player.timer + ' seconds');
+}
+
+function HCMode() {
+	var message = "Warning!  This will reset your current game and enable hardcore mode.  If you die on hardcore mode, the game will reset!";
+	if (confirm(message)) {
+		resetGameHC();
+	}
 }
 
 //checks to see if a spell is active and updates appropriately if active

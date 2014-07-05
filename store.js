@@ -71,7 +71,8 @@ var stuffToShow = {
 	tome_item: false,
 	end_button: false,
 	badEnd_button: false,
-	fountain_buttons: true
+	fountain_buttons: true,
+	hc: false
 }
 
 function showStuff() {
@@ -439,7 +440,9 @@ var player = {
 	extraMoneyGen: 1,
 	maximum: 100000,
 	parts: false,
-	fountain: false
+	fountain: false,
+	hardcore: false,
+	timer: 0
 }
 
 var enchantDmg = 0;

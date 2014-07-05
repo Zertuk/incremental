@@ -16,6 +16,7 @@
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 
   <script src = "locations.js"></script>
+  <script src = "locationObject.js"></script>
   <script src = "options.js"></script>
   <script src = "demon.js"></script>
   <script src = "factory.js"></script>
@@ -23,7 +24,6 @@
   <script src = "reflecting.js"></script>
   <script src = "monsters.js"></script>
   <script src = "levelObject.js"></script>
-  <script src = "locationObject.js"></script>
   <script src = "level.js"></script>
   <script src = "main.js"></script>
 
@@ -41,6 +41,7 @@
       <button id = "about_button" class = "location_button" value = "About">About</button>
       <button id = "inverse_button" onclick = 'inverseColors()'>Inverse</button>
       <button id = 'click_button' onclick = "ectoplasmClick(1)">Click</button>
+      <p id = "hc">HC ON</p>
 			
 			<p id = "ectoplasm">You have 0 gold</p>
 			<p id = "blood">?</p>
@@ -857,6 +858,7 @@ ___________|_|_
       <p>If you find any bugs/issues you can <a href = "mailto:just.forcier@gmail.com">e-mail</a>
       and Ill take care of it. Thanks for playing!</p>
       <br>
+      <button onclick = "HCMode()">Hardcore Mode</button>
       <button onclick = 'resetGame()'>Reset Game</button>
   </div><!--location_div-->
 	</div><!--wrapper-->

@@ -186,6 +186,11 @@ function battleTime(monster) {
 		monster.health = monster.maxHealth;
 		$('#error').html('The ' + monster.name + ' killed you rip ;-;');
 		$('#error2').html('The ' + monster.name + ' killed you rip ;-;');
+		if (player.hardcore) {
+			alert('You have died on hardcore mode! Game will now reset ;-;  To turn off hardcore, go to \'About\' and click \'Reset Game\'');
+			resetGameHC();
+			player.hardcore = true;
+		}
 
 	}
 	else if (monster.health <= 0) {

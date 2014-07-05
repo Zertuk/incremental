@@ -69,6 +69,12 @@ a:hover {
 	float: left;
 }
 
+#hc {
+	display: none;
+	float: right;
+	margin-top: -1px;
+}
+
 
 pre {
 	font-size: 14px;

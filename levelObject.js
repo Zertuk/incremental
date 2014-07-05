@@ -434,7 +434,7 @@ prison.unlockSave = function() { stuffToShow.tunnel = true };
 prison.text = 'Wonder what these guys did';
 prison.levelLength = 40;
 prison.monster = scientist;
-prison.monsterNum = 2;
+prison.monsterNum = 1;
 prison.specialMonster = jailer;
 prison.specialMonsterNum = 3;
 prison.ascii = '\n\
