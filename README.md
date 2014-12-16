@@ -1,4 +1,4 @@
-incremental
+Space Lich Omega
 ===========
 
-incremental rpg called space lich omega
+Incremental RPG inspired by CandyBox
