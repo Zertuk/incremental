@@ -173,7 +173,7 @@ dropBear.dropChance = 15;
 dropBear.itemName = 'Mini Drop Bear'
 
 var druid = new Monster();
-druid.message = 'Guess those werent just bears';
+druid.message = 'Guess those weren\'t just bears';
 druid.value = 'dR';
 druid.damage = 30;
 druid.maxHealth = 40;
@@ -182,7 +182,7 @@ druid.name = 'Druid';
 druid.monsterMoney = 1.6;
 
 var elderDruid = new Monster();
-elderDruid.message = 'Guess those werent just.. old bears';
+elderDruid.message = 'Guess those weren\'t just.. old bears';
 elderDruid.value = 'EdR';
 elderDruid.damage = 45;
 elderDruid.maxHealth = 60;
