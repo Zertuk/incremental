@@ -187,7 +187,7 @@ Church.ascii = '\n\
 
 
 var Camp = new locationInfo();
-Camp.text = 'The fire is burning calmy but no one is around';
+Camp.text = 'The fire is burning calmly but no one is around';
 Camp.special = '#camp_special'
 Camp.ascii = '             |\n\
                           /^\\\n\
