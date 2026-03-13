@@ -17,7 +17,7 @@ function telescope(direction) {
 			break;
 		case 'telescope':
 			$('#location_ascii').html(Skyscraper.ascii3);
-			$('#location_text').html('Wow who left this up here?');
+			$('#location_text').html('Wow, who left this up here?');
 			$('#telescope').show();
 			$('#look_left').hide();
 			break;
@@ -55,7 +55,7 @@ function spaceShipCheck() {
 	}
 }
 
-//cant visit demon more than once
+//can't visit demon more than once
 function noDemon() {
 	player.demonVisit = true;
 }
@@ -66,7 +66,7 @@ function flipperCheck() {
 		$('#location_text').html('Good to go!');
 	}
 	else {
-		$('#error').html('Hey you dont have any flippers!');
+		$('#error').html('Hey you don\'t have any flippers!');
 	}
 }
 
@@ -135,7 +135,7 @@ function cabinRest() {
 function campRest() {
 	campgroundAfterScenario();
 	if (levelActive) {
-		$('#error').html('hey you cant rest in battle!');
+		$('#error').html('Hey, you can\'t rest in battle!');
 		return;
 	}
 	if (player.money > player.restPrice) {
@@ -158,10 +158,10 @@ function campgroundAfterScenario() {
 	$('#camp_use').show();
 	stuffToShow.rest_perm = true;
 	if (player.confess) {
-		$('#man_text').html('Hey jerk want to rest? <br> Special Price..');		
+		$('#man_text').html('Hey jerk, want to rest? <br> Special Price..');		
 	}
 	else if (player.thief) {
-		$('#man_text').show().html('Sorry but someone stole my supplies, Im going <br> to have to charge for you to rest here');
+		$('#man_text').show().html('Sorry, but someone stole my supplies, I\'m going <br> to have to charge for you to rest here');
 	    $('#confess').show();
 	}
 	else {
@@ -223,7 +223,7 @@ function campgroundWait() {
 function labScenario(buttonValue) {
 	console.log(buttonValue + ' the value');
 	if (buttonValue == 'grab') {
-		$('#location_text').html('Oh okay heres a fresh batch for you');
+		$('#location_text').html('Oh, okay.  Here\'s a fresh batch for you');
 		inventoryObject.shipFuel = true;
 		player.parts = true;
 		('#laboratory').hide();
@@ -263,7 +263,7 @@ function lootBait() {
 		$('#error').html('You already found some bait, leave some for the other anglers!');
 	}
 	else {
-		$('#location_text').html('Hmm found some bait in the bushes!');
+		$('#location_text').html('Hmm, found some bait in the bushes!');
 		inventoryObject.bait = true;
 	}
 }
@@ -277,7 +277,7 @@ function checkFish() {
 		$('#location_text').html('Wow check out that fish! Here you go take these flippers you deserve them!');
 	}
 	else {
-		$('#location_text').html('You are going to have to do better than that if you want these flippers. Heres a hint: These fish love the worms that live around the pond');
+		$('#location_text').html('You are going to have to do better than that if you want these flippers. Here\'s a hint: These fish love the worms that live around the pond');
 	}
 
 }
@@ -376,21 +376,21 @@ function wizardExplain(buttonValue) {
 		$('#wizard_explain').hide();
 	}
 	else if (buttonValue == 'time') {
-		$('#location_text').html('I dont measure time like you I am a wizard.  It has been 0.63 wizard years, a lot sure has changed in that little time! Little for me at least.');
+		$('#location_text').html('I don\'t measure time like you I am a wizard.  It has been 0.63 wizard years, a lot sure has changed in that little time! Little for me at least.');
 		$('#wizard_help').show();
 		$('#wizard_time').hide();
 	}
 	else if (buttonValue == 'help') {
 		$('#wizard_help').hide()
 		$('#wizard_explain').show();
-		$('#location_text').html('Dont ask me Im just a wizard');
+		$('#location_text').html('Don\'t ask me Im just a wizard');
 
 	}
 
 }
 
 function wizardQuestion() {
-	$('#location_text').html('Ooh arent you the sassy one, how about this, beat me in a battle of wits and I will give you a prize! I am not afraid of losing, Im a pretty good wizard');
+	$('#location_text').html('Ooh, aren\'t you the sassy one?  How about this, beat me in a battle of wits and I will give you a prize! I am not afraid of losing, I\'m a pretty good wizard');
 }
 
 function monkCheck() {
@@ -400,7 +400,7 @@ function monkCheck() {
 		$('#location_ascii').html('');
 	}
 	else if (player.sinChoosen) {
-		$('#location_text').html('Thank you for rescuing me, unfortunately I cant teach someone afflicted with the demons mark and have nothing else to offer');
+		$('#location_text').html('Thank you for rescuing me, unfortunately I can\'t teach someone afflicted with the demons mark and have nothing else to offer');
 		$('#kill_monk').show();	
 	}
 	else {
@@ -437,7 +437,7 @@ function lichEncounter(buttonValue) {
 			$('#location_ascii').html(Lich.ascii3);
 			break;
 		case 'die':
-			$('#location_text').html('Fool! You cant defeat me!');
+			$('#location_text').html('Fool! You can\'t defeat me!');
 			$('#location_ascii').html(Lich.ascii2);
 			$('.lich_button').hide();
 			$('#lich_attack').show();
@@ -452,7 +452,7 @@ function lichAttack() {
 	Map.special = '#future_map';
 	Store.ascii = Store.ascii3;
 	$('#post_lich').show();
-	Wizard.text = 'Wow I havent seen you in awhile!';
+	Wizard.text = 'Wow, I haven\'t seen you in a while!';
 	Main.text = 'what happened..?'
 	$('#lich_attack').hide();
 	$('#continue').show();
